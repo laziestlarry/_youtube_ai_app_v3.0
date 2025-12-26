@@ -1,0 +1,13 @@
+{
+  "name": "youtube-income-commander-mvp",
+  "version": "1.0.0",
+  "description": "Production-ready YouTube income generator",
+  "scripts": {
+    "deploy": "bash deploy.sh",
+    "start": "docker-compose -f docker-compose.prod.yml up -d",
+    "stop": "docker-compose -f docker-compose.prod.yml down",
+    "logs": "docker logs youtube-income-commander-prod -f",
+    "health": "curl http://localhost:8000/health",
+    "test": "cd backend && python -m pytest tests/ -v"
+  }
+}

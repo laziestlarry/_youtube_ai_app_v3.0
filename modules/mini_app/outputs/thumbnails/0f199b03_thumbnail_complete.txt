@@ -1,0 +1,37 @@
+🎨 THUMBNAIL CREATION GUIDE
+PROJECT: 0f199b03
+TITLE: How I Made $10,000 in 30 Days with Crypto Trading
+============================================================
+
+🤖 AI PROMPT FOR DALL-E/MIDJOURNEY:
+----------------------------------------
+Create a YouTube thumbnail for 'How I Made $10,000 in 30 Days with Crypto Trading'. Show an excited person pointing at money symbols, dollar signs, and upward trending charts. Use bright colors (green, gold, red), large bold text overlay, high contrast for mobile viewing. Professional, clickbait style, 1280x720 resolution.
+
+🎨 CANVA TEMPLATE INSTRUCTIONS:
+----------------------------------------
+1. Open Canva Pro → YouTube Thumbnail
+2. Search 'Money YouTube Thumbnail' templates
+3. Replace text with main hook from title
+4. Add elements: 💰 $ 📈 ⬆️ 🔥
+5. Use fonts: Impact, Bebas Neue, or Oswald
+6. Colors: #00FF00 (green), #FFD700 (gold), #FF0000 (red)
+7. Export as PNG, 1280x720
+
+📱 MOBILE OPTIMIZATION:
+----------------------------------------
+• Text size: Minimum 60pt font
+• High contrast colors only
+• Test visibility on small screen
+• Avoid cluttered designs
+• Face should be clearly visible
+
+🎯 PSYCHOLOGICAL TRIGGERS:
+----------------------------------------
+• Excited/surprised facial expression
+• Pointing gesture toward money/results
+• Money symbols prominently displayed
+• Urgency indicators (arrows, highlights)
+• Social proof elements if possible
+
+💾 SAVE AS: 0f199b03_thumbnail.png
+📍 LOCATION: outputs/thumbnails/

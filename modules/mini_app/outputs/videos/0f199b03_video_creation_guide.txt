@@ -1,0 +1,60 @@
+🎬 VIDEO CREATION GUIDE
+PROJECT: 0f199b03
+============================================================
+
+🎯 RECOMMENDED APPROACH: SCREEN RECORDING
+--------------------------------------------------
+This method works best for money-making content!
+
+📱 TOOLS NEEDED:
+• OBS Studio (Free) - obs-project.com
+• OR Loom (Easy) - loom.com
+• OR QuickTime (Mac) - Built-in
+
+🖥️ WHAT TO RECORD:
+1. Browser with relevant websites/dashboards
+2. Spreadsheets showing calculations
+3. Screenshots of earnings/results
+4. Step-by-step process demonstrations
+5. Tools and platforms mentioned in script
+
+⚙️ RECORDING SETTINGS:
+• Resolution: 1920x1080 (1080p)
+• Frame Rate: 30fps
+• Format: MP4
+• Audio: Use separate audio file created earlier
+
+🎨 VISUAL ELEMENTS TO INCLUDE:
+• Money counters and calculators
+• Charts showing growth/progress
+• Before/after comparisons
+• Step-by-step process flows
+• Social proof (testimonials, results)
+
+📊 SCREEN RECORDING TIMELINE:
+0:00-0:15 - Hook: Show end results first
+0:15-0:30 - Subscribe reminder with animation
+0:30-2:00 - Problem demonstration
+2:00-6:00 - Solution walkthrough
+6:00-8:00 - Results and proof
+8:00-9:00 - Call to action
+9:00-10:00 - Subscribe + end screen
+
+🎵 AUDIO SYNC:
+• Import audio file: outputs/audio/0f199b03_audio.wav
+• Sync with screen recording
+• Add background music (low volume)
+• Ensure clear voice throughout
+
+💡 PRO TIPS:
+• Record in segments for easier editing
+• Use cursor highlighting/zoom effects
+• Add text overlays for key points
+• Include subscribe button animations
+• Test audio levels before final export
+
+💾 EXPORT SETTINGS:
+• Format: MP4
+• Quality: High (1080p)
+• File name: {self.project_id}_final_video.mp4
+• Location: outputs/videos/

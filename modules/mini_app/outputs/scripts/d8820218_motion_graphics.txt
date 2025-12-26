@@ -1,0 +1,22 @@
+MOTION GRAPHICS GUIDE FOR: The 10,000 Secret That Made Me $30
+==================================================
+
+VISUAL ELEMENTS NEEDED:
+• Money counters and animations
+• Chart/graph animations showing growth
+• Text overlays with key points
+• Subscribe button animations
+• Progress bars and timers
+
+RECOMMENDED TOOLS:
+• After Effects
+• DaVinci Resolve
+• Canva Video
+• Loom (for screen recordings)
+
+TIMELINE SUGGESTIONS:
+0:00-0:15 - Hook with animated text
+0:15-0:30 - Subscribe animation
+0:30-8:00 - Main content with visual aids
+8:00-9:00 - Call to action graphics
+9:00-10:00 - End screen template

@@ -1,0 +1,76 @@
+name: YouTube Income Commander - Production Deploy
+
+on:
+  push:
+    branches: [ main, production ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  DOCKER_IMAGE: youtube-income-commander
+  CONTAINER_NAME: youtube-income-commander-prod
+  PORT: 8000
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        cd backend
+        pip install -r requirements.txt
+        pip install pytest pytest-asyncio httpx
+    
+    - name: Run tests
+      run: |
+        cd backend
+        pytest tests/ -v
+    
+    - name: Test API endpoints
+      run: |
+        cd backend
+        python -m pytest tests/test_api.py -v
+
+  build-and-deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Build Docker image
+      run: |
+        docker build -t $DOCKER_IMAGE:latest .
+        docker tag $DOCKER_IMAGE:latest $DOCKER_IMAGE:${{ github.sha }}
+    
+    - name: Deploy to production
+      run: |
+        # Stop existing container
+        docker stop $CONTAINER_NAME || true
+        docker rm $CONTAINER_NAME || true
+        
+        # Run new container
+        docker run -d \
+          --name $CONTAINER_NAME \
+          --restart unless-stopped \
+          -p $PORT:8000 \
+          -e ENVIRONMENT=production \
+          $DOCKER_IMAGE:latest
+    
+    - name: Health check
+      run: |
+        sleep 10
+        curl -f http://localhost:$PORT/health || exit 1
+        curl -f http://localhost:$PORT/money-ideas || exit 1
+    
+    - name: Cleanup old images
+      run: |
+        docker image prune -f
