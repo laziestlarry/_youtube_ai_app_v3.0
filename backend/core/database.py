@@ -70,6 +70,8 @@ def create_database_engines():
 
 def get_db():
     """Get database session (sync)."""
+    if engine is None:
+        create_database_engines()
     db = SessionLocal()
     try:
         yield db
@@ -78,6 +80,8 @@ def get_db():
 
 async def get_async_db():
     """Get database session (async)."""
+    if async_engine is None:
+        create_database_engines()
     async with AsyncSessionLocal() as session:
         yield session
 
@@ -122,5 +126,5 @@ async def check_db_health():
         logger.error(f"Database health check failed: {str(e)}")
         return {"status": "unhealthy", "message": str(e)}
 
-# Initialize engines on import
-create_database_engines()
+# Engines are now initialized lazily in get_db, get_async_db, init_db, and check_db_health
+# create_database_engines()

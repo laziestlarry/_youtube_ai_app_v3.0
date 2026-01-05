@@ -1,6 +1,6 @@
 import logging
 from sqlalchemy import select
-from backend.core.database import AsyncSessionLocal
+import backend.core.database as database
 from backend.models.user import User
 from backend.core.security import get_password_hash
 from backend.core.config import settings
@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 async def seed_db():
     """Seed the database with initial data (e.g., default admin user)."""
-    async with AsyncSessionLocal() as db:
+    async with database.AsyncSessionLocal() as db:
         try:
             # Check if admin user exists
             admin_email = "admin@example.com"
