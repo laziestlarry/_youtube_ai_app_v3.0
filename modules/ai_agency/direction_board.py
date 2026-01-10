@@ -55,13 +55,38 @@ class DirectionBoard:
             # Prompt Chimera to review the inventory CSV? 
             # Or just list it.
             # Let's keep it simple: Read the CSV and return count.
-            csv_path = "docs/rankedopportunities.csv"
+            data_dir = os.getenv("DATA_DIR", "docs")
+            csv_path = os.path.join(data_dir, "rankedopportunities.csv")
+            if not os.path.exists(csv_path):
+                # Fallback to local relative if DATA_DIR is absolute but file is in repo
+                csv_path = "docs/rankedopportunities.csv"
+                
             if os.path.exists(csv_path):
                 with open(csv_path, 'r') as f:
                     count = sum(1 for line in f) - 1 # items
                 return {"status": "success", "inventory_count": count}
             else:
-                return {"error": "Inventory file not found"}
+                return {"error": f"Inventory file not found at {csv_path}"}
+
+        elif operation == "prepare_marketing_assets":
+            try:
+                process = subprocess.Popen(
+                    ["python3", "scripts/prepare_marketing_assets.py", "--catalog", "docs/commerce/product_catalog.json"],
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    text=True,
+                    cwd=os.getcwd()
+                )
+                stdout, stderr = process.communicate()
+                return {
+                    "department": "sales",
+                    "operation": operation,
+                    "status": "success" if process.returncode == 0 else "failed",
+                    "output": stdout,
+                    "error": stderr
+                }
+            except Exception as e:
+                return {"error": str(e)}
         
         elif operation == "publish_shopify_sku":
             # Create a new product on Shopify
