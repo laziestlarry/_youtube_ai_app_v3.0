@@ -1,0 +1,21 @@
+# Shopier Real-Money Activation Tasks [/]
+> [!NOTE]
+> Implementation plan approved. Waiting for legal/dashboard steps before technical switch.
+
+- [ ] **Phase 1: Legal & Tax Compliance**
+  - [ ] Determine Seller Status (Individual vs. Individual Business)
+  - [ ] Prepare Distance Sales Contract (Mesafeli Satış Sözleşmesi)
+  - [ ] Define Refund Policy (iade ve İptal Koşulları)
+  - [ ] Set up e-Invoice/e-Archive (e-Fatura/e-Arşiv) system (Recommended for Turkey)
+
+- [ ] **Phase 2: Shopier Dashboard Configuration**
+  - [ ] Complete Identity Verification (TC No / Kimlik Doğrulama)
+  - [ ] Link Valid Bank Account (IBAN Verification)
+  - [ ] Set "Digital Product" delivery mode in Shopier panel
+  - [ ] Configure Webhook / Callback URL in Shopier Automation settings
+
+- [ ] **Phase 3: Technical Integration (Production)**
+  - [ ] Switch from Mock to Live `SHOPIER_API_KEY` and `SHOPIER_API_SECRET`
+  - [ ] Configure `SHOPIER_WEBHOOK_TOKEN` for real-time order verification
+  - [ ] Test a low-value (e.g., 1 TL) real transaction
+  - [ ] Verify automatic fulfillment trigger on successful payment

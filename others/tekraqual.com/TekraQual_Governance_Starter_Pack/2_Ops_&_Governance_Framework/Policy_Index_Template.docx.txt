@@ -1,0 +1,16 @@
+Policy Index Template
+
+Sections:
+- Data & Security Policies
+- Customer Handling Policies (support, refunds, SLAs)
+- Change Control & Releases
+- AI Usage & Human-in-the-loop
+- Business Continuity / Disaster Recovery
+
+Table columns:
+- Policy name
+- Owner
+- Last updated
+- Location/link
+- Status (Draft/Approved/Under review)
+- Notes

@@ -1,0 +1,23 @@
+{
+  "currency": "TRY",
+  "tiers": {
+    "basic": {
+      "name": "Starter",
+      "price": 1800,
+      "delivery_days": 3,
+      "revisions": 2
+    },
+    "standard": {
+      "name": "Launch",
+      "price": 6000,
+      "delivery_days": 5,
+      "revisions": 2
+    },
+    "premium": {
+      "name": "Scale",
+      "price": 15000,
+      "delivery_days": 7,
+      "revisions": 3
+    }
+  }
+}

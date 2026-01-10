@@ -8,6 +8,7 @@ from sqlalchemy import select
 import logging
 
 logger = logging.getLogger(__name__)
+from modules.ai_agency.shopier_service import shopier_service
 
 # Pricing Tiers Configuration (could be moved to DB or settings)
 PRICING_TIERS = {
@@ -60,6 +61,10 @@ class PaymentService:
         except Exception as e:
             logger.error(f"Error creating subscription: {e}")
             raise HTTPException(status_code=400, detail=str(e))
+
+    async def create_shopier_payment(self, amount: float, currency: str, order_id: str, product_name: str) -> str:
+        """Generate a Shopier payment link"""
+        return shopier_service.generate_payment_link(amount, currency, order_id, product_name)
     
     async def process_revenue_share(self, user_id: str, monthly_revenue: float, db):
         """Process revenue share for eligible users"""

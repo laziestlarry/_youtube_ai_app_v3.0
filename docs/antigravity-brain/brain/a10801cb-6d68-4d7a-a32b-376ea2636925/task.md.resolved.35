@@ -1,0 +1,12 @@
+# Task: Production Readiness & Bug Fixing
+
+- [/] UI Bug Fixing
+    - [/] Fix JSX Syntax Errors in [EarningsTab.tsx](file:///Users/pq/_youtube_ai_app_v3.0/frontend/src/components/Dashboard/EarningsTab.tsx)
+    - [ ] Verify Dashboard Responsiveness
+- [ ] Backend Data Integration
+    - [ ] Connect `revenue-stats` to live Analytics Service
+    - [ ] Ensure [AlteredSelf](file:///Users/pq/_youtube_ai_app_v3.0/modules/ai_agency/altered_self.py#6-37) profiles are persistent
+- [ ] Production Build & Deployment
+    - [ ] Run `npm run build` in frontend
+    - [ ] Verify unified server launch ([start_app.sh](file:///Users/pq/_youtube_ai_app_v3.0/scripts/start_app.sh))
+    - [ ] Final Smoke Test with Real Data Simulation

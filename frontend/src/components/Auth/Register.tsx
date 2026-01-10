@@ -52,7 +52,7 @@ const Register: React.FC = () => {
                             Create Account
                         </Typography>
                         <Typography variant="body2" color="textSecondary" align="center" sx={{ mb: 3 }}>
-                            Join the YouTube AI Content Creator platform
+                            Join the Autonomax Content Creator platform
                         </Typography>
 
                         {error && <Alert severity="error" sx={{ mb: 3 }}>{error}</Alert>}

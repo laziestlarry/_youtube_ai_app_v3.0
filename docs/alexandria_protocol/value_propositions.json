@@ -1,0 +1,238 @@
+{
+  "protocol_version": "1.0",
+  "generated": "2025-12-01",
+  
+  "consultancy_proposals": [
+    {
+      "id": "CONSULT-001",
+      "title": "Social Media Intelligence & Market Analysis Platform",
+      "derived_from": ["DEMO-001", "DEMO-002", "DEMO-003"],
+      "problem_statement": "Businesses struggle to monitor competitors, track market trends, and visualize social media performance in a unified, actionable format.",
+      "proposed_solution": "Deploy a custom social media intelligence system combining automated data scraping (social_media_scraper.py), market analysis frameworks (from client project methodology), and real-time dashboard visualization (modern_dashboard_kit).",
+      "deliverables": [
+        "Automated social media monitoring system",
+        "Competitor analysis framework",
+        "Executive dashboard with KPIs",
+        "Weekly/monthly insight reports"
+      ],
+      "value_proposition": "Transform scattered social signals into strategic intelligence, reducing manual monitoring by 80% and enabling data-driven marketing decisions.",
+      "target_clients": ["SMBs seeking market visibility", "Marketing agencies", "E-commerce brands"],
+      "pricing_model": "Project-based ($5K-15K setup) + Monthly retainer ($1K-3K)",
+      "timeline": "4-6 weeks implementation",
+      "assets_required": ["DEMO-002", "DEMO-003", "DEMO-001 methodology"]
+    },
+    {
+      "id": "CONSULT-INTELLIWEALTH",
+      "title": "IntelliWealth AI Business Transformation",
+      "derived_from": ["IntelliWealth_Solutions.txt", "IntelliWealth_Solutions_ai_staff.txt"],
+      "problem_statement": "Founders and executives struggle to operationalize AI into scalable revenue systems while maintaining governance and profitability.",
+      "proposed_solution": "Deliver a full-stack AI transformation program with executive alignment, AI ops architecture, automation playbooks, and a measurable revenue roadmap.",
+      "deliverables": [
+        "Executive discovery + transformation blueprint",
+        "AI operations architecture and workflow design",
+        "Automation playbooks with KPI targets",
+        "90-day implementation roadmap"
+      ],
+      "value_proposition": "Accelerate AI adoption with a structured revenue-first transformation model that compresses execution cycles and improves operational clarity.",
+      "target_clients": ["Growth-stage founders", "Consulting agencies", "Enterprise innovation teams"],
+      "pricing_model": "Project-based ($15K-50K) + Advisory retainer ($5K/mo)",
+      "timeline": "6-10 weeks implementation",
+      "assets_required": ["IntelliWealth methodology", "AI staff definitions"]
+    },
+    {
+      "id": "CONSULT-COMMANDER",
+      "title": "Commander API Ops Automation",
+      "derived_from": ["AutonomaX_API_Commander", "Commander_Orchestrated_Online"],
+      "problem_statement": "Teams want automation but lack a unified orchestration layer to coordinate AI agents, workflows, and revenue operations.",
+      "proposed_solution": "Deploy the Commander API stack with tailored workflows for content, commerce, and revenue ops, plus onboarding and governance support.",
+      "deliverables": [
+        "Commander API onboarding and setup",
+        "Workflow templates for sales, fulfillment, and reporting",
+        "Ops governance + monitoring dashboard",
+        "Team enablement training"
+      ],
+      "value_proposition": "Centralize automation under one command layer, reducing operational complexity and improving execution speed.",
+      "target_clients": ["Agencies", "Automation-first startups", "E-commerce operators"],
+      "pricing_model": "Setup ($2K-10K) + Monthly platform fee ($199-999)",
+      "timeline": "2-4 weeks implementation",
+      "assets_required": ["Commander orchestration modules", "AutonomaX workflows"]
+    }
+  ],
+  
+  "freelance_services": [
+    {
+      "id": "FREELANCE-001",
+      "title": "Custom Data Visualization Dashboard Service",
+      "derived_from": ["DEMO-003", "DEMO-002"],
+      "service_description": "Design and develop interactive dashboards that transform raw data into actionable visual insights. Includes data integration, custom visualizations, and responsive design.",
+      "packages": [
+        {
+          "name": "Starter",
+          "price": "$500",
+          "includes": ["5 key metrics", "Basic charts", "Mobile responsive"],
+          "delivery": "5 days"
+        },
+        {
+          "name": "Professional", 
+          "price": "$1,200",
+          "includes": ["15 metrics", "Advanced charts", "Data integration", "Interactive filters"],
+          "delivery": "10 days"
+        },
+        {
+          "name": "Enterprise",
+          "price": "$2,500+",
+          "includes": ["Unlimited metrics", "Custom data pipelines", "Real-time updates", "Training"],
+          "delivery": "3 weeks"
+        }
+      ],
+      "platforms": ["Fiverr", "Upwork", "Direct clients"],
+      "upsell_opportunities": ["Ongoing data maintenance", "Additional dashboards", "API integrations"],
+      "assets_required": ["DEMO-003", "DEMO-002 for data scraping add-on"]
+    },
+    {
+      "id": "FREELANCE-002",
+      "title": "Social Media Scraping & Data Collection Service",
+      "derived_from": ["DEMO-002"],
+      "service_description": "Automated collection of social media data for market research, competitor analysis, and content strategy. Ethical, compliant data gathering with structured output.",
+      "packages": [
+        {
+          "name": "Basic Scrape",
+          "price": "$150",
+          "includes": ["Single platform", "1000 data points", "CSV export"],
+          "delivery": "2 days"
+        },
+        {
+          "name": "Multi-Platform",
+          "price": "$400",
+          "includes": ["3 platforms", "5000 data points", "Analysis summary"],
+          "delivery": "5 days"
+        },
+        {
+          "name": "Ongoing Collection",
+          "price": "$800/month",
+          "includes": ["Daily collection", "Automated reports", "Trend alerts"],
+          "delivery": "Continuous"
+        }
+      ],
+      "platforms": ["Fiverr", "Upwork"],
+      "legal_notes": "Ensure ToS compliance for each platform",
+      "assets_required": ["DEMO-002"]
+    }
+  ],
+  
+  "digital_products": [
+    {
+      "id": "PRODUCT-001",
+      "title": "Analytics Dashboard Template Kit",
+      "derived_from": ["DEMO-003"],
+      "product_type": "Digital download - Figma template",
+      "description": "A comprehensive, ready-to-use Figma dashboard template kit featuring 50+ components, 10 complete dashboard layouts, and dark/light themes. Perfect for SaaS, e-commerce, and business analytics.",
+      "target_audience": ["UI/UX designers", "Startup founders", "Product managers", "No-code builders"],
+      "features": [
+        "50+ customizable components",
+        "10 complete dashboard templates",
+        "Chart and graph library",
+        "Dark and light modes",
+        "Mobile responsive variants",
+        "Documentation included"
+      ],
+      "pricing_strategy": {
+        "single_purchase": "$49",
+        "extended_license": "$149",
+        "marketplace_fee": "30%",
+        "net_per_sale": "$34.30"
+      },
+      "distribution_channels": ["Gumroad", "Creative Market", "UI8", "Figma Community"],
+      "production_steps": [
+        "Polish and expand current kit",
+        "Create preview images and demo video",
+        "Write product description and documentation",
+        "Set up marketplace listings",
+        "Launch with discount code"
+      ],
+      "estimated_effort": "2 weeks to market-ready",
+      "revenue_potential": "Passive income: $500-2000/month based on marketing effort"
+    },
+    {
+      "id": "PRODUCT-INTELLIWEALTH-TRAIN",
+      "title": "IntelliWealth Executive Training Program",
+      "derived_from": ["IntelliWealth_Solutions.txt", "actions4strategies.txt"],
+      "product_type": "Digital course + playbooks",
+      "description": "A structured executive training program that turns AI strategy into measurable revenue execution, including playbooks, worksheets, and implementation checklists.",
+      "target_audience": ["Founders", "Operators", "Consultants"],
+      "features": [
+        "5-module executive curriculum",
+        "Operational playbooks and templates",
+        "KPI scorecards and checkpoints",
+        "Implementation worksheets"
+      ],
+      "pricing_strategy": {
+        "single_purchase": "$499",
+        "cohort_program": "$2,999",
+        "enterprise_license": "$9,999"
+      },
+      "distribution_channels": ["Shopify", "Direct sales", "Webinar funnels"],
+      "production_steps": [
+        "Curate modules and worksheets",
+        "Record video lessons",
+        "Create landing page + sales email sequence"
+      ],
+      "estimated_effort": "3-5 weeks to launch",
+      "revenue_potential": "$10K-50K per cohort launch"
+    },
+    {
+      "id": "PRODUCT-BOPPER",
+      "title": "Bopper Income Platform (Beta Access)",
+      "derived_from": ["AI-Money-Machine", "LAZIEST_AI_APP"],
+      "product_type": "SaaS subscription access",
+      "description": "Early access to the Bopper income automation platform with templates, workflows, and guided onboarding.",
+      "target_audience": ["Creators", "Side-hustle builders", "Agencies"],
+      "features": [
+        "Income automation workflows",
+        "Template library",
+        "Weekly optimization prompts"
+      ],
+      "pricing_strategy": {
+        "monthly": "$29",
+        "annual": "$290"
+      },
+      "distribution_channels": ["Shopier", "Direct landing page"],
+      "production_steps": [
+        "Publish beta onboarding flow",
+        "Create waitlist + early adopter pricing"
+      ],
+      "estimated_effort": "2-4 weeks to launch",
+      "revenue_potential": "$2K-10K/mo after beta stabilization"
+    },
+    {
+      "id": "PRODUCT-002",
+      "title": "Python Web Scraping Starter Kit",
+      "derived_from": ["DEMO-002", "DEMO-004"],
+      "product_type": "Digital course + code bundle",
+      "description": "A beginner-friendly course teaching web scraping with Python, bundled with ready-to-use scraper templates for common use cases (social media, e-commerce, news).",
+      "target_audience": ["Aspiring data scientists", "Marketers", "Business analysts", "Freelancers"],
+      "features": [
+        "Video course (3-5 hours)",
+        "10 Python scraper templates",
+        "Step-by-step documentation",
+        "Private community access",
+        "Certificate of completion"
+      ],
+      "pricing_strategy": {
+        "course_only": "$79",
+        "course_plus_templates": "$129",
+        "all_access_coaching": "$299"
+      },
+      "distribution_channels": ["Gumroad", "Udemy", "Skillshare", "Own website"],
+      "production_steps": [
+        "Outline curriculum based on DEMO-004 structure",
+        "Record video lessons",
+        "Adapt DEMO-002 into teaching templates",
+        "Build course platform landing page",
+        "Create marketing materials"
+      ],
+      "estimated_effort": "4-6 weeks to launch",
+      "revenue_potential": "$1000-5000 launch + ongoing sales"
+    }
+  ]
+}

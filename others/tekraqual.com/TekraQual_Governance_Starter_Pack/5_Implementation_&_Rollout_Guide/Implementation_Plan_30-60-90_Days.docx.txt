@@ -1,0 +1,19 @@
+30-60-90 Day Implementation Plan
+
+0–30 days (Stabilize)
+- Complete readiness scan and share snapshot.
+- Document 3–5 core processes and owners.
+- Establish risk register and weekly review.
+- Configure one Larry workflow with human approval.
+
+31–60 days (Systemize)
+- Expand Larry workflows to second/third use case.
+- Stand up dashboards with live metrics.
+- Approve core policies (data, AI usage, support SLAs).
+- Train team on RACI and escalation paths.
+
+61–90 days (Embed & Improve)
+- Automate routine approvals within guardrails.
+- Conduct incident/retro cadence and update controls.
+- Refresh readiness scores; set quarterly targets.
+- Publish executive snapshot and roadmap.

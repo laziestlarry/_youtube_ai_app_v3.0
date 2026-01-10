@@ -1,0 +1,14 @@
+INFO:backend.main:✅ Static files mounted
+INFO:backend.main:✅ React build assets mounted
+INFO:backend.main:✅ React build found
+INFO:     Started server process [87301]
+INFO:     Waiting for application startup.
+INFO:backend.main:Starting YouTube AI Content Creator...
+INFO:backend.core.database:Database initialized successfully
+INFO:backend.core.seed_db:Admin user admin@example.com already exists. Skipping seed.
+INFO:backend.main:Database initialized and seeded successfully
+INFO:     Application startup complete.
+ERROR:    [Errno 1] error while attempting to bind on address ('127.0.0.1', 8000): operation not permitted
+INFO:     Waiting for application shutdown.
+INFO:backend.main:Shutting down YouTube AI Content Creator
+INFO:     Application shutdown complete.

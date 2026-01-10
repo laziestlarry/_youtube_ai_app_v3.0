@@ -1,0 +1,36 @@
+# Stabilizing Authentication and Resolving Login Failures
+
+The user is unable to login, likely due to a combination of database resets and configuration mismatches. This plan aims to provide a stable, "fail-safe" authentication experience.
+
+## Proposed Changes
+
+### Configuration & Security
+#### [MODIFY] [enhanced_settings.py](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/config/enhanced_settings.py)
+- Ensure `SECRET_KEY` is loaded from the environment before any settings are initialized (already implemented/verified).
+- Add a `DEFAULT_ADMIN_PASSWORD` setting for the seed process.
+
+### Database Stability
+#### [NEW] [seed_db.py](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/core/seed_db.py)
+- Create a script that checks if any user exists in the database.
+- If not, create a default admin user `admin@example.com` with a configurable password (defaulting to `admin123`).
+
+#### [MODIFY] [main.py](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/main.py)
+- Call the `seed_db` function during the application startup lifespan event.
+
+### Frontend UI/UX
+#### [MODIFY] [Login.tsx](file:///Users/pq/youtube_ai_app_clean%20copy%205/frontend/src/components/Auth/Login.tsx)
+- Add a "Don't have an account? Register" link.
+- Improve error message display to be more specific.
+
+#### [MODIFY] [App.tsx](file:///Users/pq/youtube_ai_app_clean%20copy%205/frontend/src/App.tsx)
+- Add a "Logout" button to the AppBar.
+- Implement conditional rendering for the navigation buttons based on auth state.
+
+## Verification Plan
+
+### Automated Tests
+- Scripted login test using `requests` to verify the `admin@example.com` account works after a database reset.
+
+### Manual Verification
+- Manually register a new account and then login with it.
+- Verify that clicking "Logout" clears the token and redirects to login.

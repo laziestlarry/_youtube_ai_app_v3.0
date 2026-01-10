@@ -1,0 +1,19 @@
+# TekraQual Readiness Questionnaire (Notion Template)
+
+Properties per item:
+- Select: Dimension (OPS, CX, GOV, DATA, INCOME)
+- Select: Area
+- Number: Score (1–5)
+- Text: Evidence / Notes
+
+Template sections:
+- Instructions page describing scoring bands.
+- Linked database views per dimension.
+- Progress bar formula: average score across all entries.
+
+Suggested questions:
+- OPS: "Are core workflows documented, versioned, and followed?"
+- CX: "Do customers receive responses within target SLAs?"
+- GOV: "Are risks logged with owners and monthly review?"
+- DATA: "Is critical data backed up, access-controlled, and auditable?"
+- INCOME: "Are revenue processes (billing/collections) timely and reconciled?"

@@ -1,0 +1,13 @@
+Internal Communication Templates
+
+1) Introduction to TekraQual & Larry
+Subject: New TekraQual readiness + Larry co-pilot rollout
+Body: Purpose, what changes, how to give feedback, timelines, points of contact.
+
+2) New Workflow Announcement
+Subject: New [workflow] now live with Larry support
+Body: What it does, when to use it, approvals required, support links.
+
+3) Feedback & Improvement Request
+Subject: Help us improve TekraQual workflows
+Body: Short form/link for issues, suggestions, and success stories.

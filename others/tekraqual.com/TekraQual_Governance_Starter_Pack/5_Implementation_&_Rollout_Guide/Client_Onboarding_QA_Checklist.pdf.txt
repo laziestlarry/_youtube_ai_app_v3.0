@@ -1,0 +1,17 @@
+Client Onboarding QA Checklist
+
+Readiness basics:
+- Primary contact and champion identified
+- Access to required systems provided
+- Success metrics agreed
+
+Discovery questions:
+- Top 3 processes causing friction?
+- Current SLAs and pain points?
+- Compliance or data residency constraints?
+- Existing automation tools in place?
+
+Go/No-Go before automation:
+- Policies available (support, refunds, data)?
+- Test data/sandbox ready?
+- Escalation owners confirmed?

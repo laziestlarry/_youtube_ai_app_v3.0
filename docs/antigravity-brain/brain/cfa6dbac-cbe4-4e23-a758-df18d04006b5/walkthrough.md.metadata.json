@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary":  "Complete walkthrough documenting the fix for AI flow export naming issues and implementation of functional mock data to enable the dashboard workflow",
+  "updatedAt":  "2025-12-29T12:36:17.735432Z",
+  "version":  "1"
+}

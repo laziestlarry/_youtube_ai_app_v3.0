@@ -1,0 +1,31 @@
+# Phase 2: Platform Upgrade - "First Class Asset"
+
+- [x] **1. Secure Authentication System** <!-- id: 0 -->
+  - [x] Install dependencies (`passlib`, `python-jose`, `bcrypt`) <!-- id: 1 -->
+  - [x] Create [SecuritySettings](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/config/enhanced_settings.py#71-83) and update [.env](file:///Users/pq/youtube_ai_app_clean%20copy%205/.env) <!-- id: 2 -->
+  - [x] Implement [backend/core/security.py](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/core/security.py) (hashing, JWT) <!-- id: 3 -->
+  - [x] Update [User](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/models/user.py#9-26) model for auth fields <!-- id: 4 -->
+  - [x] Create [backend/api/routes/auth.py](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/api/routes/auth.py) (`/login`, `/register`) <!-- id: 5 -->
+  - [x] Verify Auth flow (Login -> Token) <!-- id: 6 -->
+
+- [x] **2. Live YouTube Data Sync** <!-- id: 7 -->
+  - [x] implement Google OAuth2 flow in [backend/services/youtube_service.py](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/services/youtube_service.py) <!-- id: 8 -->
+  - [x] Create DB models for [ChannelStats](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/models/youtube.py#6-21) and [VideoAnalytics](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/models/youtube.py#22-36) (real persistence) <!-- id: 9 -->
+  - [x] Create background job to sync data periodically <!-- id: 10 -->
+  - [x] Verify data fetching from YouTube API <!-- id: 11 -->
+
+- [x] **3. GenAI Content Engine** <!-- id: 12 -->
+  - [x] Install `openai` sdk <!-- id: 13 -->
+  - [x] Implement `generate_script` in [backend/services/ai_service.py](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/services/ai_service.py) <!-- id: 14 -->
+  - [x] Create prompts for high-quality scripts, titles, descriptions <!-- id: 15 -->
+  - [x] Verify AI generation outputs <!-- id: 16 -->
+
+- [x] **4. Production Workflow Engine** <!-- id: 17 -->
+  - [x] Create [WorkflowColumn](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/models/workflow.py#6-16) and [WorkflowCard](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/models/workflow.py#17-36) models <!-- id: 18 -->
+  - [x] Implement CRUD API for workflow board <!-- id: 19 -->
+  - [x] UI Integration (Frontend Kanban Board) <!-- id: 20 -->
+
+- [x] **5. Smart Analytics Dashboard** <!-- id: 21 -->
+  - [x] Implement revenue forecasting logic `backend/services/analytics.py` <!-- id: 22 -->
+  - [x] Create endpoints for historical vs projected data <!-- id: 23 -->
+  - [x] Frontend Chart updates <!-- id: 24 -->

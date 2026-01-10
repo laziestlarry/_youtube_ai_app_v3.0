@@ -1,0 +1,56 @@
+# Phase 2: Platform Upgrade - "First Class Asset"
+
+- [x] **1. Secure Authentication System** <!-- id: 0 -->
+  - [x] Install dependencies (`passlib`, `python-jose`, `bcrypt`) <!-- id: 1 -->
+  - [x] Create [SecuritySettings](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/config/enhanced_settings.py#87-101) and update [.env](file:///Users/pq/youtube_ai_app_clean%20copy%205/.env) <!-- id: 2 -->
+  - [x] Implement [backend/core/security.py](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/core/security.py) (hashing, JWT) <!-- id: 3 -->
+  - [x] Update [User](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/database/models.py#9-28) model for auth fields <!-- id: 4 -->
+  - [x] Create [backend/api/routes/auth.py](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/api/routes/auth.py) (`/login`, `/register`) <!-- id: 5 -->
+  - [x] Verify Auth flow (Login -> Token) <!-- id: 6 -->
+
+- [x] **2. Live YouTube Data Sync** <!-- id: 7 -->
+  - [x] implement Google OAuth2 flow in [backend/services/youtube_service.py](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/services/youtube_service.py) <!-- id: 8 -->
+  - [x] Create DB models for [ChannelStats](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/models/youtube.py#6-21) and [VideoAnalytics](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/models/youtube.py#22-40) (real persistence) <!-- id: 9 -->
+  - [x] Create background job to sync data periodically <!-- id: 10 -->
+  - [x] Verify data fetching from YouTube API <!-- id: 11 -->
+
+- [x] **3. GenAI Content Engine** <!-- id: 12 -->
+  - [x] Install `openai` sdk <!-- id: 13 -->
+  - [x] Implement `generate_script` in [backend/services/ai_service.py](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/services/ai_service.py) <!-- id: 14 -->
+  - [x] Create prompts for high-quality scripts, titles, descriptions <!-- id: 15 -->
+  - [x] Verify AI generation outputs <!-- id: 16 -->
+
+- [x] **4. Production Workflow Engine** <!-- id: 17 -->
+  - [x] Create [WorkflowColumn](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/models/workflow.py#6-16) and [WorkflowCard](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/models/workflow.py#17-36) models <!-- id: 18 -->
+  - [x] Implement CRUD API for workflow board <!-- id: 19 -->
+  - [x] UI Integration (Frontend Kanban Board) <!-- id: 20 -->
+
+- [x] **5. Smart Analytics Dashboard** <!-- id: 21 -->
+  - [x] Implement revenue forecasting logic `backend/services/analytics.py` <!-- id: 22 -->
+  - [x] Create endpoints for historical vs projected data <!-- id: 23 -->
+  - [x] Frontend Chart updates <!-- id: 24 -->
+
+## Phase 3: Production Testing & Frontend Integration
+
+- [x] **1. Backend Stabilization** <!-- id: 25 -->
+  - [x] Fix YouTube settings bug <!-- id: 26 -->
+  - [x] Verify all API endpoints with a test script <!-- id: 27 -->
+  - [x] Ensure DB migrations are consistent <!-- id: 28 -->
+
+- [x] **2. Frontend Connectivity** <!-- id: 29 -->
+  - [x] Update frontend [.env](file:///Users/pq/youtube_ai_app_clean%20copy%205/.env) with backend URL <!-- id: 30 -->
+  - [x] Connect Authentication state to frontend components <!-- id: 31 -->
+  - [x] Implement YouTube OAuth callback in React <!-- id: 32 -->
+  - [x] Bind Analytics charts to real API data <!-- id: 33 -->
+
+- [x] **3. Production Readiness** <!-- id: 34 -->
+  - [x] Add basic unit tests for services <!-- id: 35 -->
+  - [x] Implement robust error boundary on frontend <!-- id: 36 -->
+  - [x] Final end-to-end walkthrough <!-- id: 37 -->
+
+## Phase 4: Authentication Stability and Login Fixes
+- [/] Stabilize Configuration & Secret Key loading
+- [ ] Implement Database Seeding for default admin user
+- [ ] Improve Login/Register UI feedback and links
+- [ ] Add Logout functionality to the dashboard
+- [ ] Verify production-ready auth flow

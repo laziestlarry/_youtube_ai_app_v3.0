@@ -1,0 +1,100 @@
+{
+  "profile": {
+    "brand": "Autonoma-X / AI-Money-Machine",
+    "founder_persona": "Lazy Larry",
+    "mission": "Launch and run an AI-powered digital agency with immediate, visible revenue.",
+    "tone": "decisive, operator-first, revenue-first, zero-debugging-detours"
+  },
+  "repos": {
+    "primary": "/Users/pq/ai-money-machine-starter",
+    "salvage_commander": "/Users/pq/_salvage/20250810_worx/mega_all_pack/autonoms_commander_app_fullstack_updated"
+  },
+  "stack": {
+    "backend": "Flask + SQLAlchemy + Stripe + Shopify Admin API",
+    "storefront": "Next.js + @shopify/storefront-api-client (Headless channel)",
+    "delivery": "Shopify order webhook -> license key + secure download email"
+  },
+  "secrets_env_required": [
+    "DATABASE_URL",
+    "SHOP_DOMAIN",
+    "SHOPIFY_ADMIN_TOKEN",
+    "SHOPIFY_WEBHOOK_SECRET",
+    "STOREFRONT_PUBLIC_TOKEN",
+    "STOREFRONT_PRIVATE_TOKEN",
+    "STRIPE_SECRET_KEY"
+  ],
+  "products_initial": [
+    "AI YouTube Automation Starter Pack",
+    "Fiverr Gig Booster Kit",
+    "Shopify Product Templates",
+    "Branding/Logo Pack",
+    "Ultimate Bundle (AOV booster)"
+  ],
+  "channels": {
+    "shopify": true,
+    "fiverr": true,
+    "landing_page": true,
+    "social_content": ["YouTube Shorts", "TikTok"]
+  },
+  "roles": {
+    "commander": "You (final decisions & sign-off)",
+    "ops": "Secrets, deploy, webhooks",
+    "engineering": "API up, seed/sync, storefront, quick fixes",
+    "design": "Thumbnails, brand, landing, email",
+    "marketing": "Fiverr gigs, SEO, promos",
+    "content": "Mascot videos & captions"
+  },
+  "assistant_directives": {
+    "mode": "Commander",
+    "rules": [
+      "Deliver plate-of-fish outcomes: working store, sellable products, live gigs.",
+      "Always return an execution board (NOW/TODAY/THIS_WEEK/NEXT).",
+      "Provide zips/patches when code is needed; avoid prolonged debugging threads.",
+      "Surface risks fast; propose the fastest path to revenue first."
+    ],
+    "done_definition": [
+      "5 products live & purchasable on Shopify",
+      "Order -> webhook -> license+download email",
+      "Landing page links to Shopify & Fiverr",
+      "At least 1 Fiverr gig live with video & thumbnail"
+    ]
+  },
+  "board_template": {
+    "columns": ["NOW", "TODAY", "THIS_WEEK", "NEXT"],
+    "NOW": [
+      "Verify .env has all required secrets",
+      "Run DB migration (ensure product.slug exists) & seed/dedupe",
+      "Sync products to Shopify and confirm visible"
+    ],
+    "TODAY": [
+      "Publish 5 product pages with visuals & SEO copy",
+      "Create Orders Create webhook -> email delivery test",
+      "Publish landing page with Store + Fiverr links"
+    ],
+    "THIS_WEEK": [
+      "Publish 2 Fiverr gigs (video + thumbnail + 3-tier packages)",
+      "Headless storefront (Next.js) rendering products",
+      "Upsell email + bundle SKU live"
+    ],
+    "NEXT": [
+      "Analytics dashboard (orders/day, revenue, top sellers)",
+      "Content cadence (4 mascot shorts/week)",
+      "Experiment with promo codes and bundles"
+    ]
+  },
+  "merge_guidance": {
+    "strategy": "external module approach",
+    "notes": [
+      "Treat salvage repo as commander module; no invasive changes unless approved.",
+      "Expose CLI/agents from salvage into primary monorepo under /commander & /agents.",
+      "Prioritize revenue tasks over refactors."
+    ]
+  },
+  "checklist_fast_start": [
+    "Start API: source backend/.venv/bin/activate && python backend/app.py",
+    "Seed/dedupe: python scripts/seed_products.py && python scripts/dedupe.py",
+    "Sync: curl -X POST http://127.0.0.1:5000/api/shopify/sync",
+    "Webhook: set Orders Create -> /api/webhooks/shopify/orders/create (secret in .env)",
+    "Test purchase -> verify license email with download link"
+  ]
+}

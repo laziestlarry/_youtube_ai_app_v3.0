@@ -1,0 +1,25 @@
+dimension_code,band_min,band_max,band_label,band_level,band_description
+OPS,0,49,"Foundation","L1","Processes mostly ad hoc or tribal; documentation missing or outdated; strong reliance on individuals; high variance in outcomes."
+OPS,50,64,"Defined","L2","Key processes identified and documented; staff generally aware but adherence is inconsistent; firefighting still frequent."
+OPS,65,79,"Managed","L3","Processes are consistently followed and measured; roles clear; improvement initiatives underway."
+OPS,80,100,"Optimized","L3+","Operations are stable, automated where appropriate, and continuously improved; SLAs monitored and reliably met."
+
+CX,0,49,"Foundation","L1","Customer interactions unmanaged; no systematic tracking of satisfaction, complaints, or response times."
+CX,50,64,"Defined","L2","Basic metrics (e.g., response time) tracked; some standards exist; customer experience varies by team or channel."
+CX,65,79,"Managed","L3","CX metrics (e.g., CSAT/NPS) defined and regularly reviewed; feedback informs changes; service is consistent."
+CX,80,100,"Optimized","L3+","Customer experience is a strategic focus; consistently strong scores; proactive outreach and improvement."
+
+GOV,0,49,"Foundation","L1","Decision rights unclear; minimal policy framework; risks are known informally but not tracked."
+GOV,50,64,"Defined","L2","Core roles and decision rights documented; some policies exist; risk management is emerging but incomplete."
+GOV,65,79,"Managed","L3","Governance structure and key policies are in place and used; risk register maintained; change is controlled."
+GOV,80,100,"Optimized","L3+","Governance is integrated into daily practice; regular reviews; risk and compliance are actively managed."
+
+DATA,0,49,"Foundation","L1","Data is siloed and manually collected; reports are infrequent; trust in numbers is low."
+DATA,50,64,"Defined","L2","Key reports exist and are produced regularly; some manual work and data quality issues remain."
+DATA,65,79,"Managed","L3","Dashboards cover core KPIs; data quality good enough for most decisions; basic integrations in place."
+DATA,80,100,"Optimized","L3+","High-quality, near real-time data; integrated views; advanced analytics and insights drive decisions."
+
+INCOME,0,49,"Foundation","L1","Revenue model unclear or unproven; inconsistent cash flow; scaling breaks existing operations."
+INCOME,50,64,"Defined","L2","Main revenue streams identified; basic unit economics understood; some pricing and offer clarity."
+INCOME,65,79,"Managed","L3","Strong grip on unit economics and margins; clear growth levers; scaling plans tested and feasible."
+INCOME,80,100,"Optimized","L3+","Scalable business model with proven growth; multiple levers; operations and governance support further scaling."

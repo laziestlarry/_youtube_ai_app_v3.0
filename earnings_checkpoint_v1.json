@@ -1,0 +1,26 @@
+{
+    "total_earnings": 3480.3689076998257,
+    "daily": 3480.3689076998257,
+    "history": [
+        {
+            "timestamp": "2025-12-28T20:34:39.793083",
+            "amount": 30.47,
+            "source": "Completed Fiverr Order: Complete Premium Fiverr Gig for Client X"
+        },
+        {
+            "timestamp": "2025-12-28T20:43:55.294791",
+            "amount": 259.43,
+            "source": "Completed Fiverr Order (high_ticket): Execute Fiverr Gig System (high_ticket) - Bulk Order Processing"
+        },
+        {
+            "timestamp": "2025-12-28T20:43:56.298983",
+            "amount": 1495.15,
+            "source": "Storefront Validation (launch_event): Execute ZentromaX Art Sale (launch_event) - Release Top 50 Collection"
+        },
+        {
+            "timestamp": "2025-12-28T20:43:57.302032",
+            "amount": 1695.32,
+            "source": "YouTube Platform Revenue (high_ticket): Execute YouTube Platform Launch (high_ticket) - Initial Ad Revenue Spike"
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+# Task: Generate Capacity Report and Strategic Predictions
+
+- [ ] Analyze current project state and infrastructure status [/]
+    - [x] Locate project root and core modules
+    - [ ] Inspect database schema and task counts in [tasks.db](file:///Users/pq/AutonomaX_AI_Integration_Starter_v11_full/workflow_codebase/codebase/tasks.db)
+    - [ ] Verify "Money Maker" modules (Shopify, Fiverr, Lead Gen)
+- [ ] Synthesize Strategic Report [/]
+    - [ ] Define "Capacity" based on system readiness and task volume
+    - [ ] Forecast resource allocation for high-priority tasks
+    - [ ] Address "Foundation", "Partnership", and "Base Settlement" requirements
+- [ ] Create Artifacts [/]
+    - [ ] Generate `implementation_plan.md` (if code changes are needed to improve reporting)
+    - [ ] Generate `capacity_report.md` as a standalone artifact for the user

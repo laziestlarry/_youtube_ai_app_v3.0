@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutonomaX Ticaret Stüdyosu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --ink: #0b0f14;
+      --surface: rgba(15, 23, 42, 0.78);
+      --line: rgba(148, 163, 184, 0.18);
+      --gold: #f59e0b;
+      --coral: #fb7185;
+      --teal: #2dd4bf;
+      --sky: #38bdf8;
+      --text: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.16), transparent 45%),
+        radial-gradient(circle at 85% 0%, rgba(251, 113, 133, 0.2), transparent 35%),
+        radial-gradient(circle at 10% 80%, rgba(45, 212, 191, 0.2), transparent 40%),
+        #0b0f14;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Sora', sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    .glass {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.35);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-link {
+      color: #cbd5f5;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: #ffffff;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--gold), var(--coral));
+      color: #0b0f14;
+      padding: 0.6rem 1.4rem;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 12px 30px rgba(245, 158, 11, 0.2);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      color: #e2e8f0;
+      padding: 0.6rem 1.4rem;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: #fff;
+      color: #fff;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(56, 189, 248, 0.15);
+      color: #bae6fd;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .badge-soft {
+      background: rgba(45, 212, 191, 0.12);
+      color: #99f6e4;
+      border-color: rgba(45, 212, 191, 0.25);
+    }
+
+    .product-card {
+      background: rgba(15, 23, 42, 0.86);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(248, 250, 252, 0.25);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.5);
+    }
+
+    .feature-card {
+      display: grid;
+      grid-template-columns: 1fr;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .feature-media {
+      height: 220px;
+      background: #0b0f14;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+
+    .feature-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      background: #0b0f14;
+    }
+
+    .feature-body {
+      padding: 1.6rem;
+    }
+
+    .feature-meta {
+      color: #94a3b8;
+      font-size: 0.85rem;
+      margin-top: 0.75rem;
+    }
+
+    .product-media {
+      height: 240px;
+      background: #0b0f14;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+
+    .product-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      background: #0b0f14;
+    }
+
+    .product-body {
+      padding: 1.5rem;
+    }
+
+    .product-title {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-copy {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 4.4rem;
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1.4rem;
+    }
+
+    .price {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #f8fafc;
+    }
+
+    .reveal {
+      animation: rise 0.7s ease both;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-card {
+      border-radius: 24px;
+      padding: 2rem;
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.5));
+      border: 1px solid var(--line);
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .preview-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .preview-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      object-position: center;
+      background: #0b0f14;
+      display: block;
+    }
+
+    .preview-card span {
+      display: block;
+      padding: 12px 14px;
+      font-size: 0.85rem;
+      color: #cbd5f5;
+    }
+
+    .journey-step {
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      padding: 1.5rem;
+      background: rgba(15, 23, 42, 0.65);
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+    }
+
+    .section-subtitle {
+      color: #94a3b8;
+      max-width: 640px;
+    }
+
+    .chat-widget {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 60;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-end;
+    }
+
+    .chat-toggle {
+      border: none;
+      cursor: pointer;
+      padding: 0.7rem 1.4rem;
+      border-radius: 999px;
+      font-weight: 700;
+      color: #0b0f14;
+      background: linear-gradient(135deg, var(--gold), var(--coral));
+      box-shadow: 0 12px 30px rgba(245, 158, 11, 0.2);
+    }
+
+    .chat-panel {
+      width: 320px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 22px 44px rgba(15, 23, 42, 0.55);
+    }
+
+    .chat-panel.open {
+      display: flex;
+    }
+
+    .chat-header {
+      padding: 0.85rem 1rem;
+      font-weight: 700;
+      border-bottom: 1px solid var(--line);
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    .chat-body {
+      padding: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      max-height: 280px;
+      overflow-y: auto;
+    }
+
+    .chat-quick {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 0 0.9rem 0.9rem;
+    }
+
+    .chat-quick button {
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      background: rgba(148, 163, 184, 0.08);
+      color: #e2e8f0;
+      font-size: 0.75rem;
+      padding: 0.35rem 0.6rem;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    .chat-bubble {
+      padding: 0.6rem 0.8rem;
+      border-radius: 14px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      color: #dbeafe;
+    }
+
+    .chat-bubble.user {
+      align-self: flex-end;
+      background: rgba(16, 185, 129, 0.15);
+      border-color: rgba(16, 185, 129, 0.3);
+      color: #ecfdf5;
+    }
+
+    .chat-form {
+      display: flex;
+      gap: 8px;
+      padding: 0.8rem;
+      border-top: 1px solid var(--line);
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    .chat-input {
+      flex: 1;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 10px;
+      padding: 0.5rem 0.7rem;
+      color: #e2e8f0;
+      font-size: 0.9rem;
+    }
+
+    .chat-input::placeholder {
+      color: #94a3b8;
+    }
+
+    .chat-send {
+      background: rgba(248, 250, 252, 0.08);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      color: #e2e8f0;
+      padding: 0.5rem 0.8rem;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    @media (max-width: 640px) {
+      .chat-widget {
+        right: 16px;
+        bottom: 16px;
+      }
+
+      .chat-panel {
+        width: min(92vw, 360px);
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen relative">
+  <div class="absolute -top-20 -left-20 h-72 w-72 rounded-full bg-sky-500/10 blur-3xl"></div>
+  <div class="absolute top-40 -right-20 h-72 w-72 rounded-full bg-rose-500/10 blur-3xl"></div>
+
+  <nav class="sticky top-0 z-50 bg-[#0b0f14]/80 backdrop-blur border-b border-white/5">
+    <div class="container mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-full bg-gradient-to-br from-amber-400 to-rose-400"></div>
+        <div>
+          <p class="text-sm uppercase tracking-[0.3em] text-slate-500">AutonomaX</p>
+          <h1 class="text-xl font-bold">Ticaret ve Operasyon Stüdyosu</h1>
+        </div>
+      </div>
+      <div class="flex items-center gap-6 text-sm">
+        <a class="nav-link" href="#focus">Odak</a>
+        <a class="nav-link" href="#journey">Yolculuk</a>
+        <a class="nav-link" href="#featured">Öne Çıkanlar</a>
+        <a class="nav-link" href="#portfolio">Katalog</a>
+        <a class="btn-secondary" href="#contact">Görüşme Planla</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="container mx-auto px-6 py-16">
+    <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
+      <div class="reveal">
+        <p class="uppercase tracking-[0.3em] text-xs text-slate-500">Kurumsal Gelir Orkestrasyonu</p>
+        <h2 class="text-4xl md:text-5xl font-bold leading-tight mt-4">Yüksek Değerli Varlıklar ve Otonom İş Akışlarıyla
+          Pazar Hakimiyeti Kurun.</h2>
+        <p class="mt-6 text-lg text-slate-400">AutonomaX Ticaret Stüdyosu; stratejik danışmanlık, gelişmiş eğitim
+          modülleri ve otonom gelir sistemlerini tek bir çatı altında birleştirir.</p>
+        <p class="mt-4 text-base text-slate-400">Türkiye pazarına özel, proaktif iş diliyle optimize edilmiş; anında
+          dijital teslimat ve kesintisiz operasyonel destek.</p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a class="btn-primary" href="#portfolio">Shopier Kataloğunu Keşfet</a>
+          <a class="btn-secondary" href="#featured">Öne Çıkan Teklifler</a>
+        </div>
+        <div class="mt-8 grid grid-cols-2 gap-4 text-sm text-slate-400">
+          <div class="glass rounded-xl px-4 py-3">Anında ödeme için Shopier hazır ödeme akışı</div>
+          <div class="glass rounded-xl px-4 py-3">Çok kanallı listeleme: Shopify, Etsy, Gumroad, YouTube</div>
+        </div>
+      </div>
+      <div class="space-y-4">
+        <div class="hero-card reveal">
+          <h3 class="text-2xl font-semibold">Lansman Radarı</h3>
+          <p class="text-slate-400 mt-2">Yüksek marjlı dijital ürünler, seçkin danışmanlık ve otomasyon odaklı
+            hizmetlere odaklı.</p>
+          <div class="mt-6 space-y-4">
+            <div class="flex items-center justify-between border-b border-white/10 pb-3">
+              <span>IntelliWealth Danışmanlık</span>
+              <span class="text-amber-300">29.899 TL+</span>
+            </div>
+            <div class="flex items-center justify-between border-b border-white/10 pb-3">
+              <span>Commander API Ops</span>
+              <span class="text-sky-300">7.899 TL kurulum</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>YouTube Otomasyon Stüdyosu</span>
+              <span class="text-emerald-300">5.899 TL+</span>
+            </div>
+          </div>
+        </div>
+        <div class="preview-grid reveal">
+          <div class="preview-card">
+            <img src="/static/assets/intelliwealth_preview.png" alt="IntelliWealth executive preview" loading="lazy">
+            <span>IntelliWealth Yönetici Blueprint</span>
+          </div>
+          <div class="preview-card">
+            <img src="/static/assets/mastery_preview.png" alt="Automation mastery preview" loading="lazy">
+            <span>Automation Mastery Stüdyosu</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="focus" class="container mx-auto px-6 py-12">
+    <div class="mb-10">
+      <p class="uppercase tracking-[0.3em] text-xs text-slate-500">Odak alanları</p>
+      <h2 class="section-title mt-3">Hibrit operatörler ve yönetici ekipler için.</h2>
+      <p class="section-subtitle mt-3">Üç gelir sütunu: dijital gelir yığınları, otomasyon odaklı hizmetler ve yönetici
+        büyüme sistemleri.</p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-3">
+      <div class="glass rounded-2xl p-8">
+        <h3 class="text-xl font-semibold">Stratejik Gelir Portföyü</h3>
+        <p class="text-slate-400 mt-3">Düşük operasyonel yükle yüksek getiri sağlayan, anında ölçeklenebilir dijital
+          varlık ve şablon ekosistemi.</p>
+      </div>
+      <div class="glass rounded-2xl p-8">
+        <h3 class="text-xl font-semibold">Otonom Operasyon Sistemleri</h3>
+        <p class="text-slate-400 mt-3">İş akışlarını optimize eden AI destekli çözümler ve operasyonel verimliliği
+          maksimize eden teslimat modelleri.</p>
+      </div>
+      <div class="glass rounded-2xl p-8">
+        <h3 class="text-xl font-semibold">Yönetici Danışmanlığı</h3>
+        <p class="text-slate-400 mt-3">IntelliWealth metodolojisiyle, kurumsal vizyonu otonom icraat kabiliyetiyle
+          birleştiren üst düzey strateji desteği.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="journey" class="container mx-auto px-6 py-12">
+    <div class="mb-10">
+      <p class="uppercase tracking-[0.3em] text-xs text-slate-500">Müşteri yolculuğu</p>
+      <h2 class="section-title mt-3">Keşiften tekrar eden gelire uzanan rehberli yol.</h2>
+      <p class="section-subtitle mt-3">Her aşama niyetli, sürükleyici ve uygulanabilir tasarlandı.</p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div class="journey-step">
+        <h3 class="text-lg font-semibold">01 Analiz & Keşif</h3>
+        <p class="text-sm text-slate-400 mt-2">Pazar sinyalleri ve veri analitiği ile potansiyel büyüme alanlarının
+          tespiti ve strateji kurgusu.</p>
+      </div>
+      <div class="journey-step">
+        <h3 class="text-lg font-semibold">02 Karar & Konumlandırma</h3>
+        <p class="text-sm text-slate-400 mt-2">Net yatırım getirisi (ROI) odaklı varlık seçimi ve kurumsal kimlik
+          entegrasyonu.</p>
+      </div>
+      <div class="journey-step">
+        <h3 class="text-lg font-semibold">03 İcra & Aktivasyon</h3>
+        <p class="text-sm text-slate-400 mt-2">Shopier entegre güvenli ödeme sistemleri ve anında kurumsal onboarding
+          süreci.</p>
+      </div>
+      <div class="journey-step">
+        <h3 class="text-lg font-semibold">04 Büyüme & Optimizasyon</h3>
+        <p class="text-sm text-slate-400 mt-2">Veri odaklı performans takibi ve otonom döngülerle gelir sürekliliğinin
+          sağlanması.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="featured" class="container mx-auto px-6 py-12">
+    <div class="mb-10">
+      <p class="uppercase tracking-[0.3em] text-xs text-slate-500">Öne çıkan teklifler</p>
+      <h2 class="section-title mt-3">Hemen ödeme alabilecek amiral programlar.</h2>
+      <p class="section-subtitle mt-3">Gelir ivmesi ve otomasyon için en yüksek kaldıraçlı teklifler.</p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+      <div class="feature-card">
+        <div class="feature-media">
+          <img src="/static/assets/listings/HYBRID-STACK-01/listing.png" alt="Hibrit Pasif Gelir Yığını" loading="lazy">
+        </div>
+        <div class="feature-body">
+          <div class="product-badges">
+            <span class="badge">Dijital</span>
+            <span class="badge badge-soft">Öne Çıkan</span>
+          </div>
+          <h3 class="text-xl font-semibold mt-3">Hibrit Pasif Gelir Yığını</h3>
+          <p class="text-slate-400 mt-3">Hibrit profesyoneller için otomatik gelir kurma planı....</p>
+          <p class="feature-meta">Anında dijital teslimat</p>
+          <div class="product-footer">
+            <span class="price">399 TL</span>
+            <a href="https://www.shopier.com/42801165" class="btn-primary" target="_blank" rel="noopener">Satın Al</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-media">
+          <img src="/static/assets/listings/NOTION-PASSIVE-01/listing.png" alt="Notion Pasif Gelir Paneli"
+            loading="lazy">
+        </div>
+        <div class="feature-body">
+          <div class="product-badges">
+            <span class="badge">Dijital</span>
+            <span class="badge badge-soft">Öne Çıkan</span>
+          </div>
+          <h3 class="text-xl font-semibold mt-3">Notion Pasif Gelir Paneli</h3>
+          <p class="text-slate-400 mt-3">Otomatik gelir akışları için gelir takip ve içerik planlayıcı....</p>
+          <p class="feature-meta">Anında dijital teslimat</p>
+          <div class="product-footer">
+            <span class="price">249 TL</span>
+            <a href="https://www.shopier.com/42801167" class="btn-primary" target="_blank" rel="noopener">Satın Al</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-media">
+          <img src="/static/assets/intelliwealth_preview.png" alt="IntelliWealth Danışmanlık" loading="lazy">
+        </div>
+        <div class="feature-body">
+          <div class="product-badges">
+            <span class="badge">Danışmanlık</span>
+            <span class="badge badge-soft">Öne Çıkan</span>
+          </div>
+          <h3 class="text-xl font-semibold mt-3">IntelliWealth Danışmanlık</h3>
+          <p class="text-slate-400 mt-3">Gelir ve operasyonlar için yapay zeka dönüşümü....</p>
+          <p class="feature-meta">24-48 saat içinde keşif görüşmesi</p>
+          <div class="product-footer">
+            <span class="price">29.899 TL</span>
+            <a href="https://www.shopier.com/42801157" class="btn-primary" target="_blank" rel="noopener">Satın Al</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-media">
+          <img src="/static/assets/mastery_preview.png" alt="IntelliWealth Yönetici Eğitimi" loading="lazy">
+        </div>
+        <div class="feature-body">
+          <div class="product-badges">
+            <span class="badge">Eğitim</span>
+            <span class="badge badge-soft">Öne Çıkan</span>
+          </div>
+          <h3 class="text-xl font-semibold mt-3">IntelliWealth Yönetici Eğitimi</h3>
+          <p class="text-slate-400 mt-3">Playbook&#x27;lar ve skor kartlarıyla yönetici eğitimi....</p>
+          <p class="feature-meta">24 saat içinde eğitim daveti</p>
+          <div class="product-footer">
+            <span class="price">3.899 TL</span>
+            <a href="https://www.shopier.com/42801159" class="btn-primary" target="_blank" rel="noopener">Satın Al</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-media">
+          <img src="/static/assets/listings/CMD-API-01/listing.png" alt="Commander API Operasyonları" loading="lazy">
+        </div>
+        <div class="feature-body">
+          <div class="product-badges">
+            <span class="badge">Danışmanlık</span>
+            <span class="badge badge-soft">Öne Çıkan</span>
+          </div>
+          <h3 class="text-xl font-semibold mt-3">Commander API Operasyonları</h3>
+          <p class="text-slate-400 mt-3">AI ajanları ve gelir akışları için orkestrasyon katmanı....</p>
+          <p class="feature-meta">24-48 saat içinde keşif görüşmesi</p>
+          <div class="product-footer">
+            <span class="price">7.899 TL</span>
+            <a href="https://www.shopier.com/42801160" class="btn-primary" target="_blank" rel="noopener">Satın Al</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-media">
+          <img src="/static/assets/listings/AX-SAAS-01/listing.png" alt="AutonomaX SaaS Platformu" loading="lazy">
+        </div>
+        <div class="feature-body">
+          <div class="product-badges">
+            <span class="badge">Abonelik</span>
+            <span class="badge badge-soft">Öne Çıkan</span>
+          </div>
+          <h3 class="text-xl font-semibold mt-3">AutonomaX SaaS Platformu</h3>
+          <p class="text-slate-400 mt-3">Gelir operasyonu, listeleme ve analitik için otomasyon platformu....</p>
+          <p class="feature-meta">Erişim hemen aktif</p>
+          <div class="product-footer">
+            <span class="price">999 TL</span>
+            <a href="https://www.shopier.com/42801161" class="btn-primary" target="_blank" rel="noopener">Abone Ol</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="portfolio" class="container mx-auto px-6 py-12">
+    <div class="mb-10">
+      <p class="uppercase tracking-[0.3em] text-xs text-slate-500">Portföy kasası</p>
+      <h2 class="section-title mt-3">Lansmana hazır varlıklar ve platformlar.</h2>
+      <p class="section-subtitle mt-3">Pazar yerlerinde yayınlanmaya hazır dijital ürünler ve playbook'lar.</p>
+    </div>
+
+    <div class="mb-10">
+      <p class="uppercase tracking-[0.3em] text-xs text-slate-500">Shopier kataloğu</p>
+      <h3 class="section-title mt-3">Digital</h3>
+      <p class="section-subtitle mt-3">Shopier ile anında ödeme: Digital teklifleri.</p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+      <article class="product-card reveal" style="animation-delay: 0.00s">
+        <div class="product-media">
+          <img src="/static/assets/listings/ZEN-ART-BASE/listing.png" alt="Zen Sanat Baskı Paketi" loading="lazy">
+        </div>
+        <div class="product-body">
+          <div class="product-badges">
+            <span class="badge">Dijital</span>
+            <span class="badge badge-soft">Shopier Hazır</span>
+          </div>
+          <h3 class="product-title">Zen Sanat Baskı Paketi</h3>
+          <p class="product-copy">Minimalist, sakin ve modern kompozisyonlardan oluşan dijital baskı seti....</p>
+          <p class="feature-meta">Anında dijital teslimat</p>
+          <div class="product-footer">
+            <span class="price">199 TL</span>
+            <a href="https://www.shopier.com/42801151" class="btn-primary" target="_blank" rel="noopener">Satın Al</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card reveal" style="animation-delay: 0.06s">
+        <div class="product-media">
+          <img src="/static/assets/listings/CREATOR-KIT-01/listing.png" alt="Creator Başlangıç Kiti" loading="lazy">
+        </div>
+        <div class="product-body">
+          <div class="product-badges">
+            <span class="badge">Dijital</span>
+            <span class="badge badge-soft">Shopier Hazır</span>
+          </div>
+          <h3 class="product-title">Creator Başlangıç Kiti</h3>
+          <p class="product-copy">Şablonlar, listeleme metinleri ve büyüme playbook&#x27;larıyla lansman kiti....</p>
+          <p class="feature-meta">Anında dijital teslimat</p>
+          <div class="product-footer">
+            <span class="price">499 TL</span>
+            <a href="https://www.shopier.com/42801152" class="btn-primary" target="_blank" rel="noopener">Satın Al</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card reveal" style="animation-delay: 0.12s">
+        <div class="product-media">
+          <img src="/static/assets/listings/FIVERR-KIT-01/listing.png" alt="Fiverr Gig Lansman Kiti" loading="lazy">
+        </div>
+        <div class="product-body">
+          <div class="product-badges">
+            <span class="badge">Dijital</span>
+            <span class="badge badge-soft">Shopier Hazır</span>
+          </div>
+          <h3 class="product-title">Fiverr Gig Lansman Kiti</h3>
+          <p class="product-copy">Gig şablonları, SEO etiketleri ve teslimat akışları....</p>
+          <p class="feature-meta">Anında dijital teslimat</p>
+          <div class="product-footer">
+            <span class="price">299 TL</span>
+            <a href="https://www.shopier.com/42801153" class="btn-primary" target="_blank" rel="noopener">Satın Al</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card reveal" style="animation-delay: 0.18s">
+        <div class="product-media">
+          <img src="/static/assets/listings/SHOPIFY-KIT-01/listing.png" alt="Shopify Lansman Kiti" loading="lazy">
+        </div>
+        <div class="product-body">
+          <div class="product-badges">
+            <span class="badge">Dijital</span>
+            <span class="badge badge-soft">Shopier Hazır</span>
+          </div>
+          <h3 class="product-title">Shopify Lansman Kiti</h3>
+          <p class="product-copy">Mağaza kurulumu şablonları ve listeleme planları....</p>
+          <p class="feature-meta">Anında dijital teslimat</p>
+          <div class="product-footer">
+            <span class="price">799 TL</span>
+            <a href="https://www.shopier.com/42801155" class="btn-primary" target="_blank" rel="noopener">Satın Al</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card reveal" style="animation-delay: 0.24s">
+        <div class="product-media">
+          <img src="/static/assets/listings/HYBRID-STACK-01/listing.png" alt="Hibrit Pasif Gelir Yığını" loading="lazy">
+        </div>
+        <div class="product-body">
+          <div class="product-badges">
+            <span class="badge">Dijital</span>
+            <span class="badge badge-soft">Shopier Hazır</span>
+          </div>
+          <h3 class="product-title">Hibrit Pasif Gelir Yığını</h3>
+          <p class="product-copy">Hibrit profesyoneller için otomatik gelir kurma planı....</p>
+          <p class="feature-meta">Anında dijital teslimat</p>
+          <div class="product-footer">
+            <span class="price">399 TL</span>
+            <a href="https://www.shopier.com/42801165" class="btn-primary" target="_blank" rel="noopener">Satın Al</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card reveal" style="animation-delay: 0.30s">
+        <div class="product-media">
+          <img src="/static/assets/listings/SOP-AUTO-01/listing.png" alt="Otomasyon SOP Kasası" loading="lazy">
+        </div>
+        <div class="product-body">
+          <div class="product-badges">
+            <span class="badge">Dijital</span>
+            <span class="badge badge-soft">Shopier Hazır</span>
+          </div>
+          <h3 class="product-title">Otomasyon SOP Kasası</h3>
+          <p class="product-copy">Otomatik satış, teslimat ve müşteri operasyonları için hazır SOP&#x27;lar....</p>
+          <p class="feature-meta">Anında dijital teslimat</p>
+          <div class="product-footer">
+            <span class="price">699 TL</span>
+            <a href="https://www.shopier.com/42801166" class="btn-primary" target="_blank" rel="noopener">Satın Al</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card reveal" style="animation-delay: 0.36s">
+        <div class="product-media">
+          <img src="/static/assets/listings/NOTION-PASSIVE-01/listing.png" alt="Notion Pasif Gelir Paneli"
+            loading="lazy">
+        </div>
+        <div class="product-body">
+          <div class="product-badges">
+            <span class="badge">Dijital</span>
+            <span class="badge badge-soft">Shopier Hazır</span>
+          </div>
+          <h3 class="product-title">Notion Pasif Gelir Paneli</h3>
+          <p class="product-copy">Otomatik gelir akışları için gelir takip ve içerik planlayıcı....</p>
+          <p class="feature-meta">Anında dijital teslimat</p>
+          <div class="product-footer">
+            <span class="price">249 TL</span>
+            <a href="https://www.shopier.com/42801167" class="btn-primary" target="_blank" rel="noopener">Satın Al</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card reveal" style="animation-delay: 0.42s">
+        <div class="product-media">
+          <img src="/static/assets/listings/REDDIT-LAUNCH-01/listing.png" alt="Reddit Lansman Planı" loading="lazy">
+        </div>
+        <div class="product-body">
+          <div class="product-badges">
+            <span class="badge">Dijital</span>
+            <span class="badge badge-soft">Shopier Hazır</span>
+          </div>
+          <h3 class="product-title">Reddit Lansman Planı</h3>
+          <p class="product-copy">Reddit ve niş forumlar için topluluk odaklı lansman planı....</p>
+          <p class="feature-meta">Anında dijital teslimat</p>
+          <div class="product-footer">
+            <span class="price">349 TL</span>
+            <a href="https://www.shopier.com/42801168" class="btn-primary" target="_blank" rel="noopener">Satın Al</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card reveal" style="animation-delay: 0.00s">
+        <div class="product-media">
+          <img src="/static/assets/listings/DISCORD-OPS-01/listing.png" alt="Discord Topluluk Ops Kiti" loading="lazy">
+        </div>
+        <div class="product-body">
+          <div class="product-badges">
+            <span class="badge">Dijital</span>
+            <span class="badge badge-soft">Shopier Hazır</span>
+          </div>
+          <h3 class="product-title">Discord Topluluk Ops Kiti</h3>
+          <p class="product-copy">Sunucu düzeni, onboarding akışları ve moderasyon SOP&#x27;ları....</p>
+          <p class="feature-meta">Anında dijital teslimat</p>
+          <div class="product-footer">
+            <span class="price">399 TL</span>
+            <a href="https://www.shopier.com/42801169" class="btn-primary" target="_blank" rel="noopener">Satın Al</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card reveal" style="animation-delay: 0.06s">
+        <div class="product-media">
+          <img src="/static/assets/listings/GUMROAD-LAUNCH-01/listing.png" alt="Gumroad Ürün Hızlandırıcı"
+            loading="lazy">
+        </div>
+        <div class="product-body">
+          <div class="product-badges">
+            <span class="badge">Dijital</span>
+            <span class="badge badge-soft">Shopier Hazır</span>
+          </div>
+          <h3 class="product-title">Gumroad Ürün Hızlandırıcı</h3>
+          <p class="product-copy">Gumroad&#x27;da fiyatlama, ödeme akışları ve upsell kit....</p>
+          <p class="feature-meta">Anında dijital teslimat</p>
+          <div class="product-footer">
+            <span class="price">349 TL</span>
+            <a href="https://www.shopier.com/42801170" class="btn-primary" target="_blank" rel="noopener">Satın Al</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card reveal" style="animation-delay: 0.12s">
+        <div class="product-media">
+          <img src="/static/assets/listings/BLOG-SEO-01/listing.png" alt="Blog SEO Sprint Paketi" loading="lazy">
+        </div>
+        <div class="product-body">
+          <div class="product-badges">
+            <span class="badge">Dijital</span>
+            <span class="badge badge-soft">Shopier Hazır</span>
+          </div>
+          <h3 class="product-title">Blog SEO Sprint Paketi</h3>
+          <p class="product-copy">SEO brief&#x27;leri, lead magnet ve içerik takvimiyle blog lansmanı....</p>
+          <p class="feature-meta">Anında dijital teslimat</p>
+          <div class="product-footer">
+            <span class="price">499 TL</span>
+            <a href="https://www.shopier.com/42801172" class="btn-primary" target="_blank" rel="noopener">Satın Al</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="mb-10">
+      <p class="uppercase tracking-[0.3em] text-xs text-slate-500">Shopier kataloğu</p>
+      <h3 class="section-title mt-3">Training</h3>
+      <p class="section-subtitle mt-3">Shopier ile anında ödeme: Training teklifleri.</p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+      <article class="product-card reveal" style="animation-delay: 0.18s">
+        <div class="product-media">
+          <img src="/static/assets/mastery_preview.png" alt="IntelliWealth Yönetici Eğitimi" loading="lazy">
+        </div>
+        <div class="product-body">
+          <div class="product-badges">
+            <span class="badge">Eğitim</span>
+            <span class="badge badge-soft">Shopier Hazır</span>
+          </div>
+          <h3 class="product-title">IntelliWealth Yönetici Eğitimi</h3>
+          <p class="product-copy">Playbook&#x27;lar ve skor kartlarıyla yönetici eğitimi....</p>
+          <p class="feature-meta">24 saat içinde eğitim daveti</p>
+          <div class="product-footer">
+            <span class="price">3.899 TL</span>
+            <a href="https://www.shopier.com/42801159" class="btn-primary" target="_blank" rel="noopener">Satın Al</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="mb-10">
+      <p class="uppercase tracking-[0.3em] text-xs text-slate-500">Shopier kataloğu</p>
+      <h3 class="section-title mt-3">Consulting</h3>
+      <p class="section-subtitle mt-3">Shopier ile anında ödeme: Consulting teklifleri.</p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+      <article class="product-card reveal" style="animation-delay: 0.24s">
+        <div class="product-media">
+          <img src="/static/assets/intelliwealth_preview.png" alt="IntelliWealth Danışmanlık" loading="lazy">
+        </div>
+        <div class="product-body">
+          <div class="product-badges">
+            <span class="badge">Danışmanlık</span>
+            <span class="badge badge-soft">Shopier Hazır</span>
+          </div>
+          <h3 class="product-title">IntelliWealth Danışmanlık</h3>
+          <p class="product-copy">Gelir ve operasyonlar için yapay zeka dönüşümü....</p>
+          <p class="feature-meta">24-48 saat içinde keşif görüşmesi</p>
+          <div class="product-footer">
+            <span class="price">29.899 TL</span>
+            <a href="https://www.shopier.com/42801157" class="btn-primary" target="_blank" rel="noopener">Satın Al</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card reveal" style="animation-delay: 0.30s">
+        <div class="product-media">
+          <img src="/static/assets/listings/CMD-API-01/listing.png" alt="Commander API Operasyonları" loading="lazy">
+        </div>
+        <div class="product-body">
+          <div class="product-badges">
+            <span class="badge">Danışmanlık</span>
+            <span class="badge badge-soft">Shopier Hazır</span>
+          </div>
+          <h3 class="product-title">Commander API Operasyonları</h3>
+          <p class="product-copy">AI ajanları ve gelir akışları için orkestrasyon katmanı....</p>
+          <p class="feature-meta">24-48 saat içinde keşif görüşmesi</p>
+          <div class="product-footer">
+            <span class="price">7.899 TL</span>
+            <a href="https://www.shopier.com/42801160" class="btn-primary" target="_blank" rel="noopener">Satın Al</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card reveal" style="animation-delay: 0.36s">
+        <div class="product-media">
+          <img src="/static/assets/listings/PROFIT-OS-01/listing.png" alt="Profit OS Danışmanlık" loading="lazy">
+        </div>
+        <div class="product-body">
+          <div class="product-badges">
+            <span class="badge">Danışmanlık</span>
+            <span class="badge badge-soft">Shopier Hazır</span>
+          </div>
+          <h3 class="product-title">Profit OS Danışmanlık</h3>
+          <p class="product-copy">Gelir operasyon metodolojisinin uygulanması....</p>
+          <p class="feature-meta">24-48 saat içinde keşif görüşmesi</p>
+          <div class="product-footer">
+            <span class="price">14.899 TL</span>
+            <a href="https://www.shopier.com/42801163" class="btn-primary" target="_blank" rel="noopener">Satın Al</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="mb-10">
+      <p class="uppercase tracking-[0.3em] text-xs text-slate-500">Shopier kataloğu</p>
+      <h3 class="section-title mt-3">Subscription</h3>
+      <p class="section-subtitle mt-3">Shopier ile anında ödeme: Subscription teklifleri.</p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+      <article class="product-card reveal" style="animation-delay: 0.42s">
+        <div class="product-media">
+          <img src="/static/assets/listings/AX-SAAS-01/listing.png" alt="AutonomaX SaaS Platformu" loading="lazy">
+        </div>
+        <div class="product-body">
+          <div class="product-badges">
+            <span class="badge">Abonelik</span>
+            <span class="badge badge-soft">Shopier Hazır</span>
+          </div>
+          <h3 class="product-title">AutonomaX SaaS Platformu</h3>
+          <p class="product-copy">Gelir operasyonu, listeleme ve analitik için otomasyon platformu....</p>
+          <p class="feature-meta">Erişim hemen aktif</p>
+          <div class="product-footer">
+            <span class="price">999 TL</span>
+            <a href="https://www.shopier.com/42801161" class="btn-primary" target="_blank" rel="noopener">Abone Ol</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card reveal" style="animation-delay: 0.00s">
+        <div class="product-media">
+          <img src="/static/assets/listings/BOP-SAAS-01/listing.png" alt="Bopper Gelir Platformu" loading="lazy">
+        </div>
+        <div class="product-body">
+          <div class="product-badges">
+            <span class="badge">Abonelik</span>
+            <span class="badge badge-soft">Shopier Hazır</span>
+          </div>
+          <h3 class="product-title">Bopper Gelir Platformu</h3>
+          <p class="product-copy">Gelir otomasyonu akışları ve şablonları....</p>
+          <p class="feature-meta">Erişim hemen aktif</p>
+          <div class="product-footer">
+            <span class="price">299 TL</span>
+            <a href="https://www.shopier.com/42801162" class="btn-primary" target="_blank" rel="noopener">Abone Ol</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="mb-10">
+      <p class="uppercase tracking-[0.3em] text-xs text-slate-500">Shopier kataloğu</p>
+      <h3 class="section-title mt-3">Service</h3>
+      <p class="section-subtitle mt-3">Shopier ile anında ödeme: Service teklifleri.</p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+      <article class="product-card reveal" style="animation-delay: 0.06s">
+        <div class="product-media">
+          <img src="/static/assets/listings/YT-AUTO-01/listing.png" alt="YouTube Otomasyon Stüdyosu" loading="lazy">
+        </div>
+        <div class="product-body">
+          <div class="product-badges">
+            <span class="badge">Hizmet</span>
+            <span class="badge badge-soft">Shopier Hazır</span>
+          </div>
+          <h3 class="product-title">YouTube Otomasyon Stüdyosu</h3>
+          <p class="product-copy">Strateji, senaryo, thumbnail ve yayın akışları....</p>
+          <p class="feature-meta">48 saat içinde kickoff</p>
+          <div class="product-footer">
+            <span class="price">5.899 TL</span>
+            <a href="https://www.shopier.com/42801156" class="btn-primary" target="_blank" rel="noopener">Projeyi
+              Başlat</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+  </section>
+
+  <section id="assurance" class="container mx-auto px-6 py-12">
+    <div class="mb-10">
+      <p class="uppercase tracking-[0.3em] text-xs text-slate-500">Teslimat vaadi</p>
+      <h2 class="section-title mt-3">Her sipariş net teslimat ve destekle gelir.</h2>
+      <p class="section-subtitle mt-3">Dijital varlıkları anında, hizmetleri net onboarding takvimiyle teslim ediyoruz.
+      </p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-3">
+      <div class="glass rounded-2xl p-8">
+        <h3 class="text-xl font-semibold">Anında Erişim</h3>
+        <p class="text-slate-400 mt-3">Dijital ürünler ödeme sonrası güvenli indirme ile anında açılır.</p>
+      </div>
+      <div class="glass rounded-2xl p-8">
+        <h3 class="text-xl font-semibold">Onboarding Zamanlaması</h3>
+        <p class="text-slate-400 mt-3">Hizmetler ödeme sonrası 24-48 saat içinde kickoff alır.</p>
+      </div>
+      <div class="glass rounded-2xl p-8">
+        <h3 class="text-xl font-semibold">Operasyonel Destek</h3>
+        <p class="text-slate-400 mt-3">Haftalık kontrol ve teslimat güncellemeleri her işi yolda tutar.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="container mx-auto px-6 py-12">
+    <div class="glass rounded-2xl p-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+      <div>
+        <h2 class="text-3xl font-semibold">Lansmana hazır mısınız?</h2>
+        <p class="text-slate-400 mt-2">Bir yol seçin, teslimat, varlıklar ve raporlamayı orkestre edelim.</p>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a class="btn-primary" href="#portfolio">Ürünlerle Başla</a>
+        <a class="btn-secondary" href="#featured">Danışmanlık Planla</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="chat-widget">
+    <button id="chat-toggle" class="chat-toggle" type="button">Sohbet</button>
+    <div id="chat-panel" class="chat-panel" role="dialog" aria-label="AutonomaX Asistan">
+      <div class="chat-header">AutonomaX Asistan</div>
+      <div id="chat-body" class="chat-body">
+        <div class="chat-bubble">Merhaba! Size hangi ürün veya hizmet konusunda yardımcı olabilirim?</div>
+      </div>
+      <div class="chat-quick">
+        <button type="button" data-question="Dijital teslimat nasıl oluyor?">Dijital teslimat</button>
+        <button type="button" data-question="İade politikası nedir?">İade politikası</button>
+        <button type="button" data-question="Danışmanlık süreci nasıl ilerliyor?">Danışmanlık süreci</button>
+        <button type="button" data-question="Hangi paket bana uygun?">Paket önerisi</button>
+      </div>
+      <form id="chat-form" class="chat-form">
+        <input id="chat-input" class="chat-input" type="text" placeholder="Mesajınızı yazın..." autocomplete="off">
+        <button class="chat-send" type="submit">Gönder</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="py-10 text-center text-slate-500 text-sm">
+    <p>AutonomaX Commerce Studio. Gelir netliği ve icra için üretildi.</p>
+  </footer>
+  <script>
+    document.querySelectorAll('.shopier-pay').forEach((button) => {
+      button.addEventListener('click', (event) => {
+        event.preventDefault();
+        const sku = button.dataset.sku || 'ORDER';
+        const price = button.dataset.price || '0';
+        const currency = button.dataset.currency || 'USD';
+        const title = button.dataset.title || 'Order';
+        const orderId = `${sku}-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+        const params = new URLSearchParams({
+          amount: price,
+          currency,
+          order_id: orderId,
+          product_name: title,
+        });
+        window.location.href = `/api/payment/shopier/pay?${params.toString()}`;
+      });
+    });
+
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatPanel = document.getElementById('chat-panel');
+    const chatForm = document.getElementById('chat-form');
+    const chatInput = document.getElementById('chat-input');
+    const chatBody = document.getElementById('chat-body');
+    const chatQuick = document.querySelectorAll('.chat-quick button');
+    const chatHistory = [];
+
+    const appendMessage = (text, role) => {
+      const bubble = document.createElement('div');
+      bubble.className = `chat-bubble${role === 'user' ? ' user' : ''}`;
+      bubble.textContent = text;
+      chatBody.appendChild(bubble);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    };
+
+    if (chatToggle && chatPanel) {
+      chatToggle.addEventListener('click', () => {
+        chatPanel.classList.toggle('open');
+      });
+    }
+
+    const sendMessage = async (message) => {
+      appendMessage(message, 'user');
+      chatHistory.push({ role: 'user', content: message });
+      try {
+        const response = await fetch('/api/ai/ambassador', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message, history: chatHistory.slice(-6) }),
+        });
+        const payload = await response.json();
+        const reply = payload.reply || 'Şu anda yanıt veremiyorum, birazdan tekrar dener misiniz?';
+        appendMessage(reply, 'assistant');
+        chatHistory.push({ role: 'assistant', content: reply });
+      } catch (error) {
+        appendMessage('Bağlantı sorunu oluştu, lütfen tekrar deneyin.', 'assistant');
+      }
+    };
+
+    if (chatForm && chatInput) {
+      chatForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const message = chatInput.value.trim();
+        if (!message) {
+          return;
+        }
+        chatInput.value = '';
+        await sendMessage(message);
+      });
+    }
+
+    if (chatQuick.length) {
+      chatQuick.forEach((button) => {
+        button.addEventListener('click', async () => {
+          const message = button.getAttribute('data-question');
+          if (!message) {
+            return;
+          }
+          await sendMessage(message);
+        });
+      });
+    }
+  </script>
+</body>
+
+</html>

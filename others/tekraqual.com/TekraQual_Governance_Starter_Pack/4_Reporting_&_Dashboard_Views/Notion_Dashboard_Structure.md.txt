@@ -1,0 +1,16 @@
+# Notion Dashboard Structure
+
+Databases:
+- Initiatives (Status, Owner, Dimension, Due date, Impact, Effort)
+- Risks (Impact, Likelihood, Owner, Mitigation, Status)
+- Metrics (Name, Source, Cadence, Target, Current)
+
+Views:
+- Board by Dimension (OPS/CX/GOV/DATA/INCOME)
+- Timeline for Initiatives
+- Risk register table filtered by Open status
+- Metrics list with sparklines/targets
+
+Linked pages:
+- Readiness results snapshot
+- Meeting notes + decisions log

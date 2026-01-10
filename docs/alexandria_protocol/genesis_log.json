@@ -1,0 +1,138 @@
+{
+  "protocol_version": "1.0",
+  "created": "2025-12-01",
+  "system_name": "Project Alexandria",
+  "description": "Archive Intelligence and Value Generation System",
+  
+  "genesis_log": [
+    {
+      "id": "DEMO-001",
+      "file_path": "Projects/Old_Client_X/market_analysis_2022.pdf",
+      "file_type": "pdf",
+      "content_type": "market-research-report",
+      "tags": ["market-analysis", "client-work", "2022", "business-intelligence", "competitor-research"],
+      "labels": {
+        "domain": "business-strategy",
+        "industry": "unknown",
+        "format": "document",
+        "complexity": "medium"
+      },
+      "collection": "Client_X_Project_Archive",
+      "copyright_status": "proprietary-client-work",
+      "potential_use": ["inspiration", "learning-resource", "methodology-template"],
+      "metadata": {
+        "created_date": "2022",
+        "source": "client-engagement",
+        "confidentiality": "review-required"
+      },
+      "value_signals": {
+        "reusable_methodology": true,
+        "contains_frameworks": true,
+        "data_freshness": "dated"
+      }
+    },
+    {
+      "id": "DEMO-002",
+      "file_path": "Code/Python/scrapers/social_media_scraper.py",
+      "file_type": "py",
+      "content_type": "python-script",
+      "tags": ["python", "web-scraping", "social-media", "automation", "data-collection"],
+      "labels": {
+        "domain": "software-development",
+        "language": "python",
+        "format": "code",
+        "complexity": "medium"
+      },
+      "collection": "Automation_Toolkit",
+      "copyright_status": "owned-proprietary",
+      "potential_use": ["direct-use", "action-basis", "service-component"],
+      "metadata": {
+        "dependencies": ["requests", "beautifulsoup4", "selenium"],
+        "api_integrations": ["twitter", "instagram", "linkedin"],
+        "maintenance_status": "active"
+      },
+      "value_signals": {
+        "monetizable_as_service": true,
+        "tech_stack_modern": true,
+        "documentation_level": "partial"
+      }
+    },
+    {
+      "id": "DEMO-003",
+      "file_path": "Graphics/UI_Kits/modern_dashboard_kit.fig",
+      "file_type": "fig",
+      "content_type": "ui-kit",
+      "tags": ["figma", "ui-design", "dashboard", "modern", "components", "visual-design"],
+      "labels": {
+        "domain": "design",
+        "tool": "figma",
+        "format": "design-file",
+        "complexity": "high"
+      },
+      "collection": "Design_Assets_Library",
+      "copyright_status": "owned-proprietary",
+      "potential_use": ["direct-use", "action-basis", "product-component"],
+      "metadata": {
+        "component_count": "50+",
+        "style": "modern-minimal",
+        "responsive": true
+      },
+      "value_signals": {
+        "sellable_as_product": true,
+        "client_ready": true,
+        "customizable": true
+      }
+    },
+    {
+      "id": "DEMO-004",
+      "file_path": "Knowledge/ebooks/data_science_for_beginners.epub",
+      "file_type": "epub",
+      "content_type": "ebook",
+      "tags": ["data-science", "education", "beginner", "machine-learning", "python", "statistics"],
+      "labels": {
+        "domain": "education",
+        "topic": "data-science",
+        "format": "ebook",
+        "complexity": "introductory"
+      },
+      "collection": "Knowledge_Library",
+      "copyright_status": "verify-required",
+      "potential_use": ["learning-resource", "inspiration", "course-material"],
+      "metadata": {
+        "chapters": "unknown",
+        "author": "unknown",
+        "topics_covered": ["python", "pandas", "visualization", "ml-basics"]
+      },
+      "value_signals": {
+        "training_material": true,
+        "reference_value": true,
+        "curriculum_basis": true
+      }
+    },
+    {
+      "id": "DEMO-005",
+      "file_path": "Projects/Old_Client_X/final_presentation.pptx",
+      "file_type": "pptx",
+      "content_type": "presentation",
+      "tags": ["powerpoint", "client-presentation", "deliverable", "business-case", "slides"],
+      "labels": {
+        "domain": "business-communication",
+        "format": "presentation",
+        "complexity": "medium"
+      },
+      "collection": "Client_X_Project_Archive",
+      "copyright_status": "proprietary-client-work",
+      "potential_use": ["inspiration", "template", "methodology-reference"],
+      "metadata": {
+        "slide_count": "unknown",
+        "visual_style": "professional",
+        "contains_charts": true
+      },
+      "value_signals": {
+        "presentation_template": true,
+        "storytelling_framework": true,
+        "reusable_visuals": true
+      }
+    }
+  ]
+}

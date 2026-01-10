@@ -4,8 +4,8 @@ from typing import List, Dict, Optional
 import logging
 import os
 from datetime import datetime
-from models import TTSRequest, APIResponse
-from database import log_execution
+from backend.models import TTSRequest, APIResponse
+from backend.database import log_execution
 import json
 
 logger = logging.getLogger(__name__)
@@ -92,12 +92,40 @@ async def generate_audio(
         filename = generate_filename(voice_id, format)
         output_path = os.path.join(TTS_CONFIG["output_dir"], filename)
         
-        # TODO: Implement actual TTS service integration
-        # This is a placeholder for the actual TTS service
-        # In production, integrate with a service like Google Cloud TTS, Amazon Polly, etc.
+        # Implement actual TTS service integration using Google Cloud TTS
+        from google.cloud import texttospeech
+        from backend.config.enhanced_settings import settings
         
-        # Simulate TTS generation
-        logger.info(f"Generating audio for text: {text[:100]}...")
+        # Initialize the client
+        client = texttospeech.TextToSpeechClient()
+        
+        # Set the text input to be synthesized
+        synthesis_input = texttospeech.SynthesisInput(ssml=processed_text)
+        
+        # Build the voice request
+        # Extract language code from voice_id (e.g., "en-US-Neural2-A" -> "en-US")
+        language_code = "-".join(voice_id.split("-")[:2])
+        voice = texttospeech.VoiceSelectionParams(
+            language_code=language_code,
+            name=voice_id
+        )
+        
+        # Select the type of audio file you want returned
+        audio_config = texttospeech.AudioConfig(
+            audio_encoding=texttospeech.AudioEncoding.MP3
+        )
+        
+        # Perform the text-to-speech request
+        response = client.synthesize_speech(
+            input=synthesis_input,
+            voice=voice,
+            audio_config=audio_config
+        )
+        
+        # Write the response to the output file
+        with open(output_path, "wb") as out:
+            out.write(response.audio_content)
+            logger.info(f"Successfully generated and saved audio to: {output_path}")
         
         # Log the generation
         log_execution(

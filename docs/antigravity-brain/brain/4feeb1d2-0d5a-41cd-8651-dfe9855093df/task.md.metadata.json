@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_TASK",
+  "summary":  "Foundation and Money Maker Migration: Monorepo created, DB migrated, Settlement layer implemented. Ready for verification.",
+  "updatedAt":  "2025-12-28T18:02:58.830327Z",
+  "version":  "3"
+}

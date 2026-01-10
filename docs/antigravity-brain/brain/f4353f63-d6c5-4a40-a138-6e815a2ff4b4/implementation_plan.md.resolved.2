@@ -1,0 +1,30 @@
+# Dual Pipeline Orchestration Plan
+
+## Goal Description
+
+Unify the "Agency Execution" (Service Workflows) and "Direct Sales" (Product Storefront) pipelines under a single orchestrator: **The Direction Board**. This allows the AI to both *do the work* (e.g., fulfill a Fiverr gig) and *sell the assets* (e.g., manage the Storefront).
+
+## Proposed Changes
+
+### Logic Expansion
+
+#### [MODIFY] [modules/ai_agency/direction_board.py](file:///Users/pq/_youtube_ai_app_v3.0/modules/ai_agency/direction_board.py)
+
+- Add `sales` and `operations` departments.
+- Implement `execute_sales_operation` method to interact with [ShopierService](file:///Users/pq/_youtube_ai_app_v3.0/modules/ai_agency/shopier_service.py#12-109).
+- Enhance [execute_workflow](file:///Users/pq/_youtube_ai_app_v3.0/modules/ai_agency/direction_board.py#20-45) to handle specific service triggers (e.g., "start_fiverr_gig").
+
+### API & Control
+
+#### [MODIFY] [backend/api/routes/agency.py](file:///Users/pq/_youtube_ai_app_v3.0/backend/api/routes/agency.py)
+
+- Expose new orchestration endpoints:
+    - `POST /orchestrate/sales`: Trigger a storefront build or product audit.
+    - `POST /orchestrate/service`: Trigger a service workflow.
+
+## Verification Plan
+
+### Manual Verification
+- Trigger a "Sales Audit" via API -> Should check CSV and verify Storefront HTML.
+- Trigger a "Service Start" via API -> Should log a Chimera Engine task for "Fiverr Bot".
+

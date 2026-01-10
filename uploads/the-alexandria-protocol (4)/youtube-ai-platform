@@ -1,0 +1,54 @@
+youtube-ai-platform
+
+
+
+
+GCP_PROJECT_ID: youtube-monetization-mvp
+GCP_WIF_PROVIDER: The Workload Identity Federation provider ID (e.g., projects/YOUR_PROJECT_NUMBER/locations/global/workloadIdentityPools/YOUR_POOL_ID/providers/YOUR_PROVIDER_ID).
+GCP_SERVICE_ACCOUNT: github-actions-sa-29@youtube-monetization-mvp.iam.gserviceaccount.com
+API_SERVICE_ACCOUNT_EMAIL: api-service-sa-439@youtube-monetization-mvp.iam.gserviceaccount.com
+WORKER_SERVICE_ACCOUNT_EMAIL: worker-service-sa@youtube-monetization-mvp.iam.gserviceaccount.com
+DATABASE_URL: postgresql+asyncpg://admin:lakakula@/youtube-ai-db?host=/cloudsql/youtube-monetization-mvp:us-central1:youtube-ai-db).
+GCS_BUCKET_NAME: youtube-monetization-mvp-youtube-ai-media
+SECRET_KEY: lakakula
+GEMINI_API_KEY: AIzaSyB1Oh_KvLKItMqztDSKkTfU9BXFG2UgJEw
+SERPER_API_KEY: aafeed3bb1ed082b59c6c44b0d6fad60d12799fa
+TASK_QUEUE_NAME: youtube-ai-pipeline-queue
+
+—-
+DATABASE_URL=postgresql+asyncpg://admin:lakakula@/youtube-ai-db?host=/cloudsql/youtube-monetization-mvp:us-central1:youtube-ai-db).
+DATABASE_URL=postgresql+asyncpg://db_user:lakakula@127.0.0.1:5432/creator_cmd_center_db
+DATABASE_URL=os.getenv("DATABASE_URL", "postgresql+asyncpg://user:password@localhost:5432/commander_intel_db”)
+
+
+Enter value for DATABASE_URL: postgresql+asyncpg://db_user:lakakula@127.0.0.1:5432/creator_cmd_center_db
+✓ Set Actions secret DATABASE_URL for laziestlarry/youtube-ai-platform
+Enter value for GCS_BUCKET_NAME: youtube-ai-platform-464016-youtube-ai-media
+✓ Set Actions secret GCS_BUCKET_NAME for laziestlarry/youtube-ai-platform
+Enter value for TASK_QUEUE_NAME: youtube-ai-pipeline-queue
+✓ Set Actions secret TASK_QUEUE_NAME for laziestlarry/youtube-ai-platform
+Enter value for SECRET_KEY: 86ac9d673e33d01c20e919bae64c37d711e58eaaab52ca6f12ebe2e1431994cd
+✓ Set Actions secret SECRET_KEY for laziestlarry/youtube-ai-platform
+Enter value for GEMINI_API_KEY: AIzaSyDYIXAH_YQ_mbVIdrlBEvxHM-GosTCwR1o
+✓ Set Actions secret GEMINI_API_KEY for laziestlarry/youtube-ai-platform
+Enter value for SERPER_API_KEY: 807f4d9723e8aec44b2b725647e69ec656e0b5be
+✓ Set Actions secret SERPER_API_KEY for laziestlarry/youtube-ai-platform
+Enter value for REDIS_URL: 192.168.16.3
+✓ Set Actions secret REDIS_URL for laziestlarry/youtube-ai-platform
+Enter value for GOOGLE_CLIENT_ID: 35665695231-mb091i23skddjk2gb9hgrk8hlpfomm0r.apps.googleusercontent.com
+✓ Set Actions secret GOOGLE_CLIENT_ID for laziestlarry/youtube-ai-platform
+Enter value for GOOGLE_CLIENT_SECRET: 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
+✓ Set Actions secret GOOGLE_CLIENT_SECRET for laziestlarry/youtube-ai-platform
+
+#Selective4AI
+
+
+Bizop API : API key details
+API Key
+AIzaSyD9rqWtQRSMDKT8_C2ZUkpRFJCRVry93M4
+Name
+bizop
+Project name
+projects/1078816998024
+Project number
+1078816998024

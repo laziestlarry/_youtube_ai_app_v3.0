@@ -1,0 +1,31 @@
+# Shopier & Production Readiness Walkthrough
+
+We have successfully transitioned the Autonomax platform from a local mock environment to a production-ready Cloud Run deployment. This document summarizes the technical fixes and verifies the system's readiness for real money transactions.
+
+## 1. Production Deployment Fixed
+The initial deployment failed due to missing modules and an incompatible OS image. We performed the following corrections:
+- **Environment Switch:** Migrated from Python-Alpine to `python:3.11-slim` for proper support of data science libraries (`numpy`, `pandas`).
+- **Structural bundling:** Updated the Dockerfile and Cloud Build to build from the **Root** directory, ensuring the `modules/` and `static/` folders are included in the container.
+- **Import Resolution:** Adjusted the uvicorn startup path to `backend.main:app` to preserve the Python package structure.
+
+## 2. Health Verification
+The production API is now online and reachable.
+- **Endpoint:** `https://autonomax-api-71658389068.us-central1.run.app/health`
+- **Status:** ✅ Healthy (`{"status":"ok","env":"prod"}`)
+
+## 3. Shopier Technical Readiness
+The "Real Money" infrastructure is fully connected:
+- **Callback Listener:** [payment.py](file:///Users/pq/_youtube_ai_app_v3.0/backend/api/routes/payment.py) is linked to the [FulfillmentEngine](file:///Users/pq/_youtube_ai_app_v3.0/modules/ai_agency/fulfillment_engine.py).
+- **Legality:** [legal_contracts.md](file:///Users/pq/.gemini/antigravity/brain/da2476ed-3154-4af8-8739-e405e554bf73/legal_contracts.md) contains the mandatory Turkish legal drafts.
+- **Security:** Signature verification logic is implemented and awaiting your production `SHOPIER_WEBHOOK_TOKEN`.
+
+---
+
+## Final Instruction for Real Money
+To start receiving real payments:
+1. Copy the [Legal Contracts](file:///Users/pq/.gemini/antigravity/brain/da2476ed-3154-4af8-8739-e405e554bf73/legal_contracts.md) to your Shopier "Information" or "Terms" section.
+2. In the **Shopier Dashboard > Settings > Automation**, set the URL to:
+   `https://autonomax-api-71658389068.us-central1.run.app/api/payment/shopier/callback`
+3. Update your local [.env](file:///Users/pq/_youtube_ai_app_v3.0/.env) with the production keys we discussed once your dashboard is "Verified".
+
+**Congratulations! Your AI Agency is now operationally ready for the Alexandria Protocol's real-money phase.**

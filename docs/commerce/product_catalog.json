@@ -1,0 +1,531 @@
+{
+  "version": "1.0",
+  "generated": "2025-12-31",
+  "brand": "AutonomaX Commerce",
+  "products": [
+    {
+      "sku": "ZEN-ART-BASE",
+      "title": "Zen Sanat Baskı Paketi",
+      "type": "digital",
+      "short_description": "Minimalist, sakin ve modern kompozisyonlardan oluşan dijital baskı seti.",
+      "long_description": "Anında indirilebilir, küratörlü minimalist sanat baskıları. Ev dekoru, stüdyo duvarları ve dijital ürün paketleri için ideal.",
+      "price": {
+        "min": 9,
+        "max": 79,
+        "currency": "USD"
+      },
+      "channels": [
+        "etsy",
+        "shopify",
+        "shopier",
+        "printbelle"
+      ],
+      "tags": [
+        "zen sanat",
+        "minimalist baskı",
+        "duvar sanatı",
+        "dijital indirme",
+        "ev dekoru"
+      ],
+      "assets": [
+        "others/kits/Zen_Art_Printables.pdf",
+        "others/_new_era_/Zen_art_printables.pdf"
+      ],
+      "image_url": "static/assets/listings/ZEN-ART-BASE/listing.png"
+    },
+    {
+      "sku": "CREATOR-KIT-01",
+      "title": "Creator Başlangıç Kiti",
+      "type": "digital",
+      "short_description": "Şablonlar, listeleme metinleri ve büyüme playbook'larıyla lansman kiti.",
+      "long_description": "Dijital ürün yayınlamak ve satmak için şablonlar, satış metinleri ve adım adım rehber içeren tam set.",
+      "price": {
+        "min": 49,
+        "max": 199,
+        "currency": "USD"
+      },
+      "channels": [
+        "shopify",
+        "etsy",
+        "shopier"
+      ],
+      "tags": [
+        "creator kiti",
+        "dijital ürünler",
+        "lansman kiti",
+        "şablonlar",
+        "büyüme"
+      ],
+      "assets": [
+        "others/kits/AutonomaX_Creator_Kit_v1.zip"
+      ],
+      "image_url": "static/assets/listings/CREATOR-KIT-01/listing.png"
+    },
+    {
+      "sku": "FIVERR-KIT-01",
+      "title": "Fiverr Gig Lansman Kiti",
+      "type": "digital",
+      "short_description": "Gig şablonları, SEO etiketleri ve teslimat akışları.",
+      "long_description": "Optimize edilmiş metinler, paketler ve teslimat kontrol listeleriyle hızlı satışa hazır Fiverr seti.",
+      "price": {
+        "min": 29,
+        "max": 99,
+        "currency": "USD"
+      },
+      "channels": [
+        "shopify",
+        "fiverr",
+        "shopier"
+      ],
+      "tags": [
+        "fiverr",
+        "gig lansman",
+        "freelance",
+        "seo etiketleri",
+        "teslimat akışı"
+      ],
+      "assets": [
+        "others/kits/Fiverr_Starter_Kit_v1.zip"
+      ],
+      "image_url": "static/assets/listings/FIVERR-KIT-01/listing.png"
+    },
+    {
+      "sku": "SHOPIFY-KIT-01",
+      "title": "Shopify Lansman Kiti",
+      "type": "digital",
+      "short_description": "Mağaza kurulumu şablonları ve listeleme planları.",
+      "long_description": "Mağaza kurulum rehberi, listeleme şablonları ve lansman kontrol listeleri içerir.",
+      "price": {
+        "min": 99,
+        "max": 299,
+        "currency": "USD"
+      },
+      "channels": [
+        "shopify",
+        "fiverr",
+        "shopier"
+      ],
+      "tags": [
+        "shopify",
+        "lansman kiti",
+        "e-ticaret",
+        "mağaza kurulumu"
+      ],
+      "assets": [
+        "others/kits/Shopify_Creator_Kit_v1.zip"
+      ],
+      "image_url": "static/assets/listings/SHOPIFY-KIT-01/listing.png"
+    },
+    {
+      "sku": "YT-AUTO-01",
+      "title": "YouTube Otomasyon Stüdyosu",
+      "type": "service",
+      "short_description": "Strateji, senaryo, thumbnail ve yayın akışları.",
+      "long_description": "İçerik stratejisi, senaryo, paketleme ve yayın akışıyla uçtan uca YouTube otomasyonu.",
+      "price": {
+        "min": 299,
+        "max": 1499,
+        "currency": "USD"
+      },
+      "channels": [
+        "fiverr",
+        "shopier",
+        "youtube"
+      ],
+      "tags": [
+        "youtube otomasyonu",
+        "içerik",
+        "senaryo",
+        "thumbnail",
+        "kanal büyümesi"
+      ],
+      "assets": [],
+      "image_url": "static/assets/listings/YT-AUTO-01/listing.png"
+    },
+    {
+      "sku": "IW-CONSULT-01",
+      "title": "IntelliWealth Danışmanlık",
+      "type": "consulting",
+      "short_description": "Gelir ve operasyonlar için yapay zeka dönüşümü.",
+      "long_description": "Strateji, operasyon ve gelir icrasını kapsayan 90 günlük yüksek temaslı dönüşüm programı.",
+      "price": {
+        "min": 15000,
+        "max": 50000,
+        "currency": "USD"
+      },
+      "channels": [
+        "shopier",
+        "linkedin"
+      ],
+      "tags": [
+        "ai danışmanlık",
+        "iş dönüşümü",
+        "gelir operasyonu"
+      ],
+      "assets": [
+        "static/assets/intelliwealth_preview.png"
+      ],
+      "image_url": "static/assets/intelliwealth_preview.png"
+    },
+    {
+      "sku": "IW-TRAIN-01",
+      "title": "IntelliWealth Yönetici Eğitimi",
+      "type": "training",
+      "short_description": "Playbook'lar ve skor kartlarıyla yönetici eğitimi.",
+      "long_description": "Playbook'lar ve çalışma sayfalarıyla AI stratejisini ölçülebilir icraya dönüştüren kohort + kendi hızında eğitim.",
+      "price": {
+        "min": 499,
+        "max": 4999,
+        "currency": "USD"
+      },
+      "channels": [
+        "shopier",
+        "shopify",
+        "youtube"
+      ],
+      "tags": [
+        "ai eğitimi",
+        "yönetici programı",
+        "playbook",
+        "ai ops"
+      ],
+      "assets": [
+        "static/assets/mastery_preview.png"
+      ],
+      "image_url": "static/assets/mastery_preview.png"
+    },
+    {
+      "sku": "CMD-API-01",
+      "title": "Commander API Operasyonları",
+      "type": "consulting",
+      "short_description": "AI ajanları ve gelir akışları için orkestrasyon katmanı.",
+      "long_description": "İş akışı şablonları, API devreye alma ve yönetişim desteğiyle birleşik komuta katmanı.",
+      "price": {
+        "min": 2000,
+        "max": 9999,
+        "currency": "USD"
+      },
+      "channels": [
+        "shopier",
+        "partner"
+      ],
+      "tags": [
+        "otomasyon",
+        "api",
+        "iş akışları",
+        "operasyon"
+      ],
+      "assets": [],
+      "image_url": "static/assets/listings/CMD-API-01/listing.png"
+    },
+    {
+      "sku": "AX-SAAS-01",
+      "title": "AutonomaX SaaS Platformu",
+      "type": "subscription",
+      "short_description": "Gelir operasyonu, listeleme ve analitik için otomasyon platformu.",
+      "long_description": "İş akışı şablonları, raporlama panoları ve çok kanallı playbook'larla AutonomaX platformuna abonelik erişimi.",
+      "price": {
+        "min": 149,
+        "max": 499,
+        "currency": "USD"
+      },
+      "channels": [
+        "shopier",
+        "shopify"
+      ],
+      "tags": [
+        "saas",
+        "otomasyon",
+        "gelir operasyonu",
+        "raporlama"
+      ],
+      "assets": [
+        "static/assets/listings/AX-SAAS-01/listing.png",
+        "static/assets/listings/AX-SAAS-01/thumbnail.png",
+        "static/assets/listings/AX-SAAS-01/banner.png",
+        "static/assets/listings/AX-SAAS-01/preview.mp4"
+      ],
+      "image_url": "static/assets/listings/AX-SAAS-01/listing.png"
+    },
+    {
+      "sku": "BOP-SAAS-01",
+      "title": "Bopper Gelir Platformu",
+      "type": "subscription",
+      "short_description": "Gelir otomasyonu akışları ve şablonları.",
+      "long_description": "Şablonlar, prompt'lar ve başlangıç rehberiyle odaklı gelir otomasyonu platformuna abonelik.",
+      "price": {
+        "min": 29,
+        "max": 99,
+        "currency": "USD"
+      },
+      "channels": [
+        "shopier",
+        "shopify",
+        "youtube"
+      ],
+      "tags": [
+        "gelir otomasyonu",
+        "creator araçları",
+        "şablonlar",
+        "abonelik"
+      ],
+      "assets": [],
+      "image_url": "static/assets/listings/BOP-SAAS-01/listing.png"
+    },
+    {
+      "sku": "PROFIT-OS-01",
+      "title": "Profit OS Danışmanlık",
+      "type": "consulting",
+      "short_description": "Gelir operasyon metodolojisinin uygulanması.",
+      "long_description": "Gelir operasyonları, otomasyon ve KPI netliğine odaklı yapılandırılmış danışmanlık.",
+      "price": {
+        "min": 5000,
+        "max": 20000,
+        "currency": "USD"
+      },
+      "channels": [
+        "shopier",
+        "linkedin"
+      ],
+      "tags": [
+        "profit os",
+        "gelir operasyonu",
+        "danışmanlık"
+      ],
+      "assets": [],
+      "image_url": "static/assets/listings/PROFIT-OS-01/listing.png"
+    },
+    {
+      "sku": "HYBRID-STACK-01",
+      "title": "Hibrit Pasif Gelir Yığını",
+      "type": "digital",
+      "short_description": "Hibrit profesyoneller için otomatik gelir kurma planı.",
+      "long_description": "Hibrit profesyoneller için dijital varlıkları başlatma, teslimi otomatikleştirme ve haftalık minimal zamanla pasif gelir sürdürme playbook'u.",
+      "price": {
+        "min": 49,
+        "max": 199,
+        "currency": "USD"
+      },
+      "channels": [
+        "shopify",
+        "etsy",
+        "shopier",
+        "gumroad",
+        "blog",
+        "reddit",
+        "discord"
+      ],
+      "tags": [
+        "hibrit gelir",
+        "pasif gelir",
+        "otomasyon",
+        "dijital playbook",
+        "yan gelir"
+      ],
+      "assets": [
+        "static/assets/listings/HYBRID-STACK-01/listing.png",
+        "static/assets/listings/HYBRID-STACK-01/thumbnail.png",
+        "static/assets/listings/HYBRID-STACK-01/banner.png",
+        "static/assets/listings/HYBRID-STACK-01/preview.mp4"
+      ],
+      "image_url": "static/assets/listings/HYBRID-STACK-01/listing.png"
+    },
+    {
+      "sku": "SOP-AUTO-01",
+      "title": "Otomasyon SOP Kasası",
+      "type": "digital",
+      "short_description": "Otomatik satış, teslimat ve müşteri operasyonları için hazır SOP'lar.",
+      "long_description": "Küçük ekipler için ürün teslimi, sipariş karşılama, müşteri desteği ve büyüme otomasyonunu kapsayan SOP kütüphanesi.",
+      "price": {
+        "min": 79,
+        "max": 299,
+        "currency": "USD"
+      },
+      "channels": [
+        "shopify",
+        "shopier",
+        "gumroad",
+        "blog",
+        "linkedin"
+      ],
+      "tags": [
+        "sop",
+        "otomasyon",
+        "operasyonlar",
+        "şablonlar",
+        "iş akışı"
+      ],
+      "assets": [
+        "static/assets/listings/SOP-AUTO-01/listing.png",
+        "static/assets/listings/SOP-AUTO-01/thumbnail.png",
+        "static/assets/listings/SOP-AUTO-01/banner.png",
+        "static/assets/listings/SOP-AUTO-01/preview.mp4"
+      ],
+      "image_url": "static/assets/listings/SOP-AUTO-01/listing.png"
+    },
+    {
+      "sku": "NOTION-PASSIVE-01",
+      "title": "Notion Pasif Gelir Paneli",
+      "type": "digital",
+      "short_description": "Otomatik gelir akışları için gelir takip ve içerik planlayıcı.",
+      "long_description": "Tek bir çalışma alanında teklif planlama, gelir takibi, içerik yönetimi ve otomatik satışları izleme.",
+      "price": {
+        "min": 29,
+        "max": 99,
+        "currency": "USD"
+      },
+      "channels": [
+        "shopify",
+        "etsy",
+        "shopier",
+        "gumroad",
+        "blog"
+      ],
+      "tags": [
+        "notion",
+        "panel",
+        "pasif gelir",
+        "planlayıcı",
+        "creator ops"
+      ],
+      "assets": [
+        "static/assets/listings/NOTION-PASSIVE-01/listing.png",
+        "static/assets/listings/NOTION-PASSIVE-01/thumbnail.png",
+        "static/assets/listings/NOTION-PASSIVE-01/banner.png",
+        "static/assets/listings/NOTION-PASSIVE-01/preview.mp4"
+      ],
+      "image_url": "static/assets/listings/NOTION-PASSIVE-01/listing.png"
+    },
+    {
+      "sku": "REDDIT-LAUNCH-01",
+      "title": "Reddit Lansman Planı",
+      "type": "digital",
+      "short_description": "Reddit ve niş forumlar için topluluk odaklı lansman planı.",
+      "long_description": "Paylaşım metinleri, subreddit haritası ve topluluk odaklı etkileşimle keşfi artıran lansman playbook'u.",
+      "price": {
+        "min": 39,
+        "max": 149,
+        "currency": "USD"
+      },
+      "channels": [
+        "gumroad",
+        "blog",
+        "reddit",
+        "discord",
+        "shopify",
+        "shopier"
+      ],
+      "tags": [
+        "reddit lansman",
+        "topluluk pazarlama",
+        "dağıtım",
+        "büyüme"
+      ],
+      "assets": [
+        "static/assets/listings/REDDIT-LAUNCH-01/listing.png",
+        "static/assets/listings/REDDIT-LAUNCH-01/thumbnail.png",
+        "static/assets/listings/REDDIT-LAUNCH-01/banner.png",
+        "static/assets/listings/REDDIT-LAUNCH-01/preview.mp4"
+      ],
+      "image_url": "static/assets/listings/REDDIT-LAUNCH-01/listing.png"
+    },
+    {
+      "sku": "DISCORD-OPS-01",
+      "title": "Discord Topluluk Ops Kiti",
+      "type": "digital",
+      "short_description": "Sunucu düzeni, onboarding akışları ve moderasyon SOP'ları.",
+      "long_description": "Gelir odaklı Discord topluluğu için onboarding, etkileşim döngüleri ve içerik prompt'ları içeren tam kit.",
+      "price": {
+        "min": 59,
+        "max": 199,
+        "currency": "USD"
+      },
+      "channels": [
+        "gumroad",
+        "shopify",
+        "shopier",
+        "discord",
+        "blog"
+      ],
+      "tags": [
+        "discord",
+        "topluluk ops",
+        "etkileşim",
+        "şablonlar",
+        "moderasyon"
+      ],
+      "assets": [
+        "static/assets/listings/DISCORD-OPS-01/listing.png",
+        "static/assets/listings/DISCORD-OPS-01/thumbnail.png",
+        "static/assets/listings/DISCORD-OPS-01/banner.png",
+        "static/assets/listings/DISCORD-OPS-01/preview.mp4"
+      ],
+      "image_url": "static/assets/listings/DISCORD-OPS-01/listing.png"
+    },
+    {
+      "sku": "GUMROAD-LAUNCH-01",
+      "title": "Gumroad Ürün Hızlandırıcı",
+      "type": "digital",
+      "short_description": "Gumroad'da fiyatlama, ödeme akışları ve upsell kit.",
+      "long_description": "Gumroad ürün sayfaları, fiyatlama katmanları, checkout optimizasyonu ve e-posta takipleri için şablonlar.",
+      "price": {
+        "min": 49,
+        "max": 179,
+        "currency": "USD"
+      },
+      "channels": [
+        "gumroad",
+        "shopify",
+        "shopier",
+        "blog",
+        "reddit"
+      ],
+      "tags": [
+        "gumroad",
+        "lansman kiti",
+        "fiyatlama",
+        "upsell",
+        "checkout"
+      ],
+      "assets": [
+        "static/assets/listings/GUMROAD-LAUNCH-01/listing.png",
+        "static/assets/listings/GUMROAD-LAUNCH-01/thumbnail.png",
+        "static/assets/listings/GUMROAD-LAUNCH-01/banner.png",
+        "static/assets/listings/GUMROAD-LAUNCH-01/preview.mp4"
+      ],
+      "image_url": "static/assets/listings/GUMROAD-LAUNCH-01/listing.png"
+    },
+    {
+      "sku": "BLOG-SEO-01",
+      "title": "Blog SEO Sprint Paketi",
+      "type": "digital",
+      "short_description": "SEO brief'leri, lead magnet ve içerik takvimiyle blog lansmanı.",
+      "long_description": "30 günlük içerik takvimi, SEO brief'leri ve pasif lead toplama şablonları içeren blog yürütme paketi.",
+      "price": {
+        "min": 69,
+        "max": 249,
+        "currency": "USD"
+      },
+      "channels": [
+        "blog",
+        "shopify",
+        "shopier",
+        "gumroad"
+      ],
+      "tags": [
+        "blog",
+        "seo",
+        "içerik takvimi",
+        "lead magnet",
+        "organik trafik"
+      ],
+      "assets": [
+        "static/assets/listings/BLOG-SEO-01/listing.png",
+        "static/assets/listings/BLOG-SEO-01/thumbnail.png",
+        "static/assets/listings/BLOG-SEO-01/banner.png",
+        "static/assets/listings/BLOG-SEO-01/preview.mp4"
+      ],
+      "image_url": "static/assets/listings/BLOG-SEO-01/listing.png"
+    }
+  ]
+}

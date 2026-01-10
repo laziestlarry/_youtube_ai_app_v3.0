@@ -5,6 +5,7 @@ Production-ready with OpenAI v1.x
 
 import json
 import logging
+import os
 from typing import List, Dict, Any, Optional
 from datetime import datetime
 import asyncio
@@ -18,7 +19,13 @@ class AIService:
     """Core AI service for content generation."""
     
     def __init__(self):
-        self.client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
+        api_key = settings.openai_api_key or os.getenv("OPENAI_API_KEY")
+        self.client = AsyncOpenAI(api_key=api_key)
+        self.model_name = (
+            os.getenv("OPENAI_MODEL")
+            or os.getenv("AI_MODEL_NAME")
+            or "gpt-4o-mini"
+        )
         self.models = {}
         self.training_jobs = {}
     
@@ -64,7 +71,7 @@ class AIService:
             prompt = self._build_content_prompt(title, description, category, target_duration)
             
             response = await self.client.chat.completions.create(
-                model="gpt-4-turbo-preview",
+                model=self.model_name,
                 messages=[
                     {
                         "role": "system",

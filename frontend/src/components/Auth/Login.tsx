@@ -71,7 +71,7 @@ const Login: React.FC = () => {
                 <Card elevation={3} sx={{ width: '100%', border: tabValue === 1 ? '2px solid #009688' : 'none' }}>
                     <CardContent sx={{ p: 4 }}>
                         <Typography variant="h4" component="h1" gutterBottom align="center">
-                            YouTube AI Access
+                            Autonomax Access
                         </Typography>
 
                         <Tabs
@@ -143,7 +143,7 @@ const Login: React.FC = () => {
                                     required
                                     fullWidth
                                     label="License Key"
-                                    placeholder="e.g. YOUTUBE_AI_..."
+                                    placeholder="e.g. AUTONOMAX_..."
                                     autoFocus
                                     value={accessKey}
                                     onChange={(e) => setAccessKey(e.target.value)}

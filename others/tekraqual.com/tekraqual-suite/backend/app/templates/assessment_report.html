@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TekraQual Readiness Report – {{ assessment.organization.name }}</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 24px;
+      color: #222;
+      line-height: 1.5;
+    }
+    h1, h2, h3 {
+      margin-bottom: 0.4em;
+    }
+    .header {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: 1px solid #999;
+      margin-left: 8px;
+    }
+    .score-highlight {
+      font-size: 28px;
+      font-weight: 600;
+      margin: 8px 0;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 12px 0;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px 10px;
+      font-size: 14px;
+    }
+    th {
+      background: #f5f5f5;
+      text-align: left;
+    }
+    .section {
+      margin-top: 24px;
+      padding-top: 8px;
+      border-top: 1px solid #eee;
+    }
+    .pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      border: 1px solid #ccc;
+      margin-left: 4px;
+    }
+    .small {
+      font-size: 12px;
+      color: #666;
+    }
+    ul, ol {
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>
+      TekraQual Readiness Report
+      <span class="badge">Internal Readiness & Governance Indicator</span>
+    </h1>
+    <p>
+      <strong>Organization:</strong> {{ assessment.organization.name }}<br />
+      <strong>Date:</strong> {{ assessment.completed_at or assessment.created_at }}<br />
+      <strong>Overall Score:</strong>
+      <span class="score-highlight">
+        {{ "%.0f" % (assessment.overall_score or 0) }}/100
+      </span>
+      <br />
+      <strong>Readiness Level:</strong> {{ assessment.readiness_level or "Foundation" }}
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>1. Dimension Overview</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>Code</th>
+          <th>Score (/100)</th>
+          <th>Level</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for ds in dimension_scores %}
+        <tr>
+          <td>{{ ds.dimension.name }}</td>
+          <td>{{ ds.dimension.code }}</td>
+          <td>{{ "%.0f" % ds.score }}</td>
+          <td>{{ ds.level }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>2. Summary</h2>
+    <p>{{ guidance.summary }}</p>
+  </div>
+
+  <div class="section">
+    <h2>3. Key Strengths</h2>
+    <ul>
+      {% for s in guidance.strengths %}
+      <li>
+        <strong>{{ s.title }}</strong>
+        {% if s.score is not none and s.band %}
+          <span class="pill">{{ "%.0f" % s.score }}/100 – {{ s.band }}</span>
+        {% endif %}
+        <div>{{ s.body }}</div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>4. Priority Focus Areas</h2>
+    <ul>
+      {% for f in guidance.focus_areas %}
+      <li>
+        <strong>{{ f.title }}</strong>
+        {% if f.score is not none and f.band %}
+          <span class="pill">{{ "%.0f" % f.score }}/100 – {{ f.band }}</span>
+        {% endif %}
+        <div>{{ f.body }}</div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>5. Next 90 Days – Suggested Actions</h2>
+    <ol>
+      {% for n in guidance.next_90_days %}
+      <li>
+        <strong>{{ n.title }}</strong>
+        <div>{{ n.body }}</div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+
+  <div class="section">
+    <h2>6. Larry CoPilot – Starter Involvement</h2>
+    <p class="small">
+      This is a simple starting suggestion for how Larry CoPilot can support your current state.
+    </p>
+    <p>
+      <strong>Primary focus dimension:</strong> {{ larry_plan.dimension_name }}
+      ({{ larry_plan.dimension_code }}, current level: {{ larry_plan.dimension_level }})
+    </p>
+    <ul>
+      {% for b in larry_plan.bullets %}
+      <li>{{ b }}</li>
+      {% endfor %}
+    </ul>
+    <p class="small">
+      Larry CoPilot can be configured to automate summaries, draft responses, and keep a running
+      view of progress against your TekraQual priorities.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>7. How to Use This Report</h2>
+    <ul>
+      <li>Share this document with your leadership or core team.</li>
+      <li>Select 3–5 actions from the focus areas and 90-day suggestions.</li>
+      <li>Assign owners and review progress monthly.</li>
+      <li>Optionally, re-run the TekraQual scan in 3–6 months to track progress.</li>
+    </ul>
+    <p class="small">
+      TekraQual is a readiness and governance indicator, not legal or regulatory advice.
+      Use it to inform decisions and prioritize improvements.
+    </p>
+  </div>
+</body>
+</html>

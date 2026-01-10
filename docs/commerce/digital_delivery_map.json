@@ -1,0 +1,34 @@
+{
+  "ZEN-ART-BASE": {
+    "file": "static/downloads/Zen_Art_Printables.pdf",
+    "label": "Zen Sanat Baski Paketi"
+  },
+  "CREATOR-KIT-01": {
+    "file": "static/downloads/AutonomaX_Creator_Kit_v1.zip",
+    "label": "Creator Baslangic Kiti"
+  },
+  "FIVERR-KIT-01": {
+    "file": "static/downloads/Fiverr_Starter_Kit_v1.zip",
+    "label": "Fiverr Gig Lansman Kiti"
+  },
+  "SHOPIER-KIT-01": {
+    "file": "static/downloads/Shopify_Creator_Kit_v1.zip",
+    "label": "Shopify Lansman Kiti"
+  },
+  "IW-CONSULT-01": {
+    "file": "static/downloads/IntelliWealth_Strategy_Guide.pdf",
+    "label": "IntelliWealth Danismanlik"
+  },
+  "IW-TRAIN-01": {
+    "file": "static/downloads/AI_Mastery_Executive_Training.pdf",
+    "label": "IntelliWealth Yonetici Egitimi"
+  },
+  "AX-SAAS-01": {
+    "file": "static/downloads/AutonomaX_Platform_Access.pdf",
+    "label": "AutonomaX SaaS Platformu"
+  },
+  "YT-AUTO-01": {
+    "file": "static/downloads/YouTube_Automation_Standard_Operating_Procedures.pdf",
+    "label": "YouTube Otomasyon Studyosu"
+  }
+}

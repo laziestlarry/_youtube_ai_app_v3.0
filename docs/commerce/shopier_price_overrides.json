@@ -1,0 +1,20 @@
+{
+  "ZEN-ART-BASE": { "price": 199, "currency": "TRY" },
+  "CREATOR-KIT-01": { "price": 499, "currency": "TRY" },
+  "FIVERR-KIT-01": { "price": 299, "currency": "TRY" },
+  "SHOPIFY-KIT-01": { "price": 799, "currency": "TRY" },
+  "YT-AUTO-01": { "price": 5899, "currency": "TRY" },
+  "IW-CONSULT-01": { "price": 29899, "currency": "TRY" },
+  "IW-TRAIN-01": { "price": 3899, "currency": "TRY" },
+  "CMD-API-01": { "price": 7899, "currency": "TRY" },
+  "AX-SAAS-01": { "price": 999, "currency": "TRY" },
+  "BOP-SAAS-01": { "price": 299, "currency": "TRY" },
+  "PROFIT-OS-01": { "price": 14899, "currency": "TRY" },
+  "HYBRID-STACK-01": { "price": 399, "currency": "TRY" },
+  "SOP-AUTO-01": { "price": 699, "currency": "TRY" },
+  "NOTION-PASSIVE-01": { "price": 249, "currency": "TRY" },
+  "REDDIT-LAUNCH-01": { "price": 349, "currency": "TRY" },
+  "DISCORD-OPS-01": { "price": 399, "currency": "TRY" },
+  "GUMROAD-LAUNCH-01": { "price": 349, "currency": "TRY" },
+  "BLOG-SEO-01": { "price": 499, "currency": "TRY" }
+}

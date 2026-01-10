@@ -1,0 +1,12 @@
+Executive Snapshot (1–2 slides)
+Slide 1: Readiness overview
+- Organization name, date
+- Overall readiness score and level
+- Dimension scores (bar or radar)
+- Top 3 priorities
+
+Slide 2: Actions
+- 30-day focus
+- 60–90 day plan
+- Risks & owners
+- Support/CTA: Schedule TekraQual implementation call

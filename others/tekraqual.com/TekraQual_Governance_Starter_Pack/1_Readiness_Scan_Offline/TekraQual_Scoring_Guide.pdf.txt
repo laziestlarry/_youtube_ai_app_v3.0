@@ -1,0 +1,16 @@
+TekraQual Scoring Guide
+
+Scale (per question): 1 = Not in place, 5 = Consistent & audited.
+
+Dimension guidance:
+- OPS: Process discipline, handoffs, incident handling.
+- CX: Responsiveness, resolution quality, feedback loops.
+- GOV: Oversight, approvals, risk controls, policy adherence.
+- DATA: Integrity, access, backups, retention, privacy.
+- INCOME: Billing, collections, margin awareness, forecasting.
+
+Readiness mapping (overall averages):
+- 1.0–2.4: Foundation – document and stabilize basics.
+- 2.5–3.4: Bronze potential – define owners, start governance cadence.
+- 3.5–4.2: Silver potential – automate checks, integrate Larry workflows.
+- 4.3–5.0: Gold potential – continuous improvement with metrics and audits.

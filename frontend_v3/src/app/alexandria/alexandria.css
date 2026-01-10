@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono&display=swap");
+
+.alexandria-shell {
+  font-family: "Inter", sans-serif;
+  background-color: #0c0a09;
+  color: #e7e5e4;
+}
+
+.alexandria-shell .font-cinzel {
+  font-family: "Cinzel", serif;
+}
+
+.alexandria-shell .font-inter {
+  font-family: "Inter", sans-serif;
+}
+
+.alexandria-shell .font-mono {
+  font-family: "JetBrains Mono", monospace;
+}
+
+.alexandria-shell .custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.alexandria-shell .custom-scrollbar::-webkit-scrollbar-track {
+  background: #0c0a09;
+}
+
+.alexandria-shell .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #44403c;
+  border-radius: 3px;
+}
+
+.alexandria-shell .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #d97706;
+}
+
+@keyframes pulse-gold {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.alexandria-shell .animate-pulse-gold {
+  animation: pulse-gold 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

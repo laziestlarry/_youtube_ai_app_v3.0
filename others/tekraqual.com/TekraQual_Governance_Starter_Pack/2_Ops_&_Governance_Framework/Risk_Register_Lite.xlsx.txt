@@ -1,0 +1,11 @@
+Risk Register Lite
+Columns:
+- ID
+- Risk description
+- Owner
+- Impact (Low/Med/High)
+- Likelihood (Low/Med/High)
+- Mitigation / Control
+- Status (Open/Monitoring/Mitigated)
+- Next review date
+Include a summary section counting risks by severity and status.

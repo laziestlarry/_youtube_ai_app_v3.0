@@ -1,0 +1,16 @@
+# Shopier Monetization Integration
+
+## Status
+- [ ] **Planning**
+    - [ ] Analyze Shopier API requirements
+    - [ ] Create Implementation Plan
+- [ ] **Configuration**
+    - [ ] Add `ShopierSettings` to [backend/config/enhanced_settings.py](file:///Users/pq/_youtube_ai_app_v3.0/backend/config/enhanced_settings.py)
+    - [ ] Add environment variables to [.env](file:///Users/pq/_youtube_ai_app_v3.0/.env) (mock)
+- [ ] **Implementation**
+    - [ ] Create `modules/ai_agency/shopier_service.py`
+    - [ ] Implement `generate_payment_link` method
+    - [ ] Integrate with `modules/ai_agency/payment_service.py`
+- [ ] **Verification**
+    - [ ] Create test script `scripts/test_shopier.py`
+    - [ ] Verify functionality

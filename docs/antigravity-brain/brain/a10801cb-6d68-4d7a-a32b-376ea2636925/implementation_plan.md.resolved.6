@@ -1,0 +1,71 @@
+# YouTube AI App v3.0 - Architectural Audit & Performance Upgrade
+
+This plan outlines the final surgical upgrades to stabilize `v3.0` by extracting high-performance components from the reference archive (`clean copy 5`).
+
+## Core Objectives
+
+1. **Strategic Merge**: Integrate essential CI/CD workflows and management scripts.
+2. **Mini-App Activation**: Sourcing and consolidating the `YouTube Income Commander` module for immediate revenue generation.
+3. **Execution Pack 2.0**: Completing the script suite with performance utilities like a [Makefile](file:///Users/pq/_youtube_ai_app_v3.0/Makefile) and [kill_port.sh](file:///Users/pq/youtube_ai_app_clean%20copy%205/kill_port.sh).
+4. **Independent Functionalism**: Ensuring `v3.0` is the single authoritative and execution-ready source.
+
+## Proposed Upgrades (`_youtube_ai_app_v3.0/`)
+
+### 1. Management & Automation (`/scripts` & Root)
+
+- **[UPGRADE] [Makefile](file:///Users/pq/youtube_ai_app_clean%20copy%205/_youtube_ai_app_v3.0/Makefile)**: Centralized command suite for installation, startup, and monitoring.
+- **[NEW] [kill_port.sh](file:///Users/pq/youtube_ai_app_clean%20copy%205/_youtube_ai_app_v3.0/scripts/kill_port.sh)**: Port management utility for dev reliability.
+- **[UPGRADE] [setup.sh](file:///Users/pq/youtube_ai_app_clean%20copy%205/_youtube_ai_app_v3.0/scripts/setup.sh)**: Integrated with the consolidated `Makefile` patterns.
+
+### 2. DevOps & CI/CD (`/.github`)
+
+- **[NEW] [deploy.yml](file:///Users/pq/youtube_ai_app_clean%20copy%205/_youtube_ai_app_v3.0/.github/workflows/deploy.yml)**: Automated deployment workflows.
+- **[NEW] [deploy.sh](file:///Users/pq/youtube_ai_app_clean%20copy%205/_youtube_ai_app_v3.0/.github/workflows/deploy.sh)**: Support script for production pipelines.
+
+### 3. Integrated Mini-App Module (`/modules/mini-app`)
+
+- **[NEW] /mini_app_commander**: Full extraction of the `youtube-income-commander-mini` ecosystem including:
+  - `revenue_tracker.py`, `bank_evidence_generator.py`, `upload_optimizer.py`.
+  - Integrated README and activation scripts within the v3.0 scope.
+
+### 4. Database & Core Stability (Bug Fixes)
+
+- **[MODIFY] [requirements.txt](file:///Users/pq/_youtube_ai_app_v3.0/backend/requirements.txt)**: Added `greenlet` dependency required for async SQLAlchemy.
+- **[MODIFY] [database.py](file:///Users/pq/_youtube_ai_app_v3.0/backend/core/database.py)**: Refactored to prevent premature engine creation on import.
+
+### 5. Consolidated Strategy Docs (`/docs`)
+
+- **[NEW] [DEVELOPMENT_STRATEGY.md](file:///Users/pq/youtube_ai_app_clean%20copy%205/_youtube_ai_app_v3.0/docs/DEVELOPMENT_STRATEGY.md)**.
+- **[NEW] [MARKETING_PLAN.md](file:///Users/pq/youtube_ai_app_clean%20copy%205/_youtube_ai_app_v3.0/docs/MARKETING_PLAN.md)**.
+
+## Execution Steps
+
+### Phase 1: Selective Asset Extraction
+
+- [ ] Migrate `.github/` workflows.
+- [ ] Migrate `Makefile` and `kill_port.sh` to the v3.0 root and scripts folder respectively.
+- [ ] Extract `youtube-income-commander-mini` to `_youtube_ai_app_v3.0/modules/mini_app`.
+
+### Phase 2: Reframing & Integration
+
+- [ ] Update `v3.0/Makefile` to point to `src/backend` and `src/frontend`.
+- [ ] Resolve any cross-module references in the `mini_app` logic to fit the v3.0 pathing.
+- [ ] Upgrade `.env.example` in `v3.0` with the advanced keys from the archive.
+
+### Phase 3: Final Verification
+
+- [ ] Execute `make help` and `bash scripts/setup.sh` in the v3.0 directory.
+- [ ] Verify the mini-app can be initialized via the execution pack.
+- [ ] Final check for redundant file removal.
+
+## Verification Plan
+
+1. **Automation Test**: Run `make install` to verify environment parity.
+2. **Module Test**: Initialize the `Income Commander` module to verify it works within the v3.0 paths.
+3. **Launch Test**: Start the full-stack app using the v3.0 configuration to confirm independent stability.
+
+## Verification Plan
+
+1. **Build Test**: Run the `setup.sh` script in the new directory to ensure a clean build.
+2. **Execution Test**: Start the application from the consolidated folder to verify connectivity.
+3. **Audit Check**: Verify that all legacy/temporary files from the root are successfully excluded.

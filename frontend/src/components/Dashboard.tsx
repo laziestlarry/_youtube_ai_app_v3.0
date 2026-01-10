@@ -37,7 +37,7 @@ export default function Dashboard() {
     <Container maxWidth="lg" sx={{ py: 4 }}>
       <Box sx={{ mb: 4 }}>
         <Typography variant="h3" component="h1" gutterBottom>
-          YouTube AI Dashboard
+          Autonomax Dashboard
         </Typography>
         <Typography variant="body1" color="text.secondary">
           Modern dashboard foundation (Vite + React + MUI)

@@ -1,0 +1,64 @@
+# AI Flow Export Names Fix - Walkthrough
+
+## Problem
+
+The Next.js build was failing with multiple export errors like:
+```
+Export rankBusinessOpportunities doesn't exist in target module
+Did you mean to import rankbusinessopportunities?
+```
+
+This was occurring across 9 different AI flow files in `/frontend_v3/src/ai/flows/`.
+
+## Root Cause
+
+All AI flow stub files were exporting functions with **lowercase** names (e.g., `rankbusinessopportunities`), but the import statements throughout the application were using **camelCase** names (e.g., `rankBusinessOpportunities`).
+
+This mismatch caused TypeScript/Next.js to fail during compilation.
+
+## Solution
+
+Updated all 9 AI flow files to export functions with proper camelCase naming:
+
+### Files Fixed
+
+| File | Old Export | New Export |
+|------|-----------|------------|
+| `rank-business-opportunities.ts` | `rankbusinessopportunities` | `rankBusinessOpportunities` |
+| `analyze-market-opportunity.ts` | `analyzemarketopportunity` | `analyzeMarketOpportunity` |
+| `generate-business-structure.ts` | `generatebusinessstructure` | `generateBusinessStructure` |
+| `build-automated-business-strategy.ts` | `buildautomatedbusinessstrategy` | `buildAutomatedBusinessStrategy` |
+| `extract-tasks-from-strategy.ts` | `extracttasksfromstrategy` | `extractTasksFromStrategy` |
+| `generate-build-mode-advice.ts` | `generatebuildmodeadvice` | `generateBuildModeAdvice` |
+| `generate-chart-data.ts` | `generatechartdata` | `generateChartData` |
+| `generate-executive-brief.ts` | `generateexecutivebrief` | `generateExecutiveBrief` |
+| `prioritize-online-business-ventures.ts` | `prioritizeonlinebusinessventures` | `prioritizeOnlineBusinessVentures` |
+
+### Example Change
+
+```diff
+// Temporarily disabled - will be migrated to backend API
+'use server';
+-export async function rankbusinessopportunities(...args: any[]) {
++export async function rankBusinessOpportunities(...args: any[]) {
+  console.warn('This AI flow is temporarily disabled');
+  return null;
+}
+```
+
+## Verification
+
+✅ **Dev Server Started Successfully**
+- Killed existing process on port 3001
+- Started `npm run dev -- -p 3001`
+- Server compiled without errors
+- Dashboard page loaded successfully (200 in 616ms)
+
+✅ **No Build Errors**
+- All import/export mismatches resolved
+- TypeScript compilation successful
+- Turbopack build completed
+
+## Status
+
+The Next.js frontend is now running successfully on `http://localhost:3001` with all AI flow imports working correctly. These are currently stub functions that log warnings and return null, as indicated by the comments that they will be migrated to backend APIs.

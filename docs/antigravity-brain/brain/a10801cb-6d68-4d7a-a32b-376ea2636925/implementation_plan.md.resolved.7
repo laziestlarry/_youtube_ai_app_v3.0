@@ -1,0 +1,48 @@
+# Implementation Plan - Project Ignite 🚀
+
+Build and activate the commercialization engine for the YouTube AI App v3.0, focusing on the "AI Agency" framework and "Land Ignite" earnings modules.
+
+## User Review Required
+
+> [!IMPORTANT]
+> This phase modifies the architecture by adding a new `modules/ai_agency/` directory. It also enhances the frontend dashboard to include real-time revenue tracking and a premium "Sculpture Next" design.
+
+## Proposed Changes
+
+### [AI Agency Framework]
+
+#### [NEW] [direction_board.py](file:///Users/pq/_youtube_ai_app_v3.0/modules/ai_agency/direction_board.py)
+A central orchestrator that manages departmental AI agents (Marketing, Development, Support).
+
+#### [NEW] [chimera_engine.py](file:///Users/pq/_youtube_ai_app_v3.0/modules/ai_agency/chimera_engine.py)
+Multi-model backend support. It allows the app to flip between Ollama and Cloud APIs based on task complexity (The "Chimera" concept).
+
+#### [NEW] [altered_self.py](file:///Users/pq/_youtube_ai_app_v3.0/modules/ai_agency/altered_self.py)
+Logic to personalize AI responses based on the creator's YouTube channel history and performance data.
+
+---
+
+### [Earnings & Monetization (Land Ignite)]
+
+#### [MODIFY] [auth.py](file:///Users/pq/_youtube_ai_app_v3.0/backend/api/routes/auth.py)
+Enhance `/login-with-key` to properly track usage limits based on whether the key is "Early Bird" or "Master".
+
+#### [MODIFY] [RevenueDashboard.tsx](file:///Users/pq/_youtube_ai_app_v3.0/frontend/src/components/RevenueDashboard.tsx)
+Upgrade the UI with "Sculpture Next" aesthetics (animations, glassmorphism) and real-time data from the backend.
+
+---
+
+### [Core App Cleanup]
+
+#### [MODIFY] [Makefile](file:///Users/pq/_youtube_ai_app_v3.0/Makefile)
+Add `ignite` target to launch the AI Agency modules alongside the main app.
+
+## Verification Plan
+
+### Automated Tests
+- `pytest backend/tests/test_ai_agency.py`
+- Validate `chimera_engine` switching logic.
+
+### Manual Verification
+- Log in with an "Early Bird" key and verify the Dashboard shows correct tiered limits.
+- Use the new "AI Agency" tab to generate a marketing strategy and verify it uses the creator's "Altered Self" profile.

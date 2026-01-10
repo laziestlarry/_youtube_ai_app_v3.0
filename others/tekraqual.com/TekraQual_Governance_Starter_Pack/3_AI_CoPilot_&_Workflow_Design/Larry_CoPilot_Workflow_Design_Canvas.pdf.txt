@@ -1,0 +1,9 @@
+Larry CoPilot Workflow Design Canvas
+
+Fields to capture per workflow:
+- Inputs: sources (tickets, forms, CRM events, email inboxes)
+- Steps: what Larry does (classify, summarize, draft, route, update tools)
+- Human approvals: thresholds, roles, escalation rules
+- Outputs: updates to systems, notifications, reports
+- KPIs: response time, quality, automation %, error rates
+- Guardrails: data masking, limits, forbidden actions

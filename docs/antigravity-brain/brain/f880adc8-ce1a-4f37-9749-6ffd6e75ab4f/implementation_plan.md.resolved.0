@@ -1,0 +1,30 @@
+# Shopier Payment Gateway Activation
+
+This plan outlines the steps to activate the Shopier payment gateway for real-world transactions.
+
+## User Action Required
+
+The user needs to gather the API Key and API Secret from their Shopier dashboard.
+
+> [!IMPORTANT]
+> You must have a Shopier account with API access enabled. 
+> To find your credentials:
+> 1. Log in to your [Shopier Dashboard](https://www.shopier.com).
+> 2. Navigate to the **API Settings** or **Developer** section.
+> 3. Locate your **API Key** and **API Secret**.
+
+## Proposed Changes
+
+### Configuration
+
+#### [MODIFY] [.env](file:///Users/pq/_youtube_ai_app_v3.0/.env)
+Update the following placeholders with live credentials:
+- `PAYMENT_SHOPIER_API_KEY`
+- `PAYMENT_SHOPIER_API_SECRET`
+
+## Verification Plan
+
+### Manual Verification
+1. **Run Revenue Launch Script**: Execute `python scripts/launch_revenue_operation.py` and verify that it generates a real Shopier payment HTML/link instead of a mock one.
+2. **Payment Form Validation**: Inspect the generated HTML to ensure the `API_key` and other parameters are correctly populated.
+3. **Transaction Flow (Optional)**: If the user wishes, they can open the generated payment link and verify the Shopier checkout page loads correctly (do not complete the transaction unless intending to test real payment).

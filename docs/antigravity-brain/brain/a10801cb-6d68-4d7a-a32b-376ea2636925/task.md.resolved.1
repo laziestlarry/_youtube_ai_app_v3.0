@@ -1,0 +1,31 @@
+# Phase 2: Platform Upgrade - "First Class Asset"
+
+- [/] **1. Secure Authentication System** <!-- id: 0 -->
+  - [ ] Install dependencies (`passlib`, `python-jose`, `bcrypt`) <!-- id: 1 -->
+  - [ ] Create [SecuritySettings](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/config/enhanced_settings.py#71-83) and update [.env](file:///Users/pq/youtube_ai_app_clean%20copy%205/.env) <!-- id: 2 -->
+  - [ ] Implement `backend/core/security.py` (hashing, JWT) <!-- id: 3 -->
+  - [ ] Update [User](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/core/database.py#22-28) model for auth fields <!-- id: 4 -->
+  - [ ] Create `backend/api/routes/auth.py` (`/login`, `/register`) <!-- id: 5 -->
+  - [ ] Verify Auth flow (Login -> Token) <!-- id: 6 -->
+
+- [ ] **2. Live YouTube Data Sync** <!-- id: 7 -->
+  - [ ] implement Google OAuth2 flow in [backend/services/youtube_service.py](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/services/youtube_service.py) <!-- id: 8 -->
+  - [ ] Create DB models for [ChannelStats](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/main.py#378-383) and [VideoAnalytics](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/main.py#384-391) (real persistence) <!-- id: 9 -->
+  - [ ] Create background job to sync data periodically <!-- id: 10 -->
+  - [ ] Verify data fetching from YouTube API <!-- id: 11 -->
+
+- [ ] **3. GenAI Content Engine** <!-- id: 12 -->
+  - [ ] Install `openai` sdk <!-- id: 13 -->
+  - [ ] Implement `generate_script` in [backend/services/ai_service.py](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/services/ai_service.py) <!-- id: 14 -->
+  - [ ] Create prompts for high-quality scripts, titles, descriptions <!-- id: 15 -->
+  - [ ] Verify AI generation outputs <!-- id: 16 -->
+
+- [ ] **4. Production Workflow Engine** <!-- id: 17 -->
+  - [ ] Create `WorkflowColumn` and `WorkflowCard` models <!-- id: 18 -->
+  - [ ] Implement CRUD API for workflow board <!-- id: 19 -->
+  - [ ] UI Integration (Frontend Kanban Board) <!-- id: 20 -->
+
+- [ ] **5. Smart Analytics Dashboard** <!-- id: 21 -->
+  - [ ] Implement revenue forecasting logic `backend/services/analytics.py` <!-- id: 22 -->
+  - [ ] Create endpoints for historical vs projected data <!-- id: 23 -->
+  - [ ] Frontend Chart updates <!-- id: 24 -->

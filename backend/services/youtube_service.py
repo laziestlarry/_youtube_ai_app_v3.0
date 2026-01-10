@@ -33,7 +33,7 @@ class YouTubeService:
     
     def __init__(self):
         # Determine redirect URI based on environment
-        self.redirect_uri = "http://localhost:3001/oauth/callback"  # Frontend callback
+        self.redirect_uri = "http://localhost:8000/oauth/callback"  # Unified platform callback
         
         # Client config for OAuth flow
         self.client_config = {

@@ -1,0 +1,58 @@
+# Phase 2: Platform Upgrade Plan - "First Class Asset"
+
+## Goal Description
+Transform the current prototype into a production-ready ("First Class Asset") SaaS platform for YouTube Creators. The goal is to replace mock data and placeholder logic with real, functional integrations and robust architecture.
+
+## 5 Top Enhancements
+1.  **Secure Authentication & User Management**: Implement JWT-based authentication (OAuth2) to secure the API and support multiple users.
+2.  **Live YouTube Data Integration**: Replace mock stats with real-time data fetching using the YouTube Data API (OAuth2 flow).
+3.  **GenAI Content Engine**: Connect the content generation endpoints to real LLM providers (OpenAI/Anthropic) for actual script, title, and description generation.
+4.  **Production Workflow Engine**: Implement a Kanban-style pipeline (Idea -> Script -> Production -> Review -> Upload) to manage the content lifecycle.
+5.  **Predictive Smart Analytics**: Upgrade the analytics dashboard to use real historical data and simple ML projection models (Linear Regression/Prophet) for revenue forecasting.
+
+## Proposed Changes
+
+### 1. Authentication (Security Layer)
+#### [NEW] `backend/core/security.py`
+- Implement password hashing (bcrypt).
+- Implement JWT token generation and validation.
+- Define `get_current_user` dependency.
+
+#### [MODIFY] `backend/api/routes/auth.py`
+- Add `/login`, `/register`, `/me` endpoints.
+
+#### [MODIFY] [backend/models/user.py](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/models/user.py)
+- Ensure User model supports password hashes and OAuth tokens.
+
+### 2. YouTube Data Sync (Integration Layer)
+#### [MODIFY] [backend/services/youtube_service.py](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/services/youtube_service.py)
+- Implement `store_channel_stats` and `store_video_analytics` to save fetched data to DB.
+- Implement `refresh_token` logic.
+
+### 3. GenAI Engine (Intelligence Layer)
+#### [MODIFY] [backend/services/ai_service.py](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/services/ai_service.py)
+- Integrate `openai` or `langchain` client.
+- Implement `generate_script(prompt, type)` dealing with real LLM responses.
+
+### 4. Workflow Pipeline (Productivity Layer)
+#### [NEW] `backend/api/routes/workflow.py`
+- Endpoints for `columns`, [cards](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/services/payoneer_service.py#257-268), `moves`.
+
+#### [NEW] `backend/models/workflow.py`
+- DB models for `WorkflowColumn`, `WorkflowCard` (linked to [VideoIdea](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/models.py#7-11)).
+
+### 5. Smart Analytics (Data Layer)
+#### [MODIFY] [backend/services/analytics_service.py](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/services/analytics_service.py)
+- Implement `forecast_revenue(user_id)` using `scikit-learn` or simple statistical projection on DB data.
+
+## Verification Plan
+
+### Automated Tests
+- `pytest` for Auth flow (register -> login -> access protected route).
+- `pytest` for AI Service (mocked OpenAI response).
+- `pytest` for DB logic (Workflow moves).
+
+### Manual Verification
+- **Auth**: Register a new user via Swagger UI/Frontend.
+- **YouTube**: Authenticate with Google (if credentials provided) or verify mock-replacement logic.
+- **AI**: Generate a script for "How to bake a cake" and verify non-hardcoded output.

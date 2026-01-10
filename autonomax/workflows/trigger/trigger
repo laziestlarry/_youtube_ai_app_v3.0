@@ -1,0 +1,19 @@
+from autonomax.audit.bq_audit import BigQueryAuditLogger
+
+audit = BigQueryAuditLogger()
+
+event_id = audit.log_event(
+    workflow_id=ctx.workflow_id,
+    trigger_source=ctx.trigger_source,
+    status=result.get("status", "unknown"),
+    customer_id=ctx.payload.get("customer_id"),
+    reason_code=ctx.payload.get("reason_code"),
+    predicted_churn=ctx.conditions_met.get("predicted_churn"),
+    customer_value=ctx.conditions_met.get("customer_value"),
+    request_json=body,
+    result_json=result,
+)
+
+# Attach audit id to response
+result["workflow_event_id"] = event_id
+return result

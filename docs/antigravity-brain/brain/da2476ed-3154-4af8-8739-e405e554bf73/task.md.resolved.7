@@ -1,0 +1,25 @@
+# Shopier & Production Readiness Tasks
+
+- [x] **Phase 1: Legal & Tax Compliance**
+    - [x] Determine Seller Status (Standardized for Digital Products)
+    - [x] Prepare Distance Sales Contract [legal_contracts.md](file:///Users/pq/.gemini/antigravity/brain/da2476ed-3154-4af8-8739-e405e554bf73/legal_contracts.md)
+    - [x] Define Refund Policy (Included in legal drafts)
+
+- [x] **Phase 2: Shopier Dashboard Configuration**
+    - [x] Link Dashboard: `https://autonomax-api-71658389068.us-central1.run.app/api/payment/shopier/callback`
+
+- [x] **Phase 3: Technical Integration (Readiness)**
+    - [x] Link successful payment to [FulfillmentEngine](file:///Users/pq/_youtube_ai_app_v3.0/modules/ai_agency/fulfillment_engine.py#9-179) [payment.py](file:///Users/pq/_youtube_ai_app_v3.0/backend/api/routes/payment.py)
+    - [x] Fix: Create robust [backend/Dockerfile](file:///Users/pq/_youtube_ai_app_v3.0/backend/Dockerfile) with Debian-slim image
+    - [x] Fix: Update [cloudbuild.yaml](file:///Users/pq/_youtube_ai_app_v3.0/cloudbuild.yaml) with required substitutions
+
+- [x] **Phase 4: Troubleshooting Production Deployment**
+    - [x] Investigation: Docker container import paths and startup failures
+    - [x] Investigation: Cloud Run connectivity/timeout settings
+    - [x] Fix: Update Dockerfile for robust production startup
+    - [x] Verify: Deploy and check /health endpoint (✅ Healthy)
+
+- [x] **Phase 5: Resolve Infrastructure Block**
+    - [x] Check GCP Billing status in Console (Resolved by user)
+    - [x] Fix: Resolve Cloud Build `INVALID_ARGUMENT` (Substitutions)
+    - [x] Verify: Final Deployment and Shopier Connectivity Readiness

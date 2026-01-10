@@ -1,0 +1,17 @@
+# Chimera ops schedule (sample)
+# Use: crontab scripts/chimera_schedule.cron
+
+SHELL=/bin/bash
+PATH=/usr/local/bin:/usr/bin:/bin
+
+# Daily at 09:00
+0 9 * * * cd /Users/pq/_youtube_ai_app_v3.0 && python3 scripts/chimera_ops.py daily >> logs/chimera_daily.log 2>&1
+
+# Weekly on Monday at 10:00
+0 10 * * 1 cd /Users/pq/_youtube_ai_app_v3.0 && python3 scripts/chimera_ops.py weekly >> logs/chimera_weekly.log 2>&1
+
+# Monthly on the 1st at 11:00
+0 11 1 * * cd /Users/pq/_youtube_ai_app_v3.0 && python3 scripts/chimera_ops.py monthly >> logs/chimera_monthly.log 2>&1
+
+# Revenue sync every 6 hours
+0 */6 * * * cd /Users/pq/_youtube_ai_app_v3.0 && python3 scripts/run_revenue_sync.py --days 30 >> logs/revenue_sync.log 2>&1

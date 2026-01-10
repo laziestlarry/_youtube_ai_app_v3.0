@@ -1,0 +1,24 @@
+# Shopier & Production Readiness Tasks
+
+- [x] **Phase 1: Legal & Tax Compliance**
+  - [x] Determine Seller Status (Standardized for Digital Products)
+  - [x] Prepare Distance Sales Contract [legal_contracts.md](file:///Users/pq/.gemini/antigravity/brain/da2476ed-3154-4af8-8739-e405e554bf73/legal_contracts.md)
+  - [x] Define Refund Policy (Included in legal drafts)
+
+- [x] **Phase 2: Shopier Dashboard Configuration**
+  - [x] Link Dashboard: `https://youtube-ai-backend-71658389068.us-central1.run.app/api/payment/shopier/callback`
+
+- [x] **Phase 3: Technical Integration (Compliance)**
+  - [x] Link successful payment to [FulfillmentEngine](file:///Users/pq/_youtube_ai_app_v3.0/modules/ai_agency/fulfillment_engine.py#9-179) [payment.py](file:///Users/pq/_youtube_ai_app_v3.0/backend/api/routes/payment.py)
+  - [x] Update `ShopierService.py` with official parameter set and digital product settings
+  - [x] Expand [cloudbuild.yaml](file:///Users/pq/_youtube_ai_app_v3.0/cloudbuild.yaml) to include all Shopier environment variables
+
+- [x] **Phase 4: Production Deployment**
+  - [x] Resolution: Deploy Debian-slim container to Cloud Run
+  - [x] Verify: /health endpoint (✅ Healthy)
+  - [x] Verify: Env variable injection (✅ Verified via masked logs)
+
+- [ ] **Phase 5: 1 TL Real-Money Test (BLOCKED: WAITING FOR APPROVAL)**
+  - [ ] **Problem:** Shopier returns "Hata 501" because the Shop application is still being reviewed by their team.
+  - [x] **Simulation:** Manually verify backend fulfillment logic via direct API call.
+  - [ ] **Real Test:** Complete purchase once Shopier approves the merchant app.

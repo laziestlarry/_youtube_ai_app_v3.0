@@ -1,0 +1,33 @@
+# Implementation Plan - Production Readiness & Bug Fixing 🛠️
+
+Ensure the platform is stable, bug-free, and connected to real production data streams for launch.
+
+## Proposed Changes
+
+### [Frontend Polish]
+
+#### [MODIFY] [EarningsTab.tsx](file:///Users/pq/_youtube_ai_app_v3.0/frontend/src/components/Dashboard/EarningsTab.tsx)
+Complete refactor of the JSX structure to fix nesting errors and restore the "Sculpture Next" design.
+
+#### [MODIFY] [App.tsx](file:///Users/pq/_youtube_ai_app_v3.0/frontend/src/App.tsx)
+Ensure Tab navigation indices match the actual components correctly.
+
+---
+
+### [Data & Backend Integration]
+
+#### [MODIFY] [agency.py](file:///Users/pq/_youtube_ai_app_v3.0/backend/api/routes/agency.py)
+Update `/revenue-stats` to pull from actual database aggregates or the YouTube Analytics service if available.
+
+#### [MODIFY] [analytics_service.py](file:///Users/pq/_youtube_ai_app_v3.0/backend/services/analytics_service.py) (Hypothetical - need to check path)
+Enhance data aggregation logic for production-grade reporting.
+
+## Verification Plan
+
+### Automated Tests
+- `npm run build` in the `frontend` directory to catch all JSX/TypeScript errors.
+- `pytest` for backend API consistency.
+
+### Manual Verification
+- Verify the "AI Agency" tab displays results without crashing the dashboard.
+- Confirm "Land Ignite" cards show data pulled from the backend and not hardcoded frontend values.

@@ -9,7 +9,7 @@ from enum import Enum
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
-env_path = Path(__file__).parent.parent / ".env"
+env_path = Path(__file__).parent.parent.parent / ".env"
 load_dotenv(dotenv_path=env_path)
 
 class AISettings(BaseSettings):
@@ -78,6 +78,8 @@ class SchedulingSettings(BaseSettings):
     task_timeout: int = Field(3600)
     retry_attempts: int = Field(3)
     retry_delay: int = Field(300)
+    max_local_concurrent_tasks: int = Field(2, description="Max concurrent local (CPU/GPU) tasks")
+    max_cloud_concurrent_tasks: int = Field(20, description="Max concurrent cloud (IO) tasks")
     
     model_config = SettingsConfigDict(
         env_prefix="SCHEDULING_",
@@ -159,7 +161,7 @@ class YouTubeSettings(BaseSettings):
     api_key: Optional[str] = Field(None)
     client_id: Optional[str] = Field(None)
     client_secret: Optional[str] = Field(None)
-    redirect_uri: str = Field("http://localhost:3001/oauth/callback")
+    redirect_uri: str = Field("http://localhost:8000/oauth/callback")
     
     model_config = SettingsConfigDict(
         env_prefix="YOUTUBE_",
@@ -173,6 +175,14 @@ class PaymentSettings(BaseSettings):
     payoneer_api_key: Optional[str] = Field(None)
     payoneer_secret_key: Optional[str] = Field(None)
     payoneer_program_id: Optional[str] = Field(None)
+    shopier_api_key: Optional[str] = Field(None, description="Shopier API Key")
+    shopier_api_secret: Optional[str] = Field(None, description="Shopier API Secret")
+    shopier_personal_access_token: Optional[str] = Field(None, validation_alias="SHOPIER_PERSONAL_ACCESS_TOKEN")
+    shopier_webhook_token: Optional[str] = Field(None, validation_alias="SHOPIER_WEBHOOK_TOKEN", description="Shopier Webhook Token")
+    shopify_admin_token: Optional[str] = Field(None, validation_alias="SHOPIFY_ADMIN_TOKEN")
+    shopify_storefront_token: Optional[str] = Field(None, validation_alias="SHOPIFY_STOREFRONT_TOKEN")
+    shopify_shop_domain: Optional[str] = Field(None, validation_alias="SHOPIFY_SHOP_DOMAIN")
+    shopify_api_version: str = Field("2025-07", validation_alias="SHOPIFY_API_VERSION")
     
     model_config = SettingsConfigDict(
         env_prefix="PAYMENT_",
@@ -185,6 +195,13 @@ class EnhancedSettings(BaseSettings):
     app_version: str = Field("2.0.0")
     debug: bool = Field(False)
     environment: str = Field("production")
+    backend_origin: str = Field("http://localhost:8000")
+    frontend_origin: str = Field("http://localhost:3001")
+    shopier_app_mode: bool = Field(
+        False,
+        validation_alias="SHOPIER_APP_MODE",
+        description="Serve the Shopier storefront as the root app view."
+    )
     
     # Sub-configurations
     ai: AISettings = AISettings()
@@ -371,6 +388,9 @@ def validate_startup_config():
         print("Configuration validation passed")
 
 # Export commonly used settings
+def get_settings() -> EnhancedSettings:
+    return settings
+
 def get_ai_settings() -> AISettings:
     return settings.ai
 

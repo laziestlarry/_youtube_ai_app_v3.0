@@ -1,0 +1,48 @@
+
+<!doctype html><html><head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>AutonomaX Network Graph — Execution Panel</title>
+<link rel="stylesheet" href="assets/styles.css"/>
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script type="module">
+import { showPanel } from './assets/panel.js';
+async function load(path){ const r = await fetch(path); return await r.json(); }
+const graph = await load('./data/network_map.json');
+const width = document.documentElement.clientWidth * 0.66;
+const height = document.documentElement.clientHeight;
+const svg = d3.select('#graph').append('svg').attr('width',width).attr('height',height);
+const link = svg.append('g').attr('stroke-width',1.0).selectAll('line').data(graph.edges).join('line').attr('class','link');
+const node = svg.append('g').selectAll('g').data(graph.nodes).join('g').attr('class', d=>'node '+(d.type||'')).call(drag(simulation));
+node.append('circle').attr('r', d=> d.type==='prompt'? 5: 7);
+node.append('title').text(d=> `${d.label} [${d.type}]`);
+node.on('click',(_,d)=> showPanel(d, graph) );
+const simNodes = graph.nodes.map(d=>Object.assign({}, d));
+const simLinks = graph.edges.map(d=>Object.assign({}, d));
+function drag(sim){ function dragstarted(event){ if(!event.active) sim.alphaTarget(0.3).restart(); event.subject.fx=event.subject.x; event.subject.fy=event.subject.y; }
+  function dragged(event){ event.subject.fx=event.x; event.subject.fy=event.y; }
+  function dragended(event){ if(!event.active) sim.alphaTarget(0); event.subject.fx=null; event.subject.fy=null; }
+  return d3.drag().on('start', dragstarted).on('drag', dragged).on('end', dragended); }
+const simulation = d3.forceSimulation(simNodes)
+  .force('link', d3.forceLink(simLinks).id(d=>d.id).distance(l=> l.relation==='delegates_to'? 80: 120))
+  .force('charge', d3.forceManyBody().strength(-140))
+  .force('center', d3.forceCenter(width/2, height/2));
+simulation.on('tick', ()=>{
+  link.attr('x1', d=>getNode(d.source).x).attr('y1', d=>getNode(d.source).y)
+      .attr('x2', d=>getNode(d.target).x).attr('y2', d=>getNode(d.target).y);
+  node.attr('transform', d=> `translate(${getNode(d.id).x},${getNode(d.id).y})`);
+});
+function getNode(id){ return simNodes.find(n=> (n.id||n) === id); }
+document.getElementById('panel').innerHTML = `
+  <div class="item">
+    <h1>Execution Panel</h1>
+    <div class="small">Click a <b>prompt</b> node to render inputs and call your APIs.</div>
+    <div class="small">Configure API URL/token in <code>data/endpoints.json</code>.</div>
+  </div>`;
+</script>
+</head>
+<body>
+  <div id="graph"></div>
+  <div id="panel"></div>
+</body>
+</html>

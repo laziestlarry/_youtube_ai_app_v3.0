@@ -1,0 +1,21 @@
+# Shopier Real-Money Activation Tasks [/]
+>
+> [!NOTE]
+> Implementation plan approved. Waiting for legal/dashboard steps before technical switch.
+
+- [ ] **Phase 1: Legal & Tax Compliance**
+  - [ ] Determine Seller Status (Individual vs. Individual Business)
+  - [ ] Prepare Distance Sales Contract (Mesafeli Satış Sözleşmesi)
+  - [ ] Define Refund Policy (iade ve İptal Koşulları)
+  - [ ] Set up e-Invoice/e-Archive (e-Fatura/e-Arşiv) system (Recommended for Turkey)
+
+- [ ] **Phase 2: Shopier Dashboard Configuration**
+    - [ ] Complete Identity Verification (TC No / Kimlik Doğrulama)
+    - [ ] Link Valid Bank Account (IBAN Verification)
+    - [ ] Set "Digital Product" delivery mode in Shopier panel
+    - [ ] Configure Webhook / Callback URL: `{BACKEND_URL}/api/payment/shopier/callback`
+
+- [x] **Phase 3: Technical Integration (Readiness)**
+    - [x] Link successful payment to [FulfillmentEngine](file:///Users/pq/_youtube_ai_app_v3.0/modules/ai_agency/fulfillment_engine.py#9-179) [payment.py](file:///Users/pq/_youtube_ai_app_v3.0/backend/api/routes/payment.py)
+    - [ ] Switch from Mock to Live `SHOPIER_API_KEY` and `SHOPIER_API_SECRET` in [.env](file:///Users/pq/_youtube_ai_app_v3.0/.env)
+    - [ ] Configure `SHOPIER_WEBHOOK_TOKEN` in [.env](file:///Users/pq/_youtube_ai_app_v3.0/.env) (From Shopier Panel)

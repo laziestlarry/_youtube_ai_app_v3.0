@@ -1,0 +1,12 @@
+# Task: Debugging Dashboard Data Loading
+
+- [/] Investigate Data Loading Failures
+    - [ ] Check backend logs for 500/404 errors on analytics endpoints
+    - [ ] Verify database contents for [ChannelStats](file:///Users/pq/_youtube_ai_app_v3.0/backend/models/youtube.py#6-21) and [VideoAnalytics](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/models/youtube.py#22-40)
+    - [ ] Inspect [AnalyticsService](file:///Users/pq/_youtube_ai_app_v3.0/backend/services/analytics_service.py#11-133) for handling empty data sets
+- [ ] Fix Connectivity Issues
+    - [ ] Fix potential 401/403 errors in API service
+    - [ ] Ensure [get_revenue_stats](file:///Users/pq/_youtube_ai_app_v3.0/backend/api/routes/agency.py#44-68) returns valid data structure even if empty
+- [ ] Verification
+    - [ ] Use `curl` with auth token to verify endpoints
+    - [ ] Perform frontend smoke test

@@ -1,0 +1,26 @@
+This text file represents the structure for an Excel workbook.
+Create the workbook with these sheets and headers:
+
+[Sheet: Instructions]
+- Purpose of the scan and how scores map to readiness levels.
+- Scoring guidance: 1 (Not in place) to 5 (Consistently executed and audited).
+
+[Sheet: Responses]
+Columns:
+- Dimension (OPS, CX, GOV, DATA, INCOME)
+- Area (e.g., Process discipline, Customer response, Risk controls)
+- Question
+- Score (1-5)
+- Evidence/Notes
+Example rows:
+OPS | Process discipline | Core workflows documented and followed | 3 | SOPs exist but not enforced.
+CX  | Responsiveness     | Average first response time under target | 4 | Meets target for high-priority queues.
+GOV | Oversight          | Leadership reviews key risks monthly     | 2 | Informal updates only.
+
+[Sheet: Scores]
+Columns:
+- Dimension
+- Average score (auto-calc from Responses)
+- Readiness band (Foundation / Bronze potential / Silver potential / Gold potential)
+- Top 2 priorities
+Add formulas to compute averages and overall_score.

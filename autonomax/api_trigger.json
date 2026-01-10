@@ -1,0 +1,14 @@
+POST /autonomax/workflows/trigger
+{
+  "workflow_id": "churn_prevention_001",
+  "trigger_source": "Looker_Action",
+  "conditions_met": {
+    "predicted_churn": 1,
+    "customer_value": "high"
+  },
+  "payload": {
+    "customer_id": "C_3281",
+    "reason_code": "low_engagement",
+    "action": "assign_success_manager"
+  }
+}

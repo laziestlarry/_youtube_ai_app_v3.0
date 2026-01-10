@@ -1,0 +1,16 @@
+Prompt snippets for Larry CoPilot
+
+- Ticket summary:
+  "Summarize the customer's issue and urgency in 3 bullets. Include recent actions and any blockers."
+
+- Clarifying question:
+  "Ask the customer one concise clarifying question to unblock resolution. Keep tone calm and helpful."
+
+- Policy-aligned refund check:
+  "Based on the refund policy, is this request within limits? If not, draft a polite alternative and flag for approval."
+
+- Status recap:
+  "Create an internal status update with: current state, risks, next 2 steps, owner. Keep under 120 words."
+
+- Risk log entry:
+  "Draft a risk entry with description, owner, impact, likelihood, and mitigation suggestions."

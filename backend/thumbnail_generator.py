@@ -125,12 +125,35 @@ async def generate_thumbnail(
         filename = generate_filename(title, style, format)
         output_path = os.path.join(THUMBNAIL_CONFIG["output_dir"], filename)
         
-        # TODO: Implement actual thumbnail generation
-        # This is a placeholder for the actual image generation
-        # In production, use a library like Pillow or integrate with a service
+        # Implement actual thumbnail generation using OpenAI DALL-E 3
+        from openai import AsyncOpenAI
+        from backend.config.enhanced_settings import settings
+        import httpx
         
-        # Simulate thumbnail generation
-        logger.info(f"Generating thumbnail for: {title}")
+        client = AsyncOpenAI(api_key=settings.ai.openai_api_key)
+        
+        # Create a detailed prompt based on title and style
+        prompt = f"Professional YouTube thumbnail for a video titled: '{title}'. Style: {style}. Highly engaging, high contrast, 4k, digital art."
+        
+        response = await client.images.generate(
+            model="dall-e-3",
+            prompt=prompt,
+            size="1024x1024",
+            quality="standard",
+            n=1,
+        )
+        
+        image_url = response.data[0].url
+        
+        # Download and save the image
+        async with httpx.AsyncClient() as http_client:
+            img_response = await http_client.get(image_url)
+            if img_response.status_code == 200:
+                with open(output_path, "wb") as f:
+                    f.write(img_response.content)
+                logger.info(f"Successfully generated and saved thumbnail to: {output_path}")
+            else:
+                raise Exception(f"Failed to download generated image: {img_response.status_code}")
         
         # Log the generation
         log_execution(

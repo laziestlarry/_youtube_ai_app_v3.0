@@ -24,6 +24,7 @@ import { PerformanceTab } from './components/Dashboard/PerformanceTab';
 import { HealthTab } from './components/Dashboard/HealthTab';
 import { EarningsTab } from './components/Dashboard/EarningsTab';
 import { ManagementTab } from './components/Dashboard/ManagementTab';
+import { AgencyTab } from './components/Dashboard/AgencyTab';
 import { ModelsTab } from './components/Dashboard/ModelsTab';
 
 const theme = createTheme({
@@ -53,7 +54,7 @@ function App() {
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              YouTube AI Platform
+              Autonomax Platform
             </Typography>
             {isLoggedIn ? (
               <>
@@ -126,13 +127,14 @@ function DashboardView() {
     'Health',
     'Earnings',
     'Management',
+    'AI Agency',
     'Models'
   ];
 
   return (
     <>
       <Typography variant="h3" component="h1" gutterBottom align="center">
-        YouTube AI Dashboard
+        Autonomax Dashboard
       </Typography>
       <Typography variant="subtitle1" align="center" color="textSecondary" gutterBottom>
         Profit-Centric Content Creation Platform
@@ -172,6 +174,9 @@ function DashboardView() {
           <ManagementTab />
         </TabPanel>
         <TabPanel value={tabValue} index={6}>
+          <AgencyTab />
+        </TabPanel>
+        <TabPanel value={tabValue} index={7}>
           <ModelsTab />
         </TabPanel>
       </Paper>

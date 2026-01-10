@@ -136,6 +136,9 @@ Copy `env.template` to `.env` and configure:
 ENVIRONMENT=production
 SECRET_KEY=your-super-secret-key
 DATABASE_URL=your-database-url
+# Optional Cloud SQL
+# CLOUD_SQL_INSTANCE=project:region:instance
+# DATABASE_URL=postgresql+asyncpg://USER:PASSWORD@/DBNAME?host=/cloudsql/project:region:instance
 
 # AI Services
 OPENAI_API_KEY=sk-your-openai-key
@@ -150,6 +153,10 @@ YOUTUBE_REFRESH_TOKEN=your-refresh-token
 # Payment Services
 STRIPE_API_KEY=sk-your-stripe-key
 PAYONEER_CUSTOMER_ID=your-payoneer-id
+
+# BizOp ingestion (Alexandria Protocol data)
+BIZOP_AUTO_SYNC=true
+# BIZOP_DATA_ROOT=/app/docs
 ```
 
 ### Service Configuration
@@ -169,6 +176,13 @@ PAYONEER_CUSTOMER_ID=your-payoneer-id
 - Cash generation focus
 - High-CPM content strategy
 - Independent deployment
+
+#### BizOp Catalog (Backend)
+- Auto-ingests `docs/alexandria_protocol/*.json` and `docs/rankedopportunities.csv`
+- Endpoints:
+  - `GET /api/bizop/opportunities`
+  - `POST /api/bizop/refresh`
+  - `GET /api/bizop/sources`
 
 #### Nginx (Port 80/443)
 - Reverse proxy

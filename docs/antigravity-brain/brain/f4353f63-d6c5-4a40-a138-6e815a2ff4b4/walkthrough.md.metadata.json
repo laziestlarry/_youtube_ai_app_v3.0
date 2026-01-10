@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary":  "Walkthrough of the Shopier Payment Gateway integration.\nIncludes:\n- Configuration changes for API keys.\n- ShopierService implementation details.\n- Integration into the main PaymentService.\n- Verification test results.",
+  "updatedAt":  "2025-12-28T18:50:59.192110Z",
+  "version":  "1"
+}

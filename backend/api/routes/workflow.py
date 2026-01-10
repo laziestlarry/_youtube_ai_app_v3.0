@@ -73,3 +73,38 @@ async def move_card(card_id: int, column_id: int, order: int, db: AsyncSession =
     card.order = order
     await db.commit()
     return {"status": "success"}
+
+# --- Autonomax Integration ---
+
+from autonomax.workflows.registry import list_workflows, get_workflow
+from autonomax.workflows.base import WorkflowContext
+
+@router.get("/available")
+async def get_available_workflows():
+    """List all registered Autonomax workflows."""
+    return {"workflows": list_workflows()}
+
+class WorkflowTriggerRequest(BaseModel):
+    params: dict = {}
+
+@router.post("/trigger/{workflow_id}")
+async def trigger_workflow(workflow_id: str, request: WorkflowTriggerRequest):
+    """Trigger a specific Autonomax workflow."""
+    workflow = get_workflow(workflow_id)
+    if not workflow:
+        raise HTTPException(status_code=404, detail=f"Workflow '{workflow_id}' not found")
+    
+    # Initialize context (in a real app, this might come from DB or Auth)
+    context = WorkflowContext(
+        workflow_id=workflow_id,
+        params=request.params
+    )
+    
+    try:
+        # Execute workflow
+        # Note: In production, this should likely be offloaded to a background task (e.g., Celery/Cloud Tasks)
+        # to avoid blocking the request. For now, running inline for simplicity.
+        result = await workflow.execute(context)
+        return {"status": "success", "result": result.dict()}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Workflow execution failed: {str(e)}")

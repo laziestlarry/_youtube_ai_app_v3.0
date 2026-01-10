@@ -1,0 +1,36 @@
+# Resource Capacity Optimization Walkthrough
+
+## Overview
+We have replaced the single generic task limit with a specialized **Dual-Capped Scheduler**.
+This ensures that heavy local operations (like LLM inference) don't choke the system, while lightweight cloud operations can scale up to maximize throughput.
+
+## Changes Implemented
+
+### 1. Configuration ([backend/config/enhanced_settings.py](file:///Users/pq/_youtube_ai_app_v3.0/backend/config/enhanced_settings.py))
+Added granular controls for concurrency:
+```python
+max_local_concurrent_tasks: int = Field(2, description="Max concurrent local (CPU/GPU) tasks")
+max_cloud_concurrent_tasks: int = Field(20, description="Max concurrent cloud (IO) tasks")
+```
+
+### 2. Core Logic ([backend/core/resource_manager.py](file:///Users/pq/_youtube_ai_app_v3.0/backend/core/resource_manager.py))
+Implemented a Singleton [ResourceManager](file:///Users/pq/_youtube_ai_app_v3.0/backend/core/resource_manager.py#9-65) that holds `asyncio.Semaphore` locks for each bucket.
+- [acquire_local()](file:///Users/pq/_youtube_ai_app_v3.0/backend/core/resource_manager.py#50-57): Blocks until a slot (of 2) is free.
+- [acquire_cloud()](file:///Users/pq/_youtube_ai_app_v3.0/backend/core/resource_manager.py#58-65): Blocks until a slot (of 20) is free.
+
+### 3. Integration ([modules/ai_agency/chimera_engine.py](file:///Users/pq/_youtube_ai_app_v3.0/modules/ai_agency/chimera_engine.py))
+Updated the central AI engine to automatically route requests through the correct semaphore based on the task type (Local Ollama vs Cloud API).
+
+## Verification Results
+
+We ran a stress test with:
+- **5 Local Tasks** (Simulated 1s each)
+- **50 Cloud Tasks** (Simulated 0.5s each)
+
+### Results
+| Metric | Expected Time | Actual Time | Result |
+| :--- | :--- | :--- | :--- |
+| **Local Tasks (Limit 2)** | ~3.0s | **3.00s** | ✅ PASSED |
+| **Cloud Tasks (Limit 20)** | ~1.5s | **1.51s** | ✅ PASSED |
+
+The system now efficiently balances load without crashing locally or throttling remotely.

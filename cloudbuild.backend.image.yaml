@@ -1,0 +1,23 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-t",
+        "${_BACKEND_IMAGE}",
+        "-f",
+        "backend/Dockerfile",
+        ".",
+      ]
+
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "${_BACKEND_IMAGE}"]
+
+images:
+  - "${_BACKEND_IMAGE}"
+
+substitutions:
+  _BACKEND_IMAGE: "gcr.io/$PROJECT_ID/youtube-ai-backend"
+
+options:
+  substitution_option: "ALLOW_LOOSE"

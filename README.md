@@ -66,6 +66,23 @@ The platform is equipped with a professional `Makefile` to handle complex orches
 - `make kill-port`: Reset local ports (8000, 3001).
 - `make test-shopier`: Verify license key authentication.
 
+## Local AI (Ollama)
+
+- Start Ollama locally: `ollama serve` then `ollama pull llama3.2` (or your `OLLAMA_MODEL`).
+- In `.env`, set `OLLAMA_URL`, `OLLAMA_MODEL`, and `CHIMERA_DEFAULT_MODE=hybrid` for local-first with cloud fallback.
+- Run `make dev` for dual backend/frontend hot-reload (ports 8000 and 3001) with the Chimera Engine preferring Ollama.
+
+## Payments / Shopier Status
+
+- Shopier gateway remains approval-gated; real payments require `PAYMENT_SHOPIER_*` credentials. `make test-shopier` will only succeed after approval.
+- Until approval completes, the `/api/payment/shopier/pay` endpoint returns the mock link; continue using other configured channels (e.g., admin master key login or alternative processors) for access and fulfillment.
+
+## Shopier App Mode
+
+- Run a Shopier-only storefront + backend by copying `config/shopier.env.example` to `.env.shopier`.
+- Start it with `make shopier` (or `ENV_FILE=.env.shopier bash scripts/start_shopier_app.sh`).
+- The storefront is served from `static/store.html` when `SHOPIER_APP_MODE=true`.
+
 ## Professional Modules
 
 - **YouTube Income Commander**: A standalone revenue module located in `/modules/mini_app`. Launch via `make mini-app`.
@@ -80,4 +97,3 @@ The platform is equipped with a professional `Makefile` to handle complex orches
 
 ---
 **Senior Architect Note**: Version 3.0 represents a clean, audited, and hardened deliverable. It is the single authoritative source for platform execution.
-# _youtube_ai_app_v3.0

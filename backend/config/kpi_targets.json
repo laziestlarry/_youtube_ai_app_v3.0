@@ -1,0 +1,129 @@
+{
+  "updated_at": "2025-01-01T00:00:00Z",
+  "kpis": [
+    {
+      "id": "mrr",
+      "name": "Monthly Recurring Revenue",
+      "category": "Revenue",
+      "target": 25000,
+      "unit": "USD",
+      "direction": "up",
+      "owner": "Business Development",
+      "source": "billing",
+      "metric": "subscription_mrr",
+      "aggregation": "sum"
+    },
+    {
+      "id": "arpu",
+      "name": "Average Revenue Per User",
+      "category": "Revenue",
+      "target": 39,
+      "unit": "USD",
+      "direction": "up",
+      "owner": "Business Development",
+      "source": "billing",
+      "metric": "subscription_arpu",
+      "aggregation": "average"
+    },
+    {
+      "id": "conversion_rate",
+      "name": "Lead to Customer Conversion Rate",
+      "category": "Growth",
+      "target": 0.08,
+      "unit": "ratio",
+      "direction": "up",
+      "owner": "Growth",
+      "source": "pipeline",
+      "metric": "affiliate_conversion_rate",
+      "aggregation": "ratio"
+    },
+    {
+      "id": "pipeline_velocity",
+      "name": "Pipeline Velocity",
+      "category": "Growth",
+      "target": 12,
+      "unit": "deals_per_week",
+      "direction": "up",
+      "owner": "Growth",
+      "source": "pipeline",
+      "metric": "workflow_velocity",
+      "aggregation": "count"
+    },
+    {
+      "id": "cycle_time",
+      "name": "Delivery Cycle Time",
+      "category": "Operations",
+      "target": 10,
+      "unit": "days",
+      "direction": "down",
+      "owner": "Operations",
+      "source": "delivery"
+    },
+    {
+      "id": "on_time_delivery",
+      "name": "On-Time Delivery Rate",
+      "category": "Operations",
+      "target": 0.92,
+      "unit": "ratio",
+      "direction": "up",
+      "owner": "Operations",
+      "source": "delivery",
+      "metric": "video_upload_success_rate",
+      "aggregation": "ratio"
+    },
+    {
+      "id": "automation_coverage",
+      "name": "Automation Coverage",
+      "category": "Operations",
+      "target": 0.65,
+      "unit": "ratio",
+      "direction": "up",
+      "owner": "Operations",
+      "source": "workflow"
+    },
+    {
+      "id": "data_accuracy",
+      "name": "Data Accuracy",
+      "category": "Quality",
+      "target": 0.98,
+      "unit": "ratio",
+      "direction": "up",
+      "owner": "Data",
+      "source": "quality"
+    },
+    {
+      "id": "error_rate",
+      "name": "System Error Rate",
+      "category": "Quality",
+      "target": 0.02,
+      "unit": "ratio",
+      "direction": "down",
+      "owner": "Engineering",
+      "source": "monitoring",
+      "metric": "http_error_rate",
+      "aggregation": "ratio"
+    },
+    {
+      "id": "security_incidents",
+      "name": "Security Incidents",
+      "category": "Risk",
+      "target": 0,
+      "unit": "count",
+      "direction": "down",
+      "owner": "Governance",
+      "source": "monitoring"
+    },
+    {
+      "id": "retention_rate",
+      "name": "Customer Retention Rate",
+      "category": "Revenue",
+      "target": 0.9,
+      "unit": "ratio",
+      "direction": "up",
+      "owner": "Customer Success",
+      "source": "billing",
+      "metric": "subscription_retention_rate",
+      "aggregation": "ratio"
+    }
+  ]
+}

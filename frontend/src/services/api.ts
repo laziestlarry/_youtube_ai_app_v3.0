@@ -1,7 +1,7 @@
 import axios, { AxiosResponse, AxiosError, InternalAxiosRequestConfig } from 'axios';
 import type { AnalyticsSummary, VideoAnalytics, SystemHealth, EarningsData, AIModel } from '../types/dashboard';
 
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = window.location.origin;
 
 // Create axios instance with default config
 const apiClient = axios.create({
@@ -190,6 +190,33 @@ export const apiService = {
 
   async markNotificationAsRead(notificationId: string): Promise<{ success: boolean }> {
     const response = await apiClient.put(`/api/notifications/${notificationId}/read`);
+    return response.data;
+  },
+
+  // AI Agency (Project Ignite)
+  async getAgencyDepartments(): Promise<Array<{ name: string; description: string }>> {
+    const response = await apiClient.get('/api/agency/departments');
+    return response.data;
+  },
+
+  async executeAgencyTask(objective: string, department: string): Promise<{
+    department: string;
+    objective: string;
+    status: string;
+    result: string;
+  }> {
+    const response = await apiClient.post('/api/agency/execute', { objective, department });
+    return response.data;
+  },
+
+  async getIgniteRevenueStats(): Promise<{
+    monthly_estimate: number;
+    daily_average: number;
+    active_campaigns: number;
+    projected_yearly: number;
+    currency: string;
+  }> {
+    const response = await apiClient.get('/api/agency/revenue-stats');
     return response.data;
   },
 };

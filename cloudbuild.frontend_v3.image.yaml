@@ -1,0 +1,26 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "--build-arg",
+        "NEXT_PUBLIC_BACKEND_URL=${_BACKEND_URL}",
+        "-t",
+        "${_FRONTEND_IMAGE}",
+        "-f",
+        "frontend_v3/Dockerfile",
+        "frontend_v3",
+      ]
+
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "${_FRONTEND_IMAGE}"]
+
+images:
+  - "${_FRONTEND_IMAGE}"
+
+substitutions:
+  _BACKEND_URL: "http://localhost:8000"
+  _FRONTEND_IMAGE: "gcr.io/$PROJECT_ID/youtube-ai-frontend"
+
+options:
+  substitution_option: "ALLOW_LOOSE"

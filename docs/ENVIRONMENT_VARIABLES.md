@@ -21,4 +21,6 @@
 | PAYONEER_CUSTOMER_ID | Payoneer customer ID                        | ...                          |
 | DATABASE_URL_PROD    | Production database URL                     | ...                          |
 | REDIS_URL_PROD       | Production Redis URL                        | ...                          |
-| APP_SECRET_KEY       | Application secret key                      | ...                          | 
+| APP_SECRET_KEY       | Application secret key                      | ...                          |
+| KPI_TARGETS_PATH     | Override KPI targets file path              | backend/config/kpi_targets.json |
+| KPI_ACTUAL_<ID>      | Inline actual KPI value (per KPI id)        | KPI_ACTUAL_MRR=28000         |

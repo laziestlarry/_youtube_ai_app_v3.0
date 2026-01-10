@@ -1,0 +1,70 @@
+# Phase 2: Platform Upgrade Plan - "First Class Asset"
+
+## Goal Description
+Transform the current prototype into a production-ready ("First Class Asset") SaaS platform for YouTube Creators. The goal is to replace mock data and placeholder logic with real, functional integrations and robust architecture.
+
+## 5 Top Enhancements
+1.  **Secure Authentication & User Management**: Implement JWT-based authentication (OAuth2) to secure the API and support multiple users.
+2.  **Live YouTube Data Integration**: Replace mock stats with real-time data fetching using the YouTube Data API (OAuth2 flow).
+3.  **GenAI Content Engine**: Connect the content generation endpoints to real LLM providers (OpenAI/Anthropic) for actual script, title, and description generation.
+4.  **Production Workflow Engine**: Implement a Kanban-style pipeline (Idea -> Script -> Production -> Review -> Upload) to manage the content lifecycle.
+5.  **Predictive Smart Analytics**: Upgrade the analytics dashboard to use real historical data and simple ML projection models (Linear Regression/Prophet) for revenue forecasting.
+
+## Proposed Changes
+
+### 1. Authentication (Security Layer)
+#### [NEW] [backend/core/security.py](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/core/security.py)
+- Implement password hashing (bcrypt).
+- Implement JWT token generation and validation.
+- Define [get_current_user](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/api/deps.py#13-40) dependency.
+
+#### [MODIFY] [backend/api/routes/auth.py](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/api/routes/auth.py)
+- Add `/login`, `/register`, `/me` endpoints.
+
+#### [MODIFY] [backend/models/user.py](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/models/user.py)
+- Ensure User model supports password hashes and OAuth tokens.
+
+### 2. YouTube Data Sync (Integration Layer)
+#### [MODIFY] [backend/services/youtube_service.py](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/services/youtube_service.py)
+- Implement `store_channel_stats` and `store_video_analytics` to save fetched data to DB.
+- Implement `refresh_token` logic.
+
+### 3. GenAI Engine (Intelligence Layer)
+#### [MODIFY] [backend/services/ai_service.py](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/services/ai_service.py)
+- Integrate `openai` or `langchain` client.
+- Implement `generate_script(prompt, type)` dealing with real LLM responses.
+
+### 4. Workflow Pipeline (Productivity Layer)
+#### [NEW] [backend/api/routes/workflow.py](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/api/routes/workflow.py)
+- Endpoints for [columns](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/api/routes/workflow.py#31-36), [cards](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/api/routes/workflow.py#46-54), `moves`.
+
+#### [NEW] [backend/models/workflow.py](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/models/workflow.py)
+- DB models for [WorkflowColumn](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/models/workflow.py#6-16), [WorkflowCard](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/models/workflow.py#17-36) (linked to [VideoIdea](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/models/schemas.py#7-11)).
+
+### 5. Smart Analytics (Data Layer)
+#### [MODIFY] [backend/services/analytics_service.py](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/services/analytics_service.py)
+- Implement [forecast_revenue(user_id)](file:///Users/pq/youtube_ai_app_clean%20copy%205/backend/services/analytics_service.py#58-77) using `scikit-learn` or simple statistical projection on DB data.
+
+## Phase 3: Production Testing & Frontend Integration
+
+### 1. Backend Stabilization
+- **Migration Consistency**: Ensure models in `backend/models/` match the DB schema.
+- **API Verification**: Implement a health-check script that hits all core endpoints (Auth, YouTube, AI, Workflow, Analytics).
+
+### 2. Frontend Connectivity
+- **Environment Config**: Sync `.env` files.
+- **Auth Provider**: Update frontend state management to use the new `/api/auth/me` endpoint.
+- **Kanban Board**: Bind the frontend board to `/api/workflow` endpoints.
+
+### 3. Production Readiness
+- **Unit Testing**: Add service tests using `pytest`.
+- **E2E Validation**: Final walkthrough of the entire user journey.
+
+## Verification Plan
+
+### Automated Tests
+- `pytest` for all service layers.
+- Python test script for all API routes.
+
+### Manual Verification
+- Full flow: Register -> Connect YouTube -> Generate Content -> Move through Workflow -> Check Analytics.

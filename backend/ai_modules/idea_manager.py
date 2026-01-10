@@ -47,7 +47,7 @@ class IdeaRanking(BaseModel):
 
 class IdeaManager:
     def __init__(self):
-        self.db = get_db_connection()
+        pass
 
     async def get_ranked_ideas(self, limit: int = 10) -> List[IdeaRanking]:
         """Get ranked ideas based on priority, impact, and dependencies."""
@@ -124,27 +124,49 @@ class IdeaManager:
 
     async def _fetch_ideas(self) -> List[Idea]:
         """Fetch ideas from database."""
-        # TODO: Implement actual database fetch
-        # For now, return sample data
-        return [
-            Idea(
-                id="1",
-                title="Implement AI Content Optimization",
-                description="Add AI-powered content optimization features",
-                priority=IdeaPriority.CRITICAL,
-                status=IdeaStatus.BACKLOG,
-                category="feature",
-                estimated_effort=80.0,
-                potential_impact=0.9,
-                dependencies=[],
-                created_at=datetime.now(),
-                updated_at=datetime.now(),
-                assigned_to=None,
-                tags=["ai", "optimization", "content"],
-                metrics={"expected_roi": 2.5}
-            ),
-            # Add more sample ideas as needed
-        ]
+        from backend.database.models import ContentIdea
+        from backend.core.database import AsyncSessionLocal
+        from sqlalchemy import select
+        
+        async with AsyncSessionLocal() as session:
+            query = select(ContentIdea).order_by(ContentIdea.created_at.desc())
+            result = await session.execute(query)
+            db_ideas = result.scalars().all()
+            
+            # Map database models to Pydantic models
+            ideas = []
+            for db_idea in db_ideas:
+                # Map priority (Int) to IdeaPriority (Enum)
+                priority = IdeaPriority.MEDIUM
+                if db_idea.priority >= 9: priority = IdeaPriority.CRITICAL
+                elif db_idea.priority >= 7: priority = IdeaPriority.HIGH
+                elif db_idea.priority >= 4: priority = IdeaPriority.MEDIUM
+                else: priority = IdeaPriority.LOW
+                
+                # Map status string to IdeaStatus enum
+                try:
+                    status = IdeaStatus(db_idea.status)
+                except ValueError:
+                    status = IdeaStatus.BACKLOG
+                
+                ideas.append(Idea(
+                    id=str(db_idea.id),
+                    title=db_idea.title,
+                    description=db_idea.description or "",
+                    priority=priority,
+                    status=status,
+                    category=db_idea.category or "general",
+                    estimated_effort=50.0, # Placeholder or map from metadata
+                    potential_impact=db_idea.estimated_views / 10000.0 if db_idea.estimated_views else 0.5,
+                    dependencies=[],
+                    created_at=db_idea.created_at,
+                    updated_at=db_idea.updated_at,
+                    assigned_to=db_idea.created_by,
+                    tags=json.loads(db_idea.keywords) if db_idea.keywords else [],
+                    metrics={"estimated_revenue": db_idea.estimated_revenue}
+                ))
+            
+            return ideas
 
 @router.get("/ranked-ideas", response_model=List[IdeaRanking])
 async def get_ranked_ideas(limit: int = 10):

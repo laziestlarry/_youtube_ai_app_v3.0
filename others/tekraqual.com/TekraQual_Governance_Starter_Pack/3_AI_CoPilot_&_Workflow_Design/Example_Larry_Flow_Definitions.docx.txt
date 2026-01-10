@@ -1,0 +1,19 @@
+Example Larry Flows (outline)
+
+1) Customer FAQ Handling
+- Trigger: new support ticket with common intents.
+- Actions: classify intent, draft reply with policy snippets, request missing info.
+- Human loop: agent approves drafts over refund threshold or sensitive topics.
+- Outputs: send reply/update ticket, log satisfaction prompt.
+
+2) Internal Status Summary
+- Trigger: daily/weekly schedule.
+- Actions: pull key metrics, summarize top risks/issues per dimension.
+- Human loop: ops lead reviews before distribution.
+- Outputs: email/Slack digest, update Notion dashboard cards.
+
+3) Risk & Incident Notification
+- Trigger: incident label or high-risk flag in tickets/monitoring.
+- Actions: gather context, draft incident note, propose mitigation steps.
+- Human loop: incident manager approves communications.
+- Outputs: incident channel update, creates follow-up tasks.

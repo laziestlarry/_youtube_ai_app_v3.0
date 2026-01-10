@@ -1,0 +1,27 @@
+TekraQual Governance Starter Pack – AI-Ready Ops & Quality Templates
+
+Purpose:
+- Give operators a structured toolkit matching TekraQual dimensions (OPS, CX, GOV, DATA, INCOME).
+- Use standalone or alongside the TekraQual Readiness Scanner + Larry CoPilot Setup.
+
+Contents overview:
+- Readiness Scan (offline): questionnaire, Notion version, scoring guide.
+- Ops & Governance Framework: process maps, RACI, risk, policy index.
+- AI CoPilot & Workflow Design: canvas, flow examples, prompt snippets.
+- Reporting & Dashboard Views: KPI layout, executive snapshot, Notion structure.
+- Implementation & Rollout Guide: 30-60-90 plan, comms, onboarding QA.
+- License: personal use plus optional PLR/agency addendum.
+
+How to use:
+1) Start with the Quick Start Checklist.
+2) Complete the offline readiness questionnaire.
+3) Map core processes and roles using the framework templates.
+4) Draft Larry CoPilot workflows and prompts.
+5) Build dashboards and snapshot slides for leadership.
+6) Follow the 30-60-90 rollout with the internal comms and QA checklist.
+
+Mapping to TekraQual levels:
+- Foundation: partial documentation, ad-hoc workflows, limited metrics.
+- Bronze potential: basic process maps, clear owners, simple dashboards.
+- Silver potential: governed workflows, Larry-integrated prompts, regular reviews.
+- Gold potential: automation-first, monitored, and continuously improved.

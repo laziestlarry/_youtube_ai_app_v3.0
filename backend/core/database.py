@@ -32,11 +32,32 @@ def get_database_url(async_mode: bool = False) -> str:
     # Ensure we have a valid URL
     if not url or url.strip() == "":
         url = "sqlite:///./youtube_ai.db"
+
+    # RESILIENCE: Check if Cloud SQL socket exists if specified
+    if "host=/cloudsql/" in url:
+        import re
+        match = re.search(r"host=([^&?]+)", url)
+        if match:
+            socket_path = match.group(1)
+            # If we're not on Linux or the path definitely doesn't exist, fallback
+            if not Path(socket_path).exists():
+                logger.warning(f"Cloud SQL socket path {socket_path} not found. Falling back to local SQLite.")
+                url = "sqlite:///./youtube_ai.db"
     
     if url.startswith("sqlite:///"):
         if async_mode:
             return url.replace("sqlite:///", "sqlite+aiosqlite:///")
         return url
+    
+    if "postgresql" in url:
+        if async_mode:
+            if "asyncpg" not in url:
+                return url.replace("postgresql://", "postgresql+asyncpg://")
+            return url
+        else:
+            if "asyncpg" in url:
+                return url.replace("postgresql+asyncpg://", "postgresql://")
+            return url
     
     return url
 

@@ -1,0 +1,17 @@
+RACI Matrix (rows = decisions/activities, columns = roles)
+
+Roles (example):
+- CEO/Founder
+- Ops Lead
+- CX Lead
+- Engineering/IT
+- Finance
+
+Activities:
+- Approve refunds over threshold
+- Update SOPs and policy index
+- Security/AI usage review
+- Monthly risk log review
+- Release/go-live approvals
+
+Mark each intersection with R (Responsible), A (Accountable), C (Consulted), I (Informed).

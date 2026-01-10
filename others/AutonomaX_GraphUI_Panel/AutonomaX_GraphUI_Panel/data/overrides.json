@@ -1,0 +1,70 @@
+{
+  "priority": [
+    "title_regex",
+    "tags_any",
+    "channel",
+    "collection"
+  ],
+  "rules": [
+    {
+      "name": "Listings \u2192 Etsy",
+      "match": {
+        "collection": "Listings",
+        "channel": "etsy"
+      },
+      "route": {
+        "agent": "agent:MarketingBot",
+        "platform": "plat:Etsy"
+      }
+    },
+    {
+      "name": "Listings \u2192 Shopify",
+      "match": {
+        "collection": "Listings",
+        "channel": "shopify"
+      },
+      "route": {
+        "agent": "agent:MarketingBot",
+        "platform": "plat:Shopify"
+      }
+    },
+    {
+      "name": "Design \u2192 VisualCraft",
+      "match": {
+        "tags_any": [
+          "design",
+          "thumbnail",
+          "mockup",
+          "banner"
+        ]
+      },
+      "route": {
+        "agent": "agent:VisualCraft"
+      }
+    },
+    {
+      "name": "Analytics \u2192 CAO",
+      "match": {
+        "title_regex": "(roi|analytics|kpi|dashboard)"
+      },
+      "route": {
+        "role": "role:CAO"
+      }
+    },
+    {
+      "name": "Revenue/Proof \u2192 RevenueWatch + Payoneer",
+      "match": {
+        "tags_any": [
+          "revenue",
+          "payout",
+          "proof",
+          "evidence"
+        ]
+      },
+      "route": {
+        "agent": "agent:RevenueWatch",
+        "platform": "plat:Payoneer"
+      }
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+    "total_earnings": 268760.1595538809,
+    "daily": 268760.1595538809,
+    "history": [
+        {
+            "timestamp": "2025-12-28T20:34:39.793083",
+            "amount": 30.47,
+            "source": "Completed Fiverr Order: Complete Premium Fiverr Gig for Client X"
+        },
+        {
+            "timestamp": "2025-12-28T20:43:55.294791",
+            "amount": 259.43,
+            "source": "Completed Fiverr Order (high_ticket): Execute Fiverr Gig System (high_ticket) - Bulk Order Processing"
+        },
+        {
+            "timestamp": "2025-12-28T20:43:56.298983",
+            "amount": 1495.15,
+            "source": "Storefront Validation (launch_event): Execute ZentromaX Art Sale (launch_event) - Release Top 50 Collection"
+        },
+        {
+            "timestamp": "2025-12-28T20:43:57.302032",
+            "amount": 1695.32,
+            "source": "YouTube Platform Revenue (high_ticket): Execute YouTube Platform Launch (high_ticket) - Initial Ad Revenue Spike"
+        },
+        {
+            "timestamp": "2025-12-28T20:47:31.109297",
+            "amount": 640.46,
+            "source": "YouTube Platform Revenue (high_ticket): Execute YouTube Viral Push (high_ticket) - Boost Top Performing Video"
+        },
+        {
+            "timestamp": "2025-12-28T20:47:32.115754",
+            "amount": 1905.78,
+            "source": "YouTube Platform Revenue (high_ticket): Execute YouTube Viral Push (high_ticket) - Boost Top Performing Video"
+        },
+        {
+            "timestamp": "2025-12-28T20:47:33.119808",
+            "amount": 1551.87,
+            "source": "YouTube Platform Revenue (high_ticket): Execute YouTube Viral Push (high_ticket) - Boost Top Performing Video"
+        },
+        {
+            "timestamp": "2025-12-28T20:47:34.123353",
+            "amount": 1767.13,
+            "source": "YouTube Platform Revenue (high_ticket): Execute YouTube Viral Push (high_ticket) - Boost Top Performing Video"
+        },
+        {
+            "timestamp": "2025-12-28T20:47:35.130314",
+            "amount": 1766.17,
+            "source": "YouTube Platform Revenue (high_ticket): Execute YouTube Viral Push (high_ticket) - Boost Top Performing Video"
+        },
+        {
+            "timestamp": "2025-12-28T20:53:38.248044",
+            "amount": 13480.9,
+            "source": "Consulting Engagement Signed (Profit OS): Execute LinkedIn Outreach for Profit OS (High Ticket) - Targeted CEO Scrape - Objective: Close Consulting Deal"
+        },
+        {
+            "timestamp": "2025-12-28T20:53:39.251009",
+            "amount": 9373.44,
+            "source": "Consulting Engagement Signed (Profit OS): Execute Email Drip Campaign (Standard) - Retargeting Warm Leads - Objective: Close Consulting Deal"
+        },
+        {
+            "timestamp": "2025-12-28T20:57:09.515803",
+            "amount": 8483.0,
+            "source": "New SaaS Subscription (launch_event): Execute AutonomaX SaaS Beta Launch (launch_event) - Onboard Batch #001"
+        },
+        {
+            "timestamp": "2025-12-28T21:01:22.750145",
+            "amount": 9657.49,
+            "source": "Consulting Engagement Signed (Profit OS): Execute LinkedIn Outreach for Profit OS (High Ticket) - Targeted CEO Scrape - Objective: Close Consulting Deal"
+        },
+        {
+            "timestamp": "2025-12-28T21:01:23.752590",
+            "amount": 13768.6,
+            "source": "Consulting Engagement Signed (Profit OS): Execute Email Drip Campaign (Standard) - Retargeting Warm Leads - Objective: Close Consulting Deal"
+        },
+        {
+            "timestamp": "2025-12-28T21:01:40.621376",
+            "amount": 44269.35,
+            "source": "IntelliWealth Management Contract Signed: Execute IntelliWealth Management Onboarding (Tier 3) - Global Family Office"
+        },
+        {
+            "timestamp": "2025-12-28T21:01:41.624017",
+            "amount": 7472.05,
+            "source": "AI Training Program Enrollment Launch: Execute AI Mastery Training Launch (Tier 3) - 100 Seat Executive Cohort"
+        },
+        {
+            "timestamp": "2025-12-28T21:01:42.625806",
+            "amount": 38184.74,
+            "source": "IntelliWealth Management Contract Signed: Execute Strategic Dominance Campaign (Tier 3) - Market Capture"
+        },
+        {
+            "timestamp": "2025-12-28T22:30:17.976581",
+            "amount": 16238.26,
+            "source": "IntelliWealth Management Contract Signed: Execute IntelliWealth Management Onboarding (Tier 3) - Global Family Office"
+        },
+        {
+            "timestamp": "2025-12-28T22:30:18.583436",
+            "amount": 16951.48,
+            "source": "AI Training Program Enrollment Launch: Execute AI Mastery Training Launch (Tier 3) - 100 Seat Executive Cohort"
+        },
+        {
+            "timestamp": "2025-12-28T22:30:19.189045",
+            "amount": 34267.75,
+            "source": "IntelliWealth Management Contract Signed: Execute Strategic Dominance Campaign (Tier 3) - Market Capture"
+        },
+        {
+            "timestamp": "2025-12-28T22:42:51.925130",
+            "amount": 21820.57,
+            "source": "IntelliWealth Management Contract Signed: Execute IntelliWealth Management Onboarding (Tier 3) - Global Family Office",
+            "asset_url": "/assets/intelliwealth_preview.png"
+        },
+        {
+            "timestamp": "2025-12-28T22:42:52.529274",
+            "amount": 6058.94,
+            "source": "AI Training Program Enrollment Launch: Execute AI Mastery Training Launch (Tier 3) - 100 Seat Executive Cohort",
+            "asset_url": "/assets/mastery_preview.png"
+        },
+        {
+            "timestamp": "2025-12-28T22:42:53.133378",
+            "amount": 17283.98,
+            "source": "IntelliWealth Management Contract Signed: Execute Strategic Dominance Campaign (Tier 3) - Market Capture",
+            "asset_url": null
+        },
+        {
+            "timestamp": "2026-01-01T19:17:59.564834",
+            "amount": 39.84,
+            "source": "Storefront Validation (standard): Shopier Order: TEST-CALLBACK-1767295078",
+            "asset_url": "/assets/art_piece_5.png"
+        },
+        {
+            "timestamp": "2026-01-05T02:07:34.089613",
+            "amount": 199.0,
+            "source": "Manual Shopier Order: 291224671",
+            "asset_url": null
+        },
+        {
+            "timestamp": "2026-01-09T20:56:21.600893",
+            "amount": 99.0,
+            "source": "Hardened Test: IntelliWealth Dan\u0131\u015fmanl\u0131k",
+            "asset_url": "https://autonomax.io/static/downloads/IntelliWealth_Strategy_Guide.pdf",
+            "order_id": "ALX-HARDENED-TEST-001",
+            "sku": "IW-CONSULT-01",
+            "kind": "real",
+            "channel": "shopier"
+        }
+    ]
+}

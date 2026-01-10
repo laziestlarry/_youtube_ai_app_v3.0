@@ -1,0 +1,43 @@
+# Resource Capacity Optimization Plan
+
+## Goal Description
+The goal is to define and implement the "most effective run capacity use" to maximize service.
+Current analysis shows a single `max_concurrent_tasks` (default 5) which is inefficient because it treats lightweight cloud API calls and heavy local model generations equally.
+We will split the capacity management into **Local Capacity** (CPU/GPU bound) and **Cloud Capacity** (IO bound) to maximize throughput without overloading the system.
+
+## User Review Required
+> [!IMPORTANT]
+> This change introduces specific concurrency limits for Local vs Cloud tasks.
+> Default proposed limits:
+> - **Local**: 2 concurrent tasks (Prevents system lag during generation)
+> - **Cloud**: 20 concurrent tasks (Maximizes API throughput)
+>
+> Please confirm if these defaults align with your expected hardware/API limits.
+
+## Proposed Changes
+
+### Configuration
+#### [MODIFY] [backend/config/enhanced_settings.py](file:///Users/pq/_youtube_ai_app_v3.0/backend/config/enhanced_settings.py)
+- Update [SchedulingSettings](file:///Users/pq/_youtube_ai_app_v3.0/backend/config/enhanced_settings.py#74-86) to include:
+    - `max_local_concurrent_tasks`: int = 2
+    - `max_cloud_concurrent_tasks`: int = 20
+
+### Core Infrastructure
+#### [NEW] [backend/core/resource_manager.py](file:///Users/pq/_youtube_ai_app_v3.0/backend/core/resource_manager.py)
+- Create `ResourceManager` class.
+- Initialize `asyncio.Semaphore`s for `local` and [cloud](file:///Users/pq/_youtube_ai_app_v3.0/modules/ai_agency/chimera_engine.py#60-65) based on settings.
+- Provide async context managers `acquire_local()` and `acquire_cloud()`.
+
+#### [MODIFY] [modules/ai_agency/chimera_engine.py](file:///Users/pq/_youtube_ai_app_v3.0/modules/ai_agency/chimera_engine.py)
+- Inject or import `ResourceManager`.
+- In [generate_response](file:///Users/pq/_youtube_ai_app_v3.0/modules/ai_agency/chimera_engine.py#21-31), wrap execution with the appropriate semaphore based on [_determine_mode](file:///Users/pq/_youtube_ai_app_v3.0/modules/ai_agency/chimera_engine.py#32-39).
+
+## Verification Plan
+
+### Automated Tests
+- Create a test script that spawns mixed workloads (local + cloud simulation).
+- Verify that [cloud](file:///Users/pq/_youtube_ai_app_v3.0/modules/ai_agency/chimera_engine.py#60-65) tasks do not block `local` tasks and vice versa.
+- Verify that `local` tasks are capped at 2 and [cloud](file:///Users/pq/_youtube_ai_app_v3.0/modules/ai_agency/chimera_engine.py#60-65) at 20.
+
+### Manual Verification
+- Run the scheduled jobs and observe logs to ensure concurrency behaves as expected.

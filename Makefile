@@ -1,7 +1,7 @@
 # YouTube AI Platform v3.0 - Professional Makefile
 # Managing Backend, Frontend, and Mini-App Modules
 
-.PHONY: help install setup start dev stop kill-port test-shopier mini-app logs clean
+.PHONY: help install setup start dev stop kill-port test-shopier shopier mini-app logs clean
 
 help: ## Show this help message
 	@echo "YouTube AI Platform v3.0 - Command Suite"
@@ -41,6 +41,10 @@ test-shopier: ## Verify Shopier License Key (Master Key) bypass
 	curl -X POST http://localhost:8000/api/auth/login-with-key \
 		-H "Content-Type: application/json" \
 		-d '{"access_key": "LAZY_MASTER_2025_ADMIN"}'
+
+shopier: ## Launch Shopier-specific app mode (storefront + backend)
+	@echo "🛒 Launching Shopier app mode..."
+	bash scripts/start_shopier_app.sh
 
 mini-app: ## Launch the YouTube Income Commander Mini-App
 	@echo "💰 Launching Income Commander..."

@@ -1,0 +1,11 @@
+OpportunityID, OpportunityName, MarketDemand, ProfitMargin, Competition, OpportunitySuccess, LaunchDate
+1, Custom Print on Demand Apparel, 8, 0.30, 6, 1, 2024-01-15
+2, Eco-Friendly Packaging Solutions, 7, 0.45, 4, 1, 2024-02-01
+3, Smart Home Devices, 9, 0.40, 8, 0, 2024-03-10
+4, Online Fitness Coaching, 7, 0.50, 5, 1, 2024-01-25
+5, Subscription-Based Beauty Boxes, 6, 0.35, 7, 1, 2024-02-20
+6, Digital Marketing Consultancy, 7, 0.55, 3, 1, 2024-02-10
+7, AI-Based Education Tools, 8, 0.60, 5, 0, 2024-04-05
+8, Sustainable Fashion Marketplace, 8, 0.40, 6, 1, 2024-03-15
+9, Health & Wellness Mobile App, 9, 0.45, 7, 0, 2024-05-01
+10, Pet Care Products, 6, 0.25, 5, 1, 2024-02-28

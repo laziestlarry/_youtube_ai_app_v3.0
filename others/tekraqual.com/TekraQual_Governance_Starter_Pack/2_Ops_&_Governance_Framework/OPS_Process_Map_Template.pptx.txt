@@ -1,0 +1,9 @@
+Slide outline for 3–5 core processes.
+For each process include:
+- Name and objective
+- Trigger (start), Done (finish)
+- Steps (swimlanes for Teams/Owners)
+- Systems/tools used
+- Pain points and risks
+- Quick wins / automation candidates
+Use one slide per process plus a summary slide for dependencies.

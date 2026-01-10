@@ -1,0 +1,25 @@
+Dashboard layout (one tab per view)
+
+[OPS]
+- Ticket/Request volume
+- Cycle time per workflow
+- SLA adherence %
+- Incident count & MTTR
+
+[CX]
+- CSAT/NPS
+- First response time
+- Resolution time
+- Top drivers/themes (tagged)
+
+[Automation]
+- % handled by Larry
+- Approval vs auto-complete rate
+- Deflections/suggested responses used
+
+[Finance/Income]
+- Billing accuracy/error rate
+- Collections days outstanding
+- Revenue at risk from open incidents
+
+Include placeholders for charts and notes on data sources.

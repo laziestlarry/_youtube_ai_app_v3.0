@@ -1,0 +1,24 @@
+TekraQual Starter Pack Quick Start (60–90 minutes)
+
+1) Open TekraQual_Readiness_Questionnaire.xlsx
+   - Answer each question 1–5.
+   - Capture one note per dimension.
+
+2) Review TekraQual_Scoring_Guide.pdf
+   - Note your readiness level and top 3 gaps.
+
+3) Map the essentials
+   - Sketch 3–5 core processes in OPS_Process_Map_Template.pptx.
+   - Fill key roles in Governance_Roles_RACI_Template.xlsx.
+
+4) Draft Larry CoPilot focus
+   - Use Larry_CoPilot_Workflow_Design_Canvas.pdf to outline 1–2 flows.
+   - Copy relevant prompts from Prompt_Snippets_for_Ops_&_CX.txt.
+
+5) Visualize
+   - Populate Ops_and_CX_Dashboard_Layout.xlsx with your metrics.
+   - Prepare one TekraQual_Executive_Snapshot_PDF_Template.pptx slide.
+
+6) Decide next steps
+   - Choose 3 priorities for the next 30 days.
+   - If you want help, book a TekraQual Readiness Scan + Larry CoPilot Setup.

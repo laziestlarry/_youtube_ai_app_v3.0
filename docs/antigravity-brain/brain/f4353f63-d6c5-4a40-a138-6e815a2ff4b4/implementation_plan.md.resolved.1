@@ -1,0 +1,31 @@
+# Shopier Integration Plan
+
+## Goal Description
+Integrate **Shopier** as a payment provider to enable monetization channels for the AutonomaX platform. This allows for simple payment link generation and transaction tracking.
+
+## User Review Required
+> [!NOTE]
+> We are assuming "Shopier" refers to the [Shopier Payment Gateway](https://www.shopier.com/), a popular alternative to Stripe/PayPal in certain regions. If you meant "Shopify", please reject this plan and clarify.
+
+## Proposed Changes
+
+### Configuration
+#### [MODIFY] [backend/config/enhanced_settings.py](file:///Users/pq/_youtube_ai_app_v3.0/backend/config/enhanced_settings.py)
+- Add `shopier_api_key` and `shopier_api_secret` to [PaymentSettings](file:///Users/pq/_youtube_ai_app_v3.0/backend/config/enhanced_settings.py#171-183).
+
+### Core Logic
+#### [NEW] [modules/ai_agency/shopier_service.py](file:///Users/pq/_youtube_ai_app_v3.0/modules/ai_agency/shopier_service.py)
+- Implement `ShopierService` class.
+- Method: `generate_payment_link(amount, currency, order_id)`.
+- Method: `check_payment_status(order_id)`.
+
+#### [MODIFY] [modules/ai_agency/payment_service.py](file:///Users/pq/_youtube_ai_app_v3.0/modules/ai_agency/payment_service.py)
+- Import and register `ShopierService`.
+- Expose `create_shopier_payment` through the unified API.
+
+## Verification Plan
+
+### Automated Tests
+- Create `scripts/test_shopier.py`.
+- Verify settings loading.
+- Verify payment link generation logic (output formatting).

@@ -1,0 +1,7 @@
+# Alexandria Protocol Activation
+
+- [/] Research Shopier integration details
+- [ ] Prepare implementation plan for API key gathering
+- [ ] Guide user to gather Shopier API key and secret
+- [ ] Update [.env](file:///Users/pq/_youtube_ai_app_v3.0/.env) with live credentials
+- [ ] Verify activation with a test payment link
