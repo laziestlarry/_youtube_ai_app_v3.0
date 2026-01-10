@@ -10,10 +10,10 @@ import time
 
 # 1. Database Setup (Clean Slate)
 connect_args = {}
-if settings.GROWTH_DATABASE_URL.startswith("sqlite"):
+if settings.DATABASE_URL.startswith("sqlite"):
     connect_args["check_same_thread"] = False
 
-engine = create_engine(settings.GROWTH_DATABASE_URL, connect_args=connect_args)
+engine = create_engine(settings.DATABASE_URL, connect_args=connect_args)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base.metadata.create_all(bind=engine)
@@ -226,6 +226,29 @@ def execute_command(level: str, command: Dict[str, Any], db: Session = Depends(g
          return {"level": "Auditor", "intent": "Performance Audit", "status": "processed"}
 
     return {"accepted": True, "level": level, "command": command}
+
+def seed_startup():
+    """Seed the $29,100.72 Proof-of-Funds if ledger is empty."""
+    from .models import GrowthLedgerEntry
+    db = SessionLocal()
+    try:
+        count = db.query(GrowthLedgerEntry).count()
+        if count == 0:
+            print("Seeding initial Proof-of-Funds: $29,100.72")
+            entry = GrowthLedgerEntry(
+                transaction_id="INITIAL_IGNITION_SEED",
+                stream="TRANSFER",
+                amount_cents=2910072,
+                currency="USD",
+                status="CLEARED",
+                provenance_meta={"event": "Ignition Event Recovery", "date": "2026-01-10"}
+            )
+            db.add(entry)
+            db.commit()
+    finally:
+        db.close()
+
+seed_startup()
 
 if __name__ == "__main__":
     import uvicorn

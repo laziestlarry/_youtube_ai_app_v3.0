@@ -8,7 +8,7 @@ class Settings(BaseSettings):
     API_PREFIX: str = "/api/v1"
     
     # Separate DB for Clean Slate
-    GROWTH_DATABASE_URL: str = "sqlite:///./growth_engine.db"
+    DATABASE_URL: str = "sqlite:///./growth_engine.db"
     
     class Config:
         case_sensitive = True

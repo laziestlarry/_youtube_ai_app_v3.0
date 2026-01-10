@@ -29,10 +29,10 @@ async def get_ignition_stats(db: Session = Depends(get_growth_db)):
     
     proof_of_funds = sum(c[0] for c in total_cents) / 100.0 if total_cents else 0.0
     
-    # 2. Countdown logic (Target: 2026-01-11T00:00:00+03:00)
-    # Since current time is 2026-01-10T23:28:28, let's set a launch window.
-    launch_target = datetime(2026, 1, 11, 12, 0, 0) # 12 hours from "nowish"
-    now = datetime.now()
+    # 2. Countdown logic (Target: 2026-01-11T12:00:00 UTC)
+    from datetime import timezone
+    launch_target = datetime(2026, 1, 11, 12, 0, 0, tzinfo=timezone.utc)
+    now = datetime.now(timezone.utc)
     remaining = launch_target - now
     countdown_seconds = max(0, int(remaining.total_seconds()))
     

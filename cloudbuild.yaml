@@ -56,7 +56,7 @@ steps:
         "--add-volume=name=persistent-storage,type=cloud-storage,bucket=${PROJECT_ID}-data",
         "--add-volume-mount=volume=persistent-storage,mount-path=/app/persistent",
         "--set-env-vars",
-        "DATABASE_URL=sqlite:////app/persistent/youtube_ai.db,DATA_DIR=/app/persistent,ADMIN_SECRET_KEY=ignition_pulse_secure_2026,AI_PROVIDER=openai,AI_MODEL_NAME=gpt-4o-mini",
+        "DATABASE_URL=sqlite:////app/persistent/youtube_ai.db,DATA_DIR=/app/persistent,ADMIN_SECRET_KEY=ignition_pulse_secure_2026,AI_PROVIDER=openai,AI_MODEL_NAME=gpt-4o-mini,GROWTH_DATABASE_URL=sqlite:////app/persistent/growth_engine.db",
       ]
 # For sensitive values, use Google Secret Manager and reference them in Cloud Run env config.
 
