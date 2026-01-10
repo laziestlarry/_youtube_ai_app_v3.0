@@ -54,6 +54,73 @@ class ShopierApiService:
                 if response.text:
                     return response.json()
                 return None
+
+    def create_product(self, product_data: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Create a new product on Shopier.
+        
+        Args:
+            product_data: Product details (title, description, price, etc.)
+        
+        Returns:
+            Created product data with ID and URL
+        """
+        payload = {
+            "name": product_data.get("title"),
+            "description": product_data.get("description"),
+            "price": product_data.get("price"),
+            "currency": product_data.get("currency", "USD"),
+            "stock": product_data.get("stock", 9999),  # Digital products have unlimited stock
+            "category_id": product_data.get("category_id", 1),
+            "is_active": product_data.get("is_active", True),
+        }
+        
+        return self._request("POST", "/products", payload=payload)
+    
+    def get_orders(self, status: Optional[str] = None, limit: int = 50) -> List[Dict[str, Any]]:
+        """
+        Get orders from Shopier.
+        
+        Args:
+            status: Filter by order status (pending, completed, cancelled)
+            limit: Maximum number of orders to return
+        
+        Returns:
+            List of order objects
+        """
+        params = {"limit": limit}
+        if status:
+            params["status"] = status
+        
+        result = self._request("GET", "/orders", params=params)
+        return result.get("data", []) if isinstance(result, dict) else []
+    
+    def verify_webhook_signature(self, payload: str, signature: str) -> bool:
+        """
+        Verify Shopier webhook signature.
+        
+        Args:
+            payload: Raw webhook payload
+            signature: Signature from webhook headers
+        
+        Returns:
+            True if signature is valid
+        """
+        import hmac
+        import hashlib
+        
+        webhook_secret = os.getenv("SHOPIER_WEBHOOK_TOKEN")
+        if not webhook_secret:
+            logger.warning("SHOPIER_WEBHOOK_TOKEN not configured")
+            return False
+        
+        expected_signature = hmac.new(
+            webhook_secret.encode(),
+            payload.encode(),
+            hashlib.sha256
+        ).hexdigest()
+        
+        return hmac.compare_digest(expected_signature, signature)
             except requests.RequestException as exc:
                 last_exc = exc
                 logger.error("Shopier API request failed: %s %s (%s)", method, url, exc)

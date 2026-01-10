@@ -225,31 +225,6 @@ def execute_command(level: str, command: Dict[str, Any], db: Session = Depends(g
          # Example: "Scan Compliance" -> returns quality report
          return {"level": "Auditor", "intent": "Performance Audit", "status": "processed"}
 
-    return {"accepted": True, "level": level, "command": command}
-
-def seed_startup():
-    """Seed the $29,100.72 Proof-of-Funds if ledger is empty."""
-    from .models import GrowthLedgerEntry
-    db = SessionLocal()
-    try:
-        count = db.query(GrowthLedgerEntry).count()
-        if count == 0:
-            print("Seeding initial Proof-of-Funds: $29,100.72")
-            entry = GrowthLedgerEntry(
-                transaction_id="INITIAL_IGNITION_SEED",
-                stream="TRANSFER",
-                amount_cents=2910072,
-                currency="USD",
-                status="CLEARED",
-                provenance_meta={"event": "Ignition Event Recovery", "date": "2026-01-10"}
-            )
-            db.add(entry)
-            db.commit()
-    finally:
-        db.close()
-
-seed_startup()
-
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8001)

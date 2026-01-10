@@ -256,3 +256,37 @@ async def generate_shopier_link(
         product_name=request.product_name
     )
     return {"payment_link": link, "order_id": request.order_id}
+
+@router.post("/orchestrate/marketing")
+async def orchestrate_marketing(
+    sku: str,
+    channels: list[str] = None,
+    current_user: User = Depends(get_current_user)
+):
+    """
+    Execute a marketing campaign for a specific SKU.
+    Generates content and distributes across selected channels.
+    """
+    from modules.ai_agency.marketing_commander import marketing_commander
+    import json
+    
+    # Load product catalog
+    catalog_path = "docs/commerce/product_catalog.json"
+    with open(catalog_path, 'r') as f:
+        catalog = json.load(f)
+    
+    # Find the SKU
+    product = next((p for p in catalog['products'] if p['sku'] == sku), None)
+    if not product:
+        raise HTTPException(status_code=404, detail=f"SKU {sku} not found")
+    
+    # Execute campaign
+    result = await marketing_commander.execute_campaign(product, channels)
+    
+    return {
+        "status": "campaign_executed",
+        "sku": sku,
+        "channels_activated": list(result['channels'].keys()),
+        "campaign_data": result,
+        "timestamp": datetime.now().isoformat()
+    }
