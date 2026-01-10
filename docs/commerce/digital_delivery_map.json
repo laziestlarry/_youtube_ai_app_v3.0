@@ -30,5 +30,9 @@
   "YT-AUTO-01": {
     "file": "static/downloads/YouTube_Automation_Standard_Operating_Procedures.pdf",
     "label": "YouTube Otomasyon Studyosu"
+  },
+  "IGNITION-BONUS-01": {
+    "file": "static/downloads/AutonomaX_Ignition_Bonus_Content.pdf",
+    "label": "Ignition Bonus Content"
   }
 }

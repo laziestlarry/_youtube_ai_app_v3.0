@@ -223,11 +223,27 @@ class DeliveryService:
 
         download_url = self._build_download_url(base_url, delivery["file"])
         buyer_email = self._get_field(data, ["buyer_email", "email", "customer_email"])
-        subject = f"Digital delivery for {delivery.get('label') or sku}"
+        
+        # --- Over-Expectation (Surprise & Delight) Logic ---
+        subject = f"🚀 [VIP DELIVERY] Your AutonomaX Ignition Access: {delivery.get('label') or sku}"
+        
+        # Check for Ignition Bonus
+        ignition_bonus = self._sku_to_delivery.get("IGNITION-BONUS-01")
+        bonus_link = ""
+        if ignition_bonus:
+            bonus_url = self._build_download_url(base_url, ignition_bonus["file"])
+            bonus_link = f"\n🎁 IGNITION BONUS: We've included the 'Autonomy Success Blueprint' as a free gift!\nDownload here: {bonus_url}\n"
+
         body = (
             "Merhaba,\n\n"
-            f"Digital delivery link: {download_url}\n\n"
-            "If you need help, reply to this email."
+            "Thank you for being part of the AutonomaX Ignition event. Your digital assets are ready for immediate deployment.\n\n"
+            f"📥 PRIMARY ACCESS: {download_url}\n"
+            f"{bonus_link}"
+            "\n"
+            "--- PREMIUM SUPPORT ---\n"
+            "As an early adopter, you have priority support. If you have any questions, simply reply to this email.\n\n"
+            "Welcome to the Era of Autonomous Growth.\n"
+            "The AutonomaX Team"
         )
 
         payload = {

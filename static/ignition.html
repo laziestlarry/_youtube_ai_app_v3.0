@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutonomaX | Ignition Sequence</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00f2ff;
+            --secondary: #7000ff;
+            --bg: #050505;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+            --glow: 0 0 20px rgba(0, 242, 255, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Particle Background Mockup */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(112, 0, 255, 0.15), transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(0, 242, 255, 0.15), transparent 40%);
+            z-index: -1;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            padding: 2rem;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .header {
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(0, 242, 255, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary);
+            box-shadow: var(--glow);
+            animation: pulse-glow 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 10px rgba(0, 242, 255, 0.2);
+            }
+
+            50% {
+                box-shadow: 0 0 25px rgba(0, 242, 255, 0.4);
+            }
+        }
+
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 4rem;
+        }
+
+        .countdown-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            padding: 2rem 1rem;
+            border-radius: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .countdown-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .countdown-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .countdown-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .proof-funds-section {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+            border: 1px solid var(--border);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .proof-funds-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        .proof-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 1rem;
+        }
+
+        .funding-amount {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 30px rgba(0, 242, 255, 0.5);
+        }
+
+        .funding-currency {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-left: 0.5rem;
+        }
+
+        .ticker-container {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .ticker-content {
+            display: inline-block;
+            animation: scroll-ticker 30s linear infinite;
+        }
+
+        .ticker-item {
+            display: inline-block;
+            margin-right: 4rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .ticker-item span {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        @keyframes scroll-ticker {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .footer {
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 1px;
+        }
+
+        .action-btn {
+            margin-top: 2rem;
+            padding: 1rem 3rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 0.5rem;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .action-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(112, 0, 255, 0.4);
+        }
+
+        @media (max-width: 600px) {
+            .countdown-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .funding-amount {
+                font-size: 2.5rem;
+            }
+
+            .logo {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="logo">AutonomaX</h1>
+            <div class="status-badge">Ignition Sequence Active</div>
+        </div>
+
+        <div class="proof-funds-section">
+            <p class="proof-label">Verified Proof of Funds</p>
+            <h2 class="funding-amount" id="proof-of-funds">0.00 <span class="funding-currency">USD</span></h2>
+        </div>
+
+        <div class="countdown-grid">
+            <div class="countdown-box">
+                <span class="countdown-value" id="days">00</span>
+                <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-box">
+                <span class="countdown-value" id="hours">00</span>
+                <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-box">
+                <span class="countdown-value" id="minutes">00</span>
+                <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-box">
+                <span class="countdown-value" id="seconds">00</span>
+                <span class="countdown-label">Seconds</span>
+            </div>
+        </div>
+
+        <div class="ticker-container">
+            <div class="ticker-content" id="ticker">
+                <!-- Data will be injected here -->
+            </div>
+        </div>
+
+        <a href="/static/store.html" class="action-btn">Enter Studio</a>
+
+        <p class="footer">SYSTEM STATUS: OPTIMAL | ENCRYPTED LINK SECURE | v3.0 RELEASE</p>
+    </div>
+
+    <script>
+        async function updateStats() {
+            try {
+                const response = await fetch('/api/ignition/stats');
+                const data = await response.json();
+
+                // Update Proof of Funds
+                document.getElementById('proof-of-funds').innerHTML = `${data.proof_of_funds.toLocaleString('en-US', { minimumFractionDigits: 2 })} <span class="funding-currency">USD</span>`;
+
+                // Update Ticker
+                const ticker = document.getElementById('ticker');
+                ticker.innerHTML = data.recent_wins.map(win => `
+                    <div class="ticker-item">✅ TRANSACTION: <span>$${win.amount.toFixed(2)}</span> ${win.stream} [${win.id.substring(0, 12)}...]</div>
+                `).join('') + data.recent_wins.map(win => `
+                    <div class="ticker-item">✅ TRANSACTION: <span>$${win.amount.toFixed(2)}</span> ${win.stream} [${win.id.substring(0, 12)}...]</div>
+                `).join(''); // Double for seamless loop
+
+                // Countdown logic
+                let timeLeft = data.countdown_seconds;
+
+                function updateCountdown() {
+                    const d = Math.floor(timeLeft / (24 * 3600));
+                    const h = Math.floor((timeLeft % (24 * 3600)) / 3600);
+                    const m = Math.floor((timeLeft % 3600) / 60);
+                    const s = timeLeft % 60;
+
+                    document.getElementById('days').innerText = String(d).padStart(2, '0');
+                    document.getElementById('hours').innerText = String(h).padStart(2, '0');
+                    document.getElementById('minutes').innerText = String(m).padStart(2, '0');
+                    document.getElementById('seconds').innerText = String(s).padStart(2, '0');
+
+                    if (timeLeft > 0) {
+                        timeLeft--;
+                    }
+                }
+
+                setInterval(updateCountdown, 1000);
+                updateCountdown();
+
+            } catch (error) {
+                console.error('Failed to fetch stats:', error);
+            }
+        }
+
+        updateStats();
+        // Refresh full stats every 60 seconds
+        setInterval(updateStats, 60000);
+    </script>
+</body>
+
+</html>

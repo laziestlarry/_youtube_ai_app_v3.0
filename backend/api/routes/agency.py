@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from typing import List, Dict, Any
 from pydantic import BaseModel
 from datetime import datetime
-from backend.api.deps import get_current_user
+from backend.api.deps import get_current_user, get_optional_current_user
 from backend.models.user import User
 from modules.ai_agency.direction_board import direction_board
 from modules.ai_agency.altered_self import get_altered_self
@@ -140,6 +140,39 @@ async def orchestrate_skigen(
         }
     
     return await direction_board.execute_sales_operation("publish_shopify_sku", request.details)
+
+@router.post("/orchestrate/pulse")
+async def orchestrate_pulse(
+    phase: str = "daily",
+    current_user: Optional[User] = Depends(get_optional_current_user),
+    secret_key: Optional[str] = None
+):
+    """
+    Master Trigger for Autonomous Ignition Pulse.
+    Allows secret_key bypass for Cloud Scheduler.
+    """
+    if not current_user and secret_key != os.getenv("ADMIN_SECRET_KEY"):
+        raise HTTPException(status_code=401, detail="Unauthorized")
+    
+    results = {}
+    
+    # 1. Sales Refresh & Inventory Audit
+    results["inventory"] = await direction_board.execute_sales_operation("audit_inventory")
+    
+    # 2. Market Dominance / Asset Preparation
+    if phase in ["daily", "weekly"]:
+        results["market_prep"] = await direction_board.execute_sales_operation("prepare_marketing_assets")
+    
+    # 3. Quantum Intent for Revenue Realization
+    intent = f"Execute phase: {phase}. Maximize income through autonomous SKU publication and UTM link generation."
+    results["quantum_intent"] = await direction_board.execute_quantum_intent(intent)
+    
+    return {
+        "status": "ignition_pulse_emitted",
+        "phase": phase,
+        "timestamp": datetime.now().isoformat(),
+        "performance_metrics": results
+    }
 
 from backend.api.deps import get_current_user, get_async_db as get_db
 from sqlalchemy.ext.asyncio import AsyncSession

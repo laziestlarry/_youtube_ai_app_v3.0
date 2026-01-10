@@ -41,6 +41,7 @@ from backend.models.revenue import RevenueEvent # Register Revenue models
 from backend.api.routes.subscriptions import router as subscription_router
 from backend.api.routes.analytics import router as analytics_router
 from backend.api.routes.youtube import router as youtube_router
+from backend.api.routes.ignition import router as ignition_router
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -165,6 +166,7 @@ from backend.api.routes.outcomes import router as outcomes_router
 app.include_router(outcomes_router, prefix="/api/outcomes", tags=["outcomes"])
 from backend.api.routes.growth import router as growth_router
 app.include_router(growth_router, prefix="/api/growth", tags=["growth"])
+app.include_router(ignition_router)
 
 # Mount static files if they exist
 try:
