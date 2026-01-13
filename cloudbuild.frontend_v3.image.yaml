@@ -20,7 +20,7 @@ images:
 
 substitutions:
   _BACKEND_URL: "http://localhost:8000"
-  _FRONTEND_IMAGE: "gcr.io/$PROJECT_ID/youtube-ai-frontend"
+  _FRONTEND_IMAGE: "gcr.io/$PROJECT_ID/autonomax-frontend"
 
 options:
   substitution_option: "ALLOW_LOOSE"

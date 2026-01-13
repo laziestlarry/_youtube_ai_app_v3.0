@@ -6,6 +6,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
     build-essential \
     python3-dev \
+    ffmpeg \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy everything from root
@@ -18,4 +19,4 @@ RUN pip install --no-cache-dir --upgrade pip && \
 EXPOSE 8080
 
 # Start with the full module path
-CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["uvicorn", "services.autonomax_api.main:app", "--host", "0.0.0.0", "--port", "8080"]

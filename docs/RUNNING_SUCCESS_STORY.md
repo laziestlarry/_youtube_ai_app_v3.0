@@ -22,6 +22,8 @@ In the first operating cycle, the system moved from static planning to live exec
 - Ship two automation upgrades to cut manual workload.
 
 ## Live Services
-- Backend: https://youtube-ai-backend-71658389068.us-central1.run.app
-- Frontend: https://youtube-ai-frontend-71658389068.us-central1.run.app
+- AutonomaX API: https://autonomax-api-71658389068.us-central1.run.app
+- AutonomaX UI (frontend_v3): Cloud Run service `autonomax-frontend`
+- YouTube AI API: https://youtube-ai-backend-71658389068.us-central1.run.app
+- YouTube AI UI (Vite): https://youtube-ai-frontend-71658389068.us-central1.run.app
 - Alexandria UI: https://youtube-ai-frontend-71658389068.us-central1.run.app/alexandria

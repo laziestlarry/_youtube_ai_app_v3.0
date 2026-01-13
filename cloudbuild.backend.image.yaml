@@ -6,7 +6,7 @@ steps:
         "-t",
         "${_BACKEND_IMAGE}",
         "-f",
-        "backend/Dockerfile",
+        "${_BACKEND_DOCKERFILE}",
         ".",
       ]
 
@@ -17,7 +17,8 @@ images:
   - "${_BACKEND_IMAGE}"
 
 substitutions:
-  _BACKEND_IMAGE: "gcr.io/$PROJECT_ID/youtube-ai-backend"
+  _BACKEND_IMAGE: "gcr.io/$PROJECT_ID/autonomax-api"
+  _BACKEND_DOCKERFILE: "services/autonomax_api/Dockerfile"
 
 options:
   substitution_option: "ALLOW_LOOSE"

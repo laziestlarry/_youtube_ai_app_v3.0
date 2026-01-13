@@ -23,6 +23,7 @@ class ValidationIssue(BaseModel):
     issues: List[str]
 
 class EnvironmentInfo(BaseModel):
+    app_target: str
     app_name: str
     app_version: str
     environment: str

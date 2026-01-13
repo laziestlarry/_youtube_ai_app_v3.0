@@ -1,0 +1,1 @@
+"""Autonomax API service entrypoint."""

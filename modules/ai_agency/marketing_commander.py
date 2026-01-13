@@ -48,8 +48,21 @@ class MarketingCommander:
         Tone: Professional but approachable, results-focused
         """
         
-        script = await chimera_engine.generate_response(prompt, task_type="marketing")
-        return script
+        try:
+            script = await chimera_engine.generate_response(prompt, task_type="marketing")
+            return script
+        except Exception as e:
+            logger.warning(f"AI generation failed, using fallback template: {e}")
+            return f"""
+            # {sku['title']} - Launch Script (Fallback Template)
+            
+            [Target Audience]: Creators & Digital Entrepreneurs
+            [Hook]: Are you struggling with {sku['short_description']}? You're not alone.
+            [Problem]: Most people spend hours staring at a blank screen...
+            [Solution]: Introducing {sku['title']} - the ultimate {sku['type']} to accelerate your workflow.
+            [Key Benefit]: {sku['long_description']}
+            [CTA]: Click the link below to get instant access for just ${sku['price']['min']}!
+            """
     
     async def generate_content_calendar(self, skus: List[Dict[str, Any]], days: int = 30) -> List[Dict[str, Any]]:
         """Generate a 30-day content calendar across all channels."""
@@ -131,14 +144,19 @@ class MarketingCommander:
                 
                 elif channel in ["reddit", "discord", "linkedin"]:
                     # Generate social post
-                    prompt = f"""
-                    Create a compelling social media post for {channel} promoting:
-                    {sku['title']} - {sku['short_description']}
-                    
-                    Make it authentic, value-focused, and include a clear CTA.
-                    Max 300 characters.
-                    """
-                    post = await chimera_engine.generate_response(prompt, task_type="marketing")
+                    try:
+                        prompt = f"""
+                        Create a compelling social media post for {channel} promoting:
+                        {sku['title']} - {sku['short_description']}
+                        
+                        Make it authentic, value-focused, and include a clear CTA.
+                        Max 300 characters.
+                        """
+                        post = await chimera_engine.generate_response(prompt, task_type="marketing")
+                    except Exception as e:
+                        logger.warning(f"Social post generation failed for {channel}: {e}")
+                        post = f"🚀 Launch Alert: {sku['title']} is now live! {sku['short_description']} Get it here: [LINK] #{sku['tags'][0].replace(' ', '')}"
+                        
                     results["channels"][channel] = {
                         "status": "content_generated",
                         "post": post,
@@ -147,13 +165,25 @@ class MarketingCommander:
                 
                 elif channel == "blog":
                     # Generate blog outline
-                    prompt = f"""
-                    Create a blog post outline for:
-                    {sku['title']} - {sku['long_description']}
-                    
-                    Include: Introduction, 3-5 main sections, conclusion with CTA
-                    """
-                    outline = await chimera_engine.generate_response(prompt, task_type="marketing")
+                    try:
+                        prompt = f"""
+                        Create a blog post outline for:
+                        {sku['title']} - {sku['long_description']}
+                        
+                        Include: Introduction, 3-5 main sections, conclusion with CTA
+                        """
+                        outline = await chimera_engine.generate_response(prompt, task_type="marketing")
+                    except Exception as e:
+                        logger.warning(f"Blog outline generation failed: {e}")
+                        outline = f"""
+                        # {sku['title']} - A Comprehensive Guide (Template)
+                        1. Introduction: The importance of {sku['tags'][0]}
+                        2. Common Challenges
+                        3. How {sku['title']} Solves Them
+                        4. Step-by-Step Walkthrough
+                        5. Conclusion & Special Offer
+                        """
+                        
                     results["channels"][channel] = {
                         "status": "outline_generated",
                         "outline": outline,

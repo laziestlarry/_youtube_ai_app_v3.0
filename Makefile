@@ -13,8 +13,10 @@ install: ## Install all dependencies (Backend & Frontend)
 	python3 -m venv venv
 	./venv/bin/pip install --upgrade pip
 	./venv/bin/pip install -r backend/requirements.txt
-	@echo "📦 Installing Frontend dependencies..."
+	@echo "📦 Installing YouTube AI UI dependencies (Vite)..."
 	cd frontend && npm install
+	@echo "📦 Installing Autonomax UI dependencies (Next.js)..."
+	cd frontend_v3 && npm install
 	@echo "✅ Installation complete"
 
 setup: ## Full environment setup and database initialization
@@ -25,11 +27,14 @@ start: ## Launch the unified platform (Backend & Dashboard)
 	@echo "🚀 Launching YouTube AI Platform..."
 	bash scripts/start_app.sh
 
-dev: ## Start development servers with hot-reload
-	@echo "🛠️  Starting Backend (Port 8000)..."
-	export PYTHONPATH=$PYTHONPATH:$(pwd) && source venv/bin/activate && cd backend && uvicorn main:app --reload --host 0.0.0.0 --port 8000 &
-	@echo "🛠️  Starting Frontend (Port 3001)..."
-	cd frontend && npm run dev -- --port 3001
+dev: ## Start dev servers (default: YouTube AI UI)
+	APP_TARGET=youtube bash scripts/dev.sh
+
+dev-youtube: ## Start dev servers with YouTube AI UI (Vite)
+	APP_TARGET=youtube bash scripts/dev.sh
+
+dev-autonomax: ## Start dev servers with Autonomax UI (Next.js)
+	APP_TARGET=autonomax bash scripts/dev.sh
 
 kill-port: ## Force kill processes on default ports (8000, 3001)
 	@echo "🔪 Cleaning up ports..."

@@ -245,8 +245,39 @@ class FulfillmentEngine:
     def get_earnings_summary(self):
         try:
             with open(EARNINGS_FILE, 'r') as f:
-                return json.load(f)
+                data = json.load(f)
         except:
-            return {"total_earnings": 0.0}
+            return {"total_earnings": 0.0, "daily": 0.0, "history": []}
+
+        real_only = os.getenv("REVENUE_REAL_ONLY", "false").lower() in ("1", "true", "yes")
+        if not real_only:
+            return data
+
+        history = data.get("history", []) or []
+        real_history = [
+            item for item in history
+            if (item.get("kind") or item.get("metadata", {}).get("kind")) == "real"
+        ]
+
+        total = sum(float(item.get("amount", 0.0) or 0.0) for item in real_history)
+
+        daily_total = 0.0
+        cutoff = datetime.utcnow()
+        for item in real_history:
+            ts = item.get("timestamp")
+            if not ts:
+                continue
+            try:
+                event_time = datetime.fromisoformat(ts.replace("Z", "+00:00"))
+            except Exception:
+                continue
+            if (cutoff - event_time).total_seconds() <= 86400:
+                daily_total += float(item.get("amount", 0.0) or 0.0)
+
+        return {
+            "total_earnings": total,
+            "daily": daily_total,
+            "history": real_history,
+        }
 
 fulfillment_engine = FulfillmentEngine()

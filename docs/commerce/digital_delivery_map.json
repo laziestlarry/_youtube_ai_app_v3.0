@@ -16,23 +16,23 @@
     "label": "Shopify Lansman Kiti"
   },
   "IW-CONSULT-01": {
-    "file": "static/downloads/IntelliWealth_Strategy_Guide.pdf",
+    "file": "static/downloads/IntelliWealth_Consulting_Onboarding.txt",
     "label": "IntelliWealth Danismanlik"
   },
   "IW-TRAIN-01": {
-    "file": "static/downloads/AI_Mastery_Executive_Training.pdf",
+    "file": "static/downloads/IntelliWealth_Training_Onboarding.txt",
     "label": "IntelliWealth Yonetici Egitimi"
   },
   "AX-SAAS-01": {
-    "file": "static/downloads/AutonomaX_Platform_Access.pdf",
+    "file": "static/downloads/AutonomaX_Platform_Access.txt",
     "label": "AutonomaX SaaS Platformu"
   },
   "YT-AUTO-01": {
-    "file": "static/downloads/YouTube_Automation_Standard_Operating_Procedures.pdf",
+    "file": "static/downloads/YouTube_Automation_Onboarding.txt",
     "label": "YouTube Otomasyon Studyosu"
   },
   "IGNITION-BONUS-01": {
-    "file": "static/downloads/AutonomaX_Ignition_Bonus_Content.pdf",
+    "file": "static/downloads/AutonomaX_Ignition_Bonus_Content.txt",
     "label": "Ignition Bonus Content"
   }
 }

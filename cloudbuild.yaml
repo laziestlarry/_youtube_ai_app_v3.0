@@ -1,6 +1,6 @@
-# cloudbuild.yaml
+# cloudbuild.yaml (legacy monolith build)
 steps:
-  # 0. Build Frontend (Next.js)
+  # 0. Build Autonomax UI (Next.js) for optional backend embed
   - name: "node:20"
     entrypoint: "bash"
     args:
@@ -9,9 +9,8 @@ steps:
         cd frontend_v3
         npm ci
         npm run build
-        # Move dist to where backend expects it (backend/main.py checks frontend/dist)
-        # The repo structure has frontend_v3, but main.py checks frontend/dist OR static.
-        # Let's ensure it's in the right place.
+        # Move build output to where backend expects it (backend/main.py checks frontend/dist)
+        # This is optional when deploying the UI separately.
         # main.py line 284: frontend_build_path = Path("frontend/dist")
         # We need to move frontend_v3/dist to frontend/dist or update main.py.
         # Easiest is to move it to frontend/dist (create dir if needed).
@@ -22,20 +21,20 @@ steps:
         rm -rf ../frontend/dist
         mv out ../frontend/dist
 
-  # 1. Build Backend Container (includes frontend artifacts)
+  # 1. Build Backend Container (includes optional frontend artifacts)
   - name: "gcr.io/cloud-builders/docker"
     args:
       [
         "build",
         "-t",
-        "gcr.io/$PROJECT_ID/youtube-ai-backend",
+        "gcr.io/$PROJECT_ID/autonomax-api",
         "-f",
-        "backend/Dockerfile",
+        "services/autonomax_api/Dockerfile",
         ".",
       ]
 
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/$PROJECT_ID/youtube-ai-backend"]
+    args: ["push", "gcr.io/$PROJECT_ID/autonomax-api"]
 
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     entrypoint: gcloud
@@ -43,9 +42,9 @@ steps:
       [
         "run",
         "deploy",
-        "youtube-ai-backend",
+        "autonomax-api",
         "--image",
-        "gcr.io/$PROJECT_ID/youtube-ai-backend",
+        "gcr.io/$PROJECT_ID/autonomax-api",
         "--platform",
         "managed",
         "--region",
@@ -56,12 +55,12 @@ steps:
         "--add-volume=name=persistent-storage,type=cloud-storage,bucket=${PROJECT_ID}-data",
         "--add-volume-mount=volume=persistent-storage,mount-path=/app/persistent",
         "--set-env-vars",
-        "DATABASE_URL=sqlite:////app/persistent/youtube_ai.db,DATA_DIR=/app/persistent,ADMIN_SECRET_KEY=ignition_pulse_secure_2026,AI_PROVIDER=openai,AI_MODEL_NAME=gpt-4o-mini,GROWTH_DATABASE_URL=sqlite:////app/persistent/growth_engine.db",
+        "APP_TARGET=autonomax,DATABASE_URL=sqlite:////app/persistent/autonomax.db,DATA_DIR=/app/persistent,ADMIN_SECRET_KEY=ignition_pulse_secure_2026,AI_PROVIDER=openai,AI_MODEL_NAME=gpt-4o-mini,GROWTH_DATABASE_URL=sqlite:////app/persistent/growth_engine.db",
       ]
 # For sensitive values, use Google Secret Manager and reference them in Cloud Run env config.
 
 images:
-  - "gcr.io/$PROJECT_ID/youtube-ai-backend"
+  - "gcr.io/$PROJECT_ID/autonomax-api"
 
 substitutions:
   _OPENAI_API_KEY: ""

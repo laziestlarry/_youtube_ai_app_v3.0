@@ -1,0 +1,140 @@
+INFO:backend.main:✅ Static files mounted
+INFO:backend.main:ℹ️  Next.js _next directory not found in frontend/dist
+INFO:backend.main:✅ Frontend build found
+INFO:     Started server process [37483]
+INFO:     Waiting for application startup.
+INFO:backend.main:Starting YouTube AI Content Creator...
+WARNING:backend.core.database:Cloud SQL socket path /cloudsql/propulse-autonomax:us-central1:youtube-ai-db not found. Falling back to local SQLite.
+WARNING:backend.core.database:Cloud SQL socket path /cloudsql/propulse-autonomax:us-central1:youtube-ai-db not found. Falling back to local SQLite.
+WARNING:backend.core.database:Cloud SQL socket path /cloudsql/propulse-autonomax:us-central1:youtube-ai-db not found. Falling back to local SQLite.
+2026-01-11 04:21:20,544 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2026-01-11 04:21:20,544 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("users")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("users")
+2026-01-11 04:21:20,544 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-01-11 04:21:20,546 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("biz_opportunities")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("biz_opportunities")
+2026-01-11 04:21:20,546 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-01-11 04:21:20,546 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("channel_stats")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("channel_stats")
+2026-01-11 04:21:20,546 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-01-11 04:21:20,546 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("video_analytics")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("video_analytics")
+2026-01-11 04:21:20,546 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-01-11 04:21:20,546 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("content_ideas")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("content_ideas")
+2026-01-11 04:21:20,546 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-01-11 04:21:20,547 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("workflow_columns")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("workflow_columns")
+2026-01-11 04:21:20,547 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-01-11 04:21:20,547 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("workflow_cards")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("workflow_cards")
+2026-01-11 04:21:20,547 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-01-11 04:21:20,547 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("revenue_events")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("revenue_events")
+2026-01-11 04:21:20,547 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-01-11 04:21:20,547 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("user_subscriptions")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("user_subscriptions")
+2026-01-11 04:21:20,547 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-01-11 04:21:20,547 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("video_revenue")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("video_revenue")
+2026-01-11 04:21:20,547 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-01-11 04:21:20,548 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("digital_products")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("digital_products")
+2026-01-11 04:21:20,548 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-01-11 04:21:20,548 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("affiliate_links")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("affiliate_links")
+2026-01-11 04:21:20,548 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-01-11 04:21:20,548 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("affiliate_clicks")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("affiliate_clicks")
+2026-01-11 04:21:20,548 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-01-11 04:21:20,548 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("affiliate_conversions")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("affiliate_conversions")
+2026-01-11 04:21:20,548 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-01-11 04:21:20,548 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("payment_transactions")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("payment_transactions")
+2026-01-11 04:21:20,548 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-01-11 04:21:20,549 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("growth_ledger_entries")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("growth_ledger_entries")
+2026-01-11 04:21:20,549 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-01-11 04:21:20,549 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("growth_orders")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("growth_orders")
+2026-01-11 04:21:20,549 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-01-11 04:21:20,549 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("growth_traffic")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("growth_traffic")
+2026-01-11 04:21:20,549 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-01-11 04:21:20,549 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("growth_ad_spend")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("growth_ad_spend")
+2026-01-11 04:21:20,549 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-01-11 04:21:20,549 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("growth_skus")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("growth_skus")
+2026-01-11 04:21:20,549 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-01-11 04:21:20,549 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("business_missions")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("business_missions")
+2026-01-11 04:21:20,549 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-01-11 04:21:20,550 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("business_workflows")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("business_workflows")
+2026-01-11 04:21:20,550 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-01-11 04:21:20,550 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("ai_protocols")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("ai_protocols")
+2026-01-11 04:21:20,550 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-01-11 04:21:20,550 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("growth_payouts")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("growth_payouts")
+2026-01-11 04:21:20,550 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-01-11 04:21:20,550 INFO sqlalchemy.engine.Engine COMMIT
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:backend.core.database:Database initialized successfully
+2026-01-11 04:21:20,551 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2026-01-11 04:21:20,560 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.is_active, users.is_superuser, users.youtube_access_token, users.youtube_refresh_token, users.youtube_token_expiry, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.is_active, users.is_superuser, users.youtube_access_token, users.youtube_refresh_token, users.youtube_token_expiry, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+2026-01-11 04:21:20,560 INFO sqlalchemy.engine.Engine [generated in 0.00017s] ('admin@example.com',)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00017s] ('admin@example.com',)
+INFO:backend.core.seed_db:Admin user admin@example.com already exists. Skipping seed.
+2026-01-11 04:21:20,561 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:backend.main:Database initialized and seeded successfully
+2026-01-11 04:21:20,562 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2026-01-11 04:21:20,562 INFO sqlalchemy.engine.Engine SELECT biz_opportunities.id, biz_opportunities.source, biz_opportunities.source_id, biz_opportunities.title, biz_opportunities.description, biz_opportunities.rationale, biz_opportunities.potential, biz_opportunities.risk, biz_opportunities.quick_return, biz_opportunities.priority, biz_opportunities.image_url, biz_opportunities.tags, biz_opportunities.metadata, biz_opportunities.raw_data, biz_opportunities.created_at, biz_opportunities.updated_at 
+FROM biz_opportunities
+INFO:sqlalchemy.engine.Engine:SELECT biz_opportunities.id, biz_opportunities.source, biz_opportunities.source_id, biz_opportunities.title, biz_opportunities.description, biz_opportunities.rationale, biz_opportunities.potential, biz_opportunities.risk, biz_opportunities.quick_return, biz_opportunities.priority, biz_opportunities.image_url, biz_opportunities.tags, biz_opportunities.metadata, biz_opportunities.raw_data, biz_opportunities.created_at, biz_opportunities.updated_at 
+FROM biz_opportunities
+2026-01-11 04:21:20,563 INFO sqlalchemy.engine.Engine [generated in 0.00008s] ()
+INFO:sqlalchemy.engine.Engine:[generated in 0.00008s] ()
+2026-01-11 04:21:20,564 INFO sqlalchemy.engine.Engine COMMIT
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:backend.main:BizOp sync completed: {'inserted': 0, 'updated': 15, 'total': 15}
+INFO:     Application startup complete.
+ERROR:    [Errno 48] error while attempting to bind on address ('0.0.0.0', 8000): address already in use
+INFO:     Waiting for application shutdown.
+INFO:backend.main:Shutting down YouTube AI Content Creator
+INFO:     Application shutdown complete.

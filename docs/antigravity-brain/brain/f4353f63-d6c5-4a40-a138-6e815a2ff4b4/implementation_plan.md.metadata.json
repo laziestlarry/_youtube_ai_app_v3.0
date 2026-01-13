@@ -1,6 +1,0 @@
-{
-  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary":  "Plan to integrate Shopier Payment Gateway.\nIncludes:\n- Configuration settings for API Key/Secret.\n- ShopierService class implementation (mocking the actual API calls for now to simulate functionality or using generic requests).\n- Integration into the PaymentService facade.",
-  "updatedAt":  "2025-12-28T18:47:49.157198Z",
-  "version":  "1"
-}

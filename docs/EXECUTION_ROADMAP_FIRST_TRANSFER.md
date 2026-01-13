@@ -245,11 +245,17 @@ gcloud run services describe youtube-ai-backend --region us-central1 --format="v
 
 **Task 5.2: Deploy Frontend**
 ```bash
-# Option 1: Static build served by backend
-# (Already configured in cloudbuild.yaml)
-
-# Option 2: Separate Cloud Run service
+# AutonomaX UI (Next.js)
 cd frontend_v3
+npm run build
+gcloud run deploy autonomax-frontend \
+  --source . \
+  --platform managed \
+  --region us-central1 \
+  --allow-unauthenticated
+
+# YouTube AI UI (Vite)
+cd ../frontend
 npm run build
 gcloud run deploy youtube-ai-frontend \
   --source . \

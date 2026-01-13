@@ -1,27 +1,38 @@
-# YouTube AI Platform v3.0
+# Autonomax + YouTube AI Platform
 
 ## Overview
 
-YouTube AI Platform v3.0 is a professional-grade, profit-centric content creation and management suite. It leverages advanced AI models (GPT-4, DeepSeek, Gemini) to automate the entire YouTube workflow—from niche research and script generation to video production and revenue optimization.
+This repo hosts two linked products:
+- **Autonomax**: core business engine for consultancy, operations, and automation.
+- **YouTube AI**: portfolio cash-cow product focused on content automation and monetization.
 
 ## System Architecture
 
-The platform is built on a modern full-stack architecture:
+Shared backend with separate UIs:
 
-- **Backend**: FastAPI (Python 3.10+) with Pydantic v2 for robust configuration and schema validation.
-- **Frontend**: React with TypeScript, Vite, and Material UI for a high-performance, responsive executive dashboard.
+- **Backend**: FastAPI (Python 3.10+) with Pydantic v2.
+- **Autonomax UI**: Next.js (`frontend_v3`).
+- **YouTube AI UI**: React + Vite (`frontend`).
 - **Database**: SQLAlchemy with support for SQLite (dev) and PostgreSQL (prod).
 - **AI Engine**: Pluggable provider system supporting OpenAI, Groq, and Google Gemini.
 - **Integrations**: Direct YouTube Data API v3 and Google OAuth 2.0 integration.
 
 ## Folder Structure
 
-- `/src/backend`: Core API and AI services.
-- `/src/frontend`: Executive dashboard and user interface.
+- `/backend`: Core API and AI services (shared).
+- `/services`: Product-specific API entrypoints.
+- `/frontend`: YouTube AI Vite dashboard.
+- `/frontend_v3`: Autonomax Next.js dashboard.
+- `/autonomax`: Autonomax workflows and ops assets.
+- `/apps`: Product-level entry points (symlinks).
 - `/config`: Configuration templates and environment settings.
 - `/scripts`: Setup, building, and maintenance tools.
-- `/modules`: Advanced platform modules (marketing, analytics, data simulation).
-- `/docs`: Detailed architectural notes, deployment guides, and commercialization strategies.
+- `/modules`: Advanced platform modules.
+- `/docs`: Architecture notes, deployment guides, and commercialization strategies.
+
+## Product Map
+
+See `apps/README.md` and `docs/SERVICE_MAP.md` for the authoritative service + folder map.
 
 ## Getting Started
 
@@ -50,10 +61,20 @@ cp config/.env.example .env
 
 ### 4. Launch
 
-Start the unified platform:
+Start the shared backend:
 
 ```bash
-bash scripts/start_app.sh
+APP_TARGET=autonomax bash scripts/start_app.sh
+```
+
+Start a UI:
+
+```bash
+# Autonomax UI (Next.js)
+APP_TARGET=autonomax bash scripts/dev.sh
+
+# YouTube AI UI (Vite)
+APP_TARGET=youtube bash scripts/dev.sh
 ```
 
 ## Quick Start (Performance Suite)

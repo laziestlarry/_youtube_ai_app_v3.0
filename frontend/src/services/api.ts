@@ -1,7 +1,7 @@
 import axios, { AxiosResponse, AxiosError, InternalAxiosRequestConfig } from 'axios';
 import type { AnalyticsSummary, VideoAnalytics, SystemHealth, EarningsData, AIModel } from '../types/dashboard';
 
-const API_BASE_URL = window.location.origin;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || window.location.origin;
 
 // Create axios instance with default config
 const apiClient = axios.create({

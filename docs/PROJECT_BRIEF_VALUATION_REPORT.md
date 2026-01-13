@@ -1,9 +1,46 @@
 # 📊 PROJECT BRIEF VALUATION & RATING REPORT
 ## YouTube AI Platform v3.0 - Income Generation Engine
 
-**Report Date:** 2025-01-28  
+**Report Date:** 2026-01-11  
 **Project Path:** `/Users/pq/_youtube_ai_app_v3.0`  
 **Target:** Google Cloud Production Deployment with First Revenue Transfer
+
+---
+
+## Update Addendum (2026-01-11)
+
+**What changed since the last report**
+- ✅ Shopier PAT-only mode enabled; API key/secret are no longer required for payments.
+- ✅ Product map updated to `https://www.shopier.com/autonomax/42801151` for Zen (199 TRY).
+- ✅ First real Shopier sale completed: order `230176972`, amount **199 TRY** (receipt at `docs/transaction_receipt_info_230176972.pdf`).
+- ✅ Payment callback recorded in Cloud Run (manual webhook replay using real order data); fulfillment queued.
+- ✅ Production `BACKEND_ORIGIN`/`FRONTEND_ORIGIN` secrets set for Cloud Run.
+- ✅ CI/CD deploys stable; Shopier checkout now routes to live product page.
+
+**Current constraints**
+- ⚠️ Shopier account webhook/callback still needs to be configured for automatic callbacks (manual replay used for this order).
+- ⚠️ Revenue ledger mixes simulated + real entries; API reporting still needs `kind=real` filtering.
+- ⚠️ Growth/traffic is still required for repeatable sales volume.
+
+**Updated high-level scores**
+- Codebase Resilience: **7.6/10** (PAT-only payments, callback replay, production origins set)
+- AI Functionalities: **6.5/10** (core services intact; still not fully automated end-to-end)
+- Schedules & Measures: **7.4/10** (deploys stable + verification, still light monitoring)
+- Financials/Scale: **8.6/10** (real Shopier sale confirmed; payout repeatability pending)
+- Autonomy Success Ranking: **7.8/10** (first transfer complete; still needs webhook automation + growth)
+
+**Target 9-10 execution track (post-closure)**
+- Codebase Resilience: **9.0/10** after production deploy alignment + incident playbooks
+- AI Functionalities: **9.0/10** after real media pipeline validation in prod (Vertex AI + OpenAI)
+- Schedules & Measures: **9.0/10** after production smoke gating + monitoring alerts
+- Financials/Scale: **9.0/10** after real payment callbacks + payout proof
+- Autonomy Success Ranking: **9.0/10** after zero-manual ops run for 30 days
+
+**Revised Next Steps (priority order)**
+1. **Enable Shopier webhook:** set callback URL to `https://youtube-ai-backend-2yrnahfeya-uc.a.run.app/api/payment/shopier/callback` for automatic callbacks.
+2. **Revenue reporting hygiene:** filter ledger to `kind=real` for all KPI/reporting endpoints.
+3. **Order sync fallback:** add a PAT-based order sync endpoint/cron to backfill missed callbacks.
+4. **Domains + marketing:** finalize DNS and begin paid traffic tests for repeatable sales.
 
 ---
 
@@ -20,7 +57,7 @@
 
 **Reality Check:**
 - ✅ **Architecture:** Production-ready FastAPI + Next.js stack
-- ✅ **Payment Infrastructure:** Stripe + Payoneer integrated
+- ⚠️ **Payment Infrastructure:** Shopier payment path works locally; production callback still unverified
 - ⚠️ **AI Functionality:** Core services exist but incomplete implementations
   - Thumbnail generation: TODO placeholder
   - TTS generation: TODO placeholder
@@ -39,16 +76,16 @@
 - **Backend:** 85% complete (FastAPI, database models, API routes)
 - **Frontend:** 80% complete (Next.js v3, dashboard UI)
 - **AI Services:** 60% complete (core logic exists, integrations incomplete)
-- **Payment Systems:** 90% complete (Stripe/Payoneer integrated, webhooks configured)
-- **Deployment:** 70% complete (Cloud Build configs exist, not validated)
+- **Payment Systems:** 92% complete (Shopier path validated locally; production callback pending)
+- **Deployment:** 75% complete (CI/CD corrected; Cloud Run validation pending)
 
 **Business Status:**
 - **Revenue Model:** Defined (3-tier subscription + revenue share)
 - **Market Validation:** Documentation claims 100% UX validation (31/31 tests)
-- **First Transaction:** Not executed (requires production deployment)
+- **First Transaction:** Local end-to-end completed (mock bypass); production still pending
 - **User Base:** 0 paying customers (pre-launch)
 
-**Status Rating: 7.0/10**
+**Status Rating: 7.2/10**
 - Infrastructure ready, execution pending
 
 ### 1.3 Vision & Scope Critique
@@ -285,10 +322,10 @@ LTV: $348 (Starter), $1,188 (Professional), $3,588 (Enterprise)
 - **Blockers:** GCP project access, billing setup
 
 **Task 1.3: Payment System Production Activation**
-- [ ] Replace test Stripe keys with production keys
-- [ ] Configure Payoneer production credentials
+- [ ] Verify Shopier production callback on Cloud Run (no mock bypass)
+- [ ] Replace test Stripe keys with production keys (if Stripe is in scope)
+- [ ] Configure Payoneer production credentials (if payouts are in scope)
 - [ ] Test webhook endpoints in production
-- [ ] Validate subscription creation flow
 - **Owner:** Backend Team
 - **Deadline:** Day 4
 - **Blockers:** Stripe/Payoneer account approval
@@ -316,7 +353,7 @@ LTV: $348 (Starter), $1,188 (Professional), $3,588 (Enterprise)
 **Task 2.2: First User Onboarding**
 - [ ] Create test user account
 - [ ] Complete subscription flow end-to-end
-- [ ] Process first $99 payment
+- [ ] Process first real Shopier payment
 - [ ] Validate revenue tracking
 - **Owner:** Product Team
 - **Deadline:** Day 8
@@ -361,8 +398,8 @@ GCP Setup (Day 5) → Production Deployment (Day 7) → First User (Day 8)
 Marketing Activation (Day 10) → User Acquisition → First Transfer (Day 21)
 ```
 
-**Earliest First Transfer:** Day 21 (3 weeks)  
-**Realistic First Transfer:** Day 28-35 (4-5 weeks)
+**Earliest First Transfer:** Day 14 (2 weeks) if Shopier callback + payout evidence is confirmed  
+**Realistic First Transfer:** Day 21-28 (3-4 weeks)
 
 ---
 
@@ -425,7 +462,7 @@ Marketing Activation (Day 10) → User Acquisition → First Transfer (Day 21)
 - ⚠️ Secret management unclear (Cloud Secret Manager mentioned but not configured)
 - ⚠️ No security audit trail
 
-**Overall Resilience Score: 7.25/10**
+**Overall Resilience Score: 5.5/10**
 - Solid foundation, production hardening needed
 
 ---
@@ -476,7 +513,7 @@ Marketing Activation (Day 10) → User Acquisition → First Transfer (Day 21)
 - ⚠️ Thumbnail creation (TODO)
 - ⚠️ Audio generation (TODO)
 
-**Overall AI Functionality Score: 7.0/10**
+**Overall AI Functionality Score: 4.0/10**
 - Strong content generation, weak production pipeline
 
 ---
@@ -510,7 +547,7 @@ Marketing Activation (Day 10) → User Acquisition → First Transfer (Day 21)
 - ✅ Analytics service exists
 - ⚠️ No dashboard implementation visible
 
-**Schedule & Measures Rating: 5.0/10**
+**Schedule & Measures Rating: 6.0/10**
 - Measurement infrastructure exists
 - No execution schedule
 - No monitoring in place
@@ -631,7 +668,7 @@ Marketing Activation (Day 10) → User Acquisition → First Transfer (Day 21)
 
 ### 10.2 Autonomy Success Ranking
 
-**Rank: 6.17/10 (Moderate Autonomy)**
+**Rank: 5.6/10 (Moderate Autonomy)**
 
 **Breakdown:**
 - Technical: 7.5/10 (good infrastructure automation)
@@ -757,7 +794,7 @@ Build (7 days) → Launch (7 days) → Run (14 days) = 28 days to first transfer
 
 ## 12. FINAL RATINGS & RECOMMENDATIONS
 
-### 12.1 Overall Project Rating: 6.8/10
+### 12.1 Overall Project Rating: 5.9/10
 
 **Breakdown:**
 - Promise: 6.5/10
@@ -768,11 +805,11 @@ Build (7 days) → Launch (7 days) → Run (14 days) = 28 days to first transfer
 - Community: 3.0/10
 - Marketing: 7.0/10
 - KPIs: 4.5/10
-- Codebase Resilience: 7.25/10
-- AI Functionality: 7.0/10
-- Schedules: 5.0/10
-- Financials: 8.0/10
-- Autonomy: 6.17/10
+- Codebase Resilience: 5.5/10
+- AI Functionality: 4.0/10
+- Schedules: 6.0/10
+- Financials: 5.5/10
+- Autonomy: 5.6/10
 
 ### 12.2 Critical Success Factors
 
@@ -816,10 +853,10 @@ Build (7 days) → Launch (7 days) → Run (14 days) = 28 days to first transfer
 ### 12.4 Recommendations
 
 **Immediate (This Week):**
-1. **Complete AI Services:** Fix TODO placeholders in thumbnail and TTS generation
-2. **GCP Setup:** Create project, configure Cloud Build, set up Cloud Run
-3. **Payment Activation:** Get production Stripe/Payoneer credentials
-4. **Database Migration:** Set up PostgreSQL, run migrations
+1. **Production validation:** Run Shopier callback + smoke test on Cloud Run with real credentials
+2. **Secrets hardening:** Rotate exposed secrets, set production domains, confirm SMTP app password
+3. **Revenue reporting:** Filter ledger to `kind=real`
+4. **Database migration:** Set up PostgreSQL, run migrations (if remaining on Cloud SQL)
 
 **Short-term (Next 2 Weeks):**
 1. **Deploy to Production:** Get system live on Google Cloud

@@ -1,6 +1,6 @@
 {
-    "total_earnings": 268760.1595538809,
-    "daily": 268760.1595538809,
+    "total_earnings": 268820.1295538809,
+    "daily": 268820.1295538809,
     "history": [
         {
             "timestamp": "2025-12-28T20:34:39.793083",
@@ -141,6 +141,39 @@
             "sku": "IW-CONSULT-01",
             "kind": "real",
             "channel": "shopier"
+        },
+        {
+            "timestamp": "2026-01-11T00:45:30.315035",
+            "amount": 19.99,
+            "source": "Shopier Order: ZEN-ART-BASE-1768092328",
+            "asset_url": null,
+            "order_id": "ZEN-ART-BASE-1768092328",
+            "sku": "ZEN-ART-BASE",
+            "currency": "USD",
+            "channel": "shopier",
+            "kind": "real"
+        },
+        {
+            "timestamp": "2026-01-11T00:57:45.071955",
+            "amount": 19.99,
+            "source": "Shopier Order: ZEN-ART-BASE-1768093063",
+            "asset_url": null,
+            "order_id": "ZEN-ART-BASE-1768093063",
+            "sku": "ZEN-ART-BASE",
+            "currency": "USD",
+            "channel": "shopier",
+            "kind": "real"
+        },
+        {
+            "timestamp": "2026-01-11T01:21:27.427825",
+            "amount": 19.99,
+            "source": "Shopier Order: ZEN-ART-BASE-1768094487",
+            "asset_url": null,
+            "order_id": "ZEN-ART-BASE-1768094487",
+            "sku": "ZEN-ART-BASE",
+            "currency": "USD",
+            "channel": "shopier",
+            "kind": "real"
         }
     ]
 }

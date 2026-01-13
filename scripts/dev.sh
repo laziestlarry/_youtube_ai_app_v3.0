@@ -13,10 +13,37 @@ CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
 # Configuration
-PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BACKEND_PORT=8000
-FRONTEND_PORT=3001 # Changed to avoid conflict with Nginx on port 3000
+APP_TARGET="${APP_TARGET:-youtube}"
 LOG_DIR="$PROJECT_ROOT/logs"
+
+FRONTEND_DIR=""
+FRONTEND_PORT="${FRONTEND_PORT:-}"
+FRONTEND_LABEL=""
+FRONTEND_CMD=""
+FRONTEND_ENV=""
+
+case "$APP_TARGET" in
+  autonomax)
+    FRONTEND_DIR="$PROJECT_ROOT/frontend_v3"
+    FRONTEND_PORT="${FRONTEND_PORT:-3002}"
+    FRONTEND_LABEL="Autonomax UI (Next.js)"
+    FRONTEND_ENV="NEXT_PUBLIC_BACKEND_URL=http://localhost:${BACKEND_PORT}"
+    FRONTEND_CMD="PORT=${FRONTEND_PORT} npm run dev"
+    ;;
+  youtube)
+    FRONTEND_DIR="$PROJECT_ROOT/frontend"
+    FRONTEND_PORT="${FRONTEND_PORT:-3001}"
+    FRONTEND_LABEL="YouTube AI UI (Vite)"
+    FRONTEND_ENV="VITE_API_BASE_URL=http://localhost:${BACKEND_PORT}"
+    FRONTEND_CMD="npx vite --host --port ${FRONTEND_PORT}"
+    ;;
+  *)
+    echo "❌ Unknown APP_TARGET: $APP_TARGET (use youtube or autonomax)"
+    exit 1
+    ;;
+esac
 
 # Create logs directory
 mkdir -p "$LOG_DIR"
@@ -99,7 +126,7 @@ trap cleanup SIGINT SIGTERM
 # Main execution
 main() {
     echo "${CYAN}"
-    echo "🚀 YouTube AI Platform - Development Mode"
+    echo "🚀 Platform Development Mode ($APP_TARGET)"
     echo "=========================================="
     echo "${NC}"
     
@@ -109,13 +136,17 @@ main() {
     
     # Start backend
     log "Starting backend service..."
-    cd "$PROJECT_ROOT/backend"
-    source ../venv/bin/activate
-    
-    nohup python -m uvicorn main:app --host 0.0.0.0 --port $BACKEND_PORT --reload > "$LOG_DIR/backend-dev.log" 2>&1 &
+    cd "$PROJECT_ROOT"
+    source venv/bin/activate
+
+    BACKEND_MODULE="services.autonomax_api.main:app"
+    if [ "$APP_TARGET" = "youtube" ]; then
+        BACKEND_MODULE="services.youtube_ai_api.main:app"
+    fi
+
+    nohup python -m uvicorn "$BACKEND_MODULE" --host 0.0.0.0 --port $BACKEND_PORT --reload > "$LOG_DIR/backend-dev.log" 2>&1 &
     BACKEND_PID=$!
     echo $BACKEND_PID > "$LOG_DIR/backend-dev.pid"
-    cd "$PROJECT_ROOT"
     
     # Wait for backend to be ready
     if wait_for_service "http://localhost:$BACKEND_PORT/health" "Backend API"; then
@@ -126,16 +157,16 @@ main() {
     
     # Start frontend
     log "Starting frontend service..."
-    cd "$PROJECT_ROOT/frontend"
-    
-    info "Starting Vite dev server on port $FRONTEND_PORT..."
-    nohup npx vite --host --port $FRONTEND_PORT > "$LOG_DIR/frontend-dev.log" 2>&1 &
+    cd "$FRONTEND_DIR"
+
+    info "Starting $FRONTEND_LABEL on port $FRONTEND_PORT..."
+    nohup env $FRONTEND_ENV $FRONTEND_CMD > "$LOG_DIR/frontend-dev.log" 2>&1 &
     FRONTEND_PID=$!
     echo $FRONTEND_PID > "$LOG_DIR/frontend-dev.pid"
     cd "$PROJECT_ROOT"
     
     # Wait for frontend to be ready
-    if wait_for_service "http://localhost:$FRONTEND_PORT" "Frontend"; then
+    if wait_for_service "http://localhost:$FRONTEND_PORT" "$FRONTEND_LABEL"; then
         success "Frontend service started successfully"
     else
         warn "Frontend service may not be ready yet"
@@ -149,7 +180,7 @@ main() {
     echo "   Backend API:    ${GREEN}http://localhost:$BACKEND_PORT${NC}"
     echo "   API Docs:       ${GREEN}http://localhost:$BACKEND_PORT/docs${NC}"
     echo "   Health Check:   ${GREEN}http://localhost:$BACKEND_PORT/health${NC}"
-    echo "   Frontend:       ${GREEN}http://localhost:$FRONTEND_PORT${NC}"
+    echo "   Frontend:       ${GREEN}http://localhost:$FRONTEND_PORT${NC} ($FRONTEND_LABEL)"
     echo ""
     echo "${CYAN}📁 Log Files:${NC}"
     echo "   Backend:        $LOG_DIR/backend-dev.log"

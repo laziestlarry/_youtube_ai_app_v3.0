@@ -1,5 +1,0 @@
-{
-  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary":  "Implementation plan for consolidating multiple codebases into a high-performance AutonomaX monorepo, including Shopify integration and a new Settlement layer.",
-  "updatedAt":  "2025-12-28T17:59:35.011086Z"
-}

@@ -6,6 +6,8 @@ from typing import Dict, Any, List, Optional
 from dataclasses import dataclass
 import json
 import os
+import shutil
+import subprocess
 
 from ..database_enhanced import db_manager
 from ..utils.monitoring import PerformanceMonitor
@@ -113,7 +115,15 @@ class EnhancedVideoPipeline:
             "target_views": target_views,
             "quality_level": quality_level
         }
-        
+
+        environment = os.getenv("ENVIRONMENT") or os.getenv("APP_ENV") or "production"
+        environment = environment.lower()
+        allow_placeholders = os.getenv("VIDEO_PIPELINE_ALLOW_PLACEHOLDERS")
+        if allow_placeholders is None:
+            self.allow_placeholders = environment != "production"
+        else:
+            self.allow_placeholders = allow_placeholders.lower() in ("1", "true", "yes")
+
         # Performance tracking
         self.start_time = None
         self.end_time = None
@@ -366,18 +376,39 @@ class EnhancedVideoPipeline:
         try:
             script_content = self.artifacts.get("script_content", "")
             work_dir = self.artifacts.get("work_directory")
-            
-            # Simulate audio generation
-            await asyncio.sleep(3)  # Simulate TTS processing
-            
-            audio_path = os.path.join(work_dir, "narration.mp3")
-            
-            # Create placeholder audio file
-            with open(audio_path, 'w') as f:
-                f.write("# Placeholder audio file")
-            
-            stage.artifacts["audio_path"] = audio_path
-            stage.artifacts["audio_duration"] = 300  # 5 minutes
+
+            if not script_content.strip():
+                raise RuntimeError("Script content missing; cannot generate audio.")
+
+            from ..tts_generator import generate_audio
+
+            voice_id = os.getenv("TTS_VOICE_ID", "en-US-Neural2-J")
+            speed = float(os.getenv("TTS_SPEED", "1.0"))
+
+            try:
+                result = await generate_audio(
+                    text=script_content,
+                    voice_id=voice_id,
+                    speed=speed,
+                )
+                audio_path = result["path"]
+                if work_dir:
+                    target = os.path.join(work_dir, os.path.basename(audio_path))
+                    if audio_path != target:
+                        shutil.copyfile(audio_path, target)
+                        audio_path = target
+                stage.artifacts["audio_path"] = audio_path
+                stage.artifacts["audio_duration"] = result.get("duration")
+            except Exception:
+                if not self.allow_placeholders:
+                    raise
+                if not work_dir:
+                    raise
+                audio_path = os.path.join(work_dir, "narration_placeholder.mp3")
+                with open(audio_path, "w") as f:
+                    f.write("# Placeholder audio file")
+                stage.artifacts["audio_path"] = audio_path
+                stage.artifacts["audio_duration"] = 300
             stage.progress = 100
             
         except Exception as e:
@@ -390,18 +421,46 @@ class EnhancedVideoPipeline:
             work_dir = self.artifacts.get("work_directory")
             audio_path = self.artifacts.get("audio_path")
             thumbnail_path = self.artifacts.get("thumbnail_path")
-            
-            # Simulate video assembly
-            await asyncio.sleep(5)  # Simulate video processing
-            
+
+            if not work_dir:
+                raise RuntimeError("Work directory missing; cannot assemble video.")
+            if not audio_path or not thumbnail_path:
+                raise RuntimeError("Missing audio or thumbnail for video assembly.")
+
+            ffmpeg_path = shutil.which("ffmpeg")
+            if not ffmpeg_path:
+                if not self.allow_placeholders:
+                    raise RuntimeError("ffmpeg not found; install ffmpeg to assemble videos.")
+                ffmpeg_path = None
+
             video_path = os.path.join(work_dir, "final_video.mp4")
-            
-            # Create placeholder video file
-            with open(video_path, 'w') as f:
-                f.write("# Placeholder video file")
-            
+            if ffmpeg_path:
+                cmd = [
+                    ffmpeg_path,
+                    "-y",
+                    "-loop", "1",
+                    "-i", thumbnail_path,
+                    "-i", audio_path,
+                    "-c:v", "libx264",
+                    "-tune", "stillimage",
+                    "-c:a", "aac",
+                    "-b:a", "192k",
+                    "-pix_fmt", "yuv420p",
+                    "-shortest",
+                    video_path,
+                ]
+                result = subprocess.run(cmd, capture_output=True, text=True)
+                if result.returncode != 0:
+                    if not self.allow_placeholders:
+                        raise RuntimeError(f"ffmpeg failed: {result.stderr.strip()}")
+                    with open(video_path, "w") as f:
+                        f.write("# Placeholder video file")
+            else:
+                with open(video_path, "w") as f:
+                    f.write("# Placeholder video file")
+
             stage.artifacts["video_path"] = video_path
-            stage.artifacts["video_duration"] = 300
+            stage.artifacts["video_duration"] = stage.artifacts.get("audio_duration")
             stage.artifacts["video_resolution"] = "1920x1080"
             stage.progress = 100
             

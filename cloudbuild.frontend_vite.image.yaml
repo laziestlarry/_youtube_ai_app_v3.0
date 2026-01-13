@@ -1,0 +1,26 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "--build-arg",
+        "VITE_API_BASE_URL=${_API_BASE_URL}",
+        "-t",
+        "${_FRONTEND_IMAGE}",
+        "-f",
+        "frontend/Dockerfile",
+        "frontend",
+      ]
+
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "${_FRONTEND_IMAGE}"]
+
+images:
+  - "${_FRONTEND_IMAGE}"
+
+substitutions:
+  _API_BASE_URL: "http://localhost:8000"
+  _FRONTEND_IMAGE: "gcr.io/$PROJECT_ID/youtube-ai-frontend"
+
+options:
+  substitution_option: "ALLOW_LOOSE"

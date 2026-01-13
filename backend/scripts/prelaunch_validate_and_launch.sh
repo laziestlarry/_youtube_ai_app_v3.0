@@ -16,8 +16,14 @@ echo -e "${green}Database initialized successfully.${nc}"
 HEALTH_URL="http://localhost:8000/api/v1/health"
 echo -e "${green}Checking backend health endpoint...${nc}"
 
+APP_TARGET="${APP_TARGET:-autonomax}"
+APP_MODULE="services.autonomax_api.main:app"
+if [ "$APP_TARGET" = "youtube" ]; then
+  APP_MODULE="services.youtube_ai_api.main:app"
+fi
+
 # Start backend in background for health check
-uvicorn backend.main:app --host 0.0.0.0 --port 8000 --workers 1 &
+uvicorn "$APP_MODULE" --host 0.0.0.0 --port 8000 --workers 1 &
 SERVER_PID=$!
 sleep 5
 
@@ -54,6 +60,6 @@ sleep 2
 
 # 5. Launch backend server for production
 # (Uncomment the following line to launch for production)
-# uvicorn backend.main:app --host 0.0.0.0 --port 8000 --workers 2
+# uvicorn "$APP_MODULE" --host 0.0.0.0 --port 8000 --workers 2
 
 echo -e "${green}Pre-launch validation complete. Ready for production launch.${nc}" 

@@ -6,6 +6,7 @@ Production server runner for YouTube AI Content Creator.
 import uvicorn
 import sys
 import socket
+import os
 from pathlib import Path
 
 # Add the project root to Python path
@@ -27,6 +28,10 @@ def main():
     """Run the production server."""
     try:
         from backend.core.config import settings
+        app_target = os.getenv("APP_TARGET", "autonomax")
+        app_module = "services.autonomax_api.main:app"
+        if app_target == "youtube":
+            app_module = "services.youtube_ai_api.main:app"
         
         # Find available port
         available_port = find_free_port(settings.port)
@@ -52,7 +57,7 @@ def main():
         print("")
         
         uvicorn.run(
-            "backend.main:app",
+            app_module,
             host=settings.host,
             port=available_port,
             reload=settings.debug,

@@ -1136,16 +1136,71 @@
     <p>AutonomaX Commerce Studio. Gelir netliği ve icra için üretildi.</p>
   </footer>
   <script>
-    document.querySelectorAll('.shopier-pay').forEach((button) => {
+    const detectCurrency = (text) => {
+      const upper = text.toUpperCase();
+      if (upper.includes('TL') || upper.includes('₺')) {
+        return 'TRY';
+      }
+      if (upper.includes('EUR') || upper.includes('€')) {
+        return 'EUR';
+      }
+      return 'USD';
+    };
+
+    const parsePrice = (text) => {
+      const cleaned = text.replace(/[^\d,\.]/g, '');
+      if (!cleaned) {
+        return null;
+      }
+      if (cleaned.includes(',') && cleaned.includes('.')) {
+        if (cleaned.lastIndexOf(',') > cleaned.lastIndexOf('.')) {
+          return Number.parseFloat(cleaned.replace(/\./g, '').replace(',', '.'));
+        }
+        return Number.parseFloat(cleaned.replace(/,/g, ''));
+      }
+      if (cleaned.includes(',')) {
+        return Number.parseFloat(cleaned.replace(',', '.'));
+      }
+      return Number.parseFloat(cleaned);
+    };
+
+    const buildOrderId = (sku, title) => {
+      const seed = sku || title || 'ORDER';
+      const slug = seed
+        .toUpperCase()
+        .replace(/[^A-Z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+        .slice(0, 20) || 'ORDER';
+      return `${slug}-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+    };
+
+    const resolveProductData = (button) => {
+      const container = button.closest('.product-card, .feature-card');
+      const titleEl = container?.querySelector('h3');
+      const priceEl = container?.querySelector('.price');
+      const title = (button.dataset.title || titleEl?.textContent || '').trim();
+      const rawPrice = (button.dataset.price || priceEl?.textContent || '').trim();
+      const currency = (button.dataset.currency || detectCurrency(rawPrice)).trim();
+      const amount = button.dataset.price ? Number.parseFloat(button.dataset.price) : parsePrice(rawPrice);
+      return {
+        sku: button.dataset.sku || '',
+        title,
+        amount,
+        currency,
+      };
+    };
+
+    document.querySelectorAll('a[href^="https://www.shopier.com/"]').forEach((button) => {
+      button.classList.add('shopier-pay');
       button.addEventListener('click', (event) => {
+        const { sku, title, amount, currency } = resolveProductData(button);
+        if (!title || !amount || Number.isNaN(amount)) {
+          return;
+        }
         event.preventDefault();
-        const sku = button.dataset.sku || 'ORDER';
-        const price = button.dataset.price || '0';
-        const currency = button.dataset.currency || 'USD';
-        const title = button.dataset.title || 'Order';
-        const orderId = `${sku}-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+        const orderId = buildOrderId(sku, title);
         const params = new URLSearchParams({
-          amount: price,
+          amount: amount.toString(),
           currency,
           order_id: orderId,
           product_name: title,

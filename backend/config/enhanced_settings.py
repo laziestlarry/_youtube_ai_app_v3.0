@@ -1,5 +1,5 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from pydantic import Field
+from pydantic import Field, AliasChoices
 from typing import Dict, List, Optional, Any
 import json
 import os
@@ -170,19 +170,101 @@ class YouTubeSettings(BaseSettings):
 
 class PaymentSettings(BaseSettings):
     """Payment configuration settings."""
-    stripe_secret_key: Optional[str] = Field(None)
-    stripe_publishable_key: Optional[str] = Field(None)
-    payoneer_api_key: Optional[str] = Field(None)
-    payoneer_secret_key: Optional[str] = Field(None)
-    payoneer_program_id: Optional[str] = Field(None)
-    shopier_api_key: Optional[str] = Field(None, description="Shopier API Key")
-    shopier_api_secret: Optional[str] = Field(None, description="Shopier API Secret")
-    shopier_personal_access_token: Optional[str] = Field(None, validation_alias="SHOPIER_PERSONAL_ACCESS_TOKEN")
-    shopier_webhook_token: Optional[str] = Field(None, validation_alias="SHOPIER_WEBHOOK_TOKEN", description="Shopier Webhook Token")
-    shopify_admin_token: Optional[str] = Field(None, validation_alias="SHOPIFY_ADMIN_TOKEN")
-    shopify_storefront_token: Optional[str] = Field(None, validation_alias="SHOPIFY_STOREFRONT_TOKEN")
-    shopify_shop_domain: Optional[str] = Field(None, validation_alias="SHOPIFY_SHOP_DOMAIN")
-    shopify_api_version: str = Field("2025-07", validation_alias="SHOPIFY_API_VERSION")
+    stripe_secret_key: Optional[str] = Field(
+        None,
+        validation_alias=AliasChoices(
+            "PAYMENT_STRIPE_SECRET_KEY",
+            "STRIPE_API_KEY",
+            "STRIPE_SECRET_KEY",
+        ),
+    )
+    stripe_publishable_key: Optional[str] = Field(
+        None,
+        validation_alias=AliasChoices(
+            "PAYMENT_STRIPE_PUBLISHABLE_KEY",
+            "STRIPE_PUBLISHABLE_KEY",
+        ),
+    )
+    payoneer_api_key: Optional[str] = Field(
+        None,
+        validation_alias=AliasChoices(
+            "PAYMENT_PAYONEER_API_KEY",
+            "PAYONEER_API_KEY",
+        ),
+    )
+    payoneer_secret_key: Optional[str] = Field(
+        None,
+        validation_alias=AliasChoices(
+            "PAYMENT_PAYONEER_SECRET_KEY",
+            "PAYONEER_SECRET_KEY",
+        ),
+    )
+    payoneer_program_id: Optional[str] = Field(
+        None,
+        validation_alias=AliasChoices(
+            "PAYMENT_PAYONEER_PROGRAM_ID",
+            "PAYONEER_PROGRAM_ID",
+        ),
+    )
+    shopier_api_key: Optional[str] = Field(
+        None,
+        validation_alias=AliasChoices(
+            "PAYMENT_SHOPIER_API_KEY",
+            "SHOPIER_API_KEY",
+        ),
+        description="Shopier API Key",
+    )
+    shopier_api_secret: Optional[str] = Field(
+        None,
+        validation_alias=AliasChoices(
+            "PAYMENT_SHOPIER_API_SECRET",
+            "SHOPIER_API_SECRET",
+        ),
+        description="Shopier API Secret",
+    )
+    shopier_personal_access_token: Optional[str] = Field(
+        None,
+        validation_alias=AliasChoices(
+            "PAYMENT_SHOPIER_PERSONAL_ACCESS_TOKEN",
+            "SHOPIER_PERSONAL_ACCESS_TOKEN",
+        ),
+    )
+    shopier_webhook_token: Optional[str] = Field(
+        None,
+        validation_alias=AliasChoices(
+            "PAYMENT_SHOPIER_WEBHOOK_TOKEN",
+            "SHOPIER_WEBHOOK_TOKEN",
+        ),
+        description="Shopier Webhook Token",
+    )
+    shopify_admin_token: Optional[str] = Field(
+        None,
+        validation_alias=AliasChoices(
+            "PAYMENT_SHOPIFY_ADMIN_TOKEN",
+            "SHOPIFY_ADMIN_TOKEN",
+        ),
+    )
+    shopify_storefront_token: Optional[str] = Field(
+        None,
+        validation_alias=AliasChoices(
+            "PAYMENT_SHOPIFY_STOREFRONT_TOKEN",
+            "SHOPIFY_STOREFRONT_TOKEN",
+        ),
+    )
+    shopify_shop_domain: Optional[str] = Field(
+        None,
+        validation_alias=AliasChoices(
+            "PAYMENT_SHOPIFY_SHOP_DOMAIN",
+            "SHOPIFY_SHOP_DOMAIN",
+        ),
+    )
+    shopify_api_version: str = Field(
+        "2025-07",
+        validation_alias=AliasChoices(
+            "PAYMENT_SHOPIFY_API_VERSION",
+            "SHOPIFY_API_VERSION",
+        ),
+    )
     
     model_config = SettingsConfigDict(
         env_prefix="PAYMENT_",
@@ -191,6 +273,7 @@ class PaymentSettings(BaseSettings):
 
 class EnhancedSettings(BaseSettings):
     """Main application settings."""
+    app_target: str = Field("autonomax", validation_alias="APP_TARGET")
     app_name: str = Field("YouTube AI Platform")
     app_version: str = Field("2.0.0")
     debug: bool = Field(False)
@@ -228,6 +311,12 @@ class EnhancedSettings(BaseSettings):
     
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        app_target = (self.app_target or "autonomax").lower()
+        if self.app_name == "YouTube AI Platform":
+            if app_target == "autonomax":
+                self.app_name = "Autonomax"
+            elif app_target == "youtube":
+                self.app_name = "YouTube AI Platform"
         
         # Ensure secret_key is loaded from env if mapping failed
         if not self.security.secret_key:
@@ -241,7 +330,12 @@ class EnhancedSettings(BaseSettings):
             print("[WARNING] SECRET_KEY is too short (<32 chars). This is NOT secure for production!")
         
         if not self.database.url or self.database.url == "sqlite:///./youtube_ai.db":
-            self.database.url = os.getenv("DATABASE_URL") or "sqlite:///./youtube_ai.db"
+            default_db = "sqlite:///./autonomax.db" if app_target == "autonomax" else "sqlite:///./youtube_ai.db"
+            self.database.url = os.getenv("DATABASE_URL") or default_db
+
+        if self.frontend_origin in ("http://localhost:3001", "http://localhost:3000"):
+            if app_target == "autonomax":
+                self.frontend_origin = "http://localhost:3002"
             
         # Ensure YouTube settings are loaded from env if prefix mapping failed
         if not self.youtube.client_id:
@@ -357,6 +451,7 @@ class EnhancedSettings(BaseSettings):
     def get_environment_info(self) -> Dict[str, Any]:
         """Get information about the current environment."""
         return {
+            "app_target": self.app_target,
             "app_name": self.app_name,
             "app_version": self.app_version,
             "environment": self.environment,

@@ -125,7 +125,8 @@ class DeliveryService:
         return f"{base}/{file_path}"
 
     def _send_email(self, to_email: str, subject: str, body: str) -> None:
-        enabled = os.getenv("EMAIL_ENABLED", "false").lower() in ("1", "true", "yes")
+        enabled = os.getenv("EMAIL_ENABLED") or os.getenv("NOTIFICATIONS_EMAIL_ENABLED") or "false"
+        enabled = enabled.lower() in ("1", "true", "yes")
         if not enabled:
             logger.info("Email delivery NOT ENABLED (Logging content for dev):")
             logger.info("TO: %s", to_email)
@@ -133,14 +134,18 @@ class DeliveryService:
             logger.info("BODY: %s", body)
             return
 
-        smtp_host = os.getenv("SMTP_HOST")
-        smtp_port = int(os.getenv("SMTP_PORT", "587"))
-        smtp_user = os.getenv("SMTP_USERNAME")
-        smtp_pass = os.getenv("SMTP_PASSWORD")
+        smtp_host = os.getenv("SMTP_HOST") or os.getenv("NOTIFICATIONS_SMTP_SERVER")
+        smtp_port = int(os.getenv("SMTP_PORT") or os.getenv("NOTIFICATIONS_SMTP_PORT", "587"))
+        smtp_user = os.getenv("SMTP_USERNAME") or os.getenv("NOTIFICATIONS_SMTP_USERNAME")
+        smtp_pass = (
+            os.getenv("SMTP_PASSWORD")
+            or os.getenv("SMTP_APP_PASSWORD")
+            or os.getenv("NOTIFICATIONS_SMTP_PASSWORD")
+        )
         if not smtp_host or not smtp_user or not smtp_pass:
             raise RuntimeError("SMTP settings incomplete")
 
-        sender = os.getenv("DELIVERY_FROM_EMAIL") or smtp_user
+        sender = os.getenv("DELIVERY_FROM_EMAIL") or os.getenv("NOTIFICATIONS_FROM_EMAIL") or smtp_user
         message = EmailMessage()
         message["From"] = sender
         message["To"] = to_email

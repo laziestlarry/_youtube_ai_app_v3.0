@@ -32,6 +32,10 @@ class ChimeraEngine:
         self.temperature = self._parse_float(os.getenv("AI_TEMPERATURE"), self.settings.ai.temperature)
         self._openai_client: Optional[AsyncOpenAI] = None
         self._openai_api_key: Optional[str] = None
+        self.vertex_project = os.getenv("VERTEXAI_PROJECT") or os.getenv("GCP_PROJECT_ID")
+        self.vertex_location = os.getenv("VERTEXAI_LOCATION", "us-central1")
+        self.vertex_model = os.getenv("VERTEXAI_MODEL", "gemini-1.5-pro-002")
+        self.vertex_fallback = os.getenv("VERTEXAI_FALLBACK_TO_OPENAI", "true").lower() in ("1", "true", "yes")
 
     @staticmethod
     def _parse_int(value: Optional[str], fallback: int) -> int:
@@ -132,6 +136,15 @@ class ChimeraEngine:
 
         async with resource_manager.acquire_cloud():
             provider = self.ai_provider
+            if provider in ("vertexai", "vertex", "gemini"):
+                try:
+                    return await self._call_vertex_ai(prompt)
+                except Exception as exc:
+                    logger.warning("Vertex AI call failed: %s", exc)
+                    if self.vertex_fallback:
+                        provider = "openai"
+                    else:
+                        raise
             if provider not in ("openai", "cloud"):
                 api_key = os.getenv("OPENAI_API_KEY") or self.settings.ai.openai_api_key
                 if not self._provider_env and api_key:
@@ -155,5 +168,49 @@ class ChimeraEngine:
             )
             content = response.choices[0].message.content
             return content or ""
+
+    async def _call_vertex_ai(self, prompt: str) -> str:
+        """Calls Vertex AI (Gemini) via REST API."""
+        from google.auth import default
+        from google.auth.transport.requests import Request
+
+        scopes = ["https://www.googleapis.com/auth/cloud-platform"]
+        credentials, project = default(scopes=scopes)
+        credentials.refresh(Request())
+
+        project_id = self.vertex_project or project
+        if not project_id:
+            raise RuntimeError("VERTEXAI_PROJECT or GCP_PROJECT_ID is required for Vertex AI.")
+
+        endpoint = (
+            f"https://{self.vertex_location}-aiplatform.googleapis.com/v1/projects/"
+            f"{project_id}/locations/{self.vertex_location}/publishers/google/models/"
+            f"{self.vertex_model}:generateContent"
+        )
+        payload = {
+            "contents": [{"role": "user", "parts": [{"text": prompt}]}],
+            "generationConfig": {
+                "maxOutputTokens": self.max_tokens,
+                "temperature": self.temperature,
+            },
+        }
+        headers = {
+            "Authorization": f"Bearer {credentials.token}",
+            "Content-Type": "application/json",
+        }
+
+        async with httpx.AsyncClient(timeout=120.0) as client:
+            response = await client.post(endpoint, json=payload, headers=headers)
+            response.raise_for_status()
+            data = response.json()
+
+        candidates = data.get("candidates", [])
+        if not candidates:
+            return ""
+        content = candidates[0].get("content", {})
+        parts = content.get("parts", [])
+        if not parts:
+            return ""
+        return str(parts[0].get("text") or "").strip()
 
 chimera_engine = ChimeraEngine()
