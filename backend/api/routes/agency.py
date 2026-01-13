@@ -290,3 +290,23 @@ async def orchestrate_marketing(
         "campaign_data": result,
         "timestamp": datetime.now().isoformat()
     }
+
+@router.post("/orchestrate/revenue-stream")
+async def orchestrate_revenue_stream(
+    current_user: User = Depends(get_current_user)
+):
+    """
+    Trigger the daily continuous revenue optimization mission.
+    Analyzes performance and executes marketing/pricing boosts.
+    """
+    from modules.ai_agency.revenue_orchestrator import revenue_orchestrator
+    
+    result = await revenue_orchestrator.daily_mission()
+    
+    return {
+        "status": "optimization_complete",
+        "mission_id": result["mission_id"],
+        "revenue_yesterday": result["revenue_yesterday"],
+        "actions_taken": len(result["actions"]),
+        "details": result
+    }
