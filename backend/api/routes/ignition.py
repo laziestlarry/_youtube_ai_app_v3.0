@@ -49,8 +49,14 @@ async def get_ignition_stats(db: Session = Depends(get_growth_db)):
     Returns real-time ignition stats including proof-of-funds and countdown.
     """
     # 1. Calculate Proof of Funds (Total Cleared Revenue)
-    total_cents = db.query(GrowthLedgerEntry.amount_cents).filter(
+    first_real_sale = db.query(GrowthLedgerEntry).filter(
+        GrowthLedgerEntry.transaction_id != "INITIAL_IGNITION_SEED",
         GrowthLedgerEntry.status == "CLEARED"
+    ).count() > 0
+
+    total_cents = db.query(GrowthLedgerEntry.amount_cents).filter(
+        GrowthLedgerEntry.status == "CLEARED",
+        GrowthLedgerEntry.transaction_id != "INITIAL_IGNITION_SEED"
     ).all()
     
     proof_of_funds = sum(c[0] for c in total_cents) / 100.0 if total_cents else 0.0
@@ -62,8 +68,10 @@ async def get_ignition_stats(db: Session = Depends(get_growth_db)):
     remaining = launch_target - now
     countdown_seconds = max(0, int(remaining.total_seconds()))
     
-    # 3. Recent Wins
-    recent_entries = db.query(GrowthLedgerEntry).order_by(
+    # 3. Recent Wins (excluding seed)
+    recent_entries = db.query(GrowthLedgerEntry).filter(
+        GrowthLedgerEntry.transaction_id != "INITIAL_IGNITION_SEED"
+    ).order_by(
         GrowthLedgerEntry.created_at.desc()
     ).limit(5).all()
     
@@ -77,7 +85,7 @@ async def get_ignition_stats(db: Session = Depends(get_growth_db)):
         })
         
     return {
-        "launch_status": "IGNITION_SEQUENCE_ACTIVE",
+        "launch_status": "FIRST_SALE_ACTIVE" if not first_real_sale else "LIFTOFF_ACHIEVED",
         "proof_of_funds": proof_of_funds,
         "countdown_seconds": countdown_seconds,
         "ticker": "AX-IGN-01",
