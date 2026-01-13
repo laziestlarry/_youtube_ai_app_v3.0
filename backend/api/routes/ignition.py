@@ -17,6 +17,31 @@ def get_growth_db():
     finally:
         db.close()
 
+@router.delete("/ledger")
+async def reset_ledger(
+    admin_key: str,
+    db: Session = Depends(get_growth_db)
+):
+    """
+    EMERGENCY: Reset Growth Ledger.
+    Requires ADMIN_SECRET_KEY.
+    """
+    from backend.config.enhanced_settings import settings
+    from sqlalchemy import text
+    from fastapi import HTTPException
+    
+    if admin_key != settings.security.admin_secret_key:
+        raise HTTPException(status_code=403, detail="Invalid admin key")
+        
+    try:
+        # Delete all entries
+        db.execute(text("DELETE FROM growth_ledger"))
+        db.commit()
+        return {"status": "ledger_reset", "message": "All growth ledger entries removed."}
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=str(e))
+
 @router.get("/stats")
 async def get_ignition_stats(db: Session = Depends(get_growth_db)):
     """
