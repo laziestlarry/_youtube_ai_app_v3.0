@@ -34,8 +34,9 @@ async def reset_ledger(
         raise HTTPException(status_code=403, detail="Invalid admin key")
         
     try:
-        # Delete all entries
-        db.execute(text("DELETE FROM growth_ledger"))
+        # Delete all entries using ORM
+        # This handles table name resolution automatically
+        db.query(GrowthLedgerEntry).delete()
         db.commit()
         return {"status": "ledger_reset", "message": "All growth ledger entries removed."}
     except Exception as e:
