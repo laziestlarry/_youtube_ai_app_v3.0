@@ -54,6 +54,12 @@ class ShopierApiService:
                 if response.text:
                     return response.json()
                 return None
+            except requests.exceptions.HTTPError as e:
+                logger.error(f"Shopier API error response: {e.response.text}")
+                last_exc = e
+                logger.error("Shopier API request failed: %s %s (%s)", method, url, e)
+                if attempt < 2:
+                    time.sleep(2 * (attempt + 1))
             except requests.RequestException as exc:
                 last_exc = exc
                 logger.error("Shopier API request failed: %s %s (%s)", method, url, exc)
@@ -67,13 +73,18 @@ class ShopierApiService:
         """
         # Map internal product schema to Shopier API schema
         payload = {
-            "name": product_data.get("title"),
+            "title": product_data.get("title"),
             "description": product_data.get("description"),
-            "price": product_data.get("price"),
-            "currency": product_data.get("currency", "USD"),
-            "stock": product_data.get("stock", 9999),  # Digital products have unlimited stock
+            "priceData": {
+                "price": str(product_data.get("price")),
+                "currency": product_data.get("currency", "USD"),
+            },
+            "type": product_data.get("type", "digital"),
+            "stock": product_data.get("stock", 9999), 
             "category_id": product_data.get("category_id", 1),
             "is_active": product_data.get("is_active", True),
+            "shippingPayer": product_data.get("shippingPayer", "sellerPays"),
+            "media": product_data.get("media", [])
         }
         
         return self._request("POST", "/products", payload=payload)
