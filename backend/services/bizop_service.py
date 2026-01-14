@@ -50,14 +50,6 @@ class BizOpportunityService:
         if source:
             query = query.where(BizOpportunity.source == source)
         query = query.limit(limit)
-        
-        # Debug: List docs directory
-        try:
-            files = os.listdir(self.data_root)
-            logger.info(f"Files in {self.data_root}: {files}")
-        except Exception as e:
-            logger.error(f"Error listing {self.data_root}: {e}")
-            
         result = await session.execute(query)
         return list(result.scalars().all())
 
@@ -190,8 +182,8 @@ class BizOpportunityService:
         return records
 
     def _load_ranked_opportunities(self) -> List[BizOpportunityRecord]:
-        path = self.data_root / "rankedopportunities.csv"
-        logger.info(f"Loading ranked opportunities from: {path} (exists: {path.exists()})")
+        path = self.data_root / "bizop_blueprint.csv"
+        logger.info(f"Loading bizop blueprint from: {path} (exists: {path.exists()})")
         if not path.exists():
             return []
 
@@ -220,7 +212,7 @@ class BizOpportunityService:
             source_id = rank or title
             records.append(
                 BizOpportunityRecord(
-                    source="ranked_opportunities",
+                    source="bizop_blueprint",
                     source_id=source_id,
                     title=title,
                     description=description,
