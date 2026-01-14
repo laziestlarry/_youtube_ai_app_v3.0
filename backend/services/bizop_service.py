@@ -1,5 +1,6 @@
 import csv
 import json
+import logging
 import os
 from dataclasses import dataclass
 from pathlib import Path
@@ -10,6 +11,8 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from backend.models.bizop import BizOpportunity
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -109,6 +112,7 @@ class BizOpportunityService:
 
     def _load_value_propositions(self) -> List[BizOpportunityRecord]:
         path = self.data_root / "alexandria_protocol" / "value_propositions.json"
+        logger.info(f"Loading value propositions from: {path} (exists: {path.exists()})")
         if not path.exists():
             return []
 
@@ -179,6 +183,7 @@ class BizOpportunityService:
 
     def _load_ranked_opportunities(self) -> List[BizOpportunityRecord]:
         path = self.data_root / "rankedopportunities.csv"
+        logger.info(f"Loading ranked opportunities from: {path} (exists: {path.exists()})")
         if not path.exists():
             return []
 
