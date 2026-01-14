@@ -50,6 +50,14 @@ class BizOpportunityService:
         if source:
             query = query.where(BizOpportunity.source == source)
         query = query.limit(limit)
+        
+        # Debug: List docs directory
+        try:
+            files = os.listdir(self.data_root)
+            logger.info(f"Files in {self.data_root}: {files}")
+        except Exception as e:
+            logger.error(f"Error listing {self.data_root}: {e}")
+            
         result = await session.execute(query)
         return list(result.scalars().all())
 
