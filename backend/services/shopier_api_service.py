@@ -2,7 +2,7 @@ import os
 import json
 import logging
 import time
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, List
 
 import requests
 
@@ -54,17 +54,18 @@ class ShopierApiService:
                 if response.text:
                     return response.json()
                 return None
+            except requests.RequestException as exc:
+                last_exc = exc
+                logger.error("Shopier API request failed: %s %s (%s)", method, url, exc)
+                if attempt < 2:
+                    time.sleep(2 * (attempt + 1))
+        raise last_exc
 
     def create_product(self, product_data: Dict[str, Any]) -> Dict[str, Any]:
         """
         Create a new product on Shopier.
-        
-        Args:
-            product_data: Product details (title, description, price, etc.)
-        
-        Returns:
-            Created product data with ID and URL
         """
+        # Map internal product schema to Shopier API schema
         payload = {
             "name": product_data.get("title"),
             "description": product_data.get("description"),
@@ -80,13 +81,6 @@ class ShopierApiService:
     def get_orders(self, status: Optional[str] = None, limit: int = 50) -> List[Dict[str, Any]]:
         """
         Get orders from Shopier.
-        
-        Args:
-            status: Filter by order status (pending, completed, cancelled)
-            limit: Maximum number of orders to return
-        
-        Returns:
-            List of order objects
         """
         params = {"limit": limit}
         if status:
@@ -98,13 +92,6 @@ class ShopierApiService:
     def verify_webhook_signature(self, payload: str, signature: str) -> bool:
         """
         Verify Shopier webhook signature.
-        
-        Args:
-            payload: Raw webhook payload
-            signature: Signature from webhook headers
-        
-        Returns:
-            True if signature is valid
         """
         import hmac
         import hashlib
@@ -121,21 +108,12 @@ class ShopierApiService:
         ).hexdigest()
         
         return hmac.compare_digest(expected_signature, signature)
-            except requests.RequestException as exc:
-                last_exc = exc
-                logger.error("Shopier API request failed: %s %s (%s)", method, url, exc)
-                if attempt < 2:
-                    time.sleep(2 * (attempt + 1))
-        raise last_exc
 
     def list_products(self, params: Optional[Dict[str, Any]] = None) -> Any:
         return self._request("GET", "/products", params=params)
 
     def get_product(self, product_id: str) -> Any:
         return self._request("GET", f"/products/{product_id}")
-
-    def create_product(self, payload: Dict[str, Any]) -> Any:
-        return self._request("POST", "/products", payload=payload)
 
     def update_product(self, product_id: str, payload: Dict[str, Any]) -> Any:
         return self._request("PUT", f"/products/{product_id}", payload=payload)
