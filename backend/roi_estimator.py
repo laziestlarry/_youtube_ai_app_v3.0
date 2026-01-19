@@ -3,8 +3,8 @@ from fastapi import APIRouter, HTTPException, Depends
 from typing import List, Dict, Optional, Any
 import logging
 from datetime import datetime
-from models import ROICalculationRequest, APIResponse
-from database import log_execution
+from backend.models import ROICalculationRequest, APIResponse
+from backend.utils.logging_utils import log_execution
 import json
 
 logger = logging.getLogger(__name__)

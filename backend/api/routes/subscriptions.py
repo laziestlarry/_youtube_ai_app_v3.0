@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select, text, update
 from typing import Dict, Any, List
 import uuid
 from datetime import datetime, timedelta
@@ -63,19 +64,20 @@ async def get_user_subscription(
 ):
     """Get user's subscription details"""
     try:
-        # Get from database
         result = await db.execute(
-            "SELECT * FROM user_subscriptions WHERE user_id = ? AND status = 'active'",
-            (user_id,)
+            select(UserSubscription).where(
+                UserSubscription.user_id == user_id,
+                UserSubscription.status == "active",
+            )
         )
-        subscription = result.fetchone()
+        subscription = result.scalars().first()
         
         if not subscription:
             return {"subscription": None}
         
         # Get from Stripe for latest status
         payment_service = PaymentService()
-        stripe_subscription = await payment_service.get_user_subscription(user_id)
+        stripe_subscription = payment_service.retrieve_subscription(subscription.stripe_subscription_id)
         
         return {
             "subscription": {
@@ -101,18 +103,29 @@ async def cancel_subscription(
     """Cancel user subscription"""
     try:
         payment_service = PaymentService()
-        
+
+        result = await db.execute(
+            select(UserSubscription).where(
+                UserSubscription.user_id == user_id,
+                UserSubscription.status == "active",
+            )
+        )
+        subscription = result.scalars().first()
+        if not subscription:
+            return {"status": "not_found", "message": "No active subscription"}
+
         # Cancel in Stripe
-        result = await payment_service.cancel_subscription(user_id)
+        payment_result = payment_service.cancel_stripe_subscription(subscription.stripe_subscription_id)
         
         # Update database
         await db.execute(
-            "UPDATE user_subscriptions SET status = 'cancelled' WHERE user_id = ? AND status = 'active'",
-            (user_id,)
+            update(UserSubscription)
+            .where(UserSubscription.user_id == user_id, UserSubscription.status == "active")
+            .values(status="cancelled")
         )
         await db.commit()
         
-        return result
+        return payment_result
         
     except Exception as e:
         await db.rollback()
@@ -146,15 +159,19 @@ async def track_video_revenue(
         
         # Update user's monthly revenue
         await db.execute(
-            "UPDATE user_subscriptions SET total_revenue_this_month = total_revenue_this_month + ? WHERE user_id = ? AND status = 'active'",
-            (amount, user_id)
+            text(
+                "UPDATE user_subscriptions "
+                "SET total_revenue_this_month = total_revenue_this_month + :amount "
+                "WHERE user_id = :user_id AND status = 'active'"
+            ),
+            {"amount": amount, "user_id": user_id},
         )
         
         await db.commit()
         
         # Process revenue share if applicable
         payment_service = PaymentService()
-        await payment_service.process_revenue_share(user_id, amount)
+        await payment_service.process_revenue_share(user_id, amount, db)
         
         return {
             "message": "Revenue tracked successfully",
@@ -187,18 +204,20 @@ async def get_user_revenue(
         
         # Get revenue data
         result = await db.execute(
-            """
-            SELECT 
-                SUM(amount) as total_revenue,
-                COUNT(*) as total_videos,
-                source,
-                DATE(date) as revenue_date
-            FROM video_revenue 
-            WHERE user_id = ? AND date >= ?
-            GROUP BY source, DATE(date)
-            ORDER BY revenue_date DESC
-            """,
-            (user_id, start_date)
+            text(
+                """
+                SELECT 
+                    SUM(amount) as total_revenue,
+                    COUNT(*) as total_videos,
+                    source,
+                    DATE(date) as revenue_date
+                FROM video_revenue 
+                WHERE user_id = :user_id AND date >= :start_date
+                GROUP BY source, DATE(date)
+                ORDER BY revenue_date DESC
+                """
+            ),
+            {"user_id": user_id, "start_date": start_date},
         )
         
         revenue_data = result.fetchall()
@@ -249,7 +268,7 @@ async def stripe_webhook(
             raise HTTPException(status_code=400, detail="Missing stripe-signature header")
         
         payment_service = PaymentService()
-        result = await payment_service.process_webhook(payload, sig_header)
+        result = await payment_service.process_webhook(payload, sig_header, db=db)
         
         return result
         

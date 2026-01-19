@@ -1146,7 +1146,7 @@ proceed with next steps. Is autonomax running on cloud with cron scheduled auton
 
 *Edited relevant file*
 
-*User accepted the command `gcloud builds submit --config cloudbuild.yaml --project propulse-autonomax . && gcloud scheduler jobs create http autonomax-ignition-pulse-daily --location us-central1 --schedule "0 9 * * *" --uri "https://youtube-ai-backend-71658389068.us-central1.run.app/api/agency/orchestrate/pulse?phase=daily&secret_key=ignition_pulse_secure_2026" --http-method POST --project propulse-autonomax`*
+*User accepted the command `gcloud builds submit --config cloudbuild.yaml --project propulse-autonomax . && gcloud scheduler jobs create http autonomax-ignition-pulse-daily --location us-central1 --schedule "0 9 * * *" --uri "https://youtube-ai-backend-71658389068.us-central1.run.app/api/agency/orchestrate/pulse?phase=daily&secret_key=REDACTED" --http-method POST --project propulse-autonomax`*
 
 *Checked command status*
 
@@ -1184,7 +1184,7 @@ proceed with next steps. Is autonomax running on cloud with cron scheduled auton
 
 *Edited relevant file*
 
-*User accepted the command `git add . && git commit -m "AutonomaX: Fix Cloud Run port mismatch" && git push origin main && gcloud builds submit --config cloudbuild.yaml --project propulse-autonomax . && gcloud scheduler jobs create http autonomax-ignition-pulse-daily --location us-central1 --schedule "0 9 * * *" --uri "https://youtube-ai-backend-71658389068.us-central1.run.app/api/agency/orchestrate/pulse?phase=daily&secret_key=ignition_pulse_secure_2026" --http-method POST --project propulse-autonomax`*
+*User accepted the command `git add . && git commit -m "AutonomaX: Fix Cloud Run port mismatch" && git push origin main && gcloud builds submit --config cloudbuild.yaml --project propulse-autonomax . && gcloud scheduler jobs create http autonomax-ignition-pulse-daily --location us-central1 --schedule "0 9 * * *" --uri "https://youtube-ai-backend-71658389068.us-central1.run.app/api/agency/orchestrate/pulse?phase=daily&secret_key=REDACTED" --http-method POST --project propulse-autonomax`*
 
 *Checked command status*
 
@@ -1228,7 +1228,7 @@ proceed with next steps. Is autonomax running on cloud with cron scheduled auton
 
 *Edited relevant file*
 
-*User accepted the command `git add . && git commit -m "AutonomaX: Fix missing Optional import in agency.py" && git push origin main && gcloud builds submit --config cloudbuild.yaml --project propulse-autonomax . && gcloud scheduler jobs create http autonomax-ignition-pulse-daily --location us-central1 --schedule "0 9 * * *" --uri "https://youtube-ai-backend-71658389068.us-central1.run.app/api/agency/orchestrate/pulse?phase=daily&secret_key=ignition_pulse_secure_2026" --http-method POST --project propulse-autonomax || gcloud scheduler jobs update http autonomax-ignition-pulse-daily --location us-central1 --schedule "0 9 * * *" --uri "https://youtube-ai-backend-71658389068.us-central1.run.app/api/agency/orchestrate/pulse?phase=daily&secret_key=ignition_pulse_secure_2026" --http-method POST --project propulse-autonomax`*
+*User accepted the command `git add . && git commit -m "AutonomaX: Fix missing Optional import in agency.py" && git push origin main && gcloud builds submit --config cloudbuild.yaml --project propulse-autonomax . && gcloud scheduler jobs create http autonomax-ignition-pulse-daily --location us-central1 --schedule "0 9 * * *" --uri "https://youtube-ai-backend-71658389068.us-central1.run.app/api/agency/orchestrate/pulse?phase=daily&secret_key=REDACTED" --http-method POST --project propulse-autonomax || gcloud scheduler jobs update http autonomax-ignition-pulse-daily --location us-central1 --schedule "0 9 * * *" --uri "https://youtube-ai-backend-71658389068.us-central1.run.app/api/agency/orchestrate/pulse?phase=daily&secret_key=REDACTED" --http-method POST --project propulse-autonomax`*
 
 *Checked command status*
 
@@ -1264,7 +1264,7 @@ proceed with next steps. Is autonomax running on cloud with cron scheduled auton
 
 *Checked command status*
 
-*User accepted the command `gcloud scheduler jobs list --location us-central1 --project propulse-autonomax && curl -X POST "https://youtube-ai-backend-71658389068.us-central1.run.app/api/agency/orchestrate/pulse?phase=daily&secret_key=ignition_pulse_secure_2026"`*
+*User accepted the command `gcloud scheduler jobs list --location us-central1 --project propulse-autonomax && curl -X POST "https://youtube-ai-backend-71658389068.us-central1.run.app/api/agency/orchestrate/pulse?phase=daily&secret_key=REDACTED"`*
 
 *Edited relevant file*
 
@@ -1304,7 +1304,7 @@ proceed with next steps. Is autonomax running on cloud with cron scheduled auton
 
 *Checked command status*
 
-*User accepted the command `gcloud scheduler jobs list --location us-central1 --project propulse-autonomax && curl -X POST "https://youtube-ai-backend-71658389068.us-central1.run.app/api/agency/orchestrate/pulse?phase=daily&secret_key=ignition_pulse_secure_2026"`*
+*User accepted the command `gcloud scheduler jobs list --location us-central1 --project propulse-autonomax && curl -X POST "https://youtube-ai-backend-71658389068.us-central1.run.app/api/agency/orchestrate/pulse?phase=daily&secret_key=REDACTED"`*
 
 *User accepted the command `gcloud logging read "resource.type=cloud_run_revision AND resource.labels.revision_name=youtube-ai-backend-00061-wq2" --limit 50 --project propulse-autonomax`*
 
@@ -1350,7 +1350,7 @@ proceed with next steps. Is autonomax running on cloud with cron scheduled auton
 
 *Checked command status*
 
-*User accepted the command `gcloud scheduler jobs describe autonomax-ignition-pulse-daily --location us-central1 --project propulse-autonomax && curl -X POST "https://youtube-ai-backend-71658389068.us-central1.run.app/api/agency/orchestrate/pulse?phase=daily&secret_key=ignition_pulse_secure_2026"`*
+*User accepted the command `gcloud scheduler jobs describe autonomax-ignition-pulse-daily --location us-central1 --project propulse-autonomax && curl -X POST "https://youtube-ai-backend-71658389068.us-central1.run.app/api/agency/orchestrate/pulse?phase=daily&secret_key=REDACTED"`*
 
 *Viewed [direction_board.py](file:///Users/pq/_youtube_ai_app_v3.0/modules/ai_agency/direction_board.py) *
 
@@ -1400,7 +1400,7 @@ proceed with next steps. Is autonomax running on cloud with cron scheduled auton
 
 *Checked command status*
 
-*User accepted the command `curl -X POST "https://youtube-ai-backend-71658389068.us-central1.run.app/api/agency/orchestrate/pulse?phase=daily&secret_key=ignition_pulse_secure_2026"`*
+*User accepted the command `curl -X POST "https://youtube-ai-backend-71658389068.us-central1.run.app/api/agency/orchestrate/pulse?phase=daily&secret_key=REDACTED"`*
 
 *Checked command status*
 
@@ -1410,7 +1410,7 @@ proceed with next steps. Is autonomax running on cloud with cron scheduled auton
 
 *Read terminal output: *
 
-*User accepted the command `curl -s -X POST "https://youtube-ai-backend-71658389068.us-central1.run.app/api/agency/orchestrate/pulse?phase=daily&secret_key=ignition_pulse_secure_2026"`*
+*User accepted the command `curl -s -X POST "https://youtube-ai-backend-71658389068.us-central1.run.app/api/agency/orchestrate/pulse?phase=daily&secret_key=REDACTED"`*
 
 *Checked command status*
 

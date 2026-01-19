@@ -13,7 +13,7 @@ import statistics
 from .advanced_analytics_helpers import AdvancedAnalyticsHelper, PerformancePredictor
 from .analytics_engine import AnalyticsEngine
 from ..database import get_all_ideas, get_idea_by_id
-from ..utils import log_execution
+from backend.utils.logging_utils import log_execution
 
 logger = logging.getLogger(__name__)
 
@@ -468,3 +468,8 @@ class AdvancedAnalyticsEngine:
         if growth_rate < 0.05:  # Less than 5% monthly growth
             recommendations["growth_strategy"].append({
                 "priority": "high",
+                "recommendation": "Increase publishing cadence and improve distribution",
+                "rationale": "Monthly growth below target threshold"
+            })
+
+        return recommendations

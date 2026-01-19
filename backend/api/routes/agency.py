@@ -1,5 +1,5 @@
 import os
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
 from typing import List, Dict, Any, Optional
 from pydantic import BaseModel
 from datetime import datetime
@@ -147,8 +147,9 @@ async def orchestrate_skigen(
     
     return await direction_board.execute_sales_operation("publish_shopify_sku", request.details)
 
-@router.post("/orchestrate/pulse")
+@router.api_route("/orchestrate/pulse", methods=["GET", "POST"])
 async def orchestrate_pulse(
+    request: Request,
     phase: str = "daily",
     current_user: Optional[User] = Depends(get_optional_current_user),
     secret_key: Optional[str] = None
@@ -156,8 +157,25 @@ async def orchestrate_pulse(
     """
     Master Trigger for Autonomous Ignition Pulse.
     Allows secret_key bypass for Cloud Scheduler.
+    GET: Returns status.
+    POST: Executes pulse.
     """
-    if not current_user and secret_key != os.getenv("ADMIN_SECRET_KEY"):
+    # Use settings.security.secret_key as fallback if ADMIN_SECRET_KEY not in env
+    admin_key = os.getenv("ADMIN_SECRET_KEY") or os.getenv("SECRET_KEY")
+    
+    if not current_user and secret_key != admin_key:
+        raise HTTPException(status_code=401, detail="Unauthorized")
+    
+    if request.method == "GET":
+        return {
+            "status": "pulse_active",
+            "phase": phase,
+            "mode": "monitoring",
+            "timestamp": datetime.now().isoformat()
+        }
+    
+    # POST requires authentication or secret_key
+    if not current_user and not secret_key:
         raise HTTPException(status_code=401, detail="Unauthorized")
     
     results = {}
@@ -309,4 +327,42 @@ async def orchestrate_revenue_stream(
         "revenue_yesterday": result["revenue_yesterday"],
         "actions_taken": len(result["actions"]),
         "details": result
+    }
+
+@router.post("/orchestrate/synergy")
+async def orchestrate_synergy(
+    sku: str,
+    current_user: User = Depends(get_current_user)
+):
+    """
+    Execute Fiverr & YouTube AI Synergy Mission.
+    1. Generate SEO Metadata for YouTube.
+    2. List/Sync product on Fiverr for autonomous cooperation.
+    3. Monitor for initial intent signals.
+    """
+    from modules.ai_agency.marketing_commander import marketing_commander
+    from backend.services.fiverr_service import fiverr_service
+    import json
+    
+    # Load product catalog
+    catalog_path = "docs/commerce/product_catalog.json"
+    with open(catalog_path, 'r') as f:
+        catalog = json.load(f)
+    
+    product = next((p for p in catalog['products'] if p['sku'] == sku), None)
+    if not product:
+        raise HTTPException(status_code=404, detail=f"SKU {sku} not found")
+    
+    # 1. YouTube Improvement
+    metadata = await marketing_commander.generate_youtube_metadata(product)
+    
+    # 2. Fiverr Empowerment
+    fiverr_res = await marketing_commander.execute_campaign(product, ["fiverr"])
+    
+    return {
+        "status": "synergy_ignited",
+        "sku": sku,
+        "youtube_metadata": metadata,
+        "fiverr_result": fiverr_res['channels'].get('fiverr'),
+        "timestamp": datetime.now().isoformat()
     }

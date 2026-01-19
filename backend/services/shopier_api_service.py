@@ -100,6 +100,18 @@ class ShopierApiService:
         result = self._request("GET", "/orders", params=params)
         return result.get("data", []) if isinstance(result, dict) else []
     
+    def get_product(self, product_id: str) -> Dict[str, Any]:
+        """
+        Get details for a specific product.
+        """
+        return self._request("GET", f"/products/{product_id}")
+
+    def update_product(self, product_id: str, product_data: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Update an existing product.
+        """
+        return self._request("PATCH", f"/products/{product_id}", payload=product_data)
+
     def verify_webhook_signature(self, payload: str, signature: str) -> bool:
         """
         Verify Shopier webhook signature.

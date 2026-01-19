@@ -6,10 +6,13 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi_utils.tasks import repeat_every
-from ai_modules.weekly_batch_runner import run_weekly_jobs
+from backend.ai_modules.weekly_batch_runner import run_weekly_jobs
 from pydantic import BaseModel
-from ai_modules.youtube_logic import generate_ideas, channel_blueprint, simulate_roi, log_execution
-from database import init_db
+from backend.youtube_logic import generate_ideas, channel_blueprint, simulate_roi
+from backend.utils.logging_utils import log_execution
+from backend.core import database as db
+from backend.database import insert_idea, fetch_all_ideas
+import asyncio
 from typing import List, Optional
 from pathlib import Path
 from datetime import datetime, timedelta
@@ -20,7 +23,7 @@ SECRET_KEY = "your-secret-key"
 ALGORITHM = "HS256"
 openai.api_key = "your-openai-api-key"
 
-init_db()
+asyncio.run(db.init_db())
 
 app = FastAPI(title="YouTube Monetization MVP", version="2.0")
 
@@ -125,7 +128,8 @@ def get_me(user: User = Depends(get_current_user)): return user
 
 # --- App endpoints ---
 @app.on_event("startup")
-def on_start(): init_db()
+async def on_start():
+    await db.init_db()
 
 @app.get("/ideas", response_model=List[VideoIdea])
 def get_ideas(topic: str = Query(...), n: int = 5):

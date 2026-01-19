@@ -10,8 +10,40 @@ PATH=/usr/local/bin:/usr/bin:/bin
 # Weekly on Monday at 10:00
 0 10 * * 1 cd /Users/pq/_youtube_ai_app_v3.0 && python3 scripts/chimera_ops.py weekly >> logs/chimera_weekly.log 2>&1
 
+# Weekly Genesis refresh (Alexandria)
+30 8 * * 1 cd /Users/pq/_youtube_ai_app_v3.0 && python3 scripts/alexandria_genesis.py >> logs/alexandria_genesis.log 2>&1
+
 # Monthly on the 1st at 11:00
 0 11 1 * * cd /Users/pq/_youtube_ai_app_v3.0 && python3 scripts/chimera_ops.py monthly >> logs/chimera_monthly.log 2>&1
 
-# Revenue sync every 6 hours
-0 */6 * * * cd /Users/pq/_youtube_ai_app_v3.0 && python3 scripts/run_revenue_sync.py --days 30 >> logs/revenue_sync.log 2>&1
+# Revenue sync every 6 hours (legacy)
+# 0 */6 * * * cd /Users/pq/_youtube_ai_app_v3.0 && python3 scripts/run_revenue_sync.py --days 30 >> logs/revenue_sync.log 2>&1
+
+# ---
+# Completion workflows + handoffs
+# ---
+
+# Work queue execution (handoff: job completion -> mission log)
+*/15 * * * * cd /Users/pq/_youtube_ai_app_v3.0 && python3 scripts/run_work_schedule.py --limit 10 >> logs/work_schedule.log 2>&1
+*/15 * * * * cd /Users/pq/_youtube_ai_app_v3.0 && python3 scripts/execute_jobs.py --limit 10 >> logs/job_executor.log 2>&1
+
+# Revenue integrity (handoff: ledger sync -> payout/KPI)
+0 */4 * * * cd /Users/pq/_youtube_ai_app_v3.0 && python3 scripts/run_revenue_sync.py --days 7 >> logs/revenue_sync.log 2>&1
+# Optional: cross-DB backfill (enable only when needed)
+# 30 2 * * * cd /Users/pq/_youtube_ai_app_v3.0 && python3 scripts/global_revenue_sync.py >> logs/global_revenue_sync.log 2>&1
+
+# Ledger/KPI checks (handoff: anomaly review)
+0 * * * * cd /Users/pq/_youtube_ai_app_v3.0 && python3 scripts/monitor_ledger.py >> logs/ledger_monitor.log 2>&1
+15 9 * * * cd /Users/pq/_youtube_ai_app_v3.0 && python3 scripts/growth_snapshot.py >> logs/growth_snapshot.log 2>&1
+
+# Storefront health + checkout verification (handoff: issue triage)
+0 10 * * * cd /Users/pq/_youtube_ai_app_v3.0 && python3 scripts/post_deploy_health_report.py >> logs/health_report.log 2>&1
+30 10 * * * cd /Users/pq/_youtube_ai_app_v3.0 && python3 scripts/verify_shopier_checkout.py >> logs/shopier_verify.log 2>&1
+
+# Catalog -> assets -> UTM (handoff: posting burst)
+0 11 * * 1 cd /Users/pq/_youtube_ai_app_v3.0 && python3 scripts/generate_listing_assets.py >> logs/listing_assets.log 2>&1
+15 11 * * 1 cd /Users/pq/_youtube_ai_app_v3.0 && python3 scripts/prepare_marketing_assets.py --catalog docs/commerce/product_catalog.json >> logs/marketing_assets.log 2>&1
+30 11 * * 1 cd /Users/pq/_youtube_ai_app_v3.0 && python3 scripts/generate_utm_links.py >> logs/utm_links.log 2>&1
+
+# Payout orchestration (handoff: finance review)
+0 12 * * 5 cd /Users/pq/_youtube_ai_app_v3.0 && python3 scripts/orchestrate_bank_payout.py >> logs/payout_orchestrator.log 2>&1

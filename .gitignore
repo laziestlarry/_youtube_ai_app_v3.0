@@ -1,3 +1,11 @@
+.DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+.DocumentRevisions-V100
+.fseventsd
+
 .env
 *.env
 .env.*
@@ -6,3 +14,8 @@ __pycache__/
 node_modules
 *.json
 uploads/propulse-autonomax-*.json
+*.db
+*.sqlite
+*.sqlite3
+logs/
+data/

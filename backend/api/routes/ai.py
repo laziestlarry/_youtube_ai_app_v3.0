@@ -1,8 +1,19 @@
 import json
-from fastapi import APIRouter
+import os
+from pathlib import Path
+from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import Optional, List, Dict, Any
 from modules.ai_agency.chimera_engine import chimera_engine
+from backend.config.enhanced_settings import settings
+from backend.services.alexandria_genesis import (
+    GenesisConfig,
+    build_genesis_log,
+    load_genesis_log,
+    resolve_genesis_output,
+    write_genesis_log,
+)
+from backend.services.skills_registry import get_skills_report
 
 router = APIRouter()
 
@@ -24,6 +35,12 @@ def _extract_json_payload(raw: str) -> Any:
         if end == -1 or end <= start:
             raise
         return json.loads(text[start:end + 1])
+
+
+@router.get("/skills")
+def list_skills():
+    """Expose AI/ops capability readiness for dashboards."""
+    return get_skills_report()
 
 class OpportunityInput(BaseModel):
     marketTrends: Optional[str] = None
@@ -682,3 +699,47 @@ RULES:
         "What asset or market should we analyze first?"
     )
     return AlexandriaChatResponse(reply=fallback)
+
+
+class AlexandriaGenesisRefreshRequest(BaseModel):
+    max_files: Optional[int] = 2000
+    include_dirs: Optional[List[str]] = None
+    exclude_dirs: Optional[List[str]] = None
+
+
+@router.get("/alexandria/genesis")
+async def get_alexandria_genesis():
+    """Return the latest Alexandria genesis log."""
+    root = Path(__file__).resolve().parents[3]
+    payload = load_genesis_log(root)
+    if not payload:
+        raise HTTPException(status_code=404, detail="Genesis log not found")
+    return payload
+
+
+@router.post("/alexandria/genesis/refresh")
+async def refresh_alexandria_genesis(
+    request: AlexandriaGenesisRefreshRequest,
+    admin_key: str,
+):
+    """Regenerate the Alexandria genesis log (admin only)."""
+    expected = settings.security.admin_secret_key or os.getenv("ADMIN_SECRET_KEY")
+    if not expected or admin_key != expected:
+        raise HTTPException(status_code=403, detail="Invalid admin key")
+
+    root = Path(__file__).resolve().parents[3]
+    config = GenesisConfig(
+        root=root,
+        max_files=request.max_files or 2000,
+        include_dirs=request.include_dirs,
+        exclude_dirs=request.exclude_dirs,
+    )
+    payload = build_genesis_log(config)
+    output_path = resolve_genesis_output(root)
+    write_genesis_log(payload, output_path)
+
+    return {
+        "status": "ok",
+        "path": str(output_path),
+        "count": len(payload.get("genesis_log", [])),
+    }

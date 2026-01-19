@@ -1,8 +1,8 @@
 export const firebaseConfig = {
-  "projectId": "bizop-navigator2-1391304-2d705",
-  "appId": "1:1078816998024:web:0ac73cb7649b0d9b45553d",
-  "apiKey": "AIzaSyAY5nJnWh5kLqXkgwKkiuoOZODlCbu1yy0",
-  "authDomain": "bizop-navigator2-1391304-2d705.firebaseapp.com",
-  "measurementId": "",
-  "messagingSenderId": "1078816998024"
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "",
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || "",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "",
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || "",
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID || "",
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID || "",
 };

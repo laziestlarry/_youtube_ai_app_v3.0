@@ -4,7 +4,7 @@ import logging
 from datetime import datetime, timedelta
 import asyncio
 from backend.models import APIResponse
-from backend.database import log_execution
+from backend.utils.logging_utils import log_execution
 from backend.youtube_logic import generate_ideas
 from backend.ai_modules.task_orchestrator import VideoPipeline
 import json

@@ -5,7 +5,6 @@ from datetime import datetime
 import logging
 from enum import Enum
 import json
-from database import get_db_connection
 
 logger = logging.getLogger(__name__)
 router = APIRouter()

@@ -5,7 +5,7 @@ import logging
 import os
 from datetime import datetime
 from backend.models import TTSRequest, APIResponse
-from backend.database import log_execution
+from backend.utils.logging_utils import log_execution
 import json
 
 logger = logging.getLogger(__name__)

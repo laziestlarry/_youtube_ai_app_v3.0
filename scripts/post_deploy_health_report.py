@@ -34,7 +34,8 @@ def main() -> None:
         "checks": [],
     }
 
-    report["checks"].append(_check(f"{base_url}/api/health"))
+    report["checks"].append(_check(f"{base_url}/health"))
+    report["checks"].append(_check(f"{base_url}/api/v1/health"))
     report["checks"].append(
         _check(
             f"{base_url}/api/payment/shopier/pay?amount=1.00&currency=USD&order_id=HEALTH-001&product_name=Health+Check"

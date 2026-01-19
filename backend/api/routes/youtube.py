@@ -49,3 +49,43 @@ async def get_channels(
     """Get connected channels for current user."""
     # This will be implemented to fetch from DB
     return {"channels": []}
+
+@router.post("/generate-script")
+async def generate_script(
+    sku: str,
+    current_user: User = Depends(get_current_user)
+):
+    """Generate a YouTube script for a specific SKU."""
+    from modules.ai_agency.marketing_commander import marketing_commander
+    import json
+    
+    catalog_path = "docs/commerce/product_catalog.json"
+    with open(catalog_path, 'r') as f:
+        catalog = json.load(f)
+    
+    product = next((p for p in catalog['products'] if p['sku'] == sku), None)
+    if not product:
+        raise HTTPException(status_code=404, detail=f"SKU {sku} not found")
+        
+    script = await marketing_commander.generate_youtube_script(product)
+    return {"sku": sku, "script": script}
+
+@router.post("/generate-metadata")
+async def generate_metadata(
+    sku: str,
+    current_user: User = Depends(get_current_user)
+):
+    """Generate SEO-optimized YouTube metadata for a specific SKU."""
+    from modules.ai_agency.marketing_commander import marketing_commander
+    import json
+    
+    catalog_path = "docs/commerce/product_catalog.json"
+    with open(catalog_path, 'r') as f:
+        catalog = json.load(f)
+    
+    product = next((p for p in catalog['products'] if p['sku'] == sku), None)
+    if not product:
+        raise HTTPException(status_code=404, detail=f"SKU {sku} not found")
+        
+    metadata = await marketing_commander.generate_youtube_metadata(product)
+    return {"sku": sku, "metadata": metadata}

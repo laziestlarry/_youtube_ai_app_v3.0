@@ -15,7 +15,20 @@ load_dotenv(dotenv_path=env_path)
 class AISettings(BaseSettings):
     """AI-related configuration settings."""
     provider: str = Field("deepseek")  # openai, deepseek, llama3, mistral, etc.
-    openai_api_key: Optional[str] = Field(None)
+    openai_api_key: Optional[str] = Field(
+        None,
+        validation_alias=AliasChoices(
+            "AI_OPENAI_API_KEY",
+            "OPENAI_API_KEY",
+        ),
+    )
+    gemini_api_key: Optional[str] = Field(
+        None,
+        validation_alias=AliasChoices(
+            "AI_GEMINI_API_KEY",
+            "GEMINI_API_KEY",
+        ),
+    )
     model_name: str = Field("deepseek-llm")
     max_tokens: int = Field(4000)
     temperature: float = Field(0.7)
@@ -89,12 +102,20 @@ class SchedulingSettings(BaseSettings):
 class SecuritySettings(BaseSettings):
     """Security configuration settings."""
     secret_key: Optional[str] = Field(None)
+    admin_secret_key: Optional[str] = Field(
+        None,
+        validation_alias=AliasChoices(
+            "ADMIN_SECRET_KEY",
+            "SECURITY_ADMIN_SECRET_KEY",
+        ),
+    )
     jwt_algorithm: str = Field("HS256")
     jwt_expiration: int = Field(86400)
-    cors_origins: List[str] = Field(["*"])
+    cors_origins: str = Field("*")
     rate_limit_enabled: bool = Field(True)
     rate_limit_requests: int = Field(100)
     rate_limit_window: int = Field(3600)
+
     
     model_config = SettingsConfigDict(
         env_prefix="SECURITY_",
@@ -408,8 +429,13 @@ class EnhancedSettings(BaseSettings):
         # Validate AI settings
         ai_issues = []
         if self.ai.provider == "openai":
-            if not self.ai.openai_api_key or self.ai.openai_api_key == "your-api-key-here":
+            openai_key = self.ai.openai_api_key or os.getenv("OPENAI_API_KEY")
+            if not openai_key or openai_key == "your-api-key-here":
                 ai_issues.append("OpenAI API key is not set or using placeholder value")
+        if self.ai.provider in ("gemini", "vertexai", "vertex"):
+            vertex_project = os.getenv("VERTEXAI_PROJECT") or os.getenv("GCP_PROJECT_ID")
+            if not vertex_project:
+                ai_issues.append("Vertex AI project is not set (VERTEXAI_PROJECT or GCP_PROJECT_ID)")
         if self.ai.temperature < 0 or self.ai.temperature > 2:
             ai_issues.append("Temperature should be between 0 and 2")
         if self.ai.max_tokens < 1 or self.ai.max_tokens > 8000:

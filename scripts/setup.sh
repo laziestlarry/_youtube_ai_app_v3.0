@@ -33,7 +33,10 @@ pip install -r backend/requirements.txt
 # 4. Configuration Preparation
 if [ ! -f ".env" ]; then
     echo "📝 Initializing .env from template..."
-    if [ -f "config/.env.example" ]; then
+    if [ -f "config/env.full.example" ]; then
+        cp config/env.full.example .env
+        echo "⚠️  ACTION REQUIRED: Please update your .env file with valid API keys."
+    elif [ -f "config/.env.example" ]; then
         cp config/.env.example .env
         echo "⚠️  ACTION REQUIRED: Please update your .env file with valid API keys."
     else

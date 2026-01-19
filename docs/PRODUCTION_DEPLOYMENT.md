@@ -124,12 +124,31 @@ gcloud config set project YOUR_PROJECT_ID
 - Deploys to configured environment
 - Provides deployment status
 
+### GitHub Secrets & Cloud Run Env Mapping
+The GitHub workflow injects secrets directly into Cloud Run environment variables. Configure these in your repo secrets:
+
+Required secrets:
+- `GCP_SA_KEY`, `GCP_PROJECT_ID`, `GCS_BUCKET`
+- `DATABASE_URL`, `OPENAI_API_KEY`, `SECRET_KEY`, `ADMIN_SECRET_KEY`
+- `PAYMENT_SHOPIER_API_KEY`, `PAYMENT_SHOPIER_API_SECRET`
+- `PAYMENT_SHOPIER_PERSONAL_ACCESS_TOKEN`, `PAYMENT_SHOPIER_WEBHOOK_TOKEN`
+
+Optional secrets:
+- `PAYMENT_STRIPE_SECRET_KEY`, `PAYMENT_STRIPE_PUBLISHABLE_KEY`
+- `PAYMENT_PAYONEER_API_KEY`, `PAYMENT_PAYONEER_SECRET_KEY`, `PAYMENT_PAYONEER_PROGRAM_ID`
+- `YOUTUBE_API_KEY`
+- YouTube overrides: `YOUTUBE_DATABASE_URL`, `YOUTUBE_OPENAI_API_KEY`, `YOUTUBE_SECRET_KEY`, `YOUTUBE_ADMIN_SECRET_KEY`, `YOUTUBE_PAYMENT_*`
+
+Non-secret runtime env vars are set in `.github/workflows/deploy.yml`, including:
+`SHOPIER_APP_MODE`, `SHOPIER_ALLOW_MOCK`, `DATA_DIR`, `REVENUE_REAL_ONLY`,
+`VIDEO_PIPELINE_ALLOW_PLACEHOLDERS`, `BIZOP_AUTO_SYNC`, `OPS_RATE_LIMIT_SECONDS`, `CLOUD_RUN_SERVICE`.
+
 ---
 
 ## 🔧 Configuration
 
 ### Environment Variables
-Copy `env.template` to `.env` and configure:
+Copy `config/env.full.example` to `.env` and configure (use `config/env.template` for a minimal base):
 
 ```bash
 # Core settings

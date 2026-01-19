@@ -127,8 +127,12 @@ class ChimeraEngine:
                         return response.json().get("response", "No response from Ollama")
                     return f"Ollama Error: {response.status_code}"
             except Exception as e:
-                logger.error(f"Ollama call failed: {e}")
-                return f"Ollama Connection Failed: {e}"
+                import traceback
+                error_msg = str(e) or type(e).__name__
+                logger.error(f"Ollama call failed [{type(e).__name__}]: {error_msg}")
+                # Optional: debug traceback for intermittent connection issues
+                # logger.debug(traceback.format_exc())
+                return f"Ollama Connection Failed: {error_msg}"
 
     async def _call_cloud_api(self, prompt: str) -> str:
         """Calls the configured cloud AI with resource limiting."""

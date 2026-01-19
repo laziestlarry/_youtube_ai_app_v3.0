@@ -80,3 +80,5 @@ frontend/build
 # Uploads
 uploads/*
 !uploads/.gitkeep
+!uploads/AI Automation System Blueprint & Setup - AI Automation System Blueprint & Setup.csv
+!uploads/Affiliate Products - RMS - Sheet1.csv

@@ -5,7 +5,7 @@
 The GEMINI_API_KEY in your `.env.local` file is **invalid or expired**:
 
 ```
-GEMINI_API_KEY=AIzaSyB1Oh_KvLKItMqztDSKkTfU9BXFG2UgJEw
+GEMINI_API_KEY=AIzaSy_REDACTED
 ```
 
 Google is rejecting this key with: `API key not valid. Please pass a valid API key.`
@@ -27,7 +27,7 @@ Edit `/Users/pq/_youtube_ai_app_v3.0/frontend_v3/.env.local`:
 
 ```bash
 # Replace this line:
-GEMINI_API_KEY=AIzaSyB1Oh_KvLKItMqztDSKkTfU9BXFG2UgJEw
+GEMINI_API_KEY=AIzaSy_REDACTED
 
 # With your new key:
 GEMINI_API_KEY=AIzaSy_YOUR_NEW_KEY_HERE

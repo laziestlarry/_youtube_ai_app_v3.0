@@ -1,50 +1,43 @@
 import sys
-import os
 from pathlib import Path
 
-# Add the parent directory to the Python path
-sys.path.append(str(Path(__file__).parent.parent))
+# Add repo root to the Python path
+sys.path.append(str(Path(__file__).resolve().parents[2]))
 
-from database import Base, engine
-from models import (
-    User,
-    VideoIdea,
-    Video,
-    Script,
-    Thumbnail,
-    Audio,
-    Analytics,
-    Monetization,
-    ContentStrategy
-)
+from backend.core import database as db
+from backend.core.database import Base
+from backend.models.user import User
+from backend.models import bizop, channel, content, revenue, subscription, video, workflow, youtube  # noqa: F401
 
 def init_database():
     """Initialize the database with all required tables."""
     try:
         # Create all tables
-        Base.metadata.create_all(bind=engine)
+        if db.engine is None:
+            db.create_database_engines()
+        Base.metadata.create_all(bind=db.engine)
         print("✅ Database tables created successfully")
         
         # Create initial admin user if not exists
-        from database import SessionLocal
         from passlib.context import CryptContext
         
         pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-        db = SessionLocal()
+        db_session = db.SessionLocal()
         
-        admin = db.query(User).filter(User.email == "admin@example.com").first()
+        admin = db_session.query(User).filter(User.email == "admin@example.com").first()
         if not admin:
             admin = User(
                 email="admin@example.com",
+                username="admin",
                 hashed_password=pwd_context.hash("admin123"),  # Change this in production
                 is_active=True,
-                is_admin=True
+                is_superuser=True
             )
-            db.add(admin)
-            db.commit()
+            db_session.add(admin)
+            db_session.commit()
             print("✅ Admin user created successfully")
         
-        db.close()
+        db_session.close()
         print("✅ Database initialization completed")
         
     except Exception as e:

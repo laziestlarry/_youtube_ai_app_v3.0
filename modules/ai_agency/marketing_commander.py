@@ -7,6 +7,7 @@ import logging
 from typing import Dict, Any, List, Optional
 from datetime import datetime, timedelta
 from modules.ai_agency.chimera_engine import chimera_engine
+from modules.ai_agency.conversion_optimizer import conversion_optimizer
 
 logger = logging.getLogger(__name__)
 
@@ -21,15 +22,46 @@ class MarketingCommander:
             "youtube": {"enabled": True, "priority": 1},
             "shopier": {"enabled": True, "priority": 1},
             "shopify": {"enabled": True, "priority": 1},
+            "fiverr": {"enabled": True, "priority": 1},
             "reddit": {"enabled": True, "priority": 2},
             "discord": {"enabled": True, "priority": 2},
             "linkedin": {"enabled": True, "priority": 3},
             "blog": {"enabled": True, "priority": 3},
         }
     
-    async def generate_youtube_script(self, sku: Dict[str, Any]) -> str:
-        """Generate a YouTube video script promoting a specific SKU."""
+    async def generate_youtube_metadata(self, sku: Dict[str, Any], lang: str = "EN") -> Dict[str, Any]:
+        """Generate SEO-optimized YouTube metadata (Title, Tags, Description)."""
         prompt = f"""
+        [Language: {lang}]
+        Generate SEO-optimized YouTube metadata for this product:
+        Title: {sku['title']}
+        Description: {sku['short_description']}
+        Tags: {', '.join(sku.get('tags', []))}
+        
+        Provide:
+        1. 3 Click-worthy Titles (high CTR)
+        2. 15 SEO Tags
+        3. A persuasive video description with timestamps and links
+        
+        Return in JSON format.
+        """
+        optimized_prompt = conversion_optimizer.wrap_marketing_prompt(prompt, sku)
+        try:
+            response = await chimera_engine.generate_response(optimized_prompt, task_type="marketing")
+            import re
+            import json
+            match = re.search(r"({.*})", response, re.DOTALL)
+            if match:
+                return json.loads(match.group(1))
+            return {"raw": response}
+        except Exception as e:
+            logger.error(f"YouTube metadata generation failed: {e}")
+            return {"error": str(e)}
+    
+    async def generate_youtube_script(self, sku: Dict[str, Any], lang: str = "EN") -> str:
+        """Generate a YouTube video script promoting a specific SKU."""
+        base_prompt = f"""
+        [Language: {lang}]
         Create a compelling YouTube video script (5-7 minutes) promoting this product:
         
         Product: {sku['title']}
@@ -47,9 +79,10 @@ class MarketingCommander:
         Target audience: Content creators, entrepreneurs, digital product sellers
         Tone: Professional but approachable, results-focused
         """
+        optimized_prompt = conversion_optimizer.wrap_marketing_prompt(base_prompt, sku)
         
         try:
-            script = await chimera_engine.generate_response(prompt, task_type="marketing")
+            script = await chimera_engine.generate_response(optimized_prompt, task_type="marketing")
             return script
         except Exception as e:
             logger.warning(f"AI generation failed, using fallback template: {e}")
@@ -145,14 +178,15 @@ class MarketingCommander:
                 elif channel in ["reddit", "discord", "linkedin"]:
                     # Generate social post
                     try:
-                        prompt = f"""
+                        base_prompt = f"""
                         Create a compelling social media post for {channel} promoting:
                         {sku['title']} - {sku['short_description']}
                         
                         Make it authentic, value-focused, and include a clear CTA.
                         Max 300 characters.
                         """
-                        post = await chimera_engine.generate_response(prompt, task_type="marketing")
+                        optimized_prompt = conversion_optimizer.wrap_marketing_prompt(base_prompt, sku)
+                        post = await chimera_engine.generate_response(optimized_prompt, task_type="marketing")
                     except Exception as e:
                         logger.warning(f"Social post generation failed for {channel}: {e}")
                         post = f"🚀 Launch Alert: {sku['title']} is now live! {sku['short_description']} Get it here: [LINK] #{sku['tags'][0].replace(' ', '')}"
@@ -163,16 +197,28 @@ class MarketingCommander:
                         "next_action": "Schedule post"
                     }
                 
+                elif channel == "fiverr":
+                    # Create/Sync Fiverr Gig
+                    from backend.services.fiverr_service import fiverr_service
+                    gig = await fiverr_service.create_gig_listing(sku)
+                    results["channels"][channel] = {
+                        "status": "gig_listed",
+                        "gig_id": gig['gig_id'],
+                        "title": gig['title'],
+                        "next_action": "Check for incoming orders"
+                    }
+                
                 elif channel == "blog":
                     # Generate blog outline
                     try:
-                        prompt = f"""
+                        base_prompt = f"""
                         Create a blog post outline for:
                         {sku['title']} - {sku['long_description']}
                         
                         Include: Introduction, 3-5 main sections, conclusion with CTA
                         """
-                        outline = await chimera_engine.generate_response(prompt, task_type="marketing")
+                        optimized_prompt = conversion_optimizer.wrap_marketing_prompt(base_prompt, sku)
+                        outline = await chimera_engine.generate_response(optimized_prompt, task_type="marketing")
                     except Exception as e:
                         logger.warning(f"Blog outline generation failed: {e}")
                         outline = f"""

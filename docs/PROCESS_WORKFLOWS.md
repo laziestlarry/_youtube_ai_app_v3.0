@@ -43,6 +43,30 @@ Purpose: provide repeatable, KPI-linked workflows across product, data, and reve
 - Each workflow has a single accountable owner.
 - Escalation within 24 hours for blocked tasks.
 
+## Completion & Handoff Checklist
+Use this as the final gate for each workflow before moving to the next stage.
+
+### Order -> Delivery -> Ledger
+- Completion: Shopier callback verified and delivery completed.
+- Ledger: `kind=real` entry recorded.
+- Handoff: revenue reconciliation and payout scheduling.
+
+### Revenue Integrity -> Growth Ledger
+- Completion: Real revenue synced into `growth_engine.db` with no duplicates.
+- Handoff: KPI snapshot + anomaly scan.
+
+### KPI Snapshot -> Decision Loop
+- Completion: DNR + slope report generated.
+- Handoff: weekly optimization tasks scheduled.
+
+### Catalog -> Listings -> Marketing Assets
+- Completion: listing images + channel CSVs + UTM links exported.
+- Handoff: posting burst scheduled.
+
+### Work Queue -> Mission Log
+- Completion: jobs executed and work items marked completed.
+- Handoff: next mission queue creation.
+
 ## Alexandria Protocol Alignment
 - Protocol: `docs/alexandria_protocol/THE_ALEXANDRIA_PROTOCOL.md`
 - Execution: `docs/alexandria_protocol/EXECUTION_READY_DELIVERY.md`

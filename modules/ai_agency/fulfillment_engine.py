@@ -4,8 +4,11 @@ import random
 import asyncio
 from datetime import datetime
 from uuid import uuid4
+from typing import List, Dict, Any, Optional
+from pathlib import Path
 
-EARNINGS_FILE = "earnings.json"
+DATA_DIR = Path(os.getenv("DATA_DIR", "."))
+EARNINGS_FILE = DATA_DIR / "earnings.json"
 
 class FulfillmentEngine:
     """
@@ -26,13 +29,14 @@ class FulfillmentEngine:
             os.makedirs(self.assets_dir, exist_ok=True)
             
         # Ensure ledger exists
-        if not os.path.exists(EARNINGS_FILE):
+        DATA_DIR.mkdir(parents=True, exist_ok=True)
+        if not EARNINGS_FILE.exists():
             initial_data = {
                 "total_earnings": 0.0,
                 "daily": 0.0,
                 "history": []
             }
-            with open(EARNINGS_FILE, 'w') as f:
+            with EARNINGS_FILE.open('w') as f:
                 json.dump(initial_data, f, indent=4)
 
     async def simulate_work(self, task_type: str, context: str = "", protocol_tier: str = "standard") -> dict:
@@ -146,7 +150,7 @@ class FulfillmentEngine:
     def _update_ledger(self, amount: float, source: str, asset_url: str = None, metadata: dict | None = None):
         """Updates the earnings.json file safely."""
         try:
-            with open(EARNINGS_FILE, 'r') as f:
+            with EARNINGS_FILE.open('r') as f:
                 data = json.load(f)
                 
             data["total_earnings"] += amount
@@ -167,10 +171,10 @@ class FulfillmentEngine:
             if len(data["history"]) > 50:
                 data["history"] = data["history"][-50:]
                 
-            with open(EARNINGS_FILE, 'w') as f:
+            with EARNINGS_FILE.open('w') as f:
                 json.dump(data, f, indent=4)
 
-            self._write_db_event(amount, source, asset_url, metadata, transaction["timestamp"])
+            return self._write_db_event(amount, source, asset_url, metadata, transaction["timestamp"])
         except Exception as e:
             print(f"Error updating ledger: {e}")
 
@@ -214,7 +218,7 @@ class FulfillmentEngine:
         asset_url: str | None,
         metadata: dict | None,
         timestamp: str,
-    ) -> None:
+    ) -> Optional[asyncio.Task]:
         try:
             loop = asyncio.get_running_loop()
         except RuntimeError:
@@ -223,7 +227,7 @@ class FulfillmentEngine:
                     amount, source, asset_url, metadata, timestamp
                 )
             )
-            return
+            return None
 
         task = loop.create_task(
             FulfillmentEngine._write_db_event_async(
@@ -231,16 +235,17 @@ class FulfillmentEngine:
             )
         )
         task.add_done_callback(
-            lambda t: print(f"Error writing revenue event to DB: {t.exception()}") if t.exception() else None
+            lambda t: print(f"Error writing revenue event to DB: {t.exception()}") if t.exception() and not t.cancelled() else None
         )
+        return task
 
-    def record_sale(self, amount: float, source: str, asset_url: str = None, metadata: dict | None = None):
+    def record_sale(self, amount: float, source: str, asset_url: str = None, metadata: dict | None = None) -> Optional[asyncio.Task]:
         """Record a real sale amount into the ledger."""
         if amount <= 0:
-            return
+            return None
         metadata = metadata or {}
         metadata.setdefault("kind", "real")
-        self._update_ledger(amount, source, asset_url, metadata)
+        return self._update_ledger(amount, source, asset_url, metadata)
 
     def get_earnings_summary(self):
         try:

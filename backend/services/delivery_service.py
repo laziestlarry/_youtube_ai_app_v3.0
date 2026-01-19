@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from email.message import EmailMessage
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, List
 
 
 logger = logging.getLogger(__name__)
@@ -191,7 +191,18 @@ class DeliveryService:
         prefix = name[:2] if len(name) > 2 else name[:1]
         return f"{prefix}***@{domain}"
 
-    def deliver_digital(self, data: Dict[str, Any], base_url: str) -> DeliveryResult:
+    @staticmethod
+    def _truthy(value: Optional[str]) -> bool:
+        return str(value or "").strip().lower() in ("1", "true", "yes", "on")
+
+    def _queue_payload(self, payload: Dict[str, Any], data: Dict[str, Any], buyer_email: Optional[str]) -> Dict[str, Any]:
+        if self._truthy(os.getenv("DELIVERY_QUEUE_STORE_PAYLOAD")):
+            payload["raw"] = data
+        if self._truthy(os.getenv("DELIVERY_QUEUE_STORE_EMAIL")) and buyer_email:
+            payload["buyer_email"] = buyer_email
+        return payload
+
+    def deliver_digital(self, data: Dict[str, Any], base_url: str, allow_queue: bool = True) -> DeliveryResult:
         order_id = self._get_field(data, ["platform_order_id", "order_id", "order"])
         if self._order_already_processed(order_id):
             return DeliveryResult(
@@ -204,6 +215,7 @@ class DeliveryService:
         amount_raw = self._get_field(data, ["total_order_value", "amount"])
         currency_raw = self._get_field(data, ["currency", "currency_code"])
         amount_value = self.parse_amount(amount_raw)
+        buyer_email = self._get_field(data, ["buyer_email", "email", "customer_email"])
 
         sku = self._resolve_sku(data)
         delivery = self._resolve_delivery_file(sku)
@@ -214,7 +226,9 @@ class DeliveryService:
                 "sku": sku,
                 "received_at": datetime.utcnow().isoformat(),
             }
-            self._queue_delivery(payload)
+            payload = self._queue_payload(payload, data, buyer_email)
+            if allow_queue:
+                self._queue_delivery(payload)
             self._log_order(payload)
             return DeliveryResult(
                 status="queued",
@@ -227,7 +241,6 @@ class DeliveryService:
             )
 
         download_url = self._build_download_url(base_url, delivery["file"])
-        buyer_email = self._get_field(data, ["buyer_email", "email", "customer_email"])
         
         # --- Over-Expectation (Surprise & Delight) Logic ---
         subject = f"🚀 [VIP DELIVERY] Your AutonomaX Ignition Access: {delivery.get('label') or sku}"
@@ -278,7 +291,9 @@ class DeliveryService:
         except Exception as exc:
             payload["status"] = "queued"
             payload["error"] = str(exc)
-            self._queue_delivery(payload)
+            payload = self._queue_payload(payload, data, buyer_email)
+            if allow_queue:
+                self._queue_delivery(payload)
             self._log_order(payload)
             return DeliveryResult(
                 status="queued",
@@ -291,7 +306,9 @@ class DeliveryService:
                 currency=currency_raw,
             )
 
-        self._queue_delivery(payload)
+        payload = self._queue_payload(payload, data, buyer_email)
+        if allow_queue:
+            self._queue_delivery(payload)
         self._log_order(payload)
         return DeliveryResult(
             status="queued",
@@ -303,6 +320,69 @@ class DeliveryService:
             amount=amount_value,
             currency=currency_raw,
         )
+
+    def retry_queued_deliveries(self, base_url: Optional[str] = None, max_items: int = 50) -> Dict[str, int]:
+        if not DELIVERY_QUEUE_FILE.exists():
+            return {"attempted": 0, "delivered": 0, "remaining": 0}
+
+        base_url = base_url or os.getenv("BACKEND_ORIGIN") or ""
+        if not base_url:
+            return {"attempted": 0, "delivered": 0, "remaining": 0, "error": "BASE_URL missing"}
+
+        attempted = 0
+        delivered = 0
+        remaining: List[Dict[str, Any]] = []
+        now = datetime.utcnow().isoformat()
+
+        for line in DELIVERY_QUEUE_FILE.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            try:
+                entry = json.loads(line)
+            except Exception:
+                continue
+
+            if attempted >= max_items:
+                remaining.append(entry)
+                continue
+
+            payload = entry.get("raw")
+            buyer_email = entry.get("buyer_email")
+            sku = entry.get("sku")
+            order_id = entry.get("order_id")
+
+            if payload:
+                attempted += 1
+                result = self.deliver_digital(payload, base_url, allow_queue=False)
+                if result.status == "delivered":
+                    delivered += 1
+                    continue
+                entry["status"] = result.status
+                entry["last_attempt_at"] = now
+                entry["attempts"] = int(entry.get("attempts", 0)) + 1
+                remaining.append(entry)
+                continue
+
+            if buyer_email and sku:
+                attempted += 1
+                payload = {"sku": sku, "buyer_email": buyer_email, "order_id": order_id}
+                result = self.deliver_digital(payload, base_url, allow_queue=False)
+                if result.status == "delivered":
+                    delivered += 1
+                    continue
+                entry["status"] = result.status
+                entry["last_attempt_at"] = now
+                entry["attempts"] = int(entry.get("attempts", 0)) + 1
+
+            remaining.append(entry)
+
+        DELIVERY_QUEUE_FILE.parent.mkdir(parents=True, exist_ok=True)
+        with DELIVERY_QUEUE_FILE.open("w", encoding="utf-8") as handle:
+            for entry in remaining:
+                handle.write(json.dumps(entry, ensure_ascii=True))
+                handle.write("\n")
+
+        return {"attempted": attempted, "delivered": delivered, "remaining": len(remaining)}
 
 
 delivery_service = DeliveryService()

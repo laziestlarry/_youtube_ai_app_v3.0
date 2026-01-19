@@ -3,7 +3,7 @@ from typing import List, Dict, Optional, Any
 import logging
 from datetime import datetime, timedelta
 from backend.models import APIResponse
-from database import log_execution
+from backend.utils.logging_utils import log_execution
 import json
 import numpy as np
 from collections import defaultdict

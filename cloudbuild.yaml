@@ -52,10 +52,14 @@ steps:
         "--allow-unauthenticated",
         "--port",
         "8080",
+        "--add-cloudsql-instances",
+        "$PROJECT_ID:us-central1:youtube-ai-db",
         "--add-volume=name=persistent-storage,type=cloud-storage,bucket=${PROJECT_ID}-data",
         "--add-volume-mount=volume=persistent-storage,mount-path=/app/persistent",
-        "--set-env-vars",
-        "APP_TARGET=autonomax,DATABASE_URL=sqlite:////app/persistent/autonomax.db,DATA_DIR=/app/persistent,ADMIN_SECRET_KEY=ignition_pulse_secure_2026,AI_PROVIDER=openai,AI_MODEL_NAME=gpt-4o-mini,GROWTH_DATABASE_URL=sqlite:////app/persistent/growth_engine.db",
+        "--set-secrets",
+        "DATABASE_URL=youtube-ai-database-url:latest,SECURITY_SECRET_KEY=youtube-ai-security-secret-key:latest,PAYMENT_SHOPIER_API_KEY=youtube-ai-shopier-api-key:latest,PAYMENT_SHOPIER_API_SECRET=youtube-ai-shopier-api-secret:latest,PAYMENT_SHOPIER_PERSONAL_ACCESS_TOKEN=youtube-ai-shopier-pat:latest,PAYMENT_SHOPIER_WEBHOOK_TOKEN=youtube-ai-shopier-webhook-token:latest,OPENAI_API_KEY=OPENAI_API_KEY:latest",
+        "--env-vars-file",
+        "config/cloudrun.autonomax.env.yaml",
       ]
 # For sensitive values, use Google Secret Manager and reference them in Cloud Run env config.
 

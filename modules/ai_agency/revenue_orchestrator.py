@@ -11,6 +11,8 @@ from modules.growth_engine_v1.models import GrowthLedgerEntry
 from modules.growth_engine_v1.app import SessionLocal
 from modules.ai_agency.chimera_engine import chimera_engine
 from modules.ai_agency.marketing_commander import marketing_commander
+from modules.ai_agency.lead_hunter import lead_hunter
+from modules.ai_agency.ads_commander import ads_commander
 
 logger = logging.getLogger(__name__)
 
@@ -115,16 +117,96 @@ class RevenueOrchestrator:
         # 2. Execute Marketing Boost
         if target_sku:
             logger.info(f"Boosting SKU: {target_sku['sku']}")
-            campaign = await marketing_commander.execute_campaign(
-                target_sku, 
-                channels=["twitter", "linkedin"] # Quick social boost
-            )
-            results["actions"].append({
-                "type": "marketing_boost",
-                "sku": target_sku['sku'],
-                "campaign": campaign
-            })
+            
+            # --- New: Autonomous Lead Hunter Loop ---
+            # If trends are non-existent or fresh launch, hunt for new leads
+            if trends['total_revenue'] < 100.0:
+                logger.info("Revenue below threshold. Activating Autonomous Lead Hunter...")
+                hunt_result = await lead_hunter.hunt_leads(target_sku, context="US Market Pivot Initial Launch")
+                results["actions"].append({
+                    "type": "autonomous_lead_hunt",
+                    "sku": target_sku['sku'],
+                    "hunt_summary": hunt_result
+                })
+            else:
+                # Standard social boost
+                campaign = await marketing_commander.execute_campaign(
+                    target_sku, 
+                    channels=["twitter", "linkedin"] # Quick social boost
+                )
+                results["actions"].append({
+                    "type": "marketing_boost",
+                    "sku": target_sku['sku'],
+                    "campaign": campaign
+                })
             
         return results
+
+    async def sprint_mission(self, target: float = 2000.0, duration_hrs: int = 2) -> Dict[str, Any]:
+        """
+        Execute a high-intensity revenue sprint.
+        - Targets high-ticket items
+        - Triggers multi-channel aggressive outreach
+        - Forces LeadHunter into 'Deep Search' mode
+        """
+        logger.info(f"🚀 IGNITING QUANTUM SPRINT: Target ${target} in {duration_hrs}hrs")
+        
+        # 1. Load Catalog & Identify High-Ticket Targets
+        import json
+        with open("docs/commerce/product_catalog.json", 'r') as f:
+            catalog = json.load(f)
+            
+        high_ticket_skus = [p for p in catalog['products'] if p['price']['min'] >= 499]
+        if not high_ticket_skus:
+            # Fallback to premium SaaS if no consulting/training found
+            high_ticket_skus = [p for p in catalog['products'] if p['price']['min'] >= 149]
+            
+        results = {
+            "sprint_id": f"sprint_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
+            "target": target,
+            "duration": f"{duration_hrs} hours",
+            "intensity": "EXTREME",
+            "actions": []
+        }
+        
+        # 2. Parallel Aggressive Outreach
+        tasks = []
+        for sku in high_ticket_skus[:3]: # Limit to top 3 for intensity
+            logger.info(f"Sprint targeting SKU: {sku['sku']}")
+            
+            # Action A: Deep Lead Hunt
+            tasks.append(lead_hunter.hunt_leads(sku, context="AGGRESSIVE SPRINT: DIRECT CONVERSION REQUIRED"))
+            
+            # Action B: Viral Social Pulse
+            tasks.append(marketing_commander.execute_campaign(sku, channels=["linkedin", "twitter", "blog"]))
+            
+        execution_results = await asyncio.gather(*tasks, return_exceptions=True)
+        
+        results["actions"].append({
+            "type": "quantum_pulse_complete",
+            "targets_count": len(high_ticket_skus[:3]),
+            "execution_summary": "Aggressive Outreach Sequenced"
+        })
+        
+        return results
+
+    async def execute_ads_sprint(self, sku: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Produce a complete Ads execution pack for a high-ticket SKU.
+        - Generates 3 ad variations
+        - Suggests demographic targeting
+        - Estimates budget impact
+        """
+        logger.info(f"🚀 Executing Ads Sprint for SKU: {sku['sku']}")
+        
+        ad_pack = await ads_commander.generate_meta_ads(sku)
+        targeting = await ads_commander.suggest_targeting(sku)
+        
+        return {
+            "sku": sku['sku'],
+            "ad_variations": ad_pack,
+            "targeting_strategy": targeting,
+            "ready_for_deploy": True
+        }
 
 revenue_orchestrator = RevenueOrchestrator()

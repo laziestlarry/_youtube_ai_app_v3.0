@@ -5,8 +5,10 @@ import os
 # Add project root to path
 sys.path.append(os.getcwd())
 
-# Force SQLite for local payout
-os.environ["GROWTH_DATABASE_URL"] = "sqlite:///./growth_engine.db"
+# Respect configured DB; fallback to local SQLite when not provided.
+if not os.getenv("GROWTH_DATABASE_URL"):
+    data_dir = os.getenv("DATA_DIR", ".")
+    os.environ["GROWTH_DATABASE_URL"] = f"sqlite:///{data_dir}/growth_engine.db"
 
 from modules.growth_engine_v1.app import SessionLocal
 from modules.growth_engine_v1.payout_service import PayoutService

@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Dict, Any, Optional
 from datetime import datetime, timedelta
 import asyncio
+import random
 # Remove problematic imports for now
 # from ..services.youtube_service import youtube_service
 # from ..services.analytics_service import analytics_service

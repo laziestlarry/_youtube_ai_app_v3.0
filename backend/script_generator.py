@@ -2,8 +2,8 @@
 from fastapi import APIRouter, HTTPException, Depends
 from typing import List, Dict, Optional
 import logging
-from models import ScriptGenerationRequest, APIResponse
-from database import log_execution
+from backend.models import ScriptGenerationRequest, APIResponse
+from backend.utils.logging_utils import log_execution
 import random
 
 logger = logging.getLogger(__name__)

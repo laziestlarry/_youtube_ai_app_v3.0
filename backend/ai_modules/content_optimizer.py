@@ -2,8 +2,8 @@ from fastapi import APIRouter, HTTPException
 from typing import List, Dict, Optional, Any
 import logging
 from datetime import datetime
-from models import APIResponse
-from database import log_execution
+from backend.models import APIResponse
+from backend.utils.logging_utils import log_execution
 import json
 import re
 from collections import Counter

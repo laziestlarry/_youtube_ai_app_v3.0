@@ -5,6 +5,7 @@ import base64
 import json
 import random
 import time
+import os
 from pathlib import Path
 from typing import Dict, Any, Optional
 from backend.config.enhanced_settings import get_settings
@@ -177,8 +178,13 @@ class ShopierService:
         
         # 🧪 DEBUG BYPASS: Enable manual signal triggering for testing
         if res_signature == "MOCK_MODE_BYPASS":
-            logger.info("🧪 [DEBUG] Shopier Callback Bypass Triggered: MOCK_MODE_BYPASS detected.")
-            return True
+            allow_mock = os.getenv("SHOPIER_ALLOW_MOCK", "").lower() in ("1", "true", "yes")
+            environment = str(getattr(self.settings, "environment", "")).lower()
+            if environment != "production" or allow_mock:
+                logger.info("🧪 [DEBUG] Shopier Callback Bypass Triggered: MOCK_MODE_BYPASS detected.")
+                return True
+            logger.warning("Shopier mock bypass blocked in production.")
+            return False
 
         # Shopier Webhooks often use a dedicated Webhook Token for the HMAC key
         verification_key = (

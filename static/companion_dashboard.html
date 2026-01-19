@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutonomaX | Nurture Companion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00f2fe;
+            --secondary: #4facfe;
+            --dark: #0a0b10;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+            --text: #e0e0e0;
+            --hot: #ff4d4d;
+            --warm: #ffa502;
+            --cold: #2ed573;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--dark);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 1200px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
+
+        .status-badge {
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(46, 213, 115, 0.1);
+            color: var(--cold);
+            border: 1px solid var(--cold);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--cold);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--cold);
+        }
+
+        .lead-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .lead-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 25px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .lead-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .lead-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .temp-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .temp-hot {
+            background: var(--hot);
+            box-shadow: 0 0 15px var(--hot);
+        }
+
+        .temp-warm {
+            background: var(--warm);
+            box-shadow: 0 0 15px var(--warm);
+        }
+
+        .temp-cold {
+            background: var(--cold);
+            box-shadow: 0 0 15px var(--cold);
+        }
+
+        .lead-info h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .lead-info p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+            margin: 5px 0;
+        }
+
+        .directive-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+            font-size: 13px;
+        }
+
+        .directive-label {
+            color: var(--primary);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--dark);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .dashboard-stats {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .stat-item {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 600;
+            color: white;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.5;
+            }
+        }
+
+        .live-indicator {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="glass-panel">
+        <header>
+            <div class="logo">AUTONOMAX COMPANION</div>
+            <div class="status-badge live-indicator">Production Sidecar Active</div>
+        </header>
+
+        <div class="dashboard-stats">
+            <div class="stat-item">
+                <span class="stat-value">128</span>
+                <span class="stat-label">Leads Tracked</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">92%</span>
+                <span class="stat-label">PAS Score</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">7</span>
+                <span class="stat-label">Whale Prospects</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">22:54</span>
+                <span class="stat-label">Last Audit Sync</span>
+            </div>
+        </div>
+
+        <div class="lead-grid" id="leadGrid">
+            <!-- Simulated Lead Cards for UI Preview -->
+            <div class="lead-card">
+                <div class="lead-header">
+                    <div class="temp-dot temp-hot"></div>
+                    <span style="font-size: 12px; color: var(--hot)">HIGH INTENT</span>
+                </div>
+                <div class="lead-info">
+                    <h3>CTO @ Enterprise S.F.</h3>
+                    <p>SKU: IW-CONSULT-01 | $15,000</p>
+                    <p>Outreach: LinkedIn Sequence #3</p>
+                </div>
+                <div class="directive-box">
+                    <span class="directive-label">AI DIRECTIVE</span>
+                    Lead requested proof-of-work on API orchestration. Inject Alexandria Protocol Whitepaper
+                    immediately.
+                </div>
+                <div class="actions">
+                    <button class="btn btn-primary">Inject Referral</button>
+                    <button class="btn btn-outline">Audit Details</button>
+                </div>
+            </div>
+
+            <div class="lead-card">
+                <div class="lead-header">
+                    <div class="temp-dot temp-warm"></div>
+                    <span style="font-size: 12px; color: var(--warm)">NURTURING</span>
+                </div>
+                <div class="lead-info">
+                    <h3>Founder @ GrowthOps</h3>
+                    <p>SKU: CMD-API-01 | $2,000</p>
+                    <p>Outreach: Twitter Outreach Pulse</p>
+                </div>
+                <div class="directive-box">
+                    <span class="directive-label">AI DIRECTIVE</span>
+                    Lead is comparing alternatives. Inject "Comparison Logic" sequence emphasizing ROI and Scarcity.
+                </div>
+                <div class="actions">
+                    <button class="btn btn-primary">Inject Referral</button>
+                    <button class="btn btn-outline">Audit Details</button>
+                </div>
+            </div>
+
+            <div class="lead-card">
+                <div class="lead-header">
+                    <div class="temp-dot temp-cold"></div>
+                    <span style="font-size: 12px; color: var(--cold)">COLD AUDIT</span>
+                </div>
+                <div class="lead-info">
+                    <h3>VP Eng @ ScaleFlow</h3>
+                    <p>SKU: IW-TRAIN-01 | $4,999</p>
+                    <p>Outreach: Cold Lead Discovery</p>
+                </div>
+                <div class="directive-box">
+                    <span class="directive-label">AI DIRECTIVE</span>
+                    Initial pulse delivered. Awaiting intent collapse. Schedule follow-up in 48 hours.
+                </div>
+                <div class="actions">
+                    <button class="btn btn-primary">Inject Referral</button>
+                    <button class="btn btn-outline">Audit Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // In a real implementation, this would fetch from a companion API endpoint
+        console.log("AutonomaX Nurture Companion UI Initialized");
+    </script>
+</body>
+
+</html>

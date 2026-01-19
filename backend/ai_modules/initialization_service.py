@@ -1,5 +1,5 @@
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
-from typing import Dict, List, Any
+from typing import Dict, List, Any, ClassVar
 import logging
 from datetime import datetime, timedelta
 import asyncio
@@ -26,7 +26,15 @@ class InitializationResponse(BaseModel):
     message: str
 
 class InitializationService:
+    initialization_status: ClassVar[Dict[str, Any]] = {
+        "status": "idle",
+        "progress": 0,
+        "current_task": "",
+        "errors": [],
+    }
+
     def __init__(self):
+        self.initialization_status = InitializationService.initialization_status
         self.progress_reporter = ProgressReporter()
         self.management_engine = ManagementEngine()
         self.strategy_optimizer = ContentStrategyOptimizer()
