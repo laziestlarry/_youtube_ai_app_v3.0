@@ -1,0 +1,45 @@
+repos:
+  # Python linting and formatting
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.6
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+        types_or: [python, pyi]
+      - id: ruff-format
+        types_or: [python, pyi]
+
+  # General file checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: ^(legacy|uploads|split)/
+      - id: end-of-file-fixer
+        exclude: ^(legacy|uploads|split)/
+      - id: check-yaml
+        args: [--unsafe]
+      - id: check-json
+        exclude: ^(legacy|uploads|split|.*\.lock)/
+      - id: check-added-large-files
+        args: [--maxkb=1000]
+      - id: check-merge-conflict
+      - id: detect-private-key
+        exclude: ^(legacy|uploads)/
+
+  # TypeScript/JavaScript linting
+  - repo: local
+    hooks:
+      - id: eslint-frontend-v3
+        name: ESLint (frontend_v3)
+        entry: bash -c 'cd frontend_v3 && npm run lint'
+        language: system
+        files: ^frontend_v3/.*\.(ts|tsx|js|jsx)$
+        pass_filenames: false
+
+ci:
+  autofix_commit_msg: |
+    [pre-commit.ci] auto fixes from pre-commit hooks
+  autoupdate_commit_msg: |
+    [pre-commit.ci] pre-commit autoupdate
+  skip: [eslint-frontend-v3]  # Skip in CI, run separately
