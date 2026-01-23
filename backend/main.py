@@ -37,6 +37,12 @@ from backend.models.content import ContentIdea # Register Content models
 from backend.models.workflow import WorkflowColumn, WorkflowCard # Register Workflow models
 from backend.models.bizop import BizOpportunity # Register BizOpportunity models
 from backend.models.revenue import RevenueEvent # Register Revenue models
+from backend.models.commerce import (
+    CustomerJourneyEvent,
+    LoyaltyAccount,
+    LoyaltyLedger,
+    CustomerContract,
+) # Register Commerce models
 
 # Import subscription routes
 from backend.api.routes.subscriptions import router as subscription_router
@@ -166,6 +172,8 @@ from backend.api.routes.payment import router as payment_router
 app.include_router(payment_router, prefix="/api/payment", tags=["payment"])
 from backend.api.routes.ai import router as ai_router
 app.include_router(ai_router, prefix="/api/ai", tags=["ai"])
+from backend.api.routes.commerce import router as commerce_router
+app.include_router(commerce_router, prefix="/api/commerce", tags=["commerce"])
 from backend.api.routes.bizop import router as bizop_router
 app.include_router(bizop_router, prefix="/api/bizop", tags=["bizop"])
 from backend.api.routes.looker_actions import router as looker_router
@@ -181,6 +189,8 @@ app.include_router(mission_router, prefix="/api/missions", tags=["missions"])
 from backend.api.routes.ops import router as ops_router
 app.include_router(ops_router)
 app.include_router(ignition_router)
+from backend.api.routes.chatbot import router as chatbot_router
+app.include_router(chatbot_router)
 
 # Mount static files if they exist
 try:
