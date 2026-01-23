@@ -1,3 +1,4 @@
+# macOS
 .DS_Store
 .AppleDouble
 .LSOverride
@@ -6,16 +7,50 @@
 .DocumentRevisions-V100
 .fseventsd
 
+# Environment files (keep templates)
 .env
-*.env
 .env.*
+!.env.example
+!.env.template
+!config/.env.example
+!config/env.template
+
+# Python
 venv/
-__pycache__/ 
-node_modules
-*.json
-uploads/propulse-autonomax-*.json
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Node
+node_modules/
+
+# Build outputs
+dist/
+build/
+.next/
+coverage/
+
+# Databases
 *.db
 *.sqlite
 *.sqlite3
+
+# Logs and data
 logs/
 data/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Sensitive uploads
+uploads/propulse-autonomax-*.json
+
+# Large binary files
+*.zip
+*.tar.gz
