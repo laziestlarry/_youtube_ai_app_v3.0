@@ -1,0 +1,330 @@
+{
+  "generated_at": "2026-01-24T16:35:34.156518",
+  "kanban": {
+    "BACKLOG": [
+      {
+        "id": "T-020",
+        "title": "Set up Gumroad store",
+        "priority": "MEDIUM",
+        "est": "2h",
+        "owner": "Operations"
+      },
+      {
+        "id": "T-021",
+        "title": "Create email capture landing page",
+        "priority": "MEDIUM",
+        "est": "3h",
+        "owner": "Marketing"
+      },
+      {
+        "id": "T-022",
+        "title": "Build affiliate program",
+        "priority": "LOW",
+        "est": "4h",
+        "owner": "Commerce"
+      },
+      {
+        "id": "T-023",
+        "title": "Launch consulting packages",
+        "priority": "MEDIUM",
+        "est": "2h",
+        "owner": "Sales"
+      },
+      {
+        "id": "T-024",
+        "title": "Create YouTube channel content",
+        "priority": "LOW",
+        "est": "8h",
+        "owner": "Creative"
+      },
+      {
+        "id": "T-025",
+        "title": "Set up podcast infrastructure",
+        "priority": "LOW",
+        "est": "4h",
+        "owner": "Creative"
+      },
+      {
+        "id": "T-026",
+        "title": "Build customer testimonial system",
+        "priority": "MEDIUM",
+        "est": "2h",
+        "owner": "Brand"
+      },
+      {
+        "id": "T-027",
+        "title": "Enterprise B2B outreach campaign",
+        "priority": "LOW",
+        "est": "6h",
+        "owner": "Sales"
+      }
+    ],
+    "TODO": [
+      {
+        "id": "T-010",
+        "title": "Research remaining subreddit rules",
+        "priority": "HIGH",
+        "est": "1h",
+        "owner": "Marketing",
+        "due": "Today"
+      },
+      {
+        "id": "T-011",
+        "title": "Build Reddit karma (comments)",
+        "priority": "HIGH",
+        "est": "30min/day",
+        "owner": "Brand",
+        "due": "Ongoing"
+      },
+      {
+        "id": "T-012",
+        "title": "Optimize Shopier product listings",
+        "priority": "HIGH",
+        "est": "2h",
+        "owner": "Commerce",
+        "due": "Tomorrow"
+      },
+      {
+        "id": "T-013",
+        "title": "Set up engagement monitoring",
+        "priority": "MEDIUM",
+        "est": "1h",
+        "owner": "Operations",
+        "due": "Tomorrow"
+      },
+      {
+        "id": "T-014",
+        "title": "Create Week 2 content batch",
+        "priority": "MEDIUM",
+        "est": "4h",
+        "owner": "Creative",
+        "due": "Sunday"
+      },
+      {
+        "id": "T-015",
+        "title": "Configure analytics dashboard",
+        "priority": "MEDIUM",
+        "est": "2h",
+        "owner": "Growth",
+        "due": "This week"
+      }
+    ],
+    "IN_PROGRESS": [
+      {
+        "id": "T-001",
+        "title": "Post LinkedIn content",
+        "priority": "CRITICAL",
+        "est": "15min",
+        "owner": "Human",
+        "status": "Content ready, awaiting post"
+      },
+      {
+        "id": "T-002",
+        "title": "Post Twitter thread",
+        "priority": "CRITICAL",
+        "est": "15min",
+        "owner": "Human",
+        "status": "Content ready, awaiting post"
+      },
+      {
+        "id": "T-003",
+        "title": "Post Indie Hackers article",
+        "priority": "CRITICAL",
+        "est": "15min",
+        "owner": "Human",
+        "status": "Content ready, awaiting post"
+      },
+      {
+        "id": "T-004",
+        "title": "Merge PR #1 to main",
+        "priority": "HIGH",
+        "est": "5min",
+        "owner": "Human",
+        "status": "Awaiting approval"
+      }
+    ],
+    "BLOCKED": [
+      {
+        "id": "T-030",
+        "title": "Post to r/Entrepreneur",
+        "priority": "HIGH",
+        "blocker": "Need 10 karma first",
+        "unblock_date": "~7 days"
+      },
+      {
+        "id": "T-031",
+        "title": "Shopier API image upload",
+        "priority": "MEDIUM",
+        "blocker": "413 payload too large - need resize"
+      }
+    ],
+    "DONE_TODAY": [
+      {
+        "id": "T-100",
+        "title": "Create PR #1",
+        "completed": "2026-01-24 16:22"
+      },
+      {
+        "id": "T-101",
+        "title": "Build & deploy to Cloud Run",
+        "completed": "2026-01-24 16:25"
+      },
+      {
+        "id": "T-102",
+        "title": "Generate revenue engines (5 niches)",
+        "completed": "2026-01-24 16:26"
+      },
+      {
+        "id": "T-103",
+        "title": "Create content automation system",
+        "completed": "2026-01-24 16:27"
+      },
+      {
+        "id": "T-104",
+        "title": "Generate ready-to-post content (3)",
+        "completed": "2026-01-24 16:27"
+      },
+      {
+        "id": "T-105",
+        "title": "Create platform prequalification framework",
+        "completed": "2026-01-24 15:45"
+      },
+      {
+        "id": "T-106",
+        "title": "Build Business Growth Accelerator Toolkit",
+        "completed": "2026-01-24 15:41"
+      },
+      {
+        "id": "T-107",
+        "title": "Document r/Entrepreneur rules",
+        "completed": "2026-01-24 15:42"
+      }
+    ]
+  },
+  "metrics": {
+    "tasks": {
+      "total": 28,
+      "done_today": 8,
+      "in_progress": 4,
+      "blocked": 2,
+      "todo": 6,
+      "backlog": 8
+    },
+    "revenue_potential": {
+      "products_live": 10,
+      "shopier_value": "19,740 TRY (~$564)",
+      "engines_activated": 5,
+      "monthly_target": "$25,940",
+      "annual_target": "$311,280"
+    },
+    "content_status": {
+      "queued": 36,
+      "ready_to_post": 3,
+      "posted_today": 0,
+      "platforms_active": 0,
+      "platforms_target": 8
+    },
+    "infrastructure": {
+      "cloud_services": 6,
+      "api_health": "HEALTHY",
+      "pr_status": "OPEN (#1)",
+      "commits_ahead": 22
+    }
+  },
+  "human_actions": [
+    {
+      "priority": 1,
+      "action": "POST TO LINKEDIN",
+      "time": "5 min",
+      "file": "autonomax/content_automation/ready_to_post/linkedin_ai_automation.md",
+      "instructions": [
+        "1. Open LinkedIn",
+        "2. Copy content from file",
+        "3. Paste and post",
+        "4. Note post URL for tracking"
+      ]
+    },
+    {
+      "priority": 2,
+      "action": "POST TWITTER THREAD",
+      "time": "5 min",
+      "file": "autonomax/content_automation/ready_to_post/twitter_thread_creator_economy.md",
+      "instructions": [
+        "1. Open Twitter",
+        "2. Copy thread content",
+        "3. Post as thread (use numbering)",
+        "4. Note thread URL"
+      ]
+    },
+    {
+      "priority": 3,
+      "action": "POST TO INDIE HACKERS",
+      "time": "5 min",
+      "file": "autonomax/content_automation/ready_to_post/indie_hackers_micro_saas.md",
+      "instructions": [
+        "1. Open indiehackers.com",
+        "2. Create new post",
+        "3. Copy article content",
+        "4. Post and note URL"
+      ]
+    },
+    {
+      "priority": 4,
+      "action": "MERGE PR #1",
+      "time": "2 min",
+      "url": "https://github.com/laziestlarry/_youtube_ai_app_v3.0/pull/1",
+      "instructions": [
+        "1. Open PR #1",
+        "2. Review changes",
+        "3. Approve and merge",
+        "4. Delete branch if prompted"
+      ]
+    }
+  ],
+  "actions_completed": [
+    {
+      "id": "ACT-001",
+      "action": "Create PR #1",
+      "status": "COMPLETED",
+      "result": "https://github.com/laziestlarry/_youtube_ai_app_v3.0/pull/1",
+      "timestamp": "2026-01-24T16:35:34.155855"
+    },
+    {
+      "id": "ACT-002",
+      "action": "Deploy to Cloud Run",
+      "status": "COMPLETED",
+      "result": "https://autonomax-api-71658389068.us-central1.run.app",
+      "revision": "autonomax-api-00033-zhv",
+      "timestamp": "2026-01-24T16:35:34.155864"
+    },
+    {
+      "id": "ACT-003",
+      "action": "Activate trendy niche engines",
+      "status": "COMPLETED",
+      "result": "5 niches, 20 products, $311K annual potential",
+      "timestamp": "2026-01-24T16:35:34.155870"
+    },
+    {
+      "id": "ACT-004",
+      "action": "Generate content queue",
+      "status": "COMPLETED",
+      "result": "36 items queued, 3 ready-to-post",
+      "timestamp": "2026-01-24T16:35:34.155876"
+    }
+  ],
+  "actions_blocked": [
+    {
+      "id": "ACT-005",
+      "action": "Post to Tier 1 platforms",
+      "status": "READY - HUMAN ACTION REQUIRED",
+      "platforms": [
+        "LinkedIn",
+        "Twitter",
+        "Indie Hackers"
+      ],
+      "content_ready": true,
+      "blocker": "Requires human login and posting",
+      "timestamp": "2026-01-24T16:35:34.155882"
+    }
+  ]
+}
