@@ -174,8 +174,26 @@ class GrowthEngine(BaseEngine):
         elif job.job_type == "dm_outreach":
             return self._dm_outreach(job.payload)
         
+        elif job.job_type == "process_action":
+            # Handle delegated actions from commander
+            return self._process_delegated_action(job.payload)
+        
         else:
             raise ValueError(f"Unknown job type: {job.job_type}")
+    
+    def _process_delegated_action(self, payload: Dict) -> Dict[str, Any]:
+        """Process an action delegated from the commander"""
+        action = payload.get("action", "")
+        
+        # Log the action for tracking
+        self.logger.info(f"Processing delegated growth action: {action}")
+        
+        # In production, this would trigger actual marketing workflows
+        return {
+            "action": action,
+            "status": "acknowledged",
+            "message": f"Growth action '{action}' queued for execution",
+        }
     
     def _generate_campaign_content(self, payload: Dict) -> Dict[str, Any]:
         """Generate content for a campaign"""

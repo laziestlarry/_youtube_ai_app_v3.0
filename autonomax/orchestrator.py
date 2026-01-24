@@ -305,11 +305,12 @@ class AutonomaXOrchestrator:
         
         # 2. If time_horizon is NOW, trigger immediate revenue actions
         if time_horizon == "NOW":
-            # Flash sale
+            # Flash sale - import enums from growth engine
+            from .engines.growth_engine import CampaignType, Channel
             self.growth.create_campaign(
-                campaign_type=self.growth.CampaignType.FLASH_SALE if hasattr(self.growth, 'CampaignType') else "flash_sale",
+                campaign_type=CampaignType.FLASH_SALE,
                 name=f"Launch Campaign - {title}",
-                channels=[self.growth.Channel.TWITTER if hasattr(self.growth, 'Channel') else "twitter"],
+                channels=[Channel.TWITTER],
                 duration_days=2,
             )
             

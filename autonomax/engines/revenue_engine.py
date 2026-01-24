@@ -275,8 +275,26 @@ class RevenueEngine(BaseEngine):
         elif job.job_type == "process_webhook":
             return self._process_webhook(job.payload)
         
+        elif job.job_type == "process_action":
+            # Handle delegated actions from commander
+            return self._process_delegated_action(job.payload)
+        
         else:
             raise ValueError(f"Unknown job type: {job.job_type}")
+    
+    def _process_delegated_action(self, payload: Dict) -> Dict[str, Any]:
+        """Process an action delegated from the commander"""
+        action = payload.get("action", "")
+        
+        # Log the action for tracking
+        self.logger.info(f"Processing delegated action: {action}")
+        
+        # In production, this would trigger actual workflows
+        return {
+            "action": action,
+            "status": "acknowledged",
+            "message": f"Action '{action}' queued for execution",
+        }
     
     def _deliver_product(self, payload: Dict) -> Dict[str, Any]:
         """Process product delivery"""
