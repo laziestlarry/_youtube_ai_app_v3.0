@@ -1,0 +1,23 @@
+**Show Reddit: Built a toolkit for AI freelancers after struggling myself**
+
+Hey everyone! Long-time lurker, first time posting a project.
+
+**The problem I had:**
+Started doing AI automation gigs on Fiverr. Got overwhelmed with:
+- Writing unique gig descriptions
+- Figuring out pricing
+- Managing client communication
+- Delivering consistently
+
+**What I built:**
+A starter kit with templates, scripts, and workflows specifically for AI service providers.
+
+**Includes:**
+- 10 proven gig description templates
+- Pricing calculator with market data
+- Client communication scripts
+- Delivery workflow automation
+
+Would love feedback from anyone in the freelance/AI space. What would make this more useful?
+
+Link in profile if curious.

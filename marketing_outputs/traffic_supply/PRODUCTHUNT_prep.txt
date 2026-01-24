@@ -1,0 +1,60 @@
+PRODUCT HUNT LAUNCH PREPARATION
+
+---
+PRODUCT NAME: AutonomaX Toolkit
+
+TAGLINE (60 chars max):
+"AI business automation kits - launch your AI gig in 24 hours"
+
+SHORT DESCRIPTION:
+Digital toolkits for AI service providers. Templates, scripts, and workflows to start and scale your AI freelance business.
+
+TOPICS:
+- Productivity
+- Freelance
+- Artificial Intelligence
+- SaaS
+- No-Code
+
+MAKER COMMENT (first comment):
+Hey PH! 👋
+
+I'm Larry, and I built AutonomaX after 2 years of grinding on Fiverr.
+
+The problem: I was solving the same problems repeatedly but starting from scratch each time.
+
+The solution: I documented everything and packaged it into starter kits.
+
+What's included:
+📦 Gig description templates (proven to convert)
+📦 Pricing strategy calculators
+📦 Client communication scripts
+📦 Delivery workflow automation
+
+Who it's for:
+- Freelancers entering the AI space
+- Service providers wanting to productize
+- Anyone building an AI side business
+
+I'd love your feedback! What would make this more useful?
+
+🔗 https://www.shopier.com/autonomax
+
+FIRST 50 HUNTERS: Use code LAZY20 for 20% off!
+
+---
+GALLERY IMAGES NEEDED:
+1. Hero image (1270x760) - Product showcase
+2. Feature 1 - Templates preview
+3. Feature 2 - Pricing calculator
+4. Feature 3 - Workflow automation
+5. Results/testimonials
+
+---
+LAUNCH CHECKLIST:
+[ ] Create all gallery images
+[ ] Write maker story
+[ ] Prepare social posts for launch day
+[ ] Schedule email to existing customers
+[ ] Line up supporters to upvote/comment
+[ ] Prepare answers for common questions

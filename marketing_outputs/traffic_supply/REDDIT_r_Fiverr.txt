@@ -1,0 +1,22 @@
+**Tips that 10x'd my AI gig performance**
+
+Been on Fiverr 2+ years doing AI automation services. Here's what actually moved the needle:
+
+**Gig optimization:**
+- Title: Include "AI" + specific outcome + timeframe
+- First image: Show the RESULT, not the process
+- Description: Problem → Solution → Proof → CTA
+- FAQ: Address objections before they ask
+
+**Pricing strategy:**
+- Basic: Entry point (gets them in)
+- Standard: Where you want them (best value messaging)
+- Premium: Anchor that makes Standard look reasonable
+
+**Response template:**
+"Thanks for reaching out! Based on [their request], I recommend [package] because [specific reason]. I can start [timeframe]. Any questions?"
+
+**Delivery hack:**
+Over-deliver on first order → they come back → you upsell
+
+What's working for others here?
