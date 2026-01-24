@@ -1,0 +1,39 @@
+{
+  "command_center_enhancements": {
+    "from": "ACE Framework",
+    "mapping": {
+      "Aspirational Layer": "Mission/Ethics configuration",
+      "Global Strategy Layer": "Revenue targets and KPIs",
+      "Agent Model Layer": "Director capabilities",
+      "Executive Function Layer": "Command Center orchestration",
+      "Cognitive Control Layer": "Task prioritization",
+      "Task Prosecution Layer": "Agency execution"
+    }
+  },
+  "director_role_mapping": {
+    "from": "IntelliWealth Core Team",
+    "mapping": {
+      "Commander": "Command Center",
+      "CEO/CTO/CMO/CFO/COO": "4 Directors structure",
+      "Strategy Analyst": "Growth Director",
+      "Legal Expert": "Operations Director (compliance)",
+      "Developer": "Technical execution"
+    }
+  },
+  "agency_enhancements": {
+    "from": "IntelliWealth Revenue Strategies",
+    "mapping": {
+      "Content Creation": "Marketing Department",
+      "Affiliate Marketing": "Hunter Department",
+      "Digital Product Sales": "Sales Department",
+      "Product Management": "Creative Department"
+    }
+  },
+  "new_capabilities": [
+    "ACE-inspired ethical constitution for missions",
+    "Expanded revenue arena templates",
+    "AI team role definitions for autonomous agents",
+    "Product management workflow templates",
+    "Taskade prompt library integration"
+  ]
+}
