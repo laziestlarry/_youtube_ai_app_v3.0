@@ -1,0 +1,232 @@
+{
+  "journey_1_digital_download": {
+    "name": "Zen Art Printables Journey",
+    "target_product": "ZEN-ART-BASE",
+    "target_income": "$50-200/day",
+    "stages": [
+      {
+        "stage": "Discovery",
+        "touchpoints": [
+          "Pinterest pin",
+          "Instagram reel",
+          "Etsy search"
+        ],
+        "content": "Beautiful room mockup with art installed",
+        "cta": "See More Designs \u2192",
+        "conversion_goal": "Click to product page"
+      },
+      {
+        "stage": "Interest",
+        "touchpoints": [
+          "Product page",
+          "Collection gallery"
+        ],
+        "content": "Multiple angles, size options, print quality preview",
+        "cta": "View Full Collection",
+        "conversion_goal": "Browse multiple products"
+      },
+      {
+        "stage": "Decision",
+        "touchpoints": [
+          "Product detail page"
+        ],
+        "content": "Price anchor ($29 value, $9 today), instant delivery promise, size guide",
+        "cta": "Add to Cart",
+        "conversion_goal": "Add to cart"
+      },
+      {
+        "stage": "Action",
+        "touchpoints": [
+          "Checkout"
+        ],
+        "content": "Bundle upsell (+$15 for full collection), trust badges, instant download promise",
+        "cta": "Complete Purchase",
+        "conversion_goal": "Payment completion"
+      },
+      {
+        "stage": "Fulfillment",
+        "touchpoints": [
+          "Email",
+          "Download page"
+        ],
+        "content": "Instant download link, print instructions, bonus item",
+        "cta": "Download Your Art",
+        "conversion_goal": "Successful delivery"
+      },
+      {
+        "stage": "Retention",
+        "touchpoints": [
+          "Follow-up email Day 3"
+        ],
+        "content": "How does it look? + New collection preview",
+        "cta": "Share your space / Browse new arrivals",
+        "conversion_goal": "Review or repeat purchase"
+      }
+    ]
+  },
+  "journey_2_creator_kit": {
+    "name": "Creator Launch Journey",
+    "target_product": "CREATOR-KIT-01",
+    "target_income": "$200-500/week",
+    "stages": [
+      {
+        "stage": "Problem Aware",
+        "touchpoints": [
+          "Twitter thread",
+          "YouTube short",
+          "Reddit post"
+        ],
+        "content": "Common creator struggles + solution preview",
+        "cta": "Here's what fixed it for me \u2192",
+        "conversion_goal": "Click to learn more"
+      },
+      {
+        "stage": "Solution Aware",
+        "touchpoints": [
+          "Landing page",
+          "Lead magnet"
+        ],
+        "content": "Free starter checklist in exchange for email",
+        "cta": "Get the Free Checklist",
+        "conversion_goal": "Email capture"
+      },
+      {
+        "stage": "Product Aware",
+        "touchpoints": [
+          "Email sequence",
+          "Sales page"
+        ],
+        "content": "Full kit breakdown, before/after, testimonials",
+        "cta": "Get the Complete Kit",
+        "conversion_goal": "View sales page"
+      },
+      {
+        "stage": "Decision",
+        "touchpoints": [
+          "Sales page"
+        ],
+        "content": "Price justification, ROI calculator, guarantee",
+        "cta": "Start Building Today",
+        "conversion_goal": "Add to cart"
+      },
+      {
+        "stage": "Purchase",
+        "touchpoints": [
+          "Checkout"
+        ],
+        "content": "Bonus bundle offer, payment options",
+        "cta": "Complete Purchase",
+        "conversion_goal": "Payment"
+      },
+      {
+        "stage": "Onboarding",
+        "touchpoints": [
+          "Email sequence",
+          "Video walkthrough"
+        ],
+        "content": "Quick wins, implementation roadmap",
+        "cta": "Start with Module 1",
+        "conversion_goal": "Product usage"
+      }
+    ]
+  },
+  "journey_3_high_ticket": {
+    "name": "Executive Consulting Journey",
+    "target_product": "IW-CONSULT-01",
+    "target_income": "$15K-50K/engagement",
+    "stages": [
+      {
+        "stage": "Authority Building",
+        "touchpoints": [
+          "LinkedIn posts",
+          "Case studies",
+          "Podcast appearances"
+        ],
+        "content": "Thought leadership, results stories, industry insights",
+        "cta": "Follow for more insights",
+        "conversion_goal": "Build audience"
+      },
+      {
+        "stage": "Lead Magnet",
+        "touchpoints": [
+          "Gated content",
+          "Webinar"
+        ],
+        "content": "AI Transformation Blueprint PDF, Executive Briefing",
+        "cta": "Download the Blueprint",
+        "conversion_goal": "Email capture"
+      },
+      {
+        "stage": "Qualification",
+        "touchpoints": [
+          "Application form",
+          "Assessment quiz"
+        ],
+        "content": "Fit questionnaire, company size, goals",
+        "cta": "Check If We're a Fit",
+        "conversion_goal": "Qualified lead"
+      },
+      {
+        "stage": "Discovery Call",
+        "touchpoints": [
+          "Calendar booking",
+          "Call"
+        ],
+        "content": "30-min diagnosis, current state audit",
+        "cta": "Book Your Discovery Call",
+        "conversion_goal": "Call completion"
+      },
+      {
+        "stage": "Proposal",
+        "touchpoints": [
+          "Proposal document",
+          "Follow-up call"
+        ],
+        "content": "Custom scope, pricing, timeline, ROI projection",
+        "cta": "Let's Move Forward",
+        "conversion_goal": "Proposal acceptance"
+      },
+      {
+        "stage": "Close",
+        "touchpoints": [
+          "Contract",
+          "Onboarding"
+        ],
+        "content": "Agreement, payment terms, kickoff scheduling",
+        "cta": "Start Your Transformation",
+        "conversion_goal": "Signed contract"
+      }
+    ]
+  },
+  "conversion_optimization_checklist": {
+    "landing_page": [
+      "Clear headline with outcome promise",
+      "Social proof above fold",
+      "Single CTA per section",
+      "Mobile-first design",
+      "Page load < 3 seconds"
+    ],
+    "product_page": [
+      "Price anchor (was/now)",
+      "Scarcity when applicable",
+      "Trust badges",
+      "FAQ section",
+      "Multiple CTAs"
+    ],
+    "checkout": [
+      "Minimal form fields",
+      "Progress indicator",
+      "Security badges",
+      "Guest checkout option",
+      "Order summary visible"
+    ],
+    "post_purchase": [
+      "Instant confirmation",
+      "Clear next steps",
+      "Support contact",
+      "Referral prompt",
+      "Cross-sell relevant products"
+    ]
+  },
+  "generated_at": "20260122_214052"
+}

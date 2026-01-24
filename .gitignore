@@ -54,3 +54,6 @@ uploads/propulse-autonomax-*.json
 # Large binary files
 *.zip
 *.tar.gz
+config/cloudrun.backend.env
+config/cloudrun.youtube.env
+config/cloudrun.frontend.env

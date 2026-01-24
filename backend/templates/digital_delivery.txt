@@ -1,0 +1,33 @@
+{brand}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+YOUR DIGITAL PRODUCT IS READY
+
+Thank you for your purchase! Your digital product is now available for download.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PRODUCT: {title}
+ORDER ID: {order_id}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DOWNLOAD YOUR FILES:
+{download_url}
+
+This link is valid for {ttl_hours} hours. Please download your files before the link expires.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NEED HELP?
+
+{support_line}
+
+We're here to help you get the most out of your purchase.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Thank you for choosing {brand}!
+
+Best regards,
+The {brand} Team

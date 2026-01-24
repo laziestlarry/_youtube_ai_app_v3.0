@@ -96,6 +96,39 @@ def process_title(title: str, style: str) -> Dict[str, str]:
         "accent_color": style_config["accent_color"]
     }
 
+def _resolve_pil_format(format: str) -> str:
+    fmt = format.lower().strip()
+    if fmt == "jpg":
+        return "JPEG"
+    if fmt == "png":
+        return "PNG"
+    if fmt == "webp":
+        return "WEBP"
+    return "JPEG"
+
+def _resize_to_target(img, target_width: int, target_height: int):
+    target_ratio = target_width / target_height
+    img_ratio = img.width / img.height
+
+    if img_ratio > target_ratio:
+        new_width = int(img.height * target_ratio)
+        left = max(0, (img.width - new_width) // 2)
+        img = img.crop((left, 0, left + new_width, img.height))
+    else:
+        new_height = int(img.width / target_ratio)
+        top = max(0, (img.height - new_height) // 2)
+        img = img.crop((0, top, img.width, top + new_height))
+
+    try:
+        from PIL import Image
+        resample = Image.LANCZOS
+    except Exception:
+        resample = None
+
+    if resample:
+        return img.resize((target_width, target_height), resample=resample)
+    return img.resize((target_width, target_height))
+
 async def generate_thumbnail(
     title: str,
     style: str,
@@ -149,9 +182,17 @@ async def generate_thumbnail(
         async with httpx.AsyncClient() as http_client:
             img_response = await http_client.get(image_url)
             if img_response.status_code == 200:
-                with open(output_path, "wb") as f:
-                    f.write(img_response.content)
-                logger.info(f"Successfully generated and saved thumbnail to: {output_path}")
+                from io import BytesIO
+                from PIL import Image
+
+                img = Image.open(BytesIO(img_response.content))
+                target_width = THUMBNAIL_CONFIG["dimensions"]["width"]
+                target_height = THUMBNAIL_CONFIG["dimensions"]["height"]
+                img = _resize_to_target(img, target_width, target_height)
+                if format.lower() in ("jpg", "jpeg"):
+                    img = img.convert("RGB")
+                img.save(output_path, format=_resolve_pil_format(format))
+                logger.info("Successfully generated and saved thumbnail to: %s", output_path)
             else:
                 raise Exception(f"Failed to download generated image: {img_response.status_code}")
         

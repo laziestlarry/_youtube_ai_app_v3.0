@@ -5,13 +5,15 @@
   "channels": {
     "linkedin": {
       "status": "READY",
-      "posted": false,
-      "engagement": 0
+      "posted": true,
+      "engagement": 0,
+      "posted_at": "2026-01-24T13:57:58.620076"
     },
     "twitter": {
       "status": "READY",
-      "posted": false,
-      "engagement": 0
+      "posted": true,
+      "engagement": 0,
+      "posted_at": "2026-01-24T14:08:28.654171"
     },
     "reddit": {
       "status": "READY",
