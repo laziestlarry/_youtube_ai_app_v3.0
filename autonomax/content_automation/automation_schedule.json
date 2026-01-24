@@ -1,0 +1,26 @@
+{
+  "daily_schedule": {
+    "06:00": "Check engagement metrics from yesterday",
+    "08:00": "Post LinkedIn content (optimal B2B time)",
+    "10:00": "Post Twitter thread #1",
+    "12:00": "Engage with comments/replies",
+    "15:00": "Post Twitter content #2",
+    "18:00": "Post Indie Hackers (Tuesday/Thursday only)",
+    "21:00": "Schedule next day's content"
+  },
+  "weekly_schedule": {
+    "Monday": "AI Automation content focus",
+    "Tuesday": "Creator Economy + Indie Hackers post",
+    "Wednesday": "Remote Work content",
+    "Thursday": "Micro-SaaS + Indie Hackers post",
+    "Friday": "Passive Income content",
+    "Saturday": "Engagement only - no new posts",
+    "Sunday": "Content batching for next week"
+  },
+  "monthly_review": {
+    "week_1": "Analyze top performers, double down",
+    "week_2": "Test new content formats",
+    "week_3": "Optimize based on data",
+    "week_4": "Plan next month's content calendar"
+  }
+}

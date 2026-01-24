@@ -1,0 +1,719 @@
+{
+  "generated_at": "2026-01-24T16:26:05.722535",
+  "version": "1.0.0",
+  "trendy_niches": {
+    "AI_AUTOMATION": {
+      "name": "AI Automation & Workflows",
+      "trend_score": 98,
+      "growth_rate": "450% YoY",
+      "target_audience": [
+        "Solopreneurs",
+        "Small business owners",
+        "Marketing agencies",
+        "Content creators"
+      ],
+      "pain_points": [
+        "Too many manual tasks",
+        "Tool overload",
+        "No coding skills",
+        "Limited budget for custom dev"
+      ],
+      "products": [
+        {
+          "name": "No-Code AI Workflow Templates",
+          "price": 49,
+          "type": "digital"
+        },
+        {
+          "name": "ChatGPT Business Prompts Pack",
+          "price": 29,
+          "type": "digital"
+        },
+        {
+          "name": "AI Automation Masterclass",
+          "price": 197,
+          "type": "course"
+        },
+        {
+          "name": "Custom AI Setup Service",
+          "price": 497,
+          "type": "service"
+        }
+      ],
+      "content_pillars": [
+        "AI tools comparison reviews",
+        "Step-by-step automation tutorials",
+        "No-code workflow guides",
+        "ROI case studies"
+      ]
+    },
+    "CREATOR_ECONOMY": {
+      "name": "Creator Economy Tools",
+      "trend_score": 95,
+      "growth_rate": "320% YoY",
+      "target_audience": [
+        "YouTubers",
+        "TikTokers",
+        "Newsletter writers",
+        "Podcasters"
+      ],
+      "pain_points": [
+        "Content ideation burnout",
+        "Inconsistent posting",
+        "Monetization struggles",
+        "Analytics overwhelm"
+      ],
+      "products": [
+        {
+          "name": "Content Calendar AI Generator",
+          "price": 39,
+          "type": "digital"
+        },
+        {
+          "name": "YouTube Thumbnail Templates",
+          "price": 29,
+          "type": "digital"
+        },
+        {
+          "name": "Creator Monetization Playbook",
+          "price": 79,
+          "type": "ebook"
+        },
+        {
+          "name": "Channel Audit + Growth Plan",
+          "price": 297,
+          "type": "service"
+        }
+      ],
+      "content_pillars": [
+        "Content creation workflows",
+        "Monetization strategies",
+        "Growth hacking tips",
+        "Tool stack recommendations"
+      ]
+    },
+    "REMOTE_WORK_PRODUCTIVITY": {
+      "name": "Remote Work & Productivity",
+      "trend_score": 92,
+      "growth_rate": "180% YoY",
+      "target_audience": [
+        "Remote workers",
+        "Digital nomads",
+        "Freelancers",
+        "Hybrid teams"
+      ],
+      "pain_points": [
+        "Work-life balance",
+        "Focus and distraction",
+        "Team communication",
+        "Project management"
+      ],
+      "products": [
+        {
+          "name": "Notion Second Brain Template",
+          "price": 49,
+          "type": "digital"
+        },
+        {
+          "name": "Remote Team SOP Kit",
+          "price": 79,
+          "type": "digital"
+        },
+        {
+          "name": "Deep Work Productivity System",
+          "price": 97,
+          "type": "course"
+        },
+        {
+          "name": "Productivity Coaching Package",
+          "price": 397,
+          "type": "service"
+        }
+      ],
+      "content_pillars": [
+        "Productivity systems",
+        "Remote work setups",
+        "Tool tutorials",
+        "Work-life balance tips"
+      ]
+    },
+    "MICRO_SAAS": {
+      "name": "Micro-SaaS & No-Code Apps",
+      "trend_score": 90,
+      "growth_rate": "280% YoY",
+      "target_audience": [
+        "Indie hackers",
+        "Side project builders",
+        "Non-technical founders",
+        "Bootstrappers"
+      ],
+      "pain_points": [
+        "No coding skills",
+        "Limited capital",
+        "Finding profitable ideas",
+        "Marketing the product"
+      ],
+      "products": [
+        {
+          "name": "Micro-SaaS Idea Validator Kit",
+          "price": 49,
+          "type": "digital"
+        },
+        {
+          "name": "No-Code MVP Builder Guide",
+          "price": 79,
+          "type": "course"
+        },
+        {
+          "name": "SaaS Landing Page Templates",
+          "price": 39,
+          "type": "digital"
+        },
+        {
+          "name": "Launch Strategy Consultation",
+          "price": 247,
+          "type": "service"
+        }
+      ],
+      "content_pillars": [
+        "No-code tutorials",
+        "SaaS case studies",
+        "Revenue milestones",
+        "Building in public"
+      ]
+    },
+    "PASSIVE_INCOME_DIGITAL": {
+      "name": "Digital Passive Income",
+      "trend_score": 88,
+      "growth_rate": "200% YoY",
+      "target_audience": [
+        "Side hustlers",
+        "9-5 escapees",
+        "Early retirees",
+        "FIRE movement followers"
+      ],
+      "pain_points": [
+        "Trading time for money",
+        "Starting from zero",
+        "Analysis paralysis",
+        "Shiny object syndrome"
+      ],
+      "products": [
+        {
+          "name": "Digital Product Launch Blueprint",
+          "price": 67,
+          "type": "ebook"
+        },
+        {
+          "name": "Passive Income Tracker Notion",
+          "price": 29,
+          "type": "digital"
+        },
+        {
+          "name": "Print-on-Demand Business Kit",
+          "price": 49,
+          "type": "digital"
+        },
+        {
+          "name": "Income Stream Audit + Plan",
+          "price": 197,
+          "type": "service"
+        }
+      ],
+      "content_pillars": [
+        "Passive income ideas",
+        "Income reports",
+        "Automation strategies",
+        "Digital product creation"
+      ]
+    }
+  },
+  "revenue_engines": {
+    "AI_AUTOMATION": {
+      "niche_id": "AI_AUTOMATION",
+      "niche_name": "AI Automation & Workflows",
+      "trend_score": 98,
+      "growth_rate": "450% YoY",
+      "revenue_potential": {
+        "products": 772,
+        "monthly_target": 7720,
+        "annual_target": 77200
+      },
+      "product_catalog": [
+        {
+          "name": "No-Code AI Workflow Templates",
+          "price": 49,
+          "type": "digital"
+        },
+        {
+          "name": "ChatGPT Business Prompts Pack",
+          "price": 29,
+          "type": "digital"
+        },
+        {
+          "name": "AI Automation Masterclass",
+          "price": 197,
+          "type": "course"
+        },
+        {
+          "name": "Custom AI Setup Service",
+          "price": 497,
+          "type": "service"
+        }
+      ],
+      "target_audience": [
+        "Solopreneurs",
+        "Small business owners",
+        "Marketing agencies",
+        "Content creators"
+      ],
+      "content_strategy": {
+        "pillars": [
+          "AI tools comparison reviews",
+          "Step-by-step automation tutorials",
+          "No-code workflow guides",
+          "ROI case studies"
+        ],
+        "frequency": "3x per week per platform",
+        "platforms": [
+          "LinkedIn",
+          "Twitter",
+          "Indie Hackers",
+          "YouTube"
+        ]
+      },
+      "automation_workflows": [
+        {
+          "name": "WF_AI_AUTOMATION_CONTENT",
+          "trigger": "Weekly schedule",
+          "steps": [
+            "Generate content ideas from pillar",
+            "Create platform-specific versions",
+            "Schedule posts",
+            "Monitor engagement",
+            "Capture leads"
+          ]
+        },
+        {
+          "name": "WF_AI_AUTOMATION_SALES",
+          "trigger": "Lead captured",
+          "steps": [
+            "Qualify lead",
+            "Send nurture sequence",
+            "Offer free value",
+            "Present product",
+            "Close sale"
+          ]
+        }
+      ],
+      "kpis": [
+        {
+          "name": "Content pieces/week",
+          "target": 9
+        },
+        {
+          "name": "Leads captured/week",
+          "target": 50
+        },
+        {
+          "name": "Conversion rate",
+          "target": "3%"
+        },
+        {
+          "name": "Revenue/month",
+          "target": "$4900"
+        }
+      ]
+    },
+    "CREATOR_ECONOMY": {
+      "niche_id": "CREATOR_ECONOMY",
+      "niche_name": "Creator Economy Tools",
+      "trend_score": 95,
+      "growth_rate": "320% YoY",
+      "revenue_potential": {
+        "products": 444,
+        "monthly_target": 4440,
+        "annual_target": 44400
+      },
+      "product_catalog": [
+        {
+          "name": "Content Calendar AI Generator",
+          "price": 39,
+          "type": "digital"
+        },
+        {
+          "name": "YouTube Thumbnail Templates",
+          "price": 29,
+          "type": "digital"
+        },
+        {
+          "name": "Creator Monetization Playbook",
+          "price": 79,
+          "type": "ebook"
+        },
+        {
+          "name": "Channel Audit + Growth Plan",
+          "price": 297,
+          "type": "service"
+        }
+      ],
+      "target_audience": [
+        "YouTubers",
+        "TikTokers",
+        "Newsletter writers",
+        "Podcasters"
+      ],
+      "content_strategy": {
+        "pillars": [
+          "Content creation workflows",
+          "Monetization strategies",
+          "Growth hacking tips",
+          "Tool stack recommendations"
+        ],
+        "frequency": "3x per week per platform",
+        "platforms": [
+          "LinkedIn",
+          "Twitter",
+          "Indie Hackers",
+          "YouTube"
+        ]
+      },
+      "automation_workflows": [
+        {
+          "name": "WF_CREATOR_ECONOMY_CONTENT",
+          "trigger": "Weekly schedule",
+          "steps": [
+            "Generate content ideas from pillar",
+            "Create platform-specific versions",
+            "Schedule posts",
+            "Monitor engagement",
+            "Capture leads"
+          ]
+        },
+        {
+          "name": "WF_CREATOR_ECONOMY_SALES",
+          "trigger": "Lead captured",
+          "steps": [
+            "Qualify lead",
+            "Send nurture sequence",
+            "Offer free value",
+            "Present product",
+            "Close sale"
+          ]
+        }
+      ],
+      "kpis": [
+        {
+          "name": "Content pieces/week",
+          "target": 9
+        },
+        {
+          "name": "Leads captured/week",
+          "target": 50
+        },
+        {
+          "name": "Conversion rate",
+          "target": "3%"
+        },
+        {
+          "name": "Revenue/month",
+          "target": "$4750"
+        }
+      ]
+    },
+    "REMOTE_WORK_PRODUCTIVITY": {
+      "niche_id": "REMOTE_WORK_PRODUCTIVITY",
+      "niche_name": "Remote Work & Productivity",
+      "trend_score": 92,
+      "growth_rate": "180% YoY",
+      "revenue_potential": {
+        "products": 622,
+        "monthly_target": 6220,
+        "annual_target": 62200
+      },
+      "product_catalog": [
+        {
+          "name": "Notion Second Brain Template",
+          "price": 49,
+          "type": "digital"
+        },
+        {
+          "name": "Remote Team SOP Kit",
+          "price": 79,
+          "type": "digital"
+        },
+        {
+          "name": "Deep Work Productivity System",
+          "price": 97,
+          "type": "course"
+        },
+        {
+          "name": "Productivity Coaching Package",
+          "price": 397,
+          "type": "service"
+        }
+      ],
+      "target_audience": [
+        "Remote workers",
+        "Digital nomads",
+        "Freelancers",
+        "Hybrid teams"
+      ],
+      "content_strategy": {
+        "pillars": [
+          "Productivity systems",
+          "Remote work setups",
+          "Tool tutorials",
+          "Work-life balance tips"
+        ],
+        "frequency": "3x per week per platform",
+        "platforms": [
+          "LinkedIn",
+          "Twitter",
+          "Indie Hackers",
+          "YouTube"
+        ]
+      },
+      "automation_workflows": [
+        {
+          "name": "WF_REMOTE_WORK_PRODUCTIVITY_CONTENT",
+          "trigger": "Weekly schedule",
+          "steps": [
+            "Generate content ideas from pillar",
+            "Create platform-specific versions",
+            "Schedule posts",
+            "Monitor engagement",
+            "Capture leads"
+          ]
+        },
+        {
+          "name": "WF_REMOTE_WORK_PRODUCTIVITY_SALES",
+          "trigger": "Lead captured",
+          "steps": [
+            "Qualify lead",
+            "Send nurture sequence",
+            "Offer free value",
+            "Present product",
+            "Close sale"
+          ]
+        }
+      ],
+      "kpis": [
+        {
+          "name": "Content pieces/week",
+          "target": 9
+        },
+        {
+          "name": "Leads captured/week",
+          "target": 50
+        },
+        {
+          "name": "Conversion rate",
+          "target": "3%"
+        },
+        {
+          "name": "Revenue/month",
+          "target": "$4600"
+        }
+      ]
+    },
+    "MICRO_SAAS": {
+      "niche_id": "MICRO_SAAS",
+      "niche_name": "Micro-SaaS & No-Code Apps",
+      "trend_score": 90,
+      "growth_rate": "280% YoY",
+      "revenue_potential": {
+        "products": 414,
+        "monthly_target": 4140,
+        "annual_target": 41400
+      },
+      "product_catalog": [
+        {
+          "name": "Micro-SaaS Idea Validator Kit",
+          "price": 49,
+          "type": "digital"
+        },
+        {
+          "name": "No-Code MVP Builder Guide",
+          "price": 79,
+          "type": "course"
+        },
+        {
+          "name": "SaaS Landing Page Templates",
+          "price": 39,
+          "type": "digital"
+        },
+        {
+          "name": "Launch Strategy Consultation",
+          "price": 247,
+          "type": "service"
+        }
+      ],
+      "target_audience": [
+        "Indie hackers",
+        "Side project builders",
+        "Non-technical founders",
+        "Bootstrappers"
+      ],
+      "content_strategy": {
+        "pillars": [
+          "No-code tutorials",
+          "SaaS case studies",
+          "Revenue milestones",
+          "Building in public"
+        ],
+        "frequency": "3x per week per platform",
+        "platforms": [
+          "LinkedIn",
+          "Twitter",
+          "Indie Hackers",
+          "YouTube"
+        ]
+      },
+      "automation_workflows": [
+        {
+          "name": "WF_MICRO_SAAS_CONTENT",
+          "trigger": "Weekly schedule",
+          "steps": [
+            "Generate content ideas from pillar",
+            "Create platform-specific versions",
+            "Schedule posts",
+            "Monitor engagement",
+            "Capture leads"
+          ]
+        },
+        {
+          "name": "WF_MICRO_SAAS_SALES",
+          "trigger": "Lead captured",
+          "steps": [
+            "Qualify lead",
+            "Send nurture sequence",
+            "Offer free value",
+            "Present product",
+            "Close sale"
+          ]
+        }
+      ],
+      "kpis": [
+        {
+          "name": "Content pieces/week",
+          "target": 9
+        },
+        {
+          "name": "Leads captured/week",
+          "target": 50
+        },
+        {
+          "name": "Conversion rate",
+          "target": "3%"
+        },
+        {
+          "name": "Revenue/month",
+          "target": "$4500"
+        }
+      ]
+    },
+    "PASSIVE_INCOME_DIGITAL": {
+      "niche_id": "PASSIVE_INCOME_DIGITAL",
+      "niche_name": "Digital Passive Income",
+      "trend_score": 88,
+      "growth_rate": "200% YoY",
+      "revenue_potential": {
+        "products": 342,
+        "monthly_target": 3420,
+        "annual_target": 34200
+      },
+      "product_catalog": [
+        {
+          "name": "Digital Product Launch Blueprint",
+          "price": 67,
+          "type": "ebook"
+        },
+        {
+          "name": "Passive Income Tracker Notion",
+          "price": 29,
+          "type": "digital"
+        },
+        {
+          "name": "Print-on-Demand Business Kit",
+          "price": 49,
+          "type": "digital"
+        },
+        {
+          "name": "Income Stream Audit + Plan",
+          "price": 197,
+          "type": "service"
+        }
+      ],
+      "target_audience": [
+        "Side hustlers",
+        "9-5 escapees",
+        "Early retirees",
+        "FIRE movement followers"
+      ],
+      "content_strategy": {
+        "pillars": [
+          "Passive income ideas",
+          "Income reports",
+          "Automation strategies",
+          "Digital product creation"
+        ],
+        "frequency": "3x per week per platform",
+        "platforms": [
+          "LinkedIn",
+          "Twitter",
+          "Indie Hackers",
+          "YouTube"
+        ]
+      },
+      "automation_workflows": [
+        {
+          "name": "WF_PASSIVE_INCOME_DIGITAL_CONTENT",
+          "trigger": "Weekly schedule",
+          "steps": [
+            "Generate content ideas from pillar",
+            "Create platform-specific versions",
+            "Schedule posts",
+            "Monitor engagement",
+            "Capture leads"
+          ]
+        },
+        {
+          "name": "WF_PASSIVE_INCOME_DIGITAL_SALES",
+          "trigger": "Lead captured",
+          "steps": [
+            "Qualify lead",
+            "Send nurture sequence",
+            "Offer free value",
+            "Present product",
+            "Close sale"
+          ]
+        }
+      ],
+      "kpis": [
+        {
+          "name": "Content pieces/week",
+          "target": 9
+        },
+        {
+          "name": "Leads captured/week",
+          "target": 50
+        },
+        {
+          "name": "Conversion rate",
+          "target": "3%"
+        },
+        {
+          "name": "Revenue/month",
+          "target": "$4400"
+        }
+      ]
+    }
+  },
+  "totals": {
+    "niches": 5,
+    "products": 20,
+    "monthly_target": 25940,
+    "annual_target": 311280
+  }
+}
