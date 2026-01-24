@@ -86,6 +86,13 @@ from .engines import (
     GrowthEngine,
 )
 
+# Genesis (Alexandria + Chimera + AutonomaX unified)
+from .genesis import (
+    AlexandriaChimeraGenesis,
+    get_genesis,
+    run_genesis_completion,
+)
+
 __all__ = [
     # Command Center (Primary)
     "CommandCenter",
@@ -119,4 +126,9 @@ __all__ = [
     "RevenueEngine",
     "DeliveryEngine",
     "GrowthEngine",
+    
+    # Genesis
+    "AlexandriaChimeraGenesis",
+    "get_genesis",
+    "run_genesis_completion",
 ]
