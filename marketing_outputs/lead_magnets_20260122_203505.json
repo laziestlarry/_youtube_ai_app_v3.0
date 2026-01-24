@@ -1,0 +1,37 @@
+[
+  {
+    "name": "AI Automation Starter Kit",
+    "description": "Complete guide to implementing AI automation in your business",
+    "target_persona": "Business owners looking to save time",
+    "delivery_format": "PDF + Video walkthrough + Templates",
+    "expected_conversion": "15-25%"
+  },
+  {
+    "name": "YouTube Growth Calculator",
+    "description": "Interactive tool to project your channel growth with automation",
+    "target_persona": "Content creators and YouTubers",
+    "delivery_format": "Interactive spreadsheet + Video tutorial",
+    "expected_conversion": "20-30%"
+  },
+  {
+    "name": "Business Process Audit Template",
+    "description": "Self-assessment to identify automation opportunities",
+    "target_persona": "Operations managers and founders",
+    "delivery_format": "Notion template + Checklist PDF",
+    "expected_conversion": "10-20%"
+  },
+  {
+    "name": "30-Day Content Calendar Template",
+    "description": "Pre-built content calendar with AI-assisted scheduling",
+    "target_persona": "Marketing teams and solo marketers",
+    "delivery_format": "Notion template + Google Sheet",
+    "expected_conversion": "25-35%"
+  },
+  {
+    "name": "ROI Calculator for AI Tools",
+    "description": "Calculate your potential savings from AI implementation",
+    "target_persona": "Decision makers evaluating AI investment",
+    "delivery_format": "Web calculator + PDF report",
+    "expected_conversion": "30-40%"
+  }
+]

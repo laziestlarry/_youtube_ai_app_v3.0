@@ -1,0 +1,9 @@
+{
+  "execution_time": "2026-01-24T02:45:45.888246",
+  "results": {
+    "shopier": {
+      "status": "failed",
+      "error": "{\"error\":\"notFound\",\"message\":\"Endpoint not found\"}"
+    }
+  }
+}

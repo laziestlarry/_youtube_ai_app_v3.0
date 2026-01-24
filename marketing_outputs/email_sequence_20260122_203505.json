@@ -1,0 +1,46 @@
+{
+  "sequence_name": "New Subscriber Welcome",
+  "trigger": "Lead magnet download",
+  "emails": [
+    {
+      "day": 0,
+      "subject": "Welcome! Here's your {lead_magnet_name}",
+      "preview": "Plus a quick win you can implement today",
+      "body": "Hi {first_name}!\n\nThanks for downloading {lead_magnet_name}!\n\nHere's your access link: {download_link}\n\nBefore you dive in, here's a quick win you can implement in 5 minutes:\n\n{quick_tip}\n\nThis alone could save you {time_saved} this week.\n\nOver the next few days, I'll share more insights on {topic}. No spam, just value.\n\nTalk soon,\n{sender_name}\n\nP.S. Reply to this email with your #1 challenge around {topic} - I read every response!",
+      "cta": "Download your {lead_magnet_name}"
+    },
+    {
+      "day": 2,
+      "subject": "The #1 mistake {persona} make with {topic}",
+      "preview": "And how to avoid it",
+      "body": "Hey {first_name},\n\nQuick question: Have you had a chance to check out {lead_magnet_name}?\n\nWhile you're implementing those strategies, I want to share the #1 mistake I see {persona} make:\n\n{common_mistake}\n\nThe fix is simpler than you'd think:\n\n{solution_overview}\n\nHere's a quick example:\n{case_study_snippet}\n\nTomorrow, I'll show you exactly how to implement this step by step.\n\nBest,\n{sender_name}",
+      "cta": "See the full case study"
+    },
+    {
+      "day": 4,
+      "subject": "Case study: How {client_name} achieved {result}",
+      "preview": "Real results, real numbers",
+      "body": "Hey {first_name},\n\nRemember {client_name}?\n\nThey were struggling with {pain_point} - spending {time_before} every week on {task}.\n\nAfter implementing {solution}:\n\u2192 {metric_1}\n\u2192 {metric_2}\n\u2192 {metric_3}\n\nThe best part? It took less than {implementation_time} to set up.\n\n{client_testimonial}\n\nWant similar results? I've got a few spots open this week for a free strategy call.\n\nBook here: {calendar_link}\n\n{sender_name}",
+      "cta": "Book your free strategy call"
+    },
+    {
+      "day": 7,
+      "subject": "Special offer for {first_name}",
+      "preview": "Valid for the next 48 hours",
+      "body": "Hey {first_name},\n\nI've really enjoyed sharing these insights with you.\n\nIf you're ready to take action, I want to make it easy:\n\nFor the next 48 hours, you can get {offer_name} at {discount}% off.\n\nHere's what's included:\n\u2705 {benefit_1}\n\u2705 {benefit_2}\n\u2705 {benefit_3}\n\u2705 {bonus}\n\nNormal price: ${regular_price}\nYour price: ${discounted_price}\n\nThis offer expires {expiry_date} at midnight.\n\n{cta_button}\n\nQuestions? Just reply to this email.\n\n{sender_name}\n\nP.S. Not ready yet? No problem at all. I'll keep sharing value either way.",
+      "cta": "Claim your {discount}% discount"
+    },
+    {
+      "day": 10,
+      "subject": "Last chance: {offer_name} discount ends tonight",
+      "preview": "Final reminder",
+      "body": "Hey {first_name},\n\nJust a quick heads up: the {discount}% discount on {offer_name} ends tonight at midnight.\n\nIf you've been on the fence, here's what others are saying:\n\n\"{testimonial_1}\"\n- {customer_1}\n\n\"{testimonial_2}\"\n- {customer_2}\n\nAfter midnight, the price goes back to ${regular_price}.\n\n{cta_button}\n\nEither way, thanks for being here.\n\n{sender_name}",
+      "cta": "Get {offer_name} before midnight"
+    }
+  ],
+  "segment_variations": {
+    "engaged": "Shorter emails, more direct CTAs",
+    "inactive": "Re-engagement with new value offer",
+    "high_intent": "Case studies and social proof focus"
+  }
+}

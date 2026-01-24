@@ -1,0 +1,119 @@
+{
+  "timestamp": "2026-01-24T03:57:25.202383",
+  "channels": {
+    "shopier": {
+      "status": "active",
+      "products": 9,
+      "catalog_value_try": 18791.0,
+      "top_products": [
+        {
+          "title": "Profit OS Dan\u0131\u015fmanl\u0131k",
+          "price": 14899.0,
+          "url": "https://www.shopier.com/42801163"
+        },
+        {
+          "title": "Fiverr AI Automation and Content Services Kit",
+          "price": 949.0,
+          "url": "https://www.shopier.com/43225400"
+        },
+        {
+          "title": "Otomasyon SOP Kasas\u0131",
+          "price": 699.0,
+          "url": "https://www.shopier.com/42801166"
+        },
+        {
+          "title": "Blog SEO Sprint Paketi",
+          "price": 499.0,
+          "url": "https://www.shopier.com/42801172"
+        },
+        {
+          "title": "Discord Topluluk Ops Kiti",
+          "price": 399.0,
+          "url": "https://www.shopier.com/42801169"
+        }
+      ]
+    },
+    "social": {
+      "status": "content_ready",
+      "platforms": [
+        "linkedin",
+        "twitter",
+        "facebook"
+      ],
+      "content_file": "/Users/pq/_youtube_ai_app_v3.0/marketing_outputs/social_posts/SPRINT_LAUNCH_20260124_035725.txt"
+    },
+    "communities": {
+      "status": "ready",
+      "targets": [
+        {
+          "name": "Indie Hackers",
+          "url": "https://www.indiehackers.com/",
+          "action": "Post introduction + share flash sale",
+          "priority": 1
+        },
+        {
+          "name": "r/Entrepreneur",
+          "url": "https://reddit.com/r/Entrepreneur",
+          "action": "Value comment (no direct selling yet)",
+          "priority": 1
+        },
+        {
+          "name": "r/passive_income",
+          "url": "https://reddit.com/r/passive_income",
+          "action": "Share automation strategy",
+          "priority": 2
+        },
+        {
+          "name": "r/SideProject",
+          "url": "https://reddit.com/r/SideProject",
+          "action": "Launch announcement",
+          "priority": 2
+        }
+      ],
+      "intro_file": "/Users/pq/_youtube_ai_app_v3.0/marketing_outputs/social_posts/COMMUNITY_INTRO_20260124.txt"
+    },
+    "lead_capture": {
+      "status": "basic",
+      "method": "DM-based discount codes",
+      "planned_magnets": [
+        {
+          "name": "Automation Starter Kit",
+          "type": "Checklist PDF",
+          "hook": "10 automations every solopreneur needs",
+          "status": "to_create"
+        },
+        {
+          "name": "7-Day Lazy Launch",
+          "type": "Email Course",
+          "hook": "Launch your first digital product this week",
+          "status": "to_create"
+        }
+      ]
+    },
+    "flash_sale": {
+      "discount": "20%",
+      "duration": "48 hours",
+      "start": "2026-01-24T03:57:25.482557",
+      "end": "2026-01-26T03:57:25.482564",
+      "products": "all",
+      "code": "LAZY20",
+      "urgency_messages": [
+        "48 hours only",
+        "Sale ends tomorrow",
+        "Last chance - 6 hours left"
+      ]
+    }
+  },
+  "total_potential_revenue": 0,
+  "actions_taken": [
+    "Shopier catalog verified and ready",
+    "Social launch content generated"
+  ],
+  "next_steps": [
+    "Configure LAZY20 discount code in Shopier",
+    "Post content to LinkedIn, Twitter, Facebook",
+    "Join Indie Hackers and post introduction",
+    "Engage in r/Entrepreneur (value-first)",
+    "Create simple lead magnet (checklist)"
+  ]
+}
