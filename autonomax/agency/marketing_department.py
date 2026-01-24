@@ -213,16 +213,18 @@ I read every email.
         # Generate content
         content_id = f"POST-{platform.value.upper()}-{datetime.utcnow().strftime('%Y%m%d%H%M%S')}"
         
+        # Build format args without duplicates
+        format_args = {
+            "hook": kwargs.get("hook", f"Stop wasting time on {topic}"),
+            "point_1": kwargs.get("point_1", "Automate the repetitive stuff"),
+            "point_2": kwargs.get("point_2", "Focus on what actually matters"),
+            "point_3": kwargs.get("point_3", "Let systems do the heavy lifting"),
+            "cta": kwargs.get("cta", "Want to learn more? Link in bio."),
+            "hashtags": " ".join([f"#{h}" for h in kwargs.get("hashtags", ["automation", "productivity"])]),
+        }
+        
         # Default content structure
-        body = template.format(
-            hook=kwargs.get("hook", f"Stop wasting time on {topic}"),
-            point_1=kwargs.get("point_1", "Automate the repetitive stuff"),
-            point_2=kwargs.get("point_2", "Focus on what actually matters"),
-            point_3=kwargs.get("point_3", "Let systems do the heavy lifting"),
-            cta=kwargs.get("cta", "Want to learn more? Link in bio."),
-            hashtags=" ".join([f"#{h}" for h in kwargs.get("hashtags", ["automation", "productivity"])]),
-            **kwargs
-        )
+        body = template.format(**format_args)
         
         # Truncate if needed
         max_chars = specs.get("max_chars", 500)
