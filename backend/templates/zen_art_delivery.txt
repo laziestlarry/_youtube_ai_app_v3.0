@@ -1,0 +1,12 @@
+{brand}
+
+Your Zen-Art wall printable is ready.
+
+Title: {title}
+Download link (valid for {ttl_hours} hours):
+{download_url}
+
+{support_line}
+{order_line}
+
+Thank you for choosing {brand}.

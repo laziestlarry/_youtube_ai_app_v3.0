@@ -1,0 +1,14 @@
+# AutonomaX Business Flow Automation Schedule
+# Install: crontab -e and paste below
+
+# Daily: Check Shopier orders at 9 AM
+0 9 * * * cd /Users/pq/_youtube_ai_app_v3.0 && /Users/pq/_youtube_ai_app_v3.0/venv/bin/python scripts/run_order_sync.py >> logs/order_sync.log 2>&1
+
+# Daily: Run revenue report at 6 PM
+0 18 * * * cd /Users/pq/_youtube_ai_app_v3.0 && /Users/pq/_youtube_ai_app_v3.0/venv/bin/python -c "from autonomax.genesis import AlexandriaChimeraGenesis; g=AlexandriaChimeraGenesis(); print(g.generate_execution_plan())" >> logs/daily_report.log 2>&1
+
+# Weekly: Full system health check (Sunday 10 AM)
+0 10 * * 0 cd /Users/pq/_youtube_ai_app_v3.0 && /Users/pq/_youtube_ai_app_v3.0/venv/bin/python scripts/monitor_dashboard.py >> logs/weekly_health.log 2>&1
+
+# Weekly: Content calendar generation (Monday 8 AM)  
+0 8 * * 1 cd /Users/pq/_youtube_ai_app_v3.0 && /Users/pq/_youtube_ai_app_v3.0/venv/bin/python -c "from autonomax.agency import MarketingDepartment; m=MarketingDepartment(); print(m.generate_content_calendar())" >> logs/content_calendar.log 2>&1

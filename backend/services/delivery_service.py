@@ -15,6 +15,7 @@ logger = logging.getLogger(__name__)
 CATALOG_FILE = Path("docs/commerce/product_catalog.json")
 SHOPIER_MAP_FILE = Path("docs/commerce/shopier_product_map.json")
 DELIVERY_MAP_FILE = Path("docs/commerce/digital_delivery_map.json")
+ZEN_ART_TEMPLATE = Path("backend/templates/zen_art_delivery.txt")
 
 # Data Persistence (Cloud Run GCS Volume Support)
 # Use DATA_DIR env var to point to mounted volume (e.g. /app/persistent)
@@ -156,6 +157,52 @@ class DeliveryService:
             server.starttls()
             server.login(smtp_user, smtp_pass)
             server.send_message(message)
+
+    def send_email(self, to_email: str, subject: str, body: str) -> None:
+        self._send_email(to_email, subject, body)
+
+    def build_zen_art_delivery_message(
+        self,
+        title: str,
+        download_url: str,
+        ttl_hours: int,
+        order_id: Optional[str] = None,
+    ) -> tuple[str, str]:
+        brand = os.getenv("DELIVERY_BRAND_NAME") or "Zen-Art Studio"
+        support_email = os.getenv("DELIVERY_SUPPORT_EMAIL") or os.getenv("DELIVERY_FROM_EMAIL")
+        support_line = (
+            f"Need help? Reply to {support_email}."
+            if support_email
+            else "Need help? Reply to this email."
+        )
+        order_line = f"Order ID: {order_id}" if order_id else ""
+
+        payload = {
+            "brand": brand,
+            "title": title,
+            "download_url": download_url,
+            "ttl_hours": ttl_hours,
+            "support_line": support_line,
+            "order_line": order_line,
+        }
+
+        if ZEN_ART_TEMPLATE.exists():
+            template = ZEN_ART_TEMPLATE.read_text(encoding="utf-8")
+            body = template.format(**payload)
+        else:
+            body = (
+                f"{brand}\n\n"
+                "Your Zen-Art wall printable is ready.\n\n"
+                f"Title: {title}\n"
+                f"Download link (valid for {ttl_hours} hours):\n"
+                f"{download_url}\n\n"
+                f"{support_line}\n"
+                f"{order_line}\n\n"
+                f"Thank you for choosing {brand}.\n"
+            )
+
+        subject = f"{brand} Printable Delivery: {title}"
+        return subject, body
 
     def _queue_delivery(self, payload: Dict[str, Any]) -> None:
         DELIVERY_QUEUE_FILE.parent.mkdir(parents=True, exist_ok=True)

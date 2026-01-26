@@ -21,6 +21,10 @@ PYTHON = sys.executable
 
 
 TASKS: Dict[str, Dict[str, object]] = {
+    "order-sync": {
+        "cmd": [PYTHON, "scripts/run_order_sync.py", "--limit", "100"],
+        "log": "logs/order_sync.log",
+    },
     "revenue-sync": {
         "cmd": [PYTHON, "scripts/run_revenue_sync.py", "--days", "7"],
         "log": "logs/revenue_sync.log",

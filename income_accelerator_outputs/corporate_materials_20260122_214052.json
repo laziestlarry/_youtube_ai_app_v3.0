@@ -1,0 +1,182 @@
+{
+  "brand_assets": {
+    "brand_name": "AutonomaX Commerce",
+    "tagline": "Revenue Intelligence, Automated",
+    "secondary_tagline": "Calm Design. Real Outcomes. Digital Delivery.",
+    "voice": {
+      "tone": "Confident, precise, outcome-led, no fluff",
+      "style": "Professional but approachable",
+      "avoid": "Hype, jargon, vague promises"
+    },
+    "visual_system": {
+      "primary_colors": [
+        "#1a1a2e (dark navy)",
+        "#16213e (deep blue)",
+        "#0f3460 (accent blue)"
+      ],
+      "secondary_colors": [
+        "#e94560 (coral accent)",
+        "#f1f1f1 (light gray)"
+      ],
+      "typography": {
+        "headlines": "Inter or similar clean sans-serif",
+        "body": "System fonts for performance"
+      },
+      "imagery": "Minimalist, calm, premium, professional"
+    }
+  },
+  "one_pager_template": {
+    "purpose": "Quick overview for potential clients/partners",
+    "sections": [
+      {
+        "name": "Header",
+        "content": "Logo + Tagline"
+      },
+      {
+        "name": "Problem Statement",
+        "content": "Modern businesses waste 30% of their time on tasks that should be automated."
+      },
+      {
+        "name": "Solution",
+        "content": "AutonomaX provides revenue automation systems that turn chaos into consistent income."
+      },
+      {
+        "name": "Key Offerings",
+        "bullets": [
+          "Digital Products: Zen art, creator kits, templates ($9-$299)",
+          "Automation Services: YouTube, Shopify, Fiverr ($299-$1,499)",
+          "Consulting: AI transformation for executive teams ($5K-$50K)"
+        ]
+      },
+      {
+        "name": "Results",
+        "bullets": [
+          "2,500+ customers across 47 countries",
+          "40% average efficiency gain for consulting clients",
+          "4.8/5 average customer rating"
+        ]
+      },
+      {
+        "name": "CTA",
+        "content": "Visit autonomax.com | Contact: hello@autonomax.com"
+      }
+    ]
+  },
+  "pitch_deck_outline": {
+    "purpose": "Investor/partner presentation",
+    "slides": [
+      {
+        "slide": 1,
+        "title": "Cover",
+        "content": "AutonomaX Commerce - Revenue Intelligence, Automated"
+      },
+      {
+        "slide": 2,
+        "title": "Problem",
+        "content": "Businesses are drowning in manual processes. Time spent = money lost."
+      },
+      {
+        "slide": 3,
+        "title": "Solution",
+        "content": "Automated revenue systems from digital products to enterprise consulting."
+      },
+      {
+        "slide": 4,
+        "title": "Product Portfolio",
+        "content": "Digital downloads \u2192 Services \u2192 SaaS \u2192 Consulting ladder"
+      },
+      {
+        "slide": 5,
+        "title": "Market Opportunity",
+        "content": "$50B+ automation market, growing 25% YoY"
+      },
+      {
+        "slide": 6,
+        "title": "Traction",
+        "content": "2,500+ customers, $XXK MRR, 40% MoM growth"
+      },
+      {
+        "slide": 7,
+        "title": "Business Model",
+        "content": "Multi-channel: Shopier, Etsy, Shopify, Fiverr + direct"
+      },
+      {
+        "slide": 8,
+        "title": "Team",
+        "content": "Founder background + advisory"
+      },
+      {
+        "slide": 9,
+        "title": "Roadmap",
+        "content": "Q1: Scale digital products, Q2: Launch SaaS, Q3: Enterprise push"
+      },
+      {
+        "slide": 10,
+        "title": "Ask",
+        "content": "Partnership / Investment / Strategic opportunity"
+      }
+    ]
+  },
+  "email_signatures": {
+    "standard": "\nBest regards,\n[Name]\n[Title] | AutonomaX Commerce\n[email] | [phone]\nautonomax.com\n\nRevenue Intelligence, Automated\n",
+    "sales": "\nTo your success,\n[Name]\n[Title] | AutonomaX Commerce\n[email] | [phone]\n\nP.S. Ready to automate your revenue? Let's talk: [calendar_link]\n",
+    "executive": "\n[Name]\n[Title]\nAutonomaX Commerce\n[email] | [phone]\n\n---\nBuilding the future of revenue automation\n"
+  },
+  "social_media_templates": {
+    "linkedin_banner": {
+      "text": "Revenue Intelligence, Automated",
+      "size": "1584 x 396",
+      "style": "Dark gradient with subtle accent"
+    },
+    "twitter_header": {
+      "text": "Building automated income systems | Creator kits \u2022 Automation \u2022 AI consulting",
+      "size": "1500 x 500",
+      "style": "Clean with product previews"
+    },
+    "profile_photo": {
+      "style": "Professional headshot or logo mark",
+      "size": "400 x 400"
+    }
+  },
+  "product_presentation_template": {
+    "structure": [
+      {
+        "section": "Cover",
+        "content": "Product name + hero image"
+      },
+      {
+        "section": "Problem",
+        "content": "What pain does this solve?"
+      },
+      {
+        "section": "Solution",
+        "content": "How does this product solve it?"
+      },
+      {
+        "section": "What's Included",
+        "content": "Detailed deliverables list"
+      },
+      {
+        "section": "How It Works",
+        "content": "Step-by-step usage"
+      },
+      {
+        "section": "Results",
+        "content": "Testimonials and outcomes"
+      },
+      {
+        "section": "Pricing",
+        "content": "Clear pricing with value props"
+      },
+      {
+        "section": "FAQ",
+        "content": "Common questions answered"
+      },
+      {
+        "section": "CTA",
+        "content": "How to purchase/get started"
+      }
+    ]
+  },
+  "generated_at": "20260122_214052"
+}

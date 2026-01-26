@@ -62,3 +62,82 @@ def get_alerts(db: Session = Depends(get_db)):
     """System Health & Anomalies."""
     service = AnomalyService(db)
     return {"alerts": service.check_anomalies()}
+
+
+# ============================================================================
+# ORDER SYNC ENDPOINTS (Cloud Scheduler Compatible)
+# ============================================================================
+
+@router.post("/sync/orders")
+async def sync_orders(
+    background_tasks: BackgroundTasks,
+    limit: int = 100,
+    force: bool = False
+):
+    """
+    Trigger Shopier order synchronization.
+    
+    This endpoint is designed for Cloud Scheduler invocation.
+    It fetches paid orders from Shopier and processes any unfulfilled ones.
+    
+    Args:
+        limit: Maximum orders to fetch (default: 100)
+        force: Force reprocess already processed orders
+    
+    Returns:
+        Sync result with order counts and revenue recorded
+    """
+    from backend.services.order_sync_service import order_sync_service
+    
+    result = await order_sync_service.sync_orders(
+        limit=limit,
+        status_filter="paid",
+        force_reprocess=force
+    )
+    
+    return {
+        "status": "success",
+        "sync_timestamp": result.sync_timestamp,
+        "total_fetched": result.total_fetched,
+        "new_orders": result.new_orders,
+        "fulfilled": result.fulfilled,
+        "already_processed": result.already_processed,
+        "errors": result.errors,
+        "revenue_recorded": result.revenue_recorded
+    }
+
+
+@router.post("/sync/deliveries/retry")
+async def retry_deliveries(max_items: int = 50):
+    """
+    Retry failed/queued digital deliveries.
+    
+    Args:
+        max_items: Maximum items to retry (default: 50)
+    
+    Returns:
+        Retry result counts
+    """
+    from backend.services.order_sync_service import order_sync_service
+    
+    result = await order_sync_service.retry_failed_deliveries(max_items=max_items)
+    
+    return {
+        "status": "success",
+        "attempted": result.get("attempted", 0),
+        "delivered": result.get("delivered", 0),
+        "remaining": result.get("remaining", 0)
+    }
+
+
+@router.get("/sync/status")
+def get_sync_status():
+    """
+    Get current order sync status.
+    
+    Returns:
+        Last sync timestamp, processed orders count, and last result
+    """
+    from backend.services.order_sync_service import order_sync_service
+    
+    return order_sync_service.get_sync_status()

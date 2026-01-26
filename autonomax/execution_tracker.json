@@ -1,0 +1,60 @@
+{
+  "created": "2026-01-24T12:52:27.858590",
+  "mission": "First $500 Revenue Sprint",
+  "target_date": "2026-01-26",
+  "channels": {
+    "linkedin": {
+      "status": "READY",
+      "posted": true,
+      "engagement": 0,
+      "posted_at": "2026-01-24T13:57:58.620076"
+    },
+    "twitter": {
+      "status": "READY",
+      "posted": true,
+      "engagement": 0,
+      "posted_at": "2026-01-24T14:08:28.654171"
+    },
+    "reddit": {
+      "status": "READY",
+      "posted": false,
+      "engagement": 0
+    },
+    "indie_hackers": {
+      "status": "READY",
+      "posted": false,
+      "engagement": 0
+    },
+    "facebook": {
+      "status": "READY",
+      "posted": false,
+      "engagement": 0
+    },
+    "quora": {
+      "status": "READY",
+      "posted": false,
+      "engagement": 0
+    },
+    "medium": {
+      "status": "READY",
+      "posted": false,
+      "engagement": 0
+    },
+    "product_hunt": {
+      "status": "SCHEDULED",
+      "launch_date": "2026-01-28"
+    }
+  },
+  "revenue": {
+    "target": 500,
+    "currency": "USD",
+    "current": 0,
+    "orders": []
+  },
+  "kpis": {
+    "traffic_sessions": 0,
+    "conversion_rate": 0,
+    "avg_order_value": 0,
+    "email_signups": 0
+  }
+}

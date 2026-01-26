@@ -63,6 +63,16 @@ def process_text(text: str, speed: float) -> str:
     
     return text
 
+def _resolve_audio_encoding(texttospeech, fmt: str):
+    normalized = fmt.lower().strip()
+    if normalized == "mp3":
+        return texttospeech.AudioEncoding.MP3
+    if normalized == "wav":
+        return texttospeech.AudioEncoding.LINEAR16
+    if normalized == "ogg":
+        return texttospeech.AudioEncoding.OGG_OPUS
+    return texttospeech.AudioEncoding.MP3
+
 async def generate_audio(
     text: str,
     voice_id: str,
@@ -111,8 +121,9 @@ async def generate_audio(
         )
         
         # Select the type of audio file you want returned
+        audio_encoding = _resolve_audio_encoding(texttospeech, format)
         audio_config = texttospeech.AudioConfig(
-            audio_encoding=texttospeech.AudioEncoding.MP3
+            audio_encoding=audio_encoding
         )
         
         # Perform the text-to-speech request
@@ -178,10 +189,17 @@ async def generate_tts(
             )
         
         # Generate audio
+        if request.format and request.format not in TTS_CONFIG["audio_formats"]:
+            raise HTTPException(
+                status_code=400,
+                detail=f"Invalid format. Valid formats: {TTS_CONFIG['audio_formats']}"
+            )
+
         result = await generate_audio(
             request.text,
             request.voice_id,
-            request.speed
+            request.speed,
+            request.format or TTS_CONFIG["default_format"]
         )
         
         return APIResponse(

@@ -1,0 +1,291 @@
+{
+  "source": "/Volumes/psiqo/_TotalCode",
+  "ingested_at": "2026-01-24T15:29:43.615771",
+  "file_counts": {
+    "py": 1006,
+    "txt": 386,
+    "css": 5,
+    "js": 88,
+    "pdf": 62,
+    "java": 2,
+    "__workspace2.2": 3,
+    "html": 38,
+    "php": 4,
+    "bash": 3,
+    "env": 5,
+    "json": 38,
+    "prompt": 78,
+    "csv": 97,
+    "md": 74,
+    "yaml": 31,
+    "ts": 51,
+    "__workspace2.1": 4,
+    "__workspace2.0": 3,
+    "sql": 19
+  },
+  "categories": {
+    "python_modules": {
+      "ai_agents": [
+        "ActionPrimingAgent.py",
+        "ActionSelectionAgent.py",
+        "ExecutionAgent.py",
+        "AgentConvo.py",
+        "Agent.py"
+      ],
+      "development_roles": [
+        "Developer.py",
+        "Architect.py",
+        "CodeMonkey.py",
+        "ProductOwner.py",
+        "TechLead.py",
+        "SpecWriter.py"
+      ],
+      "content_generation": [
+        "ContentGenerator.py",
+        "generate_text.py",
+        "summarization.py"
+      ],
+      "api_integrations": [
+        "FreelancerAPI-retrieveuserprofile.py",
+        "FreelancerAPItopostanewproject.py",
+        "Groq.py",
+        "openai_api.py"
+      ],
+      "automation": [
+        "workflow.py",
+        "scheduler.py",
+        "task_queue.py",
+        "worker.py",
+        "work_pool.py",
+        "work_queue.py"
+      ],
+      "web_development": [
+        "flask_app.py",
+        "fastapi_app.py",
+        "web_app.py",
+        "django_app.py",
+        "streamlit_app.py"
+      ],
+      "data_processing": [
+        "data_processing.py",
+        "fetch_data.py",
+        "scraper.py",
+        "parser.py"
+      ],
+      "testing": [
+        "test_model.py",
+        "test_prompts.py",
+        "test_generate_content.py"
+      ],
+      "business_logic": [
+        "affiliate_marketing.py",
+        "dropshipping_integration.py",
+        "opportunity_search.py",
+        "trend_analysis.py"
+      ]
+    },
+    "prompt_templates": {
+      "development_prompts": [
+        "architect.prompt",
+        "code_monkey.prompt",
+        "developer.prompt",
+        "tech_lead.prompt",
+        "full_stack_developer.prompt",
+        "spec_writer.prompt"
+      ],
+      "planning_prompts": [
+        "plan.prompt",
+        "project_details.prompt",
+        "project_tasks.prompt",
+        "feature_plan.prompt",
+        "breakdown.prompt",
+        "execution_order.prompt"
+      ],
+      "review_prompts": [
+        "review_changes.prompt",
+        "review_feedback.prompt",
+        "review_spec.prompt",
+        "review_task.prompt"
+      ],
+      "code_prompts": [
+        "step_code.prompt",
+        "implement_changes.prompt",
+        "debug.prompt",
+        "write_automated_test.prompt",
+        "request_files_for_code_changes.prompt"
+      ],
+      "documentation_prompts": [
+        "create_readme.prompt",
+        "technical_writer.prompt",
+        "summary.prompt",
+        "feature_summary.prompt"
+      ],
+      "interaction_prompts": [
+        "ask_questions.prompt",
+        "single_question.prompt",
+        "answers.prompt",
+        "human_intervention_explanation.prompt"
+      ]
+    },
+    "frameworks": {
+      "web_frameworks": [
+        {
+          "name": "Vue.js",
+          "stars": "208k",
+          "lang": "TypeScript"
+        },
+        {
+          "name": "Django",
+          "stars": "79.3k",
+          "lang": "Python"
+        },
+        {
+          "name": "Laravel",
+          "stars": "78.2k",
+          "lang": "PHP"
+        },
+        {
+          "name": "Gin",
+          "stars": "78k",
+          "lang": "Go"
+        },
+        {
+          "name": "FastAPI",
+          "stars": "75.8k",
+          "lang": "Python"
+        },
+        {
+          "name": "Spring Boot",
+          "stars": "74.6k",
+          "lang": "Java"
+        },
+        {
+          "name": "NestJS",
+          "stars": "66.9k",
+          "lang": "TypeScript"
+        },
+        {
+          "name": "Rails",
+          "stars": "55.6k",
+          "lang": "Ruby"
+        },
+        {
+          "name": "Nuxt",
+          "stars": "54.2k",
+          "lang": "TypeScript"
+        }
+      ],
+      "ai_frameworks": [
+        {
+          "name": "Quivr",
+          "stars": "36k",
+          "lang": "Python",
+          "desc": "RAG Framework for GenAI"
+        },
+        {
+          "name": "LlamaIndex",
+          "stars": "35.5k",
+          "lang": "Python",
+          "desc": "LLM data framework"
+        }
+      ],
+      "utility_frameworks": [
+        {
+          "name": "Scrapy",
+          "stars": "52.4k",
+          "lang": "Python",
+          "desc": "Web scraping"
+        },
+        {
+          "name": "Ionic",
+          "stars": "50.9k",
+          "lang": "TypeScript",
+          "desc": "Cross-platform UI"
+        },
+        {
+          "name": "Expo",
+          "stars": "32.9k",
+          "lang": "TypeScript",
+          "desc": "React Native"
+        }
+      ]
+    },
+    "ai_expert_system": {
+      "goal": "Drive continuous success and growth of AI-powered organization",
+      "task_framework": {
+        "A1": "Parse video transcripts for online income strategies",
+        "A2": "Classify, evaluate, rank projects for execution order",
+        "A3": "Define process, requirements, best AI model configs",
+        "A4": "Plan system architecture for task completion",
+        "A5": "Scale, refine, improve for optimal completion",
+        "A6": "Multiply business activations in parallel"
+      },
+      "recommended_stack": {
+        "backend": "Python + Django/FastAPI",
+        "database": "PostgreSQL",
+        "frontend": "HTML/CSS + JavaScript",
+        "nlp": "NLTK/spaCy for chat interface"
+      },
+      "architecture_components": [
+        "Define Django models for database tables",
+        "Implement views for HTTP request handling",
+        "Design URL patterns",
+        "Implement middleware for auth/processing",
+        "Create HTML templates with CSS styling",
+        "JavaScript for dynamic functionality"
+      ]
+    },
+    "model_config": {
+      "system_role": "Software coding director",
+      "main_purpose": "Manage parameters in data lake, evaluate code snippets",
+      "success_criteria": "Upgrading systems with integrated improvement",
+      "output_format": "Functional applications, generated code, user guidelines",
+      "rules": [
+        "Always follow instructions",
+        "Never explain unless asked",
+        "Adopt user's values and ethics",
+        "Always use proper formatting and indentation"
+      ],
+      "mission": "Supply online income by coding functional applications",
+      "objective": "Build chains of profit centers"
+    },
+    "text_knowledge": {
+      "ai_models": [
+        "AI programming expert.txt",
+        "AI Entity Workflow Implementation.txt",
+        "AI models: Director, Developer, and Data Science.txt",
+        "AI Model for Customer Behavior Analysis.txt",
+        "AI model-generating top-selling content.txt"
+      ],
+      "business_workflows": [
+        "workflow_ProductManager.txt",
+        "workflow-Inititiation.txt",
+        "workflow_outline_ecommerce_digitalproduct.txt",
+        "workflow_sell_existing_content.txt"
+      ],
+      "task_management": [
+        "todo-main.txt",
+        "tasks.txt",
+        "tasks_start_ecommerce.txt",
+        "tasks_start_etsy_sales.txt"
+      ],
+      "system_architecture": [
+        "systemarchitecture.file.txt",
+        "CORE_TEAM.txt",
+        "Branding IntelliWealth Solutions.txt"
+      ]
+    },
+    "additional_resources": {
+      "json_configs": 38,
+      "yaml_configs": 31,
+      "markdown_docs": 74,
+      "typescript_code": 51,
+      "javascript_code": 88,
+      "html_templates": 38,
+      "css_styles": 5,
+      "sql_schemas": 19,
+      "csv_data": 97,
+      "pdf_docs": 62
+    }
+  }
+}

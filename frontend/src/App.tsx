@@ -26,6 +26,8 @@ import { EarningsTab } from './components/Dashboard/EarningsTab';
 import { ManagementTab } from './components/Dashboard/ManagementTab';
 import { AgencyTab } from './components/Dashboard/AgencyTab';
 import { ModelsTab } from './components/Dashboard/ModelsTab';
+import { CommerceTab } from './components/Dashboard/CommerceTab';
+import { ShopfrontPage } from './components/ShopfrontPage';
 
 const theme = createTheme({
   palette: {
@@ -61,12 +63,14 @@ function App() {
                 <Button color="inherit" component={Link} to="/">Dashboard</Button>
                 <Button color="inherit" component={Link} to="/pricing">Pricing</Button>
                 <Button color="inherit" component={Link} to="/revenue">Revenue</Button>
+                <Button color="inherit" component={Link} to="/shop">Shop</Button>
                 <Button color="inherit" onClick={handleLogout}>Logout</Button>
               </>
             ) : (
               <>
                 <Button color="inherit" component={Link} to="/login">Login</Button>
                 <Button color="inherit" component={Link} to="/register">Register</Button>
+                <Button color="inherit" component={Link} to="/shop">Shop</Button>
               </>
             )}
           </Toolbar>
@@ -79,6 +83,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/pricing" element={<PricingPage />} />
             <Route path="/revenue" element={<RevenueDashboard />} />
+            <Route path="/shop" element={<ShopfrontPage />} />
             <Route path="/oauth/callback" element={<OAuthCallback />} />
           </Routes>
         </Container>
@@ -127,6 +132,7 @@ function DashboardView() {
     'Health',
     'Earnings',
     'Management',
+    'Commerce',
     'AI Agency',
     'Models'
   ];
@@ -174,9 +180,12 @@ function DashboardView() {
           <ManagementTab />
         </TabPanel>
         <TabPanel value={tabValue} index={6}>
-          <AgencyTab />
+          <CommerceTab />
         </TabPanel>
         <TabPanel value={tabValue} index={7}>
+          <AgencyTab />
+        </TabPanel>
+        <TabPanel value={tabValue} index={8}>
           <ModelsTab />
         </TabPanel>
       </Paper>

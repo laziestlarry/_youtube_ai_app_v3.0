@@ -1,0 +1,28 @@
+{
+  "name": "First Sales Flash Sale",
+  "duration": "48 hours",
+  "discount": "50% off first 10 clients",
+  "urgency_messaging": {
+    "countdown": "Ends in {hours} hours",
+    "scarcity": "Only {spots} spots left",
+    "social_proof": "{count} people viewing this offer"
+  },
+  "platforms": {
+    "facebook": "\ud83d\udd25 FLASH SALE ALERT! \n\nFirst 10 clients get 50% OFF professional AI automation services!\n\n\u2705 Basic setup: $25 (was $50)\n\u2705 Standard package: $75 (was $150)  \n\u2705 Premium system: $150 (was $300)\n\nThis ends at midnight! Comment \"INTERESTED\" below!\n\n#FlashSale #AIAutomation #LimitedOffer",
+    "linkedin": "\ud83d\udea8 FLASH SALE: 50% OFF AI Automation Services\n\nLimited to first 10 business clients only:\n\u2022 Professional automation setup from $25\n\u2022 24-48 hour delivery\n\u2022 Unlimited revisions\n\u2022 30-day support included\n\nSale ends midnight. DM me \"FLASH50\" to claim your spot!\n\n#BusinessAutomation #AITools #LimitedOffer",
+    "twitter": "\u26a1 FLASH SALE \u26a1\n\n50% off ALL automation services for the next 48 hours.\n\nFirst 10 clients only.\n\nWhat you get:\n\u2192 AI-powered automation setup\n\u2192 24hr delivery\n\u2192 Full support\n\nReply \"FLASH\" to claim your spot before they're gone.",
+    "instagram_story": "\ud83d\udd25 FLASH SALE \ud83d\udd25\n\n50% OFF everything\n\n48 hours only\nFirst 10 spots\n\nSwipe up or DM \"FLASH\" \u2192",
+    "email_subject_lines": [
+      "[50% OFF] Flash sale starts now - 48 hours only",
+      "I'm doing something crazy for the next 48 hours...",
+      "First 10 only: Half-price automation setup",
+      "URGENT: This offer disappears at midnight"
+    ]
+  },
+  "follow_up_sequence": {
+    "hour_6": "Reminder: 42 hours left, {spots} spots remaining",
+    "hour_24": "Halfway point: Only {spots} spots left",
+    "hour_36": "Final 12 hours: Don't miss this",
+    "hour_47": "1 HOUR LEFT: Last chance for 50% off"
+  }
+}

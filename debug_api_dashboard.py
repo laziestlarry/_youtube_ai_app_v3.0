@@ -1,3 +1,4 @@
+import os
 import requests
 import json
 
@@ -8,8 +9,8 @@ def test_dashboard_api():
     
     # 1. Login
     login_data = {
-        "username": "admin@example.com",
-        "password": "admin123"
+        "username": os.getenv("DEFAULT_ADMIN_EMAIL", "admin@example.com"),
+        "password": os.getenv("DEFAULT_ADMIN_PASSWORD", "admin123"),
     }
     
     print("\n[1] Logging in...")

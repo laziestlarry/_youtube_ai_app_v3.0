@@ -199,6 +199,41 @@ export const apiService = {
     return response.data;
   },
 
+  // Commerce
+  async getCommerceCatalog(): Promise<{ count: number; products: any[] }> {
+    const response = await apiClient.get('/api/commerce/catalog');
+    return response.data;
+  },
+
+  async createCheckout(sku: string, orderId?: string): Promise<{ checkout_url: string }> {
+    const response = await apiClient.post('/api/commerce/checkout', {
+      sku,
+      order_id: orderId,
+    });
+    return response.data;
+  },
+
+  async getCommerceSummary(): Promise<{
+    journey_events: number;
+    loyalty_points: number;
+    loyalty_tier: string;
+    active_contracts: number;
+  }> {
+    const response = await apiClient.get('/api/commerce/summary');
+    return response.data;
+  },
+
+  async getCommerceLoyalty(): Promise<{
+    user_id: number;
+    points_balance: number;
+    tier: string;
+    updated_at?: string;
+    ledger: Array<{ id: number; delta: number; reason: string; reference?: string; created_at: string }>;
+  }> {
+    const response = await apiClient.get('/api/commerce/loyalty');
+    return response.data;
+  },
+
   async executeAgencyTask(objective: string, department: string): Promise<{
     department: string;
     objective: string;

@@ -25,6 +25,9 @@ def run_config_audit() -> Dict[str, object]:
     if not frontend_origin:
         warnings.append("FRONTEND_ORIGIN is not set")
 
+    if settings.environment == "production" and not os.getenv("DEFAULT_ADMIN_PASSWORD"):
+        warnings.append("DEFAULT_ADMIN_PASSWORD not set; admin seed will be skipped")
+
     if settings.environment == "production" and _truthy(os.getenv("SHOPIER_ALLOW_MOCK")):
         critical.append("SHOPIER_ALLOW_MOCK must be false in production")
 

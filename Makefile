@@ -1,7 +1,7 @@
 # YouTube AI Platform v3.0 - Professional Makefile
 # Managing Backend, Frontend, and Mini-App Modules
 
-.PHONY: help install setup start dev stop kill-port test-shopier shopier mini-app logs clean
+.PHONY: help install setup start dev stop kill-port test-shopier shopier mini-app logs clean lint format test
 
 help: ## Show this help message
 	@echo "YouTube AI Platform v3.0 - Command Suite"
@@ -66,3 +66,36 @@ clean: ## Remove temporary files, caches, and logs
 	find . -type f -name "*.log" -delete
 	rm -rf .pytest_cache
 	@echo "✅ Cleanup complete"
+
+lint: ## Run linters on all code
+	@echo "🔍 Running Python linter (ruff)..."
+	ruff check backend/ services/ modules/ ai_modules/ --fix
+	@echo "🔍 Running TypeScript linter (ESLint)..."
+	cd frontend_v3 && npm run lint
+	@echo "✅ Linting complete"
+
+format: ## Format all code
+	@echo "🎨 Formatting Python code (ruff)..."
+	ruff format backend/ services/ modules/ ai_modules/
+	@echo "🎨 Formatting TypeScript code (Prettier)..."
+	cd frontend_v3 && npm run format
+	@echo "✅ Formatting complete"
+
+test: ## Run all tests
+	@echo "🧪 Running backend tests..."
+	python -m pytest backend/tests -v
+	@echo "🧪 Running frontend tests..."
+	cd frontend_v3 && npm run test:run
+	@echo "✅ All tests complete"
+
+test-backend: ## Run backend tests only
+	@echo "🧪 Running backend tests..."
+	python -m pytest backend/tests -v --tb=short
+
+test-frontend: ## Run frontend tests only
+	@echo "🧪 Running frontend tests..."
+	cd frontend_v3 && npm run test:run
+
+pre-commit: ## Run pre-commit hooks on all files
+	@echo "🔒 Running pre-commit hooks..."
+	pre-commit run --all-files

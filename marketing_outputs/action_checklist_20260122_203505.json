@@ -1,0 +1,83 @@
+{
+  "day_1_foundation": {
+    "morning": [
+      "Create/optimize LinkedIn profile with target keywords",
+      "Set up Twitter/X business account with pinned value post",
+      "Create basic landing page with lead magnet capture",
+      "Set up email capture (ConvertKit/Mailchimp free tier)"
+    ],
+    "afternoon": [
+      "Write and schedule 10 social media posts",
+      "Create lead magnet PDF/resource",
+      "Join 5 relevant Discord/Slack communities",
+      "Identify 20 target accounts for outreach"
+    ],
+    "evening": [
+      "Schedule first week's content",
+      "Send 10 LinkedIn connection requests",
+      "Comment on 5 high-visibility posts in your niche"
+    ]
+  },
+  "day_2_outreach": {
+    "morning": [
+      "Launch 3 Fiverr gigs using templates",
+      "Post on Product Hunt 'Upcoming'",
+      "Submit to Indie Hackers directory",
+      "Write and send first newsletter"
+    ],
+    "afternoon": [
+      "Record first YouTube Short/Reel",
+      "Create and post Twitter thread",
+      "Reach out to 5 podcast hosts for guest spots",
+      "Engage in 3 Reddit threads with genuine value"
+    ],
+    "evening": [
+      "Respond to all DMs and comments",
+      "Track metrics in dashboard",
+      "Plan Day 3 priorities"
+    ]
+  },
+  "day_3_conversion": {
+    "morning": [
+      "Follow up with all leads from Days 1-2",
+      "Launch flash sale campaign",
+      "Post case study/social proof content",
+      "Apply to 2 startup credits programs"
+    ],
+    "afternoon": [
+      "Host first Twitter Space or LinkedIn Live",
+      "Send personalized outreach to warm leads",
+      "Create urgency post for offer deadline"
+    ],
+    "evening": [
+      "Close first sale (target: $50-100)",
+      "Document results for future content",
+      "Celebrate and share milestone publicly"
+    ]
+  },
+  "weekly_recurring": {
+    "monday": "Content batch creation (2 hrs)",
+    "tuesday": "Outreach blitz (1 hr)",
+    "wednesday": "Community engagement (1 hr)",
+    "thursday": "Follow-ups and conversions (1 hr)",
+    "friday": "Analytics review and optimization (30 min)",
+    "weekend": "Rest or bonus content creation"
+  },
+  "metrics_to_track": {
+    "daily": [
+      "Messages sent",
+      "Responses received",
+      "Revenue"
+    ],
+    "weekly": [
+      "Follower growth",
+      "Email subscribers",
+      "Conversion rate"
+    ],
+    "monthly": [
+      "Total revenue",
+      "Customer acquisition cost",
+      "LTV"
+    ]
+  }
+}

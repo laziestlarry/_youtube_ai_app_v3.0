@@ -1,0 +1,40 @@
+{
+  "timestamp": "2026-01-24T03:49:34.248232",
+  "organization": "Propulse-AutonomaX",
+  "status": "OPERATIONAL",
+  "current_state": {
+    "shopier": {
+      "status": "connected",
+      "products_live": 10
+    },
+    "social_accounts": {
+      "active": 3,
+      "pending": 2
+    },
+    "brand_docs": {
+      "found": 4,
+      "total": 4
+    },
+    "registry": {
+      "components": 13,
+      "kpis_mapped": 44
+    }
+  },
+  "command_structure": {
+    "directors": [
+      "brand_director",
+      "commerce_director",
+      "growth_director",
+      "operations_director"
+    ],
+    "tasks_assigned": 8,
+    "active_mission": "MISSION_20260124034934"
+  },
+  "immediate_actions": [
+    "1. Post to social media using marketing_outputs/social_posts/",
+    "2. Join Indie Hackers and introduce Lazy Larry",
+    "3. Launch flash sale on Shopier",
+    "4. Create lead magnet landing page",
+    "5. Set up welcome email sequence"
+  ]
+}

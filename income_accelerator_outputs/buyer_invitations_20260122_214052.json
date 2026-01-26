@@ -1,0 +1,70 @@
+{
+  "smart_invitations": [
+    {
+      "persona": "Overwhelmed Creator",
+      "pain_point": "Scattered tools, no system, inconsistent income",
+      "products": [
+        "CREATOR-KIT-01",
+        "NOTION-PASSIVE-01",
+        "HYBRID-STACK-01"
+      ],
+      "invitation_message": "Hey! I noticed you're building something cool but seem stretched thin.\n\nI put together a system that helped me go from chaos to consistent income in 30 days.\n\nIt includes:\n\u2192 Ready-to-use templates (no more starting from scratch)\n\u2192 A tracking dashboard (see all your income in one place)\n\u2192 A step-by-step playbook (know exactly what to do daily)\n\nWould it help if I shared the starter kit? It's what I wish I had when I started.",
+      "cta": "Get the Creator Starter Kit",
+      "channel": "DM / Email / Community"
+    },
+    {
+      "persona": "Busy Professional (Side Hustle Curious)",
+      "pain_point": "No time, wants passive income, skeptical of 'get rich quick'",
+      "products": [
+        "HYBRID-STACK-01",
+        "SOP-AUTO-01",
+        "NOTION-PASSIVE-01"
+      ],
+      "invitation_message": "Quick question: Are you still trading hours for dollars?\n\nI've been building a system that generates income while I sleep - and it only took 2 hours/week to maintain after setup.\n\nNo guru stuff. Just:\n\u2192 Templates that do the heavy lifting\n\u2192 Automation that handles delivery\n\u2192 A dashboard to track everything\n\nWorks great alongside a day job. Want me to show you how it's set up?",
+      "cta": "See the Hybrid Income Stack",
+      "channel": "LinkedIn / Twitter DM"
+    },
+    {
+      "persona": "Freelancer Wanting Scale",
+      "pain_point": "Income ceiling, client dependency, no leverage",
+      "products": [
+        "FIVERR-KIT-01",
+        "YT-AUTO-01",
+        "AX-SAAS-01"
+      ],
+      "invitation_message": "I used to max out at $5K/month freelancing. Couldn't scale without burning out.\n\nThen I productized my services and built automation around them.\n\nResult: 3x revenue, half the client calls, and actual weekends off.\n\nThe system I built:\n\u2192 Optimized gig templates that convert 2x better\n\u2192 Automation that handles 80% of delivery\n\u2192 A workflow that turns one client into five referrals\n\nWould a breakdown of this help you?",
+      "cta": "Get the Freelancer Scale Kit",
+      "channel": "Fiverr message / Twitter"
+    },
+    {
+      "persona": "Home Design Enthusiast",
+      "pain_point": "Wants beautiful space, limited budget, overwhelmed by choices",
+      "products": [
+        "ZEN-ART-BASE"
+      ],
+      "invitation_message": "Your space deserves better than generic wall art from big box stores.\n\nI curate minimalist zen prints that transform rooms into calm, focused spaces.\n\nWhat you get:\n\u2192 Instant download (print in minutes)\n\u2192 Multiple sizes included (8x10 to 24x36)\n\u2192 Curated to actually work together\n\nStarting at $9. Your walls will thank you.",
+      "cta": "Browse the Collection",
+      "channel": "Instagram / Pinterest / Etsy"
+    },
+    {
+      "persona": "Executive / Business Owner",
+      "pain_point": "AI confusion, team inefficiency, missed opportunities",
+      "products": [
+        "IW-CONSULT-01",
+        "PROFIT-OS-01",
+        "CMD-API-01"
+      ],
+      "invitation_message": "Most companies are doing AI wrong.\n\nThey're buying tools. They should be building systems.\n\nI help leadership teams implement AI that actually moves revenue metrics:\n\u2192 40% faster operations\n\u2192 2x pipeline visibility\n\u2192 Predictable profit systems\n\nIf you're serious about AI transformation (not just talking about it), let's have a 30-minute discovery call.\n\nNo pitch. Just diagnosis.",
+      "cta": "Book a Discovery Call",
+      "channel": "LinkedIn / Email"
+    }
+  ],
+  "invitation_principles": {
+    "empathy_first": "Lead with their pain, not your product",
+    "specificity": "Generic = ignored. Specific = engagement",
+    "value_preview": "Show don't tell - give them a taste",
+    "soft_cta": "Invitation beats hard sell",
+    "social_proof": "Include results where possible"
+  },
+  "generated_at": "20260122_214052"
+}

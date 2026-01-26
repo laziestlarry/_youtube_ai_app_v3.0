@@ -35,6 +35,10 @@
 | SMTP_PASSWORD        | SMTP password or app password               | ...                          |
 | SMTP_APP_PASSWORD    | Optional app password override              | ...                          |
 | DELIVERY_FROM_EMAIL  | Sender address                              | support@example.com          |
+| DELIVERY_LINK_TTL_HOURS | Download link expiration (hours)        | 72                           |
+| PRINTABLE_MAX_BYTES  | Max printable asset size (bytes)            | 25000000                     |
+| DELIVERY_BRAND_NAME  | Brand name used in delivery emails          | Zen-Art Studio               |
+| DELIVERY_SUPPORT_EMAIL | Support contact for delivery emails       | support@example.com          |
 | REVENUE_REAL_ONLY    | Restrict ledger summaries to real revenue   | true                         |
 | VIDEO_PIPELINE_ALLOW_PLACEHOLDERS | Allow placeholder audio/video in pipeline | false |
 | VERTEXAI_PROJECT    | Vertex AI project ID                       | propulse-autonomax           |
@@ -43,3 +47,8 @@
 | VERTEXAI_FALLBACK_TO_OPENAI | Fallback to OpenAI on Vertex errors  | true                         |
 | CLOUD_RUN_SERVICE   | Cloud Run service name for log verification | autonomax-api               |
 | APP_TARGET          | API entrypoint target (`autonomax` or `youtube`) | autonomax              |
+| DEFAULT_ADMIN_EMAIL | Email for seeded admin user                 | admin@example.com            |
+| DEFAULT_ADMIN_USERNAME | Username for seeded admin user           | admin                        |
+| DEFAULT_ADMIN_PASSWORD | Password for seeded admin user (required in prod to seed) | change_me |
+| SHOPIER_ACCESS_KEYS | Comma-separated access keys for key-login   | KEY1,KEY2                    |
+| SHOPIER_ACCESS_KEY_MAP | JSON map for key-login metadata          | {"KEY1":{"plan":"pro_monthly","role":"customer"}} |

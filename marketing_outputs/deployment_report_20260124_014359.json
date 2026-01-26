@@ -1,0 +1,45 @@
+{
+  "execution_time": "2026-01-24T01:43:59.674688",
+  "results": {
+    "shopier": {
+      "status": "failed",
+      "error": "{\"error\":\"authError\",\"message\":\"Access token is invalid\"}"
+    },
+    "social": {
+      "status": "manual_required",
+      "files": {
+        "linkedin": "/Users/pq/_youtube_ai_app_v3.0/marketing_outputs/social_posts/linkedin_launch_20260124_014359.txt",
+        "twitter": "/Users/pq/_youtube_ai_app_v3.0/marketing_outputs/social_posts/twitter_launch_20260124_014359.txt",
+        "facebook": "/Users/pq/_youtube_ai_app_v3.0/marketing_outputs/social_posts/facebook_launch_20260124_014359.txt",
+        "instagram": "/Users/pq/_youtube_ai_app_v3.0/marketing_outputs/social_posts/instagram_launch_20260124_014359.txt",
+        "combined": "/Users/pq/_youtube_ai_app_v3.0/marketing_outputs/social_posts/ALL_PLATFORMS_20260124_014359.txt"
+      },
+      "guide": {
+        "generated_at": "2026-01-24T01:43:59.674463",
+        "instructions": "Copy the content below and post to each platform manually.",
+        "platforms": {
+          "linkedin": {
+            "url": "https://www.linkedin.com/in/lazy-larry-344631373/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3BfPohaU8JT2mPEwq4Iyq7fg%3D%3Dhttps://www.linkedin.com/in/lazy-larry-3",
+            "content": "\ud83d\ude80 Excited to announce: AutonomaX Mastery Pack is LIVE!\n\nAfter months of building automation systems, I've packaged everything into one comprehensive bundle.\n\nWhat's inside:\n\u2705 50+ Zen Art Printables (Commercial License)\n\u2705 Creator Launch Templates\n\u2705 Platform Playbooks (Shopify, Etsy, Fiverr)\n\u2705 50+ Automation SOPs\n\u2705 Notion Revenue Dashboard\n\u2705 AI Prompt Library\n\nValue: $2,847 \u2192 Your Price: $497\n\nPerfect for solopreneurs ready to build automated income streams.\n\n#Automation #PassiveIncome #DigitalProducts #Entrepreneurship #SideHustle",
+            "character_count": 535
+          },
+          "twitter": {
+            "url": "https://x.com/lazylarries",
+            "content": "\ud83d\ude80 Just launched: AutonomaX Mastery Pack\n\nEverything you need for automated income:\n\u2022 50+ Zen Art designs\n\u2022 Launch templates\n\u2022 Platform playbooks\n\u2022 Automation SOPs\n\u2022 Revenue dashboard\n\n$2,847 value \u2192 $497\n\n#buildinpublic #passiveincome #automation",
+            "character_count": 246
+          },
+          "facebook": {
+            "url": "https://www.facebook.com/profile.php?id=61578065763242https://www.facebook.com/profile.php?id=61578065763242",
+            "content": "\ud83c\udf89 Big announcement!\n\nI've been working on something special - the AutonomaX Mastery Pack is now available!\n\nThis is the complete system I use to build and manage automated income streams.\n\nWhat you get:\n\ud83c\udfa8 50+ Zen Art Printables\n\ud83d\udccb Creator Launch Templates\n\ud83d\udcda Platform Playbooks\n\u2699\ufe0f 50+ Automation SOPs\n\ud83d\udcca Notion Revenue Dashboard\n\ud83e\udd16 100+ AI Prompts\n\nTotal value: $2,847\nLaunch price: $497\n\nDrop a \ud83d\ude80 if you want the link!",
+            "character_count": 415
+          },
+          "instagram": {
+            "url": "",
+            "content": "\ud83d\ude80 IT'S LIVE!\n\nAutonomaX Mastery Pack - your complete system for automated income.\n\nWhat's inside:\n\u2728 50+ Zen Art Designs\n\ud83d\udce6 Launch Templates\n\ud83d\udcda Platform Playbooks\n\u2699\ufe0f Automation SOPs\n\ud83d\udcca Revenue Dashboard\n\ud83e\udd16 AI Prompts\n\n$2,847 value \u2192 $497\n\nLink in bio \ud83d\udd17\n\n#automation #passiveincome #digitalproducts #sidehustle #entrepreneur #solopreneur #workfromhome #onlinebusiness",
+            "character_count": 361
+          }
+        }
+      }
+    }
+  }
+}

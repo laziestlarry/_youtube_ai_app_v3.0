@@ -1,0 +1,340 @@
+{
+  "fastest_income_routes": {
+    "immediate_priority": [
+      {
+        "sku": "HYBRID-STACK-01",
+        "title": "Hybrid Passive Income Stack",
+        "price_range": "$49-$199",
+        "velocity": "immediate",
+        "channels": [
+          "shopify",
+          "etsy",
+          "shopier",
+          "gumroad",
+          "blog",
+          "reddit"
+        ],
+        "conversion_rate": "5.0%",
+        "revenue_score": 2480.0,
+        "buyer_persona": "Hybrid professionals seeking side income automation",
+        "cta_reasoning": "Promise: build passive income with minimal time. CTA: 'Start Building Today'"
+      },
+      {
+        "sku": "NOTION-PASSIVE-01",
+        "title": "Notion Passive Income Dashboard",
+        "price_range": "$29-$99",
+        "velocity": "immediate",
+        "channels": [
+          "shopify",
+          "etsy",
+          "shopier",
+          "gumroad"
+        ],
+        "conversion_rate": "6.0%",
+        "revenue_score": 1536.0,
+        "buyer_persona": "Creators, solopreneurs tracking multiple income streams",
+        "cta_reasoning": "Solves pain of scattered tracking. CTA: 'Get Organized Today'"
+      },
+      {
+        "sku": "ZEN-ART-BASE",
+        "title": "Zen Art Printables Bundle",
+        "price_range": "$9-$79",
+        "velocity": "immediate",
+        "channels": [
+          "shopier",
+          "etsy",
+          "shopify",
+          "gumroad"
+        ],
+        "conversion_rate": "8.0%",
+        "revenue_score": 1408.0,
+        "buyer_persona": "Home decor enthusiasts, remote workers seeking calm spaces",
+        "cta_reasoning": "Low price + instant delivery = impulse buy. CTA: 'Download Now' with preview images"
+      }
+    ],
+    "fast_priority": [
+      {
+        "sku": "SOP-AUTO-01",
+        "title": "Automation SOP Vault",
+        "price_range": "$79-$299",
+        "velocity": "fast",
+        "channels": [
+          "shopify",
+          "shopier",
+          "gumroad",
+          "linkedin"
+        ],
+        "conversion_rate": "4.0%",
+        "revenue_score": 1512.0,
+        "buyer_persona": "Small business owners automating operations",
+        "cta_reasoning": "Save time promise is universal. CTA: 'Stop Reinventing the Wheel'"
+      },
+      {
+        "sku": "CREATOR-KIT-01",
+        "title": "Creator Starter Kit",
+        "price_range": "$49-$199",
+        "velocity": "fast",
+        "channels": [
+          "shopify",
+          "etsy",
+          "shopier"
+        ],
+        "conversion_rate": "4.5%",
+        "revenue_score": 1116.0,
+        "buyer_persona": "New creators launching digital products",
+        "cta_reasoning": "Removes overwhelm of starting. CTA: 'Launch Your First Product'"
+      },
+      {
+        "sku": "FIVERR-KIT-01",
+        "title": "Fiverr Gig Launch Kit",
+        "price_range": "$29-$99",
+        "velocity": "fast",
+        "channels": [
+          "shopify",
+          "fiverr",
+          "shopier"
+        ],
+        "conversion_rate": "5.5%",
+        "revenue_score": 704.0,
+        "buyer_persona": "Freelancers wanting to optimize Fiverr presence",
+        "cta_reasoning": "Specific platform = specific audience. CTA: 'Optimize Your Gigs Now'"
+      }
+    ],
+    "high_ticket_pipeline": [
+      {
+        "sku": "IW-CONSULT-01",
+        "title": "IntelliWealth Consulting",
+        "price_range": "$15000-$50000",
+        "velocity": "strategic",
+        "channels": [
+          "shopier",
+          "linkedin"
+        ],
+        "conversion_rate": "0.5%",
+        "revenue_score": 8125.0,
+        "buyer_persona": "Executive teams seeking AI transformation",
+        "cta_reasoning": "Authority + ROI story required. CTA: 'Book Discovery Call'"
+      },
+      {
+        "sku": "PROFIT-OS-01",
+        "title": "Profit OS Consulting",
+        "price_range": "$5000-$20000",
+        "velocity": "strategic",
+        "channels": [
+          "shopier",
+          "linkedin"
+        ],
+        "conversion_rate": "0.8%",
+        "revenue_score": 5000.0,
+        "buyer_persona": "Founders needing revenue operations structure",
+        "cta_reasoning": "Pain of chaos -> promise of clarity. CTA: 'Get Your Revenue Blueprint'"
+      },
+      {
+        "sku": "YT-AUTO-01",
+        "title": "YouTube Automation Studio",
+        "price_range": "$299-$1499",
+        "velocity": "standard",
+        "channels": [
+          "fiverr",
+          "shopier"
+        ],
+        "conversion_rate": "2.5%",
+        "revenue_score": 2247.5,
+        "buyer_persona": "YouTubers and brands wanting content automation",
+        "cta_reasoning": "ROI-focused: time saved = money earned. CTA: 'Scale Your Channel'"
+      }
+    ]
+  },
+  "recommended_launch_order": [
+    {
+      "sku": "IW-CONSULT-01",
+      "title": "IntelliWealth Consulting",
+      "price_range": "$15000-$50000",
+      "velocity": "strategic",
+      "channels": [
+        "shopier",
+        "linkedin"
+      ],
+      "conversion_rate": "0.5%",
+      "revenue_score": 8125.0,
+      "buyer_persona": "Executive teams seeking AI transformation",
+      "cta_reasoning": "Authority + ROI story required. CTA: 'Book Discovery Call'"
+    },
+    {
+      "sku": "PROFIT-OS-01",
+      "title": "Profit OS Consulting",
+      "price_range": "$5000-$20000",
+      "velocity": "strategic",
+      "channels": [
+        "shopier",
+        "linkedin"
+      ],
+      "conversion_rate": "0.8%",
+      "revenue_score": 5000.0,
+      "buyer_persona": "Founders needing revenue operations structure",
+      "cta_reasoning": "Pain of chaos -> promise of clarity. CTA: 'Get Your Revenue Blueprint'"
+    },
+    {
+      "sku": "HYBRID-STACK-01",
+      "title": "Hybrid Passive Income Stack",
+      "price_range": "$49-$199",
+      "velocity": "immediate",
+      "channels": [
+        "shopify",
+        "etsy",
+        "shopier",
+        "gumroad",
+        "blog",
+        "reddit"
+      ],
+      "conversion_rate": "5.0%",
+      "revenue_score": 2480.0,
+      "buyer_persona": "Hybrid professionals seeking side income automation",
+      "cta_reasoning": "Promise: build passive income with minimal time. CTA: 'Start Building Today'"
+    },
+    {
+      "sku": "YT-AUTO-01",
+      "title": "YouTube Automation Studio",
+      "price_range": "$299-$1499",
+      "velocity": "standard",
+      "channels": [
+        "fiverr",
+        "shopier"
+      ],
+      "conversion_rate": "2.5%",
+      "revenue_score": 2247.5,
+      "buyer_persona": "YouTubers and brands wanting content automation",
+      "cta_reasoning": "ROI-focused: time saved = money earned. CTA: 'Scale Your Channel'"
+    },
+    {
+      "sku": "NOTION-PASSIVE-01",
+      "title": "Notion Passive Income Dashboard",
+      "price_range": "$29-$99",
+      "velocity": "immediate",
+      "channels": [
+        "shopify",
+        "etsy",
+        "shopier",
+        "gumroad"
+      ],
+      "conversion_rate": "6.0%",
+      "revenue_score": 1536.0,
+      "buyer_persona": "Creators, solopreneurs tracking multiple income streams",
+      "cta_reasoning": "Solves pain of scattered tracking. CTA: 'Get Organized Today'"
+    },
+    {
+      "sku": "SOP-AUTO-01",
+      "title": "Automation SOP Vault",
+      "price_range": "$79-$299",
+      "velocity": "fast",
+      "channels": [
+        "shopify",
+        "shopier",
+        "gumroad",
+        "linkedin"
+      ],
+      "conversion_rate": "4.0%",
+      "revenue_score": 1512.0,
+      "buyer_persona": "Small business owners automating operations",
+      "cta_reasoning": "Save time promise is universal. CTA: 'Stop Reinventing the Wheel'"
+    },
+    {
+      "sku": "ZEN-ART-BASE",
+      "title": "Zen Art Printables Bundle",
+      "price_range": "$9-$79",
+      "velocity": "immediate",
+      "channels": [
+        "shopier",
+        "etsy",
+        "shopify",
+        "gumroad"
+      ],
+      "conversion_rate": "8.0%",
+      "revenue_score": 1408.0,
+      "buyer_persona": "Home decor enthusiasts, remote workers seeking calm spaces",
+      "cta_reasoning": "Low price + instant delivery = impulse buy. CTA: 'Download Now' with preview images"
+    }
+  ],
+  "channel_optimization": {
+    "primary_channels": [
+      "shopier",
+      "linkedin",
+      "shopify"
+    ],
+    "channel_details": {
+      "shopier": {
+        "total_score": 24776.5,
+        "products": [
+          "IW-CONSULT-01",
+          "PROFIT-OS-01",
+          "HYBRID-STACK-01",
+          "YT-AUTO-01",
+          "NOTION-PASSIVE-01",
+          "SOP-AUTO-01",
+          "ZEN-ART-BASE",
+          "CREATOR-KIT-01",
+          "FIVERR-KIT-01",
+          "AX-SAAS-01"
+        ]
+      },
+      "linkedin": {
+        "total_score": 14637.0,
+        "products": [
+          "IW-CONSULT-01",
+          "PROFIT-OS-01",
+          "SOP-AUTO-01"
+        ]
+      },
+      "shopify": {
+        "total_score": 9404.0,
+        "products": [
+          "HYBRID-STACK-01",
+          "NOTION-PASSIVE-01",
+          "SOP-AUTO-01",
+          "ZEN-ART-BASE",
+          "CREATOR-KIT-01",
+          "FIVERR-KIT-01",
+          "AX-SAAS-01"
+        ]
+      },
+      "gumroad": {
+        "total_score": 6936.0,
+        "products": [
+          "HYBRID-STACK-01",
+          "NOTION-PASSIVE-01",
+          "SOP-AUTO-01",
+          "ZEN-ART-BASE"
+        ]
+      },
+      "etsy": {
+        "total_score": 6540.0,
+        "products": [
+          "HYBRID-STACK-01",
+          "NOTION-PASSIVE-01",
+          "ZEN-ART-BASE",
+          "CREATOR-KIT-01"
+        ]
+      },
+      "fiverr": {
+        "total_score": 2951.5,
+        "products": [
+          "YT-AUTO-01",
+          "FIVERR-KIT-01"
+        ]
+      },
+      "blog": {
+        "total_score": 2480.0,
+        "products": [
+          "HYBRID-STACK-01"
+        ]
+      },
+      "reddit": {
+        "total_score": 2480.0,
+        "products": [
+          "HYBRID-STACK-01"
+        ]
+      }
+    }
+  },
+  "generated_at": "20260122_214052"
+}

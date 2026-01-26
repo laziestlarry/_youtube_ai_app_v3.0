@@ -1,0 +1,19 @@
+{
+  "execution_time": "2026-01-24T01:43:35.058146",
+  "results": {
+    "shopier": {
+      "status": "dry_run",
+      "products": 6
+    },
+    "social": {
+      "status": "dry_run",
+      "files": {
+        "linkedin": "/Users/pq/_youtube_ai_app_v3.0/marketing_outputs/social_posts/linkedin_launch_20260124_014335.txt",
+        "twitter": "/Users/pq/_youtube_ai_app_v3.0/marketing_outputs/social_posts/twitter_launch_20260124_014335.txt",
+        "facebook": "/Users/pq/_youtube_ai_app_v3.0/marketing_outputs/social_posts/facebook_launch_20260124_014335.txt",
+        "instagram": "/Users/pq/_youtube_ai_app_v3.0/marketing_outputs/social_posts/instagram_launch_20260124_014335.txt",
+        "combined": "/Users/pq/_youtube_ai_app_v3.0/marketing_outputs/social_posts/ALL_PLATFORMS_20260124_014335.txt"
+      }
+    }
+  }
+}

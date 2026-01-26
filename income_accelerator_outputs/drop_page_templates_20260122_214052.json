@@ -1,0 +1,275 @@
+{
+  "drop_page_1_digital_product": {
+    "name": "Zen Art Drop Page",
+    "product": "ZEN-ART-BASE",
+    "structure": {
+      "hero": {
+        "headline": "Transform Your Space in Minutes",
+        "subheadline": "Minimalist zen art prints. Instant download. Print anywhere.",
+        "visual": "Hero mockup of art in beautiful room",
+        "cta_primary": "Browse Collection",
+        "cta_secondary": "See Samples"
+      },
+      "social_proof": {
+        "metric": "2,500+ happy customers",
+        "testimonial_preview": "\u2605\u2605\u2605\u2605\u2605 'Finally, art that brings calm to my chaotic office' - Sarah K."
+      },
+      "value_props": [
+        {
+          "icon": "\u26a1",
+          "title": "Instant Access",
+          "desc": "Download immediately after purchase"
+        },
+        {
+          "icon": "\ud83d\udcd0",
+          "title": "All Sizes Included",
+          "desc": "8x10 to 24x36 in every purchase"
+        },
+        {
+          "icon": "\ud83c\udfa8",
+          "title": "Print Ready",
+          "desc": "High-res files work with any printer"
+        }
+      ],
+      "product_grid": {
+        "title": "Popular Collections",
+        "layout": "3-column grid",
+        "show_prices": true,
+        "cta_each": "View Details"
+      },
+      "bundle_offer": {
+        "headline": "Get More, Save More",
+        "offer": "Complete Collection: 20 prints for $39 (70% off)",
+        "cta": "Get the Bundle",
+        "urgency": "Limited time offer"
+      },
+      "faq": [
+        {
+          "q": "What do I receive?",
+          "a": "High-resolution JPG/PNG files in multiple sizes"
+        },
+        {
+          "q": "Can I print at home?",
+          "a": "Yes! Files work with home printers and print services"
+        },
+        {
+          "q": "Is this a physical product?",
+          "a": "No, this is a digital download for immediate access"
+        }
+      ],
+      "final_cta": {
+        "headline": "Ready to Transform Your Space?",
+        "cta": "Start Browsing",
+        "guarantee": "100% satisfaction or your money back"
+      }
+    }
+  },
+  "drop_page_2_creator_kit": {
+    "name": "Creator Kit Drop Page",
+    "product": "CREATOR-KIT-01",
+    "structure": {
+      "hero": {
+        "headline": "Launch Your Digital Product This Week",
+        "subheadline": "Everything you need to go from idea to income. Templates, playbooks, and proven systems.",
+        "visual": "Dashboard mockup showing the kit",
+        "cta_primary": "Get the Kit",
+        "cta_secondary": "See What's Inside"
+      },
+      "problem_section": {
+        "headline": "Tired of Starting Over Every Time?",
+        "problems": [
+          "No clear system for launching products",
+          "Hours wasted on templates and copy",
+          "Inconsistent income despite hard work",
+          "Overwhelmed by all the 'advice'"
+        ]
+      },
+      "solution_section": {
+        "headline": "The Creator Starter Kit Gives You:",
+        "deliverables": [
+          {
+            "title": "Launch Templates",
+            "desc": "Proven templates that convert"
+          },
+          {
+            "title": "Content Playbook",
+            "desc": "30-day content calendar ready to use"
+          },
+          {
+            "title": "Pricing Guide",
+            "desc": "Psychological pricing strategies"
+          },
+          {
+            "title": "Workflow Systems",
+            "desc": "Automate the boring stuff"
+          }
+        ]
+      },
+      "results_section": {
+        "headline": "What Creators Are Achieving:",
+        "results": [
+          "First $1K month within 60 days",
+          "2x faster product launches",
+          "Consistent weekly income"
+        ],
+        "testimonials": [
+          {
+            "quote": "I launched my first product in 5 days instead of 5 weeks",
+            "author": "Mike T."
+          },
+          {
+            "quote": "The templates alone are worth 10x the price",
+            "author": "Jessica R."
+          }
+        ]
+      },
+      "pricing": {
+        "headline": "Choose Your Package",
+        "packages": [
+          {
+            "name": "Starter",
+            "price": "$49",
+            "includes": [
+              "Core templates",
+              "Launch checklist",
+              "Email support"
+            ]
+          },
+          {
+            "name": "Pro",
+            "price": "$99",
+            "includes": [
+              "Everything in Starter",
+              "Video walkthroughs",
+              "Bonus templates",
+              "1:1 review"
+            ]
+          },
+          {
+            "name": "Complete",
+            "price": "$199",
+            "includes": [
+              "Everything in Pro",
+              "Full course access",
+              "Community access",
+              "Monthly Q&A"
+            ]
+          }
+        ],
+        "recommended": "Pro"
+      },
+      "guarantee": {
+        "headline": "30-Day Money-Back Guarantee",
+        "text": "If the kit doesn't help you launch faster, get a full refund. No questions asked."
+      },
+      "final_cta": {
+        "headline": "Your Next Product Starts Here",
+        "cta": "Get the Creator Kit",
+        "urgency": "Join 500+ creators who've already launched"
+      }
+    }
+  },
+  "drop_page_3_consulting": {
+    "name": "IntelliWealth Consulting Page",
+    "product": "IW-CONSULT-01",
+    "structure": {
+      "hero": {
+        "headline": "AI Transformation That Actually Moves Revenue",
+        "subheadline": "Executive-level consulting for teams ready to implement, not just discuss",
+        "visual": "Professional photo or results graphic",
+        "cta_primary": "Book Discovery Call",
+        "cta_secondary": "See Case Studies"
+      },
+      "authority_section": {
+        "headline": "Who This Is For",
+        "criteria": [
+          "Executive teams with $5M+ revenue",
+          "Organizations with AI budget but unclear ROI",
+          "Leaders who want systems, not more tools",
+          "Teams ready to implement in 90 days"
+        ]
+      },
+      "methodology": {
+        "headline": "The IntelliWealth Approach",
+        "steps": [
+          {
+            "phase": "Diagnose",
+            "desc": "Deep audit of current operations and opportunities"
+          },
+          {
+            "phase": "Design",
+            "desc": "Custom AI operating system blueprint"
+          },
+          {
+            "phase": "Deploy",
+            "desc": "Implementation with your team"
+          },
+          {
+            "phase": "Optimize",
+            "desc": "Continuous improvement and scaling"
+          }
+        ]
+      },
+      "results": {
+        "headline": "Client Results",
+        "metrics": [
+          {
+            "number": "40%",
+            "label": "Average efficiency gain"
+          },
+          {
+            "number": "2x",
+            "label": "Pipeline visibility improvement"
+          },
+          {
+            "number": "90 days",
+            "label": "To measurable ROI"
+          }
+        ],
+        "case_study": {
+          "company": "Series B SaaS Company",
+          "challenge": "Manual processes eating margins",
+          "result": "47% cost reduction in 60 days"
+        }
+      },
+      "investment": {
+        "headline": "Investment",
+        "text": "Engagements start at $15,000 for implementation sprints.",
+        "includes": [
+          "Executive discovery and blueprint",
+          "90-day implementation roadmap",
+          "Weekly strategy sessions",
+          "KPI dashboards and documentation"
+        ]
+      },
+      "application": {
+        "headline": "Is This Right For You?",
+        "text": "We work with a limited number of clients to ensure results.",
+        "cta": "Apply for Discovery Call",
+        "note": "Free 30-minute consultation to assess fit"
+      }
+    }
+  },
+  "conversion_elements": {
+    "urgency_tactics": [
+      "Limited time pricing",
+      "Countdown timer",
+      "Limited spots available",
+      "Price increase notice"
+    ],
+    "trust_elements": [
+      "Money-back guarantee",
+      "Testimonials with photos",
+      "Trust badges",
+      "Social proof metrics"
+    ],
+    "friction_reducers": [
+      "Guest checkout",
+      "Multiple payment options",
+      "Clear refund policy",
+      "FAQ section",
+      "Live chat/support"
+    ]
+  },
+  "generated_at": "20260122_214052"
+}

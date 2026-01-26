@@ -2,6 +2,8 @@
 
 Purpose: a single reference tying culture, KPI execution, process workflows, and live services together.
 
+**Last Updated:** 2026-01-22
+
 ## Live Services
 - AutonomaX API: https://autonomax-api-71658389068.us-central1.run.app
 - AutonomaX UI (frontend_v3): Cloud Run service `autonomax-frontend`
@@ -9,6 +11,12 @@ Purpose: a single reference tying culture, KPI execution, process workflows, and
 - YouTube AI UI (Vite): https://youtube-ai-frontend-71658389068.us-central1.run.app
 - Alexandria UI: https://youtube-ai-frontend-71658389068.us-central1.run.app/alexandria
 - Alexandria API: https://youtube-ai-backend-71658389068.us-central1.run.app/api/ai/alexandria
+
+## Business Growth Accelerator Toolkit (NEW)
+- **Master Toolkit:** `docs/BUSINESS_GROWTH_ACCELERATOR_TOOLKIT.md`
+- **AI Framework Architecture:** `docs/AI_FRAMEWORK_ARCHITECTURE.md`
+- **Transformation Roadmap:** `docs/TRANSFORMATION_ROADMAP.md`
+- **Training Modules Catalog:** `docs/commerce/TRAINING_MODULES_CATALOG.md`
 
 ## Core Operating Docs
 - `docs/CULTURE_OPERATING_SYSTEM.md`
@@ -18,6 +26,7 @@ Purpose: a single reference tying culture, KPI execution, process workflows, and
 - `docs/RUNNING_SUCCESS_STORY.md`
 - `docs/SERVICE_MAP.md`
 - `docs/PROJECT_TREE.md`
+- `docs/PROJECT_BRIEF_VALUATION_REPORT.md`
 
 ## Alexandria Protocol
 - Protocol: `docs/alexandria_protocol/THE_ALEXANDRIA_PROTOCOL.md`

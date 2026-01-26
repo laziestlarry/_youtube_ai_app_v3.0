@@ -3,6 +3,10 @@ from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from datetime import timedelta
+import json
+import logging
+import os
+import secrets
 
 from backend.core.database import get_async_db
 from backend.models.user import User
@@ -11,35 +15,63 @@ from backend.core.security import get_password_hash, verify_password, create_acc
 from backend.config.enhanced_settings import settings
 
 # --- SHOPIER KEY ACCESS PROTOCOL (NO STRIPE) ---
-import os
+logger = logging.getLogger(__name__)
 
-def validate_shopier_key(user_input_key):
+def _load_shopier_key_map() -> dict:
+    key_map: dict[str, dict] = {}
+    admin_key = settings.security.admin_secret_key or os.getenv("ADMIN_SECRET_KEY")
+    if admin_key:
+        key_map[admin_key] = {"plan": "admin_unlimited", "role": "admin"}
+
+    raw_map = os.getenv("SHOPIER_ACCESS_KEY_MAP") or os.getenv("SECURITY_SHOPIER_ACCESS_KEY_MAP")
+    if raw_map:
+        try:
+            mapped = json.loads(raw_map)
+            if isinstance(mapped, dict):
+                for key, info in mapped.items():
+                    if not key:
+                        continue
+                    if isinstance(info, dict):
+                        entry = dict(info)
+                    else:
+                        entry = {"plan": str(info)}
+                    entry.setdefault("plan", "pro_monthly")
+                    entry.setdefault("role", "customer")
+                    key_map[str(key)] = entry
+        except json.JSONDecodeError:
+            logger.warning("Invalid SHOPIER_ACCESS_KEY_MAP JSON. Expected a JSON object.")
+
+    raw_keys = os.getenv("SHOPIER_ACCESS_KEYS") or os.getenv("SECURITY_SHOPIER_ACCESS_KEYS")
+    if raw_keys:
+        for key in [item.strip() for item in raw_keys.split(",") if item.strip()]:
+            if key not in key_map:
+                key_map[key] = {"plan": "pro_monthly", "role": "customer"}
+    return key_map
+
+def validate_shopier_key(user_input_key: str) -> dict:
     """
-    Validates the user's access key against hardcoded secrets.
+    Validates the user's access key against configured secrets.
     Bypasses Stripe/Database completely for immediate launch.
     """
-    
-    # 1. THE MASTER KEY (Your Backdoor)
-    # Use this to log in yourself for testing/demos
-    if user_input_key == "LAZY_MASTER_2025_ADMIN":
+    key_map = _load_shopier_key_map()
+    if not key_map:
         return {
-            "valid": True, 
-            "plan": "admin_unlimited", 
-            "message": "Welcome back, Commander."
+            "valid": False,
+            "message": "Shopier key login disabled. Configure SHOPIER_ACCESS_KEYS or SHOPIER_ACCESS_KEY_MAP."
         }
 
-    # 2. THE EARLY BIRD KEY (For Customers)
-    # The key you email to people who buy on Shopier
-    # Change this string every month (e.g., "FEB_ACCESS_2025")
-    if user_input_key == "YOUTUBE_AI_EARLY_ACCESS_2025":
-        return {
-            "valid": True, 
-            "plan": "pro_monthly", 
-            "message": "Access Granted: Early Bird Tier"
-        }
-        
-    # 3. INVALID KEY
-    return {"valid": False, "message": "Invalid Access Key. Please check your purchase email."}
+    entry = key_map.get(user_input_key)
+    if not entry:
+        return {"valid": False, "message": "Invalid Access Key. Please check your purchase email."}
+
+    return {
+        "valid": True,
+        "plan": entry.get("plan", "pro_monthly"),
+        "role": entry.get("role", "customer"),
+        "email": entry.get("email"),
+        "username": entry.get("username"),
+        "message": entry.get("message", "Access granted.")
+    }
 
 # ------------------------------------------------
 
@@ -67,22 +99,29 @@ async def login_with_key(data: KeyLoginRequest, db: AsyncSession = Depends(get_a
 
     # 2. Map to a system user (Fail-safe: Use or create the shopier_user)
     # This ensures the platform's @get_current_user dependencies still work.
-    email = "admin@example.com" if "admin" in result["plan"] else "customer@shopier.com"
+    role = result.get("role", "customer")
+    email = result.get("email") or ("admin@example.com" if role == "admin" else "customer@shopier.com")
+    username = result.get("username") or ("shopier_admin" if role == "admin" else "shopier_user")
     stmt = select(User).where(User.email == email)
     db_result = await db.execute(stmt)
     user = db_result.scalars().first()
     
     if not user:
         # Create a proxy user if it doesn't exist (e.g. database was reset)
+        temp_password = secrets.token_urlsafe(32)
         user = User(
             email=email,
-            username="shopier_user",
-            hashed_password="N/A",
-            is_active=True
+            username=username,
+            hashed_password=get_password_hash(temp_password),
+            is_active=True,
+            is_superuser=(role == "admin")
         )
         db.add(user)
         await db.commit()
         await db.refresh(user)
+    elif role == "admin" and not user.is_superuser:
+        user.is_superuser = True
+        await db.commit()
 
     # 3. Issue JWT Token
     access_token_expires = timedelta(seconds=settings.security.jwt_expiration)

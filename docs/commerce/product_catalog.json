@@ -4,6 +4,36 @@
   "brand": "AutonomaX Commerce",
   "products": [
     {
+      "sku": "ZEN-OFFICE-FOGGY-PEAKS",
+      "title": "Zen Office 'Foggy Peaks' Line Art",
+      "type": "digital",
+      "short_description": "Minimalist 'Foggy Peaks' line art for focus and calm.",
+      "long_description": "Turn your chaotic workspace into a sanctuary of focus. This 'Foggy Peaks' minimalist line art brings the serenity of the mountains directly to your office wall. Designed with a calming neutral palette and clean lines to reduce visual noise and promote deep work.\\n\\nWhat You Get:\\n* High-Resolution JPG files (300 DPI) ready to print.\\n* Sizes included: 8x10, 11x14, 16x20, A4, A3.\\n* Instant access immediately after purchase.",
+      "price": {
+        "min": 29,
+        "max": 29,
+        "currency": "USD"
+      },
+      "channels": [
+        "shopify",
+        "shopier"
+      ],
+      "tags": [
+        "minimalist wall art",
+        "office decor",
+        "zen poster",
+        "line art landscape",
+        "mountain print",
+        "digital download",
+        "focus art",
+        "japandi style",
+        "neutral decor",
+        "productivity booster"
+      ],
+      "assets": [],
+      "image_url": "static/assets/listings/ZEN-OFFICE-FOGGY-PEAKS/listing.png"
+    },
+    {
       "sku": "ZEN-ART-BASE",
       "title": "Zen Sanat Baskı Paketi",
       "type": "digital",

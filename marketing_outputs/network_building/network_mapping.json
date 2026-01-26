@@ -1,0 +1,223 @@
+{
+  "created": "2026-01-24T13:01:49.094478",
+  "value_propositions": {
+    "work_smarter": {
+      "value": "Work Smarter, Not Harder",
+      "message": "Automation over grinding. Systems over hustle.",
+      "resonates_with": [
+        "Burned-out freelancers",
+        "Time-poor entrepreneurs",
+        "Efficiency seekers"
+      ],
+      "communities": [
+        "r/productivity",
+        "r/automation",
+        "Indie Hackers",
+        "Twitter #buildinpublic"
+      ]
+    },
+    "freedom_lifestyle": {
+      "value": "Location & Time Freedom",
+      "message": "Build income that doesn't require your presence",
+      "resonates_with": [
+        "Digital nomads",
+        "Remote workers",
+        "Parents",
+        "Side hustlers"
+      ],
+      "communities": [
+        "r/digitalnomad",
+        "r/passive_income",
+        "Nomad List",
+        "Remote OK"
+      ]
+    },
+    "democratize_ai": {
+      "value": "AI for Everyone",
+      "message": "You don't need to be technical to leverage AI",
+      "resonates_with": [
+        "Non-technical founders",
+        "Small business owners",
+        "Creators"
+      ],
+      "communities": [
+        "r/ChatGPT",
+        "r/artificial",
+        "AI Twitter",
+        "No-Code communities"
+      ]
+    },
+    "productize_expertise": {
+      "value": "Your Knowledge Has Value",
+      "message": "Package what you know into assets that sell",
+      "resonates_with": [
+        "Consultants",
+        "Freelancers",
+        "Experts stuck trading time"
+      ],
+      "communities": [
+        "r/Entrepreneur",
+        "r/consulting",
+        "LinkedIn creators",
+        "Course creators"
+      ]
+    },
+    "bootstrap_mindset": {
+      "value": "Bootstrap Over VC",
+      "message": "Build profitable from day one. No permission needed.",
+      "resonates_with": [
+        "Solo founders",
+        "Bootstrappers",
+        "Anti-VC crowd"
+      ],
+      "communities": [
+        "Indie Hackers",
+        "r/SideProject",
+        "MicroConf",
+        "Twitter bootstrappers"
+      ]
+    }
+  },
+  "networks": {
+    "tier_1_immediate": {
+      "name": "High-Intent Communities",
+      "description": "Already looking for solutions we offer",
+      "targets": [
+        {
+          "community": "r/Entrepreneur",
+          "members": "2.5M+",
+          "value_alignment": [
+            "work_smarter",
+            "productize_expertise",
+            "bootstrap_mindset"
+          ],
+          "entry_strategy": "Share automation journey, ask for feedback",
+          "content_angle": "How I stopped trading hours for dollars"
+        },
+        {
+          "community": "Indie Hackers",
+          "members": "100K+",
+          "value_alignment": [
+            "bootstrap_mindset",
+            "work_smarter",
+            "productize_expertise"
+          ],
+          "entry_strategy": "Launch post + engage in others' posts first",
+          "content_angle": "Building in public: from freelancer to product creator"
+        },
+        {
+          "community": "r/passive_income",
+          "members": "800K+",
+          "value_alignment": [
+            "freedom_lifestyle",
+            "productize_expertise"
+          ],
+          "entry_strategy": "Share real numbers and process",
+          "content_angle": "Digital products: the unsexy path to passive income"
+        },
+        {
+          "community": "r/Fiverr + r/freelance",
+          "members": "500K+",
+          "value_alignment": [
+            "work_smarter",
+            "productize_expertise"
+          ],
+          "entry_strategy": "Tips and templates that helped",
+          "content_angle": "How I 3x'd my gig income with templates"
+        }
+      ]
+    },
+    "tier_2_adjacent": {
+      "name": "Adjacent Interest Communities",
+      "description": "Share values, may not know they need us yet",
+      "targets": [
+        {
+          "community": "r/ChatGPT + AI communities",
+          "members": "5M+",
+          "value_alignment": [
+            "democratize_ai",
+            "work_smarter"
+          ],
+          "entry_strategy": "Share practical use cases, not hype",
+          "content_angle": "How I turned ChatGPT into a business tool"
+        },
+        {
+          "community": "r/digitalnomad",
+          "members": "2M+",
+          "value_alignment": [
+            "freedom_lifestyle",
+            "work_smarter"
+          ],
+          "entry_strategy": "Focus on income sustainability",
+          "content_angle": "Building location-independent income streams"
+        },
+        {
+          "community": "No-Code Twitter/Communities",
+          "members": "500K+",
+          "value_alignment": [
+            "democratize_ai",
+            "bootstrap_mindset"
+          ],
+          "entry_strategy": "Show what's possible without coding",
+          "content_angle": "Built an AI business with zero code"
+        },
+        {
+          "community": "r/smallbusiness",
+          "members": "1.5M+",
+          "value_alignment": [
+            "work_smarter",
+            "democratize_ai"
+          ],
+          "entry_strategy": "Practical automation wins",
+          "content_angle": "Small automations that saved me 10hrs/week"
+        }
+      ]
+    },
+    "tier_3_amplifiers": {
+      "name": "Influencer & Creator Networks",
+      "description": "Can amplify message to their audiences",
+      "targets": [
+        {
+          "community": "Twitter #buildinpublic",
+          "members": "100K+ active",
+          "value_alignment": [
+            "bootstrap_mindset",
+            "productize_expertise"
+          ],
+          "entry_strategy": "Consistent value tweets, engage with others",
+          "content_angle": "Daily updates on the journey"
+        },
+        {
+          "community": "LinkedIn Creators",
+          "members": "50K+ creators",
+          "value_alignment": [
+            "productize_expertise",
+            "work_smarter"
+          ],
+          "entry_strategy": "Professional storytelling",
+          "content_angle": "From consultant to product business"
+        },
+        {
+          "community": "YouTube AI/Business creators",
+          "members": "Varies",
+          "value_alignment": [
+            "democratize_ai",
+            "productize_expertise"
+          ],
+          "entry_strategy": "Collaboration, guest content",
+          "content_angle": "Case study for their audience"
+        },
+        {
+          "community": "Newsletter operators",
+          "members": "Niche audiences",
+          "value_alignment": [
+            "All"
+          ],
+          "entry_strategy": "Cross-promotion, sponsorship",
+          "content_angle": "Exclusive deals for subscribers"
+        }
+      ]
+    }
+  },
+  "status": "initialized"
+}

@@ -1,0 +1,357 @@
+{
+  "source": "/Volumes/PQuattro/IntelliWealth Solutions",
+  "ingested_at": "2026-01-24T15:21:05.191714",
+  "categories": {
+    "business_frameworks": [
+      {
+        "name": "Autonomous Cognitive Entity Framework",
+        "layers": [
+          {
+            "layer": 1,
+            "name": "Aspirational Layer",
+            "function": "Ethical constitution, values alignment"
+          },
+          {
+            "layer": 2,
+            "name": "Global Strategy Layer",
+            "function": "Context-aware goals and strategic plans"
+          },
+          {
+            "layer": 3,
+            "name": "Agent Model Layer",
+            "function": "Self-model of capabilities and limitations"
+          },
+          {
+            "layer": 4,
+            "name": "Executive Function Layer",
+            "function": "Project plans and resource allocation"
+          },
+          {
+            "layer": 5,
+            "name": "Cognitive Control Layer",
+            "function": "Dynamic task selection and switching"
+          },
+          {
+            "layer": 6,
+            "name": "Task Prosecution Layer",
+            "function": "Task execution and environment interaction"
+          }
+        ],
+        "principles": [
+          "Top-down control privileging ethics",
+          "Abstract-to-concrete information flow",
+          "Cognition-first over reactive input-output",
+          "Bidirectional communication buses"
+        ],
+        "applicability": "AutonomaX Command Center architecture alignment"
+      },
+      {
+        "name": "IntelliWealth Solutions SaaS Model",
+        "viability_score": 85,
+        "target_audience": "Solo entrepreneurs in online business",
+        "core_offerings": [
+          "AI-driven customization",
+          "Comprehensive business support",
+          "Passive income strategies",
+          "Legal/ethical compliance",
+          "Full-stack project management"
+        ],
+        "business_models": [
+          "Subscription",
+          "Pay-per-use"
+        ],
+        "applicability": "AutonomaX product positioning and pricing"
+      }
+    ],
+    "ai_team_structures": [
+      {
+        "core_roles": [
+          {
+            "role": "Commander",
+            "function": "Oversees overall functioning, provides guidance and leadership"
+          },
+          {
+            "role": "Legal Expert",
+            "function": "Ensures compliance with laws and regulations"
+          },
+          {
+            "role": "Ethical Expert",
+            "function": "Ensures moral and ethical principles adherence"
+          },
+          {
+            "role": "Developer",
+            "function": "Technical implementation and maintenance"
+          },
+          {
+            "role": "Solution Architect",
+            "function": "Designs overall structure and flow"
+          },
+          {
+            "role": "Decider",
+            "function": "Makes informed decisions based on data"
+          },
+          {
+            "role": "Reasoner",
+            "function": "Logical analysis and solution generation"
+          },
+          {
+            "role": "Prioritizer",
+            "function": "Determines relative importance of tasks"
+          },
+          {
+            "role": "Strategy Analyst",
+            "function": "Evaluates strategic implications"
+          },
+          {
+            "role": "Strategy Visionary",
+            "function": "Generates innovative forward-thinking ideas"
+          }
+        ],
+        "support_roles": [
+          {
+            "role": "Reporter",
+            "function": "Monitors and reports relevant events"
+          },
+          {
+            "role": "Summarizer",
+            "function": "Condenses complex information"
+          },
+          {
+            "role": "Quality Assurance",
+            "function": "Evaluates overall quality and effectiveness"
+          },
+          {
+            "role": "Risk Assessor",
+            "function": "Identifies and mitigates potential risks"
+          },
+          {
+            "role": "Model Trainer",
+            "function": "Fine-tunes and trains AI models"
+          },
+          {
+            "role": "Interpreter",
+            "function": "Translates information from various sources"
+          },
+          {
+            "role": "Analysis Maker",
+            "function": "Conducts in-depth analyses"
+          },
+          {
+            "role": "Role Creator",
+            "function": "Identifies new roles as project evolves"
+          }
+        ],
+        "executive_team": [
+          {
+            "role": "CEO",
+            "function": "Overall strategy and leadership"
+          },
+          {
+            "role": "CTO",
+            "function": "Technology strategy and AI development"
+          },
+          {
+            "role": "CMO",
+            "function": "Marketing and customer engagement"
+          },
+          {
+            "role": "CFO",
+            "function": "Financial management and planning"
+          },
+          {
+            "role": "COO",
+            "function": "Day-to-day operations"
+          }
+        ],
+        "applicability": "Map to AutonomaX Directors and Agency departments"
+      }
+    ],
+    "revenue_strategies": [
+      {
+        "business_arenas": [
+          {
+            "arena": "Content Creation",
+            "description": "Generate income through YouTube, blogging, content monetization",
+            "ai_assistance": [
+              "Keyword research",
+              "Content suggestions",
+              "SEO optimization"
+            ],
+            "monetization": [
+              "Ads",
+              "Sponsorships",
+              "Affiliate",
+              "Courses"
+            ]
+          },
+          {
+            "arena": "Affiliate Marketing",
+            "description": "AI-powered affiliate marketing platforms",
+            "ai_assistance": [
+              "Product matching",
+              "Audience insights",
+              "Link optimization"
+            ],
+            "monetization": [
+              "Commission per sale",
+              "Recurring commissions"
+            ]
+          },
+          {
+            "arena": "Print-on-Demand",
+            "description": "Custom merchandise with AI design tools",
+            "ai_assistance": [
+              "Design generation",
+              "Trend analysis",
+              "Pricing optimization"
+            ],
+            "monetization": [
+              "Per-sale profit margin"
+            ]
+          },
+          {
+            "arena": "Chatbot Reselling",
+            "description": "Partner with AI companies to resell chatbot services",
+            "ai_assistance": [
+              "Customization",
+              "Training",
+              "Integration"
+            ],
+            "monetization": [
+              "Commission",
+              "Recurring fees"
+            ]
+          },
+          {
+            "arena": "Digital Product Sales",
+            "description": "Templates, software, plugins, designs",
+            "ai_assistance": [
+              "Design suggestions",
+              "Automation",
+              "Optimization"
+            ],
+            "monetization": [
+              "One-time sales",
+              "Subscriptions"
+            ]
+          },
+          {
+            "arena": "Passive Income Apps",
+            "description": "AI-driven apps generating passive income",
+            "ai_assistance": [
+              "Development",
+              "Optimization",
+              "Analytics"
+            ],
+            "monetization": [
+              "In-app purchases",
+              "Ads",
+              "Subscriptions"
+            ]
+          }
+        ],
+        "action_phases": [
+          "Identify and analyze opportunities",
+          "Create and manage AI models",
+          "Develop business strategy",
+          "Implement and monetize",
+          "Organize and manage workflows",
+          "Financial tracking and forecasting"
+        ],
+        "applicability": "Expand AutonomaX product offerings"
+      }
+    ],
+    "execution_workflows": [
+      {
+        "product_description_generation": {
+          "steps": [
+            "Research products thoroughly",
+            "Use AI models (GPT-3/4) for generation",
+            "Quality assurance review and edit"
+          ]
+        },
+        "affiliate_marketing_seo": {
+          "steps": [
+            "Identify profitable niches",
+            "Keyword research with Ahrefs/SEMrush",
+            "AI content creation",
+            "Website development",
+            "SEO optimization"
+          ]
+        },
+        "email_marketing_automation": {
+          "steps": [
+            "Lead generation via landing pages",
+            "AI email content creation",
+            "Autoresponder setup",
+            "Performance tracking and optimization"
+          ]
+        },
+        "content_creation_monetization": {
+          "steps": [
+            "Identify niche/topic",
+            "Keyword research",
+            "Create high-quality content",
+            "Platform optimization (YouTube/Blog)",
+            "Monetization setup"
+          ]
+        },
+        "ai_commander_implementation": {
+          "goals": [
+            "Establish Commander AI for organization management",
+            "Develop and manage specialized teams",
+            "Implement continuous learning and enhancement",
+            "Conduct studies and ensure scalability",
+            "Facilitate further research"
+          ]
+        },
+        "applicability": "Integrate into AutonomaX Agency workflows"
+      }
+    ],
+    "product_management": [
+      {
+        "task_categories": [
+          "Product ideas and concepts generation",
+          "Market research and competitor analysis",
+          "Product descriptions and user manuals",
+          "Product roadmaps and timelines",
+          "Go-to-market strategies",
+          "Launch plans and press releases",
+          "Customer personas and user profiles",
+          "KPI identification and tracking",
+          "Pricing strategies",
+          "Feature lists and requirements",
+          "A/B test plans",
+          "Sales and marketing materials",
+          "Performance metrics analysis",
+          "Customer interviews and surveys",
+          "Industry trend tracking"
+        ],
+        "taskade_templates": [
+          "advertising",
+          "analytics",
+          "branding/design",
+          "content",
+          "copywriting",
+          "ecommerce",
+          "education",
+          "email marketing",
+          "engineering",
+          "entrepreneurship",
+          "influencer marketing",
+          "legal",
+          "productivity",
+          "project management",
+          "research",
+          "sales",
+          "SEO",
+          "social marketing",
+          "strategy",
+          "UX/UI",
+          "website creation"
+        ],
+        "applicability": "Enhance AutonomaX Creative Department"
+      }
+    ]
+  }
+}

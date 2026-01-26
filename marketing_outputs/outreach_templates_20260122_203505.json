@@ -1,0 +1,30 @@
+[
+  {
+    "name": "LinkedIn Connection Request",
+    "platform": "LinkedIn",
+    "message": "Hi {name},\n\nI noticed you're working on {topic/company}. I'm building tools that help {persona} automate {pain_point}.\n\nWould love to connect and share some insights that might help!\n\nBest,\n[Your Name]",
+    "follow_up": "Thanks for connecting, {name}!\n\nQuick question: What's the most time-consuming repetitive task in your current workflow?\n\nI've been documenting solutions and happy to share what's working for others in {industry}.\n\n[Your Name]",
+    "conversion_rate": "15-25%"
+  },
+  {
+    "name": "Cold DM - Value First",
+    "platform": "Twitter/Instagram",
+    "message": "Hey {name}!\n\nLoved your recent post about {topic}. Had a quick thought that might help:\n\n{specific_valuable_insight}\n\nNo pitch here, just wanted to share since I thought it might be useful!",
+    "follow_up": "Hey {name}, did that tip help at all?\n\nI've got a few more ideas if you're interested. Also working on something that might solve {related_pain_point} - happy to show you when it's ready.\n\nNo pressure either way!",
+    "conversion_rate": "10-20%"
+  },
+  {
+    "name": "Sample Request Response",
+    "platform": "Fiverr/Email",
+    "message": "Hi {name}!\n\nAbsolutely! I'd LOVE to create a FREE sample specifically for your business.\n\nTo create your custom sample, I need:\n1. Brief description of your business\n2. Type of content/service needed\n3. Key message you want to convey\n4. Brand guidelines (if any)\n5. Target audience\n\nI'll have your sample ready in 12-24 hours!\n\nMost clients are so impressed they immediately upgrade to the full package.\n\nThis is limited-time, so let's start today. Send me those details!\n\nBest,\n[Your Name]",
+    "follow_up": "Hi {name}!\n\nJust checking in on your sample request. I have a spot open today if you'd like to get started.\n\nHere's what my clients typically see:\n\u2022 300% more engagement\n\u2022 50% cost savings vs traditional methods\n\u2022 24-48 hour delivery\n\nReady to create something amazing?\n\nBest,\n[Your Name]",
+    "conversion_rate": "70-90%"
+  },
+  {
+    "name": "Referral Request",
+    "platform": "Email/DM",
+    "message": "Hi {name}!\n\nI'm thrilled you love your {product/service}! \n\nQuick favor: Do you know 2-3 other business owners who might need {service_type}? \n\nFor every referral that becomes a client, I'll send you $25 as a thank you.\n\nJust send me their contact info or intro us!\n\nThanks again!\n[Your Name]",
+    "follow_up": "Hi {name}!\n\nFollowing up on my referral ask. Even one introduction would be incredibly helpful.\n\nThe $25 referral bonus is still available, and I'll make sure to take great care of anyone you send my way.\n\nAnyone come to mind?\n\n[Your Name]",
+    "conversion_rate": "40-60%"
+  }
+]
